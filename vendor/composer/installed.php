@@ -1,22 +1,22 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => 'dev-master',
-        'version' => 'dev-master',
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '91f06bd82fba514374f5606fdbf8b5a71efc875a',
+        'reference' => '71eaee701d695299824b469929619b226bdb8ea8',
         'name' => 'codeigniter/framework',
         'dev' => true,
     ),
     'versions' => array(
         'codeigniter/framework' => array(
-            'pretty_version' => 'dev-master',
-            'version' => 'dev-master',
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '91f06bd82fba514374f5606fdbf8b5a71efc875a',
+            'reference' => '71eaee701d695299824b469929619b226bdb8ea8',
             'dev_requirement' => false,
         ),
         'doctrine/instantiator' => array(
