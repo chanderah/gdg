@@ -1,6 +1,6 @@
 <?php
 
-class M_admin extends CI_Model
+class M_site_id extends CI_Model
 {
 
   public function insert($tabel,$data)
@@ -20,7 +20,6 @@ class M_admin extends CI_Model
                ->from($tabel)
                ->where('id_transaksi',$id_transaksi)
                ->get();
-
   }
 
   public function get_data_array($tabel,$id_transaksi)
