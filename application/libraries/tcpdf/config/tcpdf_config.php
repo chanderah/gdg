@@ -144,12 +144,12 @@ define ('PDF_MARGIN_BOTTOM', 25);
 /**
  * Left margin.
  */
-define ('PDF_MARGIN_LEFT', 15);
+define ('PDF_MARGIN_LEFT', 20);
 
 /**
  * Right margin.
  */
-define ('PDF_MARGIN_RIGHT', 15);
+define ('PDF_MARGIN_RIGHT', 20);
 
 /**
  * Default main font name.
@@ -159,7 +159,7 @@ define ('PDF_FONT_NAME_MAIN', 'monotype');
 /**
  * Default main font size.
  */
-define ('PDF_FONT_SIZE_MAIN', 12);
+define ('PDF_FONT_SIZE_MAIN', 18);
 
 /**
  * Default data font name.
@@ -174,7 +174,7 @@ define ('PDF_FONT_SIZE_DATA', 8);
 /**
  * Default monospaced font name.
  */
-define ('PDF_FONT_MONOSPACED', 'courier');
+define ('PDF_FONT_MONOSPACED', 'lucida');
 
 /**
  * Ratio used to adjust the conversion of pixels to user units.

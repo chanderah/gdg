@@ -24,7 +24,7 @@ class Pdf extends TCPDF
     $this->Ln(40);        
     // We need to adjust the x and y positions of this text ... first two parameters
     if ($this->page == 1) {    
-    $this->Cell(180, 0, 'Certificate of Insurance', 0, false, 'C', 0, '', 0, false, 'M', 'M');
+    $this->Cell(167.5, 0, 'Certificate of Insurance', 0, false, 'C', 0, '', 0, false, 'M', 'M');
 
     } else {
         //$this->SetMargins(PDF_MARGIN_LEFT, 10, PDF_MARGIN_RIGHT);

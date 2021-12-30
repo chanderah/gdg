@@ -48,19 +48,21 @@ class Report2 extends CI_Controller
     // ---------------------------------------------------------
 
     // set font
-    $pdf->SetFont('times', '', 15); 
+    //$pdf->SetFont('times', '', 15); 
     // *** Very IMP: Please use times font, so that if you send this pdf file in gmail as attachment and if user
     //opens it in google document, then all the text within the pdf would be visible properly.
 
     // add a page
     $pdf->AddPage();
 
-    // create some HTML content
-    $now = date("j F, Y");
+    // create some HTML content    
+    $now = date("F jS, Y");
     //$data = 'ABC Company';
 
     $user_name = 'Mr. Lorel Ispum';
     $invoice_ref_id = '2013/12/03/0001';
+    $namaPerusahaan = 'PT. ASURANSI MAXIMUS GRAHA PERSADA, Tbk';
+    
 
     // *** IMP: The value of $html and $html_terms can come from db
     // But, If these values contain, other language special characters, then
@@ -73,16 +75,19 @@ class Report2 extends CI_Controller
     $html = '';
 
         // set font
-    $pdf->SetFont('narrowi', '', 11); 
+    $pdf->SetFont('lucida', '', 9.5); 
     $html .= '<table cellpadding="5">
                 <tr>
-                    <td colspan="2" align="center">No. {id}</td>
+                    <td align="center" style="font-size:11pt;">No. {id}</td>
                 </tr>
             </table>';
 
-    $pdf->SetFont('lucida', '', 11); 
-
+    //echo $fontname;
+    
     $html .= '<table cellpadding="5">
+                <tr>
+                    <td colspan="2" align="center">-</td>
+                </tr>
                 <tr>
                     <td colspan="2" align="center">THIS TO CERTIFY that insurance has been effected as per Open Policy No. {id}</td>
                 </tr>
@@ -90,34 +95,94 @@ class Report2 extends CI_Controller
 
     $html .= '
             <table border="" cellpadding="5">
-                <tr>
-                    <td colspan="3">Invoice # {invoice_ref_id}</td>            
+                <tr>    <br><br>
+                    <td colspan="2"><b>The Insured</b></td>
+                    <td colspan="1" align="right">:</td>
+                    <td colspan="8"align="justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</td>   
                 </tr>
                 <tr>
-                    <td><b>Product</b></td>
-                    <td><b>Quantity</b></td>
-                    <td align="right"><b>Amount (Rp.)</b></td>
-                    
+                    <td colspan="2">Address</td>
+                    <td colspan="1" align="right">:</td>
+                    <td colspan="8"align="justify">Lorem</td>
                 </tr>
                 <tr>
-                    <td>Product 1</td>
-                    <td>30</td>
-                    <td align="right">300</td>
+                    <td colspan="2">Interest Insured</td>
+                    <td colspan="1" align="right">:</td>
+                    <td colspan="8"align="justify">Lorem</td>
                 </tr>
                 <tr>
-                    <td>Product 2</td>
-                    <td>15</td>
-                    <td align="right">75</td>
+                    <td colspan="2">Mark/Numbers</td>
+                    <td colspan="1" align="right">:</td>
+                    <td colspan="8"align="justify">Lorem</td>
                 </tr>
                 <tr>
-                    <td colspan="3" align="right"><b>Total: 375</b></td>
+                    <td colspan="2">Amount Insured</td>
+                    <td colspan="1" align="right">:</td>
+                    <td colspan="8"align="justify">Lorem</td>
+                </tr>
+                <tr>
+                    <td colspan="2">L/C</td>
+                    <td colspan="1" align="right">:</td>
+                    <td colspan="8"align="justify">Lorem</td>
+                </tr>
+                <tr>
+                    <td colspan="2">B/L</td>
+                    <td colspan="1" align="right">:</td>
+                    <td colspan="8"align="justify">Lorem</td>
+                </tr>
+                <tr>
+                    <td colspan="2">Invoice Number</td>
+                    <td colspan="1" align="right">:</td>
+                    <td colspan="8"align="justify">Lorem</td>
+                </tr>
+                <tr>
+                    <td colspan="2">Scope of Cover</td>
+                    <td colspan="1" align="right">:</td>
+                    <td colspan="8"align="justify">Lorem</td>
+                </tr>
+                <tr>
+                    <td colspan="2">Scope of Cover</td>
+                    <td colspan="1" align="right">:</td>
+                    <td colspan="8"align="justify">Lorem</td>
+                </tr>
+                <tr>
+                    <td colspan="2">Date of Sailing</td>
+                    <td colspan="1" align="right">:</td>
+                    <td colspan="8"align="justify">Lorem</td>
+                </tr>
+                <tr>
+                    <td colspan="2">Conveyance</td>
+                    <td colspan="1" align="right">:</td>
+                    <td colspan="8"align="justify">Lorem</td>
+                </tr>
+                <tr>
+                    <td colspan="2">Destination</td>
+                    <td colspan="1" align="right">:</td>
+                    <td colspan="8"align="justify">Lorem</td>
+                </tr>
+                <tr>
+                    <td colspan="2">Consignee</td>
+                    <td colspan="1" align="right">:</td>
+                    <td colspan="8"align="justify">Lorem</td>
                 </tr>
             </table>'
             ;
 
-    $html .= '<br><br>Some more text...';
+    $html .= '<table cellpadding="5">
+                <tr><br><br>
+                    <td align="right">Issued {now}</td>
+                </tr>
+                <tr>
+                    <td align="right">Signed On Behalf</td>
+                </tr>
+                <tr><br><br><br><br><br>
+                    <td align="right">{namaPerusahaan}</td>
+                </tr>
+            </table>';
 
     $html = str_replace('{id}',$id, $html);
+    $html = str_replace('{namaPerusahaan}',$namaPerusahaan, $html);
+    $html = str_replace('{now}',$now, $html);
     $html = str_replace('{user_name}',$user_name, $html);
     $html = str_replace('{invoice_ref_id}',$invoice_ref_id, $html);
 
