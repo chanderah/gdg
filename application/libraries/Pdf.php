@@ -15,7 +15,7 @@ class Pdf extends TCPDF
     // Logo
     $image_file = 'pdf/asuransi.png'; // *** Very IMP: make sure this image is available on given path on your server
     $image_file2 = 'pdf/maximus.png'; // *** Very IMP: make sure this image is available on given path on your server
-    $this->Image($image_file,15,6,30);
+    $this->Image($image_file,15,8,27);
     // Set font
     $this->SetFont('monotype', 'C', 24);
     // Line break
@@ -24,7 +24,7 @@ class Pdf extends TCPDF
     $this->Ln(40);        
     // We need to adjust the x and y positions of this text ... first two parameters
     if ($this->page == 1) {    
-    $this->Cell(167.5, 0, 'Certificate of Insurance', 0, false, 'C', 0, '', 0, false, 'M', 'M');
+    $this->Cell(170, 0, 'Certificate of Insurance', 0, false, 'C', 0, '', 0, false, 'M', 'M');
 
     } else {
         //$this->SetMargins(PDF_MARGIN_LEFT, 10, PDF_MARGIN_RIGHT);
@@ -40,6 +40,7 @@ class Pdf extends TCPDF
     // Set font
     $this->SetFont('helvetica', 'I', 8);
     
+    $this->SetTextColor(100,100,100);
     $this->Cell(0, 0, 'PT. Asuransi Maximus Graha Persada Tbk', 0, 0, 'C');
     $this->Ln();
     $this->Cell(0,0,'(d/h PT Asuransi Kresna Mitra Tbk)', 0, false, 'C', 0, '', 0, false, 'T', 'M');

@@ -33,6 +33,7 @@ class Report2 extends CI_Controller
 
     //set margins
     $pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
+    
     $pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
     $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
 
@@ -62,7 +63,20 @@ class Report2 extends CI_Controller
     $user_name = 'Mr. Lorel Ispum';
     $invoice_ref_id = '2013/12/03/0001';
     $namaPerusahaan = 'PT. ASURANSI MAXIMUS GRAHA PERSADA, Tbk';
-    
+
+    $nosertifHeader =  '<font face="narrowi">
+                            <table cellpadding="5">
+                                <tr>
+                                    <td align="center"><font size="13" font face="monotype">No.</font> <font size="11" font face="narrowi">{id}</font></td>
+                                </tr>
+                            </table></font>';
+                            
+    $nopolisHeader =  '<font face="lucida" font size="10">
+                            <table cellpadding="5">
+                                <tr>
+                                    <td colspan="1" align="left">THIS TO CERTIFY that insurance has been effected as per Open Policy No. <i>0608032100001</i></td>
+                                </tr>
+                            </table></font>';
 
     // *** IMP: The value of $html and $html_terms can come from db
     // But, If these values contain, other language special characters, then
@@ -70,35 +84,25 @@ class Report2 extends CI_Controller
     // make use of its html entity substitute 
     // for ex. If copyright is invalid character then use &copy; in html content
 
-    // $html on page 1 of PDF and $html_terms are on page 2 of PDF
-
-    $html = '';
-
         // set font
     $pdf->SetFont('lucida', '', 9.5); 
-    $html .= '<table cellpadding="5">
-                <tr>
-                    <td align="center" style="font-size:11pt;">No. {id}</td>
-                </tr>
-            </table>';
+    $html .= $nosertifHeader;
+    $style = array('width' => 0.2, 'cap' => 'butt', 'join' => 'miter', 'dash' => 0, 'color' => array(0, 0, 0));
 
-    //echo $fontname;
-    
-    $html .= '<table cellpadding="5">
-                <tr>
-                    <td colspan="2" align="center">-</td>
-                </tr>
-                <tr>
-                    <td colspan="2" align="center">THIS TO CERTIFY that insurance has been effected as per Open Policy No. {id}</td>
-                </tr>
-            </table>';
+    $pdf->Line(185.5, 51, 21, 51, $style);
+    // (panjang,bawah kiri,marginkiri,bawah kanan,)
+    $html .= $nopolisHeader;
 
+    $pdf->setListIndentWidth(4.75);
     $html .= '
-            <table border="" cellpadding="5">
-                <tr>    <br><br>
+            <table border="" cellpadding="2">
+                <tr>    <br>
                     <td colspan="2"><b>The Insured</b></td>
                     <td colspan="1" align="right">:</td>
-                    <td colspan="8"align="justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</td>   
+                    <td colspan="8"align="justify"><b>PT. Fiberhome Technologies Indonesia and/or 
+                    BAKTI (Badan Aksesibilitas Telekomunikasi dan Informasi)</b> and/or subsidiary and/or affiliated companies including those required 
+                    or incorporated during the period of insurance for their respective rights and interest.
+                    </td>   
                 </tr>
                 <tr>
                     <td colspan="2">Address</td>
@@ -108,7 +112,14 @@ class Report2 extends CI_Controller
                 <tr>
                     <td colspan="2">Interest Insured</td>
                     <td colspan="1" align="right">:</td>
-                    <td colspan="8"align="justify">Lorem</td>
+                    <td colspan="8"align="justify">
+                    
+                    <ol>
+                        <li><b>Point 1</b></li>
+                        <li><i>Point 2</i></li>
+                    </ol>
+                    
+                    </td>
                 </tr>
                 <tr>
                     <td colspan="2">Mark/Numbers</td>
@@ -118,7 +129,7 @@ class Report2 extends CI_Controller
                 <tr>
                     <td colspan="2">Amount Insured</td>
                     <td colspan="1" align="right">:</td>
-                    <td colspan="8"align="justify">Lorem</td>
+                    <td colspan="8"align="justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</td>
                 </tr>
                 <tr>
                     <td colspan="2">L/C</td>
@@ -133,12 +144,7 @@ class Report2 extends CI_Controller
                 <tr>
                     <td colspan="2">Invoice Number</td>
                     <td colspan="1" align="right">:</td>
-                    <td colspan="8"align="justify">Lorem</td>
-                </tr>
-                <tr>
-                    <td colspan="2">Scope of Cover</td>
-                    <td colspan="1" align="right">:</td>
-                    <td colspan="8"align="justify">Lorem</td>
+                    <td colspan="8"align="justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</td>
                 </tr>
                 <tr>
                     <td colspan="2">Scope of Cover</td>
@@ -153,7 +159,7 @@ class Report2 extends CI_Controller
                 <tr>
                     <td colspan="2">Conveyance</td>
                     <td colspan="1" align="right">:</td>
-                    <td colspan="8"align="justify">Lorem</td>
+                    <td colspan="8"align="justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</td>
                 </tr>
                 <tr>
                     <td colspan="2">Destination</td>
@@ -163,7 +169,10 @@ class Report2 extends CI_Controller
                 <tr>
                     <td colspan="2">Consignee</td>
                     <td colspan="1" align="right">:</td>
-                    <td colspan="8"align="justify">Lorem</td>
+                    <td colspan="8"align="justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
+                    labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                     consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+                     Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</td>
                 </tr>
             </table>'
             ;
@@ -189,38 +198,6 @@ class Report2 extends CI_Controller
     // output the HTML content
     $pdf->writeHTML($html, true, false, true, false, '');
 
-    // add a page
-    $pdf->AddPage();
-
-    $html_terms = '
-            <table>
-                <tr>
-                    <td colspan="2"><u><b>Terms & Conditions</b></u></td>
-                </tr>
-                <tr>
-                    <td colspan="2" align="right">
-                    <ul>
-                        <li>Point one</li>
-                        <li>Point two</li>
-                        <li>Point three</li>
-                        <li>Point four</li>
-                        <li>Point five</li>
-                        <li>Point six</li>
-                        <li>Point seven</li>
-                        <li>Point eight</li>
-                        <li>Point nine</li>
-                        <li>Point ten</li>
-                    </ul>
-                    </td>
-                </tr>
-
-            </table>
-            ';
-    // output the HTML content
-    $pdf->writeHTML($html_terms, true, false, true, false, '');
-
-    // - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
     // reset pointer to the last page
     $pdf->lastPage();
 
@@ -229,6 +206,7 @@ class Report2 extends CI_Controller
     //Close and output PDF document
     $pdf_file_name = 'Certificate of Insurance.pdf';
     $pdf->IncludeJS("print();");
+    ob_end_clean();
     $pdf->Output($pdf_file_name, 'I');
 
   }
