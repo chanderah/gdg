@@ -1,40 +1,177 @@
 <br><br><br>
     <div class="container text-center" style="margin: 2em auto;">
-    <h2 class="tex-center">Tabel Permintaan</h2>
-    <table class="table table-bordered table-striped" style="margin: 2em auto;" id="tabel_barangmasuk">
-    <thead>
-      <tr>
-        <th>No</th>
-        <th>ID_Transaksi</th>
-        <th>Tanggal</th>
-        <th>Lokasi</th>
-        <th>Kode Barang</th>
-        <th>Nama Barang</th>
-        <th>Satuan</th>
-        <th>Jumlah</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <?php if(is_array($list_data)){ ?>
-        <?php $no = 1;?>
-        <?php foreach($list_data as $dd): ?>
-          <td><?=$no?></td>
-          <td><?=$dd->id_transaksi?></td>
-          <td><?=$dd->tanggal?></td>
-          <td><?=$dd->lokasi?></td>
-          <td><?=$dd->kode_barang?></td>
-          <td><?=$dd->nama_barang?></td>
-          <td><?=$dd->satuan?></td>
-          <td><?=$dd->jumlah?></td>
-      </tr>
-    <?php $no++; ?>
-    <?php endforeach;?>
-    <?php }else { ?>
-          <td colspan="7" align="center"><strong>Data Kosong</strong></td>
-    <?php } ?>
-    </tbody>
-  </table>
+    <h2 class="tex-center">Surat Permohonan</h2>
+
+  </div>
+
+   <!-- Content Wrapper. Contains page content -->
+   <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <!-- left column -->
+        <div class="col-md-12">
+          <div class="container">
+            <!-- general form elements -->
+          <div class="box box-primary" style="width:94%;">
+            <!-- /.box-header -->
+            <!-- form start -->
+            <div class="container">
+            <form action="<?=base_url('admin/proses_databarang_masuk_insert')?>" role="form" method="post">
+              <?php if($this->session->flashdata('msg_berhasil')){ ?>
+                <div class="alert alert-success alert-dismissible" style="width:91%">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>Success!</strong><br> <?php echo $this->session->flashdata('msg_berhasil');?>
+               </div>
+              <?php } ?>
+
+              <?php if(validation_errors()){ ?>
+              <div class="alert alert-warning alert-dismissible">
+                  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                  <strong>Warning!</strong><br> <?php echo validation_errors(); ?>
+             </div>
+            <?php } ?>
+
+              <div class="box-body">
+                <div class="form-group" style="display:inline-block;">
+                  <button type="reset" class="btn btn-basic" name="btn_reset" style="width:100px;"><i class="fa fa-eraser" aria-hidden="true"></i> Reset</button>
+                </div>
+                <div class="form-group">
+                  <label for="id_transaksi" style="margin-left:0px;display:inline;">1. Nama Tertanggung</label>
+                  <input type="text" name="id_transaksi" style="margin-left:150px;width:50%;display:inline;" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="id_transaksi" style="margin-left:0px;display:inline;">2. Alamat</label>
+                  <input type="text" name="id_transaksi" style="margin-left:150px;width:50%;display:inline;" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="id_transaksi" style="margin-left:0px;display:inline;">3. Jenis Barang yang Dikirim, Quantity</label>
+                  <input type="text" name="id_transaksi" style="margin-left:150px;width:50%;display:inline;" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="id_transaksi" style="margin-left:0px;display:inline;">4. Pengiriman Melalui (Pilih, Darat Laut Perairan Udara)</label>
+                  <input type="text" name="id_transaksi" style="margin-left:150px;width:50%;display:inline;" class="form-control">
+                </div>
+
+                <div class="form-group">
+                  <label for="id_transaksi" style="margin-left:0px;display:inline;">Darat</label>
+                  <input type="text" name="id_transaksi" style="margin-left:150px;width:50%;display:inline;" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="id_transaksi" style="margin-left:0px;display:inline;">a. Jenis Alat Angkut (Pilih, Truck / Pickup / Container / Lainnya</label>
+                  <input type="text" name="id_transaksi" style="margin-left:150px;width:50%;display:inline;" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="id_transaksi" style="margin-left:0px;display:inline;">b. Plat Nomer</label>
+                  <input type="text" name="id_transaksi" style="margin-left:150px;width:50%;display:inline;" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="id_transaksi" style="margin-left:0px;display:inline;">c. Usia Kendaraan</label>
+                  <input type="text" name="id_transaksi" style="margin-left:150px;width:50%;display:inline;" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="id_transaksi" style="margin-left:0px;display:inline;">d. No. SIM / Registrasi</label>
+                  <input type="text" name="id_transaksi" style="margin-left:150px;width:50%;display:inline;" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="id_transaksi" style="margin-left:0px;display:inline;">e. Pengemudi</label>
+                  <input type="text" name="id_transaksi" style="margin-left:150px;width:50%;display:inline;" class="form-control">
+                </div>
+
+                <div class="form-group">
+                  <label for="id_transaksi" style="margin-left:0px;display:inline;">Laut</label>
+                  <input type="text" name="id_transaksi" style="margin-left:150px;width:50%;display:inline;" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="id_transaksi" style="margin-left:0px;display:inline;">a. Nama Kapal</label>
+                  <input type="text" name="id_transaksi" style="margin-left:150px;width:50%;display:inline;" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="id_transaksi" style="margin-left:0px;display:inline;">b. Jenis Kapal</label>
+                  <input type="text" name="id_transaksi" style="margin-left:150px;width:50%;display:inline;" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="id_transaksi" style="margin-left:0px;display:inline;">c. Usia Kapal</label>
+                  <input type="text" name="id_transaksi" style="margin-left:150px;width:50%;display:inline;" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="id_transaksi" style="margin-left:0px;display:inline;">d. GRT Kapal</label>
+                  <input type="text" name="id_transaksi" style="margin-left:150px;width:50%;display:inline;" class="form-control">
+                </div>
+
+                <div class="form-group">
+                  <label for="id_transaksi" style="margin-left:0px;display:inline;">Udara</label>
+                  <input type="text" name="id_transaksi" style="margin-left:150px;width:50%;display:inline;" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="id_transaksi" style="margin-left:0px;display:inline;">a. Jenis Pesawat</label>
+                  <input type="text" name="id_transaksi" style="margin-left:150px;width:50%;display:inline;" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="id_transaksi" style="margin-left:0px;display:inline;">b. No. AWB (Pilih, Cargo Penumpang Helicopter Charter</label>
+                  <input type="text" name="id_transaksi" style="margin-left:150px;width:50%;display:inline;" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="id_transaksi" style="margin-left:0px;display:inline;">5. Dari (Tempat Pemberangkatan)</label>
+                  <input type="text" name="id_transaksi" style="margin-left:150px;width:50%;display:inline;" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="id_transaksi" style="margin-left:0px;display:inline;">Tujuan Akhir</label>
+                  <input type="text" name="id_transaksi" style="margin-left:150px;width:50%;display:inline;" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="id_transaksi" style="margin-left:0px;display:inline;">6. Tanggal Keberangkatan</label>
+                  <input type="text" name="id_transaksi" style="margin-left:150px;width:50%;display:inline;" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="id_transaksi" style="margin-left:0px;display:inline;">7. Jumlah Pertanggungan / Nilai Barang yang Diangkut</label>
+                  <input type="text" name="id_transaksi" style="margin-left:150px;width:50%;display:inline;" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="id_transaksi" style="margin-left:0px;display:inline;">8. Lampiran Data Pendukung (-Bill of Landing [B/L], Letter of Credit [L/C], Invoice, Packing List, Delivery Order [DO]</label>
+                  <input type="text" name="id_transaksi" style="margin-left:150px;width:50%;display:inline;" class="form-control">
+                </div>
+              <!-- /.box-body -->
+              <div class="box-footer" style="width:93%;">
+                <a type="button" class="btn btn-default" style="width:10%;margin-right:26%" onclick="history.back(-1)" name="btn_kembali"><i class="fa fa-arrow-left" aria-hidden="true"></i> Kembali</a>
+                <button type="submit" style="width:20%" class="btn btn-success"><i class="fa fa-check" aria-hidden="true"></i> Submit</button>
+              </div>
+            </form>
+          </div>
+          </div>
+          <!-- /.box -->
+
+          <!-- Form Element sizes -->
+
+          <!-- /.box -->
+
+
+          <!-- /.box -->
+
+          <!-- Input addon -->
+
+          <!-- /.box -->
+
+        </div>
+        <!--/.col (left) -->
+        <!-- right column -->
+        <!-- <div class="col-md-6">
+          <!-- Horizontal Form -->
+
+          <!-- /.box -->
+          <!-- general form elements disabled -->
+
+          <!-- /.box -->
+
+        </div>
+        </div>
+        <!--/.col (right) -->
+      </div>
+      <!-- /.row -->
+    </section>
+    <!-- /.content -->
   </div>
 
 <script type="text/javascript">

@@ -57,7 +57,7 @@
             <!-- <li><a class="nav-link" href="#">Home</a></li> -->
             <li class="dropdown"><a class="bg-dark dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-database" aria-hidden="true"></i> Tabel <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="<?=base_url('user/tabel_barangmasuk');?>">Tabel Permintaan</a></li>
+                <li><a href="<?=base_url('user/tabel_barangmasuk');?>">Surat Permohonan</a></li>
                 <li><a href="<?=base_url('user/tabel_barangkeluar');?>">Tabel SITE ID</a></li>
                   <!-- <li><a href="#">Tabel Gudang 3</a></li> -->
               </ul>
