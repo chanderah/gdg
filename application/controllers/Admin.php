@@ -469,14 +469,14 @@ class Admin extends CI_Controller{
      // DATA MASUK KE DATA KELUAR
   ####################################
 
-  public function barang_keluar()
+  public function move_data()
   {
     $uri = $this->uri->segment(3);
     $where = array( 'site_id' => $uri);
     $data['list_data'] = $this->M_admin->get_data('tb_permintaan_masuk',$where);
     $data['list_satuan'] = $this->M_admin->select('tb_satuan');
     $data['avatar'] = $this->M_admin->get_data_gambar('tb_upload_gambar_user',$this->session->userdata('name'));
-    $this->load->view('admin/perpindahan_barang/form_update',$data);
+    $this->load->view('admin/perpindahan_data/form_update',$data);
   }
 
   public function proses_data_keluar()
@@ -508,7 +508,7 @@ class Admin extends CI_Controller{
         $this->session->set_flashdata('msg_berhasil_keluar','Data Berhasil Keluar');
         redirect(base_url('admin/tabel_barangmasuk'));
     }else {
-      $this->load->view('perpindahan_barang/form_update/'.$site_id);
+      $this->load->view('perpindahan_data/form_update/'.$site_id);
     }
 
   }
