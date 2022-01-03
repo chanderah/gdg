@@ -1,6 +1,6 @@
 <br><br><br>
     <div class="container text-center" style="margin: 2em auto;">
-    <h2 class="tex-center">Tabel SITE ID</h2>
+    <h2 class="tex-center">Tabel Data Keluar</h2>
     <a href="<?=base_url('report/barangKeluarManual')?>" style="margin-bottom:10px;float:left;" type="button" class="btn btn-danger" name="laporan_data"><i class="fa fa-file-text" aria-hidden="true"></i> Invoice Manual</a>
     <div class="tabel" style="margin-top:80px">
     <table class="table table-bordered table-striped" style="margin: 2em auto;" id="tabel_barangkeluar">

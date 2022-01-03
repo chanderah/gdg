@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>CRUD Database | Data Data Masuk</title>
+  <title>CRUD Database | Data Masuk</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -144,8 +144,8 @@
                 </span>
           </a>
           <ul class="treeview-menu">
-            <li class="active"><a href="<?= base_url('admin/tabel_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tabel Permintaan</a></li>
-            <li><a href="<?= base_url('admin/tabel_barangkeluar')?>"><i class="fa fa-circle-o"></i> Tabel SITE ID</a></li>
+            <li class="active"><a href="<?= base_url('admin/tabel_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tabel Data Masuk</a></li>
+            <li><a href="<?= base_url('admin/tabel_barangkeluar')?>"><i class="fa fa-circle-o"></i> Tabel Data Keluar</a></li>
             <li><a href="<?= base_url('admin/tabel_satuan')?>"><i class="fa fa-circle-o"></i> Tabel Satuan</a></li>
           </ul>
         </li>
@@ -169,7 +169,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Update Data Data Masuk
+        Update Data Masuk
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -187,12 +187,12 @@
             <!-- general form elements -->
           <div class="box box-primary" style="width:94%;">
             <div class="box-header with-border">
-              <h3 class="box-title"><i class="fa fa-archive" aria-hidden="true"></i> Update Data Data Masuk</h3>
+              <h3 class="box-title"><i class="fa fa-archive" aria-hidden="true"></i> Update Data Masuk</h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->
             <div class="container">
-            <form action="<?=base_url('admin/proses_databarang_masuk_update')?>" role="form" method="post">
+            <form action="<?=base_url('admin/proses_datamasuk_update')?>" role="form" method="post">
 
               <?php if(validation_errors()){ ?>
               <div class="alert alert-warning alert-dismissible">
@@ -204,74 +204,62 @@
               <div class="box-body">
                 <div class="form-group">
                   <?php foreach($data_barang_update as $d){ ?>
-                  <label for="site_id" style="margin-left:220px;display:inline;">SITE ID</label>
+                  <label for="site_id" style="display:inline;">SITE ID</label>
                   <input type="text" name="site_id" style="margin-left:37px;width:20%;display:inline;" class="form-control" readonly="readonly" value="<?=$d->site_id?>">
                 </div>
                 <div class="form-group">
-                  <label for="tanggal" style="margin-left:220px;display:inline;">Tanggal</label>
-                  <input type="text" name="tanggal" style="margin-left:66px;width:20%;display:inline;" class="form-control" readonly="readonly" value="<?=$d->tanggal?>">
+                  <label for="region" style="display:inline;">Region</label>
+                  <input type="text" name="region" style="margin-left:37px;width:20%;display:inline;" class="form-control"   value="<?=$d->region?>">
                 </div>
-                <div class="form-group" style="margin-bottom:40px;">
-                  <label for="desa" style="margin-left:220px;display:inline;">Kota</label>
-                  <select class="form-control" name="region" style="margin-left:75px;width:20%;display:inline;">
-                    <option value="<?=$d->region?>"><?=$d->region?></option>
-                    <option value="">-- Pilih --</option>
-                    <option value="Aceh">Aceh</option>
-                    <option value="Bali">Bali</option>
-                    <option value="Bengkulu">Bengkulu</option>
-                    <option value="Jakarta">Jakarta Raya</option>
-                    <option value="Jambi">Jambi</option>
-                    <option value="Jawa Tengah">Jawa Tengah</option>
-                    <option value="Jawa Timur">Jawa Timur</option>
-                    <option value="Jawa Barat">Jawa Barat</option>
-                    <option value="Papua">Papua</option>
-                    <option value="Yogyakarta">Yogyakarta</option>
-                    <option value="Kalimantan Barat">Kalimantan Barat</option>
-                    <option value="Kalimantan Selatan">Kalimantan Selatan</option>
-                    <option value="Kalimantan Tengah">Kalimantan Tengah</option>
-                    <option value="Kalimantan Timur">Kalimantan Timur</option>
-                    <option value="Lampung">Lampung</option>
-                    <option value="NTB">Nusa Tenggara Barat</option>
-                    <option value="NTT">Nusa Tenggara Timur</option>
-                    <option value="Riau">Riau</option>
-                    <option value="Sulawesi Selatan">Sulawesi Selatan</option>
-                    <option value="Sulawesi Tengah">Sulawesi Tengah</option>
-                    <option value="Sulawesi Tenggara">Sulawesi Tenggara</option>
-                    <option value="Sumatera Barat">Sumatera Barat</option>
-                    <option value="Sumatera Utara">Sumatera Utara</option>
-                    <option value="Maluku">Maluku</option>
-                    <option value="Maluku Utara">Maluku Utara</option>
-                    <option value="Sulawesi Utara">Sulawesi Utara</option>
-                    <option value="Sulawesi Selatan">Sumatera Selatan</option>
-                    <option value="Banten">Banten</option>
-                    <option value="Gorontalo">Gorontalo</option>
-                    <option value="Bangka">Bangka Belitung</option>
-                  </select>
+                <div class="form-group">
+                  <label for="provinsi" style="display:inline;">Provinsi</label>
+                  <input type="text" name="provinsi" style="margin-left:37px;width:20%;display:inline;" class="form-control"   value="<?=$d->provinsi?>">
                 </div>
-                <div class="form-group" style="display:inline-block;">
-                  <label for="kecamatan" style="width:87%;margin-left: 12px;">Kecamatan / Barcode</label>
-                  <input type="text" name="kecamatan" required style="width: 90%;margin-right: 67px;margin-left: 11px;" class="form-control" id="kecamatan" value="<?=$d->kecamatan?>">
+                <div class="form-group">
+                  <label for="kabupaten" style="display:inline;">Kabupaten</label>
+                  <input type="text" name="kabupaten" style="margin-left:37px;width:20%;display:inline;" class="form-control"   value="<?=$d->kabupaten?>">
                 </div>
-                <div class="form-group" style="display:inline-block;">
-                  <label for="nama_Barang" style="width:73%;">Desa</label>
-                  <input type="text" name="desa" required style="width:90%;margin-right: 67px;" class="form-control" id="nama_Barang" value="<?=$d->desa?>">
-              </div>
-                <div class="form-group" style="display:inline-block;">
-                  <label for="paket" style="width:73%;">Paket</label>
-                  <select class="form-control" name="paket" style="width:110%;margin-right: 18px;">
-                    <?php foreach($list_satuan as $s){?>
-                      <?php if($d->paket == $s->nama_satuan){?>
-                    <option value="<?=$d->paket?>" selected=""><?=$d->paket?></option>
-                    <?php }else{?>
-                    <option value="<?=$s->kode_satuan?>"><?=$s->nama_satuan?></option>
-                      <?php } ?>
-                      <?php } ?>
-                  </select>
-              </div>
-              <div class="form-group" style="display:inline-block;">
-                <label for="batch_" style="width:73%;margin-left:33px;">Batch</label>
-                <input type="number" name="batch_" style="width:41%;margin-left:34px;margin-right:18px;" class="form-control" id="batch_" value="<?=$d->batch_?>">
-            </div>
+                <div class="form-group">
+                  <label for="kecamatan" style="display:inline;">Kecamatan</label>
+                  <input type="text" name="kecamatan" style="margin-left:37px;width:20%;display:inline;" class="form-control"   value="<?=$d->kecamatan?>">
+                </div>
+                <div class="form-group">
+                  <label for="desa" style="display:inline;">Desa</label>
+                  <input type="text" name="desa" style="margin-left:37px;width:20%;display:inline;" class="form-control"   value="<?=$d->desa?>">
+                </div>
+                <div class="form-group">
+                  <label for="paket" style="display:inline;">Paket</label>
+                  <input type="text" name="paket" style="margin-left:37px;width:20%;display:inline;" class="form-control"   value="<?=$d->paket?>">
+                </div>
+                <div class="form-group">
+                  <label for="batch_" style="display:inline;">Batch</label>
+                  <input type="text" name="batch_" style="margin-left:37px;width:20%;display:inline;" class="form-control"   value="<?=$d->batch_?>">
+                </div>
+                <div class="form-group">
+                  <label for="ctrm" style="display:inline;">TRM</label>
+                  <input type="text" name="ctrm" style="margin-left:37px;width:20%;display:inline;" class="form-control"   value="<?=$d->ctrm?>">
+                </div>
+                <div class="form-group">
+                  <label for="ctsi" style="display:inline;">TSI</label>
+                  <input type="text" name="ctsi" style="margin-left:37px;width:20%;display:inline;" class="form-control"   value="<?=$d->ctsi?>">
+                </div>
+                <div class="form-group">
+                  <label for="amount_insured" style="display:inline;">Amount Insured</label>
+                  <input type="text" name="amount_insured" style="margin-left:37px;width:20%;display:inline;" class="form-control"   value="<?=$d->amount_insured?>">
+                </div><!--
+                <div class="form-group">
+                  <label for="terbit" style="display:inline;">Terbit</label>
+                  <input type="text" name="terbit" style="margin-left:37px;width:20%;display:inline;" class="form-control"   value="<?=$d->terbit?>">
+                </div></-->
+                <div class="form-group">
+                  <label for="no_sertif" style="display:inline;">Sertifikat</label>
+                  <input type="text" name="no_sertif" style="margin-left:37px;width:20%;display:inline;" class="form-control"   value="<?=$d->no_sertif?>">
+                </div>
+                <div class="form-group">
+                  <label for="keterangan" style="display:inline;">Keterangan</label>
+                  <input type="text" name="keterangan" style="margin-left:37px;width:20%;display:inline;" class="form-control"   value="<?=$d->keterangan?>">
+                </div>
+                
             <?php } ?>
               <!-- /.box-body -->
 
@@ -317,201 +305,13 @@
   <!-- /.content-wrapper -->
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b>Version</b> 2.4.0
+       <b>Version</b> 1
     </div>
     <strong>Copyright &copy; <?=date('Y')?></strong>
     
   </footer>
 
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Create the tabs -->
-    <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
-      <li><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
-      <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
-    </ul>
-    <!-- Tab panes -->
-    <div class="tab-content">
-      <!-- Home tab content -->
-      <div class="tab-pane" id="control-sidebar-home-tab">
-        <h3 class="control-sidebar-heading">Recent Activity</h3>
-        <ul class="control-sidebar-menu">
-          <li>
-            <a href="javascript:void(0)">
-              <i class="menu-icon fa fa-birthday-cake bg-red"></i>
-
-              <div class="menu-info">
-                <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
-
-                <p>Will be 23 on April 24th</p>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="javascript:void(0)">
-              <i class="menu-icon fa fa-user bg-yellow"></i>
-
-              <div class="menu-info">
-                <h4 class="control-sidebar-subheading">Frodo Updated His Profile</h4>
-
-                <p>New phone +1(800)555-1234</p>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="javascript:void(0)">
-              <i class="menu-icon fa fa-envelope-o bg-light-blue"></i>
-
-              <div class="menu-info">
-                <h4 class="control-sidebar-subheading">Nora Joined Mailing List</h4>
-
-                <p>nora@example.com</p>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="javascript:void(0)">
-              <i class="menu-icon fa fa-file-code-o bg-green"></i>
-
-              <div class="menu-info">
-                <h4 class="control-sidebar-subheading">Cron Job 254 Executed</h4>
-
-                <p>Execution time 5 seconds</p>
-              </div>
-            </a>
-          </li>
-        </ul>
-        <!-- /.control-sidebar-menu -->
-
-        <h3 class="control-sidebar-heading">Tasks Progress</h3>
-        <ul class="control-sidebar-menu">
-          <li>
-            <a href="javascript:void(0)">
-              <h4 class="control-sidebar-subheading">
-                Custom Template Design
-                <span class="label label-danger pull-right">70%</span>
-              </h4>
-
-              <div class="progress progress-xxs">
-                <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="javascript:void(0)">
-              <h4 class="control-sidebar-subheading">
-                Update Resume
-                <span class="label label-success pull-right">95%</span>
-              </h4>
-
-              <div class="progress progress-xxs">
-                <div class="progress-bar progress-bar-success" style="width: 95%"></div>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="javascript:void(0)">
-              <h4 class="control-sidebar-subheading">
-                Laravel Integration
-                <span class="label label-warning pull-right">50%</span>
-              </h4>
-
-              <div class="progress progress-xxs">
-                <div class="progress-bar progress-bar-warning" style="width: 50%"></div>
-              </div>
-            </a>
-          </li>
-          <li>
-            <a href="javascript:void(0)">
-              <h4 class="control-sidebar-subheading">
-                Back End Framework
-                <span class="label label-primary pull-right">68%</span>
-              </h4>
-
-              <div class="progress progress-xxs">
-                <div class="progress-bar progress-bar-primary" style="width: 68%"></div>
-              </div>
-            </a>
-          </li>
-        </ul>
-        <!-- /.control-sidebar-menu -->
-
-      </div>
-      <!-- /.tab-pane -->
-      <!-- Stats tab content -->
-      <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
-      <!-- /.tab-pane -->
-      <!-- Settings tab content -->
-      <div class="tab-pane" id="control-sidebar-settings-tab">
-        <form method="post">
-          <h3 class="control-sidebar-heading">General Settings</h3>
-
-          <div class="form-group">
-            <label class="control-sidebar-subheading">
-              Report panel usage
-              <input type="checkbox" class="pull-right" checked>
-            </label>
-
-            <p>
-              Some information about this general settings option
-            </p>
-          </div>
-          <!-- /.form-group -->
-
-          <div class="form-group">
-            <label class="control-sidebar-subheading">
-              Allow mail redirect
-              <input type="checkbox" class="pull-right" checked>
-            </label>
-
-            <p>
-              Other sets of options are available
-            </p>
-          </div>
-          <!-- /.form-group -->
-
-          <div class="form-group">
-            <label class="control-sidebar-subheading">
-              Expose author name in posts
-              <input type="checkbox" class="pull-right" checked>
-            </label>
-
-            <p>
-              Allow the user to show his name in blog posts
-            </p>
-          </div>
-          <!-- /.form-group -->
-
-          <h3 class="control-sidebar-heading">Chat Settings</h3>
-
-          <div class="form-group">
-            <label class="control-sidebar-subheading">
-              Show me as online
-              <input type="checkbox" class="pull-right" checked>
-            </label>
-          </div>
-          <!-- /.form-group -->
-
-          <div class="form-group">
-            <label class="control-sidebar-subheading">
-              Turn off notifications
-              <input type="checkbox" class="pull-right">
-            </label>
-          </div>
-          <!-- /.form-group -->
-
-          <div class="form-group">
-            <label class="control-sidebar-subheading">
-              Delete chat history
-              <a href="javascript:void(0)" class="text-red pull-right"><i class="fa fa-trash-o"></i></a>
-            </label>
-          </div>
-          <!-- /.form-group -->
-        </form>
-      </div>
-      <!-- /.tab-pane -->
-    </div>
-  </aside>
+   
   <!-- /.control-sidebar -->
   <!-- Add the sidebar's background. This div must be placed
        immediately after the control sidebar -->

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>CRUD Database | Edit Paket</title>
+  <title>CRUD Database | Data Masuk</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -62,10 +62,9 @@
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <?php foreach($avatar as $a){ ?>
+                <?php foreach($avatar as $a){?>
                 <img src="<?php echo base_url('assets/upload/user/img/'.$a->nama_file)?>" class="img-circle" alt="User Image">
                 <?php } ?>
-
                 <p>
                   <?=$this->session->userdata('name')?> - Web Developer
                   <small>Last Login : <?=$this->session->userdata('last_login')?></small>
@@ -145,9 +144,9 @@
                 </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?= base_url('admin/tabel_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tabel Data Masuk</a></li>
+            <li class="active"><a href="<?= base_url('admin/tabel_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tabel Data Masuk</a></li>
             <li><a href="<?= base_url('admin/tabel_barangkeluar')?>"><i class="fa fa-circle-o"></i> Tabel Data Keluar</a></li>
-            <li class="active"><a href="<?= base_url('admin/tabel_satuan')?>"><i class="fa fa-circle-o"></i> Tabel Satuan</a></li>
+            <li><a href="<?= base_url('admin/tabel_satuan')?>"><i class="fa fa-circle-o"></i> Tabel Satuan</a></li>
           </ul>
         </li>
         <li>
@@ -193,7 +192,7 @@
             <!-- /.box-header -->
             <!-- form start -->
             <div class="container">
-            <form action="<?=base_url('admin/proses_satuan_update')?>" role="form" method="post">
+            <form action="<?=base_url('admin/proses_databarang_masuk_update')?>" role="form" method="post">
 
               <?php if(validation_errors()){ ?>
               <div class="alert alert-warning alert-dismissible">
@@ -204,28 +203,17 @@
 
               <div class="box-body">
                 <div class="form-group">
-                  <?php foreach($data_satuan as $d){ ?>
-                    <div class="box-body">
-                      <div class="form-group" style="display:inline-block;">
-                        <input type="hidden" name="id_satuan" value="<?=$d->id_satuan?>">
-                        <label for="kode_satuan" style="width:87%;margin-left: 12px;">Kode Paket</label>
-                        <input type="text" required name="kode_satuan" style="width: 90%;margin-right: 67px;margin-left: 11px;" class="form-control" id="kode_satuan" placeholder="Kode Paket" value="<?=$d->kode_satuan?>">
-                      </div>
-                      <div class="form-group" style="display:inline-block;">
-                        <label for="nama_satuan" style="width:73%;">Nama Paket</label>
-                        <input type="text" required name="nama_satuan" style="width:90%;margin-right: 67px;" class="form-control" id="nama_satuan" placeholder="Nama Paket" value="<?=$d->nama_satuan?>">
-                    </div>
-                    <div class="form-group" style="display:inline-block;">
-                      <button type="reset" class="btn btn-basic" name="btn_reset" style="width:95px;margin-left:20px;"><i class="fa fa-eraser" aria-hidden="true"></i> Reset</button>
-                    </div>
-                    <?php } ?>
-                    <!-- /.box-body -->
+                  <?php foreach($data_barang_update as $d){ ?>
+                  <label for="site_id" style="margin-left:220px;display:inline;">SITE ID</label>
+                  <input type="text" name="site_id" style="margin-left:37px;width:20%;display:inline;" class="form-control" readonly="readonly" value="<?=$d->site_id?>">
+                  </div>
+            <?php } ?>
+              <!-- /.box-body -->
 
-                    <div class="box-footer" style="width:93%;">
-                      <a type="button" class="btn btn-default" style="width:10%;margin-right:26%" onclick="history.back(-1)" name="btn_kembali"><i class="fa fa-arrow-left" aria-hidden="true"></i> Kembali</a>
-                      <a type="button" class="btn btn-info" style="width:13%;margin-right:29%" href="<?=base_url('admin/tabel_satuan')?>" name="btn_listsatuan"><i class="fa fa-table" aria-hidden="true"></i> Lihat Paket</a>
-                      <button type="submit" style="width:20%" class="btn btn-primary"><i class="fa fa-check" aria-hidden="true"></i> Submit</button>
-                    </div>
+              <div class="box-footer" style="width:93%;">
+                <a type="button" class="btn btn-default" style="width:10%" onclick="history.back(-1)" name="btn_kembali"><i class="fa fa-arrow-left" aria-hidden="true"></i> Kembali</a>
+                <button type="submit" style="width:20%;margin-left:689px;" class="btn btn-primary"><i class="fa fa-check" aria-hidden="true"></i> Submit</button>&nbsp;&nbsp;&nbsp;
+              </div>
             </form>
           </div>
           </div>

@@ -246,12 +246,9 @@ class Admin extends CI_Controller{
     }
   }
 
-
   ####################################
            // End Users
   ####################################
-
-
 
   ####################################
         // DATA Data Masuk
@@ -273,7 +270,7 @@ class Admin extends CI_Controller{
     $this->load->view('admin/tabel/tabel_barangmasuk',$data);
   }
 
-  public function update_barang($site_id)
+  public function update_datamasuk($site_id)
   {
     $where = array('site_id' => $site_id);
     $data['data_barang_update'] = $this->M_admin->get_data('tb_permintaan_masuk',$where);
@@ -299,21 +296,21 @@ class Admin extends CI_Controller{
     if($this->form_validation->run() == TRUE)
     {
       $site_id = $this->input->post('site_id',TRUE);
-      $tanggal      = $this->input->post('tanggal',TRUE);
-      $region       = $this->input->post('region',TRUE);
-      $kecamatan  = $this->input->post('kecamatan',TRUE);
-      $desa  = $this->input->post('desa',TRUE);
-      $paket       = $this->input->post('paket',TRUE);
-      $batch_       = $this->input->post('batch_',TRUE);
+      $tanggal = $this->input->post('tanggal',TRUE);
+      $region = $this->input->post('region',TRUE);
+      $kecamatan = $this->input->post('kecamatan',TRUE);
+      $desa = $this->input->post('desa',TRUE);
+      $paket = $this->input->post('paket',TRUE);
+      $batch_ = $this->input->post('batch_',TRUE);
 
       $data = array(
             'site_id' => $site_id,
-            'tanggal'      => $tanggal,
-            'region'       => $region,
-            'kecamatan'  => $kecamatan,
-            'desa'  => $desa,
-            'paket'       => $paket,
-            'batch_'       => $batch_
+            'tanggal' => $tanggal,
+            'region' => $region,
+            'kecamatan' => $kecamatan,
+            'desa' => $desa,
+            'paket' => $paket,
+            'batch_' => $batch_
       );
       $this->M_admin->insert('tb_permintaan_masuk',$data);
 
@@ -325,32 +322,46 @@ class Admin extends CI_Controller{
     }
   }
 
-  public function proses_databarang_masuk_update()
+  public function proses_datamasuk_update()
   {
-    $this->form_validation->set_rules('region','Kota','required');
-    $this->form_validation->set_rules('kecamatan','Kecamatan','required');
-    $this->form_validation->set_rules('desa','Desa','required');
-    $this->form_validation->set_rules('batch_','Batch','required');
+    $this->form_validation->set_rules('site_id','SITE ID','required');
+    //$this->form_validation->set_rules('kecamatan','Kecamatan','required');
+    //$this->form_validation->set_rules('desa','Desa','required');
+    //$this->form_validation->set_rules('batch_','Batch','required');
 
     if($this->form_validation->run() == TRUE)
     {
       $site_id = $this->input->post('site_id',TRUE);
-      $tanggal      = $this->input->post('tanggal',TRUE);
-      $region       = $this->input->post('region',TRUE);
-      $kecamatan  = $this->input->post('kecamatan',TRUE);
-      $desa  = $this->input->post('desa',TRUE);
-      $paket       = $this->input->post('paket',TRUE);
-      $batch_       = $this->input->post('batch_',TRUE);
+      $region = $this->input->post('region',TRUE);
+      $provinsi = $this->input->post('provinsi',TRUE);
+      $kabupaten = $this->input->post('kabupaten',TRUE);
+      $kecamatan = $this->input->post('kecamatan',TRUE);
+      $desa = $this->input->post('desa',TRUE);
+      $paket = $this->input->post('paket',TRUE);
+      $batch_ = $this->input->post('batch_',TRUE);
+      $ctrm = $this->input->post('ctrm',TRUE);
+      $ctsi = $this->input->post('ctsi',TRUE);
+      $amount_insured = $this->input->post('amount_insured',TRUE);
+      $no_sertif = $this->input->post('no_sertif',TRUE);
+      $keterangan = $this->input->post('keterangan',TRUE);
+      //$terbit = $this->input->post('terbit',TRUE);
 
       $where = array('site_id' => $site_id);
       $data = array(
             'site_id' => $site_id,
-            'tanggal'      => $tanggal,
-            'region'       => $region,
-            'kecamatan'  => $kecamatan,
-            'desa'  => $desa,
-            'paket'       => $paket,
-            'batch_'       => $batch_
+            'region' => $region,
+            'provinsi' => $provinsi,
+            'kabupaten' => $kabupaten,
+            'kecamatan' => $kecamatan,
+            'desa' => $desa,
+            'paket' => $paket,
+            'batch_' => $batch_,
+            'ctrm' => $ctrm,
+            'ctsi' => $ctsi,
+            'amount_insured' => $amount_insured,
+            'no_sertif' => $no_sertif,
+            'keterangan' => $keterangan,
+            //'terbit' => $terbit
       );
       $this->M_admin->update('tb_permintaan_masuk',$data,$where);
       $this->session->set_flashdata('msg_berhasil','Data Barang Berhasil Diupdate');
