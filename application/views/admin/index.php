@@ -208,7 +208,7 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="<?php echo base_url('admin/form_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tambah Data Barang</a></li>
-            <li><a href="<?php echo base_url('admin/form_satuan')?>"><i class="fa fa-circle-o"></i> Tambah Satuan Barang</a></li>
+            <li><a href="<?php echo base_url('admin/form_satuan')?>"><i class="fa fa-circle-o"></i> Tambah Paket Barang</a></li>
           </ul>
         </li>
         <li class="treeview">
@@ -262,12 +262,12 @@
             <div class="inner">
             <?php if(!empty($stokBarangMasuk)){ ?>
               <?php foreach($stokBarangMasuk as $d){ ?>
-              <h3><?=$d->jumlah?></h3>
+              <h3><?=$d->batch_?></h3>
               <?php } ?>
             <?php }else{ ?>
               <h3>0</h3>
             <?php } ?>
-              <p>Stok Data Masuk</p>
+              <p>Tabel Permintaan</p>
             </div>
             <div class="icon">
               <i class="ion ion-bag"></i>
@@ -282,12 +282,12 @@
             <div class="inner">
             <?php if(!empty($stokBarangKeluar)){ ?>
              <?php foreach($stokBarangKeluar as $d){?>
-              <h3><?=$d->jumlah?></h3>
+              <h3><?=$d->batch_?></h3>
              <?php } ?>
              <?php }else{?>
               <h3>0</h3>
              <?php } ?>
-              <p>Stok Data Keluar</p>
+              <p>Tabel SITE ID</p>
             </div>
             <div class="icon">
               <i class="ion ion-stats-bars"></i>

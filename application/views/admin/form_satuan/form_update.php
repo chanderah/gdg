@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>CRUD Database | Edit Satuan</title>
+  <title>CRUD Database | Edit Paket</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -134,7 +134,7 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="<?= base_url('admin/form_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tambah Data Barang</a></li>
-            <li><a href="<?= base_url('admin/form_satuan')?>"><i class="fa fa-circle-o"></i> Tambah Satuan Barang</a></li>
+            <li><a href="<?= base_url('admin/form_satuan')?>"><i class="fa fa-circle-o"></i> Tambah Paket Barang</a></li>
           </ul>
         </li>
         <li class="treeview active">
@@ -208,12 +208,12 @@
                     <div class="box-body">
                       <div class="form-group" style="display:inline-block;">
                         <input type="hidden" name="id_satuan" value="<?=$d->id_satuan?>">
-                        <label for="kode_satuan" style="width:87%;margin-left: 12px;">Kode Satuan</label>
-                        <input type="text" required name="kode_satuan" style="width: 90%;margin-right: 67px;margin-left: 11px;" class="form-control" id="kode_satuan" placeholder="Kode Satuan" value="<?=$d->kode_satuan?>">
+                        <label for="kode_satuan" style="width:87%;margin-left: 12px;">Kode Paket</label>
+                        <input type="text" required name="kode_satuan" style="width: 90%;margin-right: 67px;margin-left: 11px;" class="form-control" id="kode_satuan" placeholder="Kode Paket" value="<?=$d->kode_satuan?>">
                       </div>
                       <div class="form-group" style="display:inline-block;">
-                        <label for="nama_satuan" style="width:73%;">Nama Satuan</label>
-                        <input type="text" required name="nama_satuan" style="width:90%;margin-right: 67px;" class="form-control" id="nama_satuan" placeholder="Nama Satuan" value="<?=$d->nama_satuan?>">
+                        <label for="nama_satuan" style="width:73%;">Nama Paket</label>
+                        <input type="text" required name="nama_satuan" style="width:90%;margin-right: 67px;" class="form-control" id="nama_satuan" placeholder="Nama Paket" value="<?=$d->nama_satuan?>">
                     </div>
                     <div class="form-group" style="display:inline-block;">
                       <button type="reset" class="btn btn-basic" name="btn_reset" style="width:95px;margin-left:20px;"><i class="fa fa-eraser" aria-hidden="true"></i> Reset</button>
@@ -223,7 +223,7 @@
 
                     <div class="box-footer" style="width:93%;">
                       <a type="button" class="btn btn-default" style="width:10%;margin-right:26%" onclick="history.back(-1)" name="btn_kembali"><i class="fa fa-arrow-left" aria-hidden="true"></i> Kembali</a>
-                      <a type="button" class="btn btn-info" style="width:13%;margin-right:29%" href="<?=base_url('admin/tabel_satuan')?>" name="btn_listsatuan"><i class="fa fa-table" aria-hidden="true"></i> Lihat Satuan</a>
+                      <a type="button" class="btn btn-info" style="width:13%;margin-right:29%" href="<?=base_url('admin/tabel_satuan')?>" name="btn_listsatuan"><i class="fa fa-table" aria-hidden="true"></i> Lihat Paket</a>
                       <button type="submit" style="width:20%" class="btn btn-primary"><i class="fa fa-check" aria-hidden="true"></i> Submit</button>
                     </div>
             </form>

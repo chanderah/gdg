@@ -17,41 +17,39 @@ class Report2 extends CI_Controller
     $tgl1 = $this->uri->segment(4);
     $tgl2 = $this->uri->segment(5);
     $tgl3 = $this->uri->segment(6);
-    $ls   = array('id_transaksi' => $id ,'tanggal_keluar' => $tgl1.'/'.$tgl2.'/'.$tgl3);
+    $ls   = array('site_id' => $id ,'provinsi' => $tgl1.'/'.$tgl2.'/'.$tgl3);
     $data = $this->M_admin->get_data('tb_site_id',$ls);
     $pdf = new Pdf(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
-    // set document information
+    //
     $pdf->SetCreator(PDF_CREATOR);
     $pdf->SetAuthor('Chandra SA');
     $pdf->SetTitle('Invoice');
     $pdf->SetSubject('Invoice');
     $pdf->SetKeywords('PDF, Invoice');
 
-    // set default monospaced font
+    // 
     $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
 
-    //set margins
+    //
     $pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
     
     $pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
     $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
 
-    //set auto page breaks
+    //
     $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
 
-    //set image scale factor
+    //
     $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
 
-    //set some language-dependent strings
+    //
     // $pdf->setLanguageArray($l);
 
     // ---------------------------------------------------------
 
     // set font
     //$pdf->SetFont('times', '', 15); 
-    // *** Very IMP: Please use times font, so that if you send this pdf file in gmail as attachment and if user
-    //opens it in google document, then all the text within the pdf would be visible properly.
 
     // add a page
     $pdf->AddPage();
@@ -90,7 +88,7 @@ class Report2 extends CI_Controller
     $style = array('width' => 0.2, 'cap' => 'butt', 'join' => 'miter', 'dash' => 0, 'color' => array(0, 0, 0));
 
     $pdf->Line(185.5, 51, 21, 51, $style);
-    // (panjang,bawah kiri,marginkiri,bawah kanan,)
+    // (length,start,marginstart,end,)
     $html .= $nopolisHeader;
 
     $pdf->setListIndentWidth(4.75);
@@ -177,17 +175,19 @@ class Report2 extends CI_Controller
             </table>'
             ;
 
-    $html .= '<table cellpadding="5">
-                <tr><br><br>
-                    <td align="right">Issued {now}</td>
-                </tr>
-                <tr>
-                    <td align="right">Signed On Behalf</td>
-                </tr>
-                <tr><br><br><br><br><br>
-                    <td align="right">{namaPerusahaan}</td>
-                </tr>
-            </table>';
+    $html .=    '<div style="page-break-inside:avoid;">
+                    <table cellpadding="5">
+                        <tr>
+                            <td align="right">Issued {now}</td>
+                        </tr>
+                        <tr>
+                            <td align="right">Signed On Behalf</td>
+                        </tr>
+                        <tr><br><br><br><br><br>
+                            <td align="right">{namaPerusahaan}</td>
+                        </tr>
+                    </table>    
+                </div>';
 
     $html = str_replace('{id}',$id, $html);
     $html = str_replace('{namaPerusahaan}',$namaPerusahaan, $html);

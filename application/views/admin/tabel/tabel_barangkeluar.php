@@ -137,7 +137,7 @@
                 </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?= base_url('admin/form_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tambah Data Barang</a></li>
+            <li><a href="<?= base_url('admin/form_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tambah Data Barang Masuk</a></li>
             <li><a href="<?= base_url('admin/form_satuan')?>"><i class="fa fa-circle-o"></i> Tambah Satuan Barang</a></li>
           </ul>
         </li>
@@ -191,10 +191,11 @@
           <!-- /.box -->
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title"><i class="fa fa-table" aria-hidden="true"></i> Database Site ID</h3>
+              <h3 class="box-title"><i class="fa fa-table" aria-hidden="true"></i> Tabel CRUD Site ID</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
+
               <?php if($this->session->flashdata('msg_berhasil')){ ?>
                 <div class="alert alert-success alert-dismissible" style="width:100%">
                     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -208,14 +209,20 @@
                 <thead>
                 <tr>
                   <th>No</th>
-                  <th>ID Transaksi</th>
-                  <th>Tanggal Masuk</th>
-                  <th>Tanggal Keluar</th>
-                  <th>Lokasi</th>
-                  <th>Kode Barang</th>
-                  <th>Nama Barang</th>
-                  <th>Satuan</th>
-                  <th>Jumlah</th>
+                  <th>SITE ID</th>
+                  <th>Region</th>
+                  <th>Provinsi</th>
+                  <th>Kota</th>
+                  <th>Kecamatan</th>
+                  <th>Desa</th>
+                  <th>Paket</th>
+                  <th>Batch</th>
+                  <th>TRM</th>
+                  <th>TSI</th>
+                  <th>Amount Insured</th>
+                  <th>Sertifikat</th>
+                  <th>Keterangan</th>
+                  <th>Terbit</th>
                   <th>Invoice</th>
                   <!-- <th></th> -->
                 </tr>
@@ -226,15 +233,21 @@
                   <?php $no = 1;?>
                   <?php foreach($list_data as $dd): ?>
                     <td><?=$no?></td>
-                    <td><?=$dd->id_transaksi?></td>
-                    <td><?=$dd->tanggal_masuk?></td>
-                    <td><?=$dd->tanggal_keluar?></td>
-                    <td><?=$dd->lokasi?></td>
-                    <td><?=$dd->kode_barang?></td>
-                    <td><?=$dd->nama_barang?></td>
-                    <td><?=$dd->satuan?></td>
-                    <td><?=$dd->jumlah?></td>
-                    <td><a type="button" class="btn btn-danger btn-report"  href="<?=base_url('report2/barangKeluar/'.$dd->id_transaksi.'/'.$dd->tanggal_keluar)?>" name="btn_report" style="margin:auto;"><i class="fa fa-file-text" aria-hidden="true"></i></a></td>
+                    <td><?=$dd->site_id?></td>
+                    <td><?=$dd->region?></td>
+                    <td><?=$dd->provinsi?></td>
+                    <td><?=$dd->region?></td>
+                    <td><?=$dd->kecamatan?></td>
+                    <td><?=$dd->desa?></td>
+                    <td><?=$dd->paket?></td>
+                    <td><?=$dd->batch_?></td>
+                    <td><?=$dd->ctrm?></td>
+                    <td><?=$dd->ctsi?></td>
+                    <td><?=$dd->amount_insured?></td>
+                    <td><?=$dd->no_sertif?></td>
+                    <td><?=$dd->keterangan?></td>
+                    <td><?=$dd->terbit?></td>
+                    <td><a type="button" class="btn btn-danger btn-report"  href="<?=base_url('report2/barangKeluar/'.$dd->site_id.'/'.$dd->provinsi)?>" name="btn_report" style="margin:auto;"><i class="fa fa-file-text" aria-hidden="true"></i></a></td>
                 </tr>
               <?php $no++; ?>
               <?php endforeach;?>
@@ -244,15 +257,22 @@
                 </tbody>
                 <tfoot>
                 <tr>
-                  <th>No</th>
-                  <th>ID Transaksi</th>
-                  <th>Tanggal Masuk</th>
-                  <th>Tanggal Keluar</th>
-                  <th>Lokasi</th>
-                  <th>Kode Barang</th>
-                  <th>Nama Barang</th>
-                  <th>Satuan</th>
-                  <th>Jumlah</th>
+                <th>No</th>
+                  <th>SITE ID</th>
+                  <th>Region</th>
+                  <th>Provinsi</th>
+                  <th>Kota</th>
+                  <th>Kecamatan</th>
+                  <th>Desa</th>
+                  <th>Paket</th>
+                  <th>Batch</th>
+                  <th>TRM</th>
+                  <th>TSI</th>
+                  <th>Amount Insured</th>
+                  <th>Sertifikat</th>
+                  <th>Keterangan</th>
+                  <th>Terbit</th>
+                  <th>Invoice</th>
                 </tr>
                 </tfoot>
               </table>

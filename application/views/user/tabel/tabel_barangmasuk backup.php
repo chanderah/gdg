@@ -36,8 +36,8 @@
 
               <div class="box-body">
                 <div class="form-group">
-                  <label for="id_transaksi" style="margin-left:200px;display:inline;">Site ID</label>
-                  <input type="text" name="id_transaksi" style="margin-left:25px;width:50%;display:inline;" class="form-control" 
+                  <label for="site_id" style="margin-left:200px;display:inline;">Site ID</label>
+                  <input type="text" name="site_id" style="margin-left:25px;width:50%;display:inline;" class="form-control" 
                   value="WG-<?=date("Y");?><?=random_string('numeric', 8);?>">
                 </div>
                 <div class="form-group">
@@ -45,8 +45,8 @@
                   <input type="text" name="tanggal" style="margin-left:25px;width:50%;display:inline;" class="form-control form_datetime" placeholder="Klik Disini">
                 </div>
                 <div class="form-group" style="margin-bottom:40px;">
-                  <label for="nama_barang" style="margin-left:200px;display:inline;">Provinsi</label>
-                  <select class="form-control" name="lokasi" style="margin-left:25px;width:50%;display:inline;">
+                  <label for="desa" style="margin-left:200px;display:inline;">Provinsi</label>
+                  <select class="form-control" name="region" style="margin-left:25px;width:50%;display:inline;">
                     <option value="">-- Pilih --</option>
                     <option value="Aceh">Aceh</option>
                     <option value="Bali">Bali</option>
@@ -81,8 +81,8 @@
                   </select>
                 </div>
                 <div class="form-group" style="display:inline-block;">
-                  <label for="kode_barang" style="width:100%;margin-left: 200px;">Kode Barang / Barcode</label>
-                  <input type="text" name="kode_barang" style="margin-left:25px;width:50%;display:inline;" class="form-control" id="kode_barang" placeholder="Kode Barang">
+                  <label for="kecamatan" style="width:100%;margin-left: 200px;">Kecamatan / Barcode</label>
+                  <input type="text" name="kecamatan" style="margin-left:25px;width:50%;display:inline;" class="form-control" id="kecamatan" placeholder="Kecamatan">
                 </div>
                 <div class="form-group" style="display:inline-block;">
                   <button type="reset" class="btn btn-basic" name="btn_reset" style="width:95px;margin-left:-70px;"><i class="fa fa-eraser" aria-hidden="true"></i> Reset</button>

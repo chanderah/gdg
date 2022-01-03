@@ -51,7 +51,7 @@ class Report extends CI_Controller
     $html=
       '<div>
         <h1 align="center">Certificate of Insurance</h1>
-        <p>No Id Transaksi  :</p>
+        <p>No SITE ID  :</p>
         <p>Ditunjukan Untuk :</p>
         <p>Tanggal          :</p>
         <p>Po.Customer      :</p>
@@ -60,14 +60,14 @@ class Report extends CI_Controller
         <table border="1">
           <tr>
             <th style="width:40px" align="center">No</th>
-            <th style="width:110px" align="center">ID Transaksi</th>
-            <th style="width:110px" align="center">Tanggal Masuk</th>
-            <th style="width:110px" align="center">Tanggal Keluar</th>
-            <th style="width:130px" align="center">Lokasi</th>
-            <th style="width:140px" align="center">Kode Barang</th>
-            <th style="width:140px" align="center">Nama Barang</th>
-            <th style="width:80px" align="center">Satuan</th>
-            <th style="width:80px" align="center">Jumlah</th>
+            <th style="width:110px" align="center">SITE ID</th>
+            <th style="width:110px" align="center">Region</th>
+            <th style="width:110px" align="center">Provinsi</th>
+            <th style="width:130px" align="center">Kota</th>
+            <th style="width:140px" align="center">Kecamatan</th>
+            <th style="width:140px" align="center">Desa</th>
+            <th style="width:80px" align="center">Paket</th>
+            <th style="width:80px" align="center">Batch</th>
           </tr>';
 
         $html .= '<tr>
@@ -82,7 +82,7 @@ class Report extends CI_Controller
                     <td style="height:180px"></td>
                  </tr>
                  <tr>
-                  <td align="center" colspan="8">Jumlah</td>
+                  <td align="center" colspan="8">Batch</td>
                   <td></td>
                  </tr>';
 
@@ -105,7 +105,7 @@ class Report extends CI_Controller
     $tgl1 = $this->uri->segment(4);
     $tgl2 = $this->uri->segment(5);
     $tgl3 = $this->uri->segment(6);
-    $ls   = array('id_transaksi' => $id ,'tanggal_keluar' => $tgl1.'/'.$tgl2.'/'.$tgl3);
+    $ls   = array('site_id' => $id ,'provinsi' => $tgl1.'/'.$tgl2.'/'.$tgl3);
     $data = $this->M_admin->get_data('tb_site_id',$ls);
 
     $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
@@ -145,7 +145,7 @@ class Report extends CI_Controller
     $html=
       '<div>
         <h1 align="center">Certificate of Insurance</h1><br>
-        <p>No Id Transaksi  : '.$id.'</p>
+        <p>No SITE ID  : '.$id.'</p>
         <p>Ditunjukan Untuk :</p>
         <p>Tanggal          : '.$tgl1.'/'.$tgl2.'/'.$tgl3.'</p>
         <p>Po.Customer      :</p>
@@ -154,14 +154,14 @@ class Report extends CI_Controller
         <table border="1">
           <tr>
             <th style="width:40px" align="center">No</th>
-            <th style="width:110px" align="center">ID Transaksi</th>
-            <th style="width:110px" align="center">Tanggal Masuk</th>
-            <th style="width:110px" align="center">Tanggal Keluar</th>
-            <th style="width:130px" align="center">Lokasi</th>
-            <th style="width:140px" align="center">Kode Barang</th>
-            <th style="width:140px" align="center">Nama Barang</th>
-            <th style="width:80px" align="center">Satuan</th>
-            <th style="width:80px" align="center">Jumlah</th>
+            <th style="width:110px" align="center">SITE ID</th>
+            <th style="width:110px" align="center">Region</th>
+            <th style="width:110px" align="center">Provinsi</th>
+            <th style="width:130px" align="center">Kota</th>
+            <th style="width:140px" align="center">Kecamatan</th>
+            <th style="width:140px" align="center">Desa</th>
+            <th style="width:80px" align="center">Paket</th>
+            <th style="width:80px" align="center">Batch</th>
           </tr>';
 
 
@@ -169,19 +169,19 @@ class Report extends CI_Controller
           foreach($data as $d){
             $html .= '<tr>';
             $html .= '<td align="center">'.$no.'</td>';
-            $html .= '<td align="center">'.$d->id_transaksi.'</td>';
-            $html .= '<td align="center">'.$d->tanggal_masuk.'</td>';
-            $html .= '<td align="center">'.$d->tanggal_keluar.'</td>';
-            $html .= '<td align="center">'.$d->lokasi.'</td>';
-            $html .= '<td align="center">'.$d->kode_barang.'</td>';
-            $html .= '<td align="center">'.$d->nama_barang.'</td>';
-            $html .= '<td align="center">'.$d->satuan.'</td>';
-            $html .= '<td align="center">'.$d->jumlah.'</td>';
+            $html .= '<td align="center">'.$d->site_id.'</td>';
+            $html .= '<td align="center">'.$d->region.'</td>';
+            $html .= '<td align="center">'.$d->provinsi.'</td>';
+            $html .= '<td align="center">'.$d->region.'</td>';
+            $html .= '<td align="center">'.$d->kecamatan.'</td>';
+            $html .= '<td align="center">'.$d->desa.'</td>';
+            $html .= '<td align="center">'.$d->paket.'</td>';
+            $html .= '<td align="center">'.$d->batch_.'</td>';
             $html .= '</tr>';
 
             $html .= '<tr>';
-            $html .= '<td align="center" colspan="8"><b>Jumlah</b></td>';
-            $html .= '<td align="center">'.$d->jumlah.'</td>';
+            $html .= '<td align="center" colspan="8"><b>Batch</b></td>';
+            $html .= '<td align="center">'.$d->batch_.'</td>';
             $html .= '</tr>';
             $no++;
           }

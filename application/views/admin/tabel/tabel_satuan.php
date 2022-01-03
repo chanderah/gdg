@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 2 | Table Satuan</title>
+  <title>AdminLTE 2 | Table Paket</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -137,7 +137,7 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="<?= base_url('admin/form_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tambah Data Barang</a></li>
-            <li><a href="<?= base_url('admin/form_satuan')?>"><i class="fa fa-circle-o"></i> Tambah Satuan Barang</a></li>
+            <li><a href="<?= base_url('admin/form_satuan')?>"><i class="fa fa-circle-o"></i> Tambah Paket Barang</a></li>
           </ul>
         </li>
         <li class="treeview active">
@@ -207,8 +207,8 @@
                 <thead>
                 <tr>
                   <th>No</th>
-                  <th>Kode Satuan</th>
-                  <th>Nama Satuan</th>
+                  <th>Kode Paket</th>
+                  <th>Nama Paket</th>
                   <th>Update</th>
                   <th>Delete</th>
                 </tr>
@@ -233,8 +233,8 @@
                 <tfoot>
                 <tr>
                   <th>No</th>
-                  <th>Kode Satuan</th>
-                  <th>Nama Satuan</th>
+                  <th>Kode Paket</th>
+                  <th>Nama Paket</th>
                 </tr>
                 </tfoot>
               </table>

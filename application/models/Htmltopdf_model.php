@@ -3,25 +3,25 @@ class Htmltopdf_model extends CI_Model
 {
  function fetch()
  {
-  $this->db->order_by('id_transaksi', 'lokasi');
+  $this->db->order_by('site_id', 'region');
   return $this->db->get('tb_site_id');
  }
  function fetch_single_details($site_id)
  {
-  $this->db->where('id_transaksi', $site_id);
+  $this->db->where('site_id', $site_id);
   $data = $this->db->get('tb_site_id');
   $output = '<table width="100%" cellspacing="5" cellpadding="5">';
   foreach($data->result() as $row)
   {
    $output .= '
    <tr>
-    <td width="25%"><img src="'.base_url().'images/'.$row->satuan.'" /></td>
+    <td width="25%"><img src="'.base_url().'images/'.$row->paket.'" /></td>
     <td width="75%">
-     <p><b>Name : </b>'.$row->kode_barang.'</p>
-     <p><b>Address : </b>'.$row->lokasi.'</p>
-     <p><b>City : </b>'.$row->nama_barang.'</p>
-     <p><b>Postal Code : </b>'.$row->lokasi.'</p>
-     <p><b>Country : </b> '.$row->lokasi.' </p>
+     <p><b>Name : </b>'.$row->kecamatan.'</p>
+     <p><b>Address : </b>'.$row->region.'</p>
+     <p><b>City : </b>'.$row->desa.'</p>
+     <p><b>Postal Code : </b>'.$row->region.'</p>
+     <p><b>Country : </b> '.$row->region.' </p>
     </td>
    </tr>
    ';

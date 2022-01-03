@@ -14,28 +14,28 @@ class M_site_id extends CI_Model
     return $query->result();
   }
 
-  public function cek_jumlah($tabel,$id_transaksi)
+  public function cek_jumlah($tabel,$site_id)
   {
     return  $this->db->select('*')
                ->from($tabel)
-               ->where('id_transaksi',$id_transaksi)
+               ->where('site_id',$site_id)
                ->get();
   }
 
-  public function get_data_array($tabel,$id_transaksi)
+  public function get_data_array($tabel,$site_id)
   {
     $query = $this->db->select()
                       ->from($tabel)
-                      ->where($id_transaksi)
+                      ->where($site_id)
                       ->get();
     return $query->result_array();
   }
 
-  public function get_data($tabel,$id_transaksi)
+  public function get_data($tabel,$site_id)
   {
     $query = $this->db->select()
                       ->from($tabel)
-                      ->where($id_transaksi)
+                      ->where($site_id)
                       ->get();
     return $query->result();
   }
@@ -52,10 +52,10 @@ class M_site_id extends CI_Model
     $this->db->delete($tabel);
   }
 
-  public function mengurangi($tabel,$id_transaksi,$jumlah)
+  public function mengurangi($tabel,$site_id,$batch_)
   {
-    $this->db->set("jumlah","jumlah - $jumlah");
-    $this->db->where('id_transaksi',$id_transaksi);
+    $this->db->set("batch_","batch_ - $batch_");
+    $this->db->where('site_id',$site_id);
     $this->db->update($tabel);
   }
 

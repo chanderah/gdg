@@ -12,8 +12,8 @@ class Admin extends CI_Controller{
   public function index(){
     if($this->session->userdata('status') == 'login' && $this->session->userdata('role') == 1){
       $data['avatar'] = $this->M_admin->get_data_gambar('tb_upload_gambar_user',$this->session->userdata('name'));
-      $data['stokBarangMasuk'] = $this->M_admin->sum('tb_permintaan_masuk','jumlah');
-      $data['stokBarangKeluar'] = $this->M_admin->sum('tb_site_id','jumlah');      
+      $data['stokBarangMasuk'] = $this->M_admin->sum('tb_permintaan_masuk','batch_');
+      $data['stokBarangKeluar'] = $this->M_admin->sum('tb_site_id','batch_');      
       $data['dataUser'] = $this->M_admin->numrows('user');
       $this->load->view('admin/index',$data);
     }else {
@@ -273,47 +273,47 @@ class Admin extends CI_Controller{
     $this->load->view('admin/tabel/tabel_barangmasuk',$data);
   }
 
-  public function update_barang($id_transaksi)
+  public function update_barang($site_id)
   {
-    $where = array('id_transaksi' => $id_transaksi);
+    $where = array('site_id' => $site_id);
     $data['data_barang_update'] = $this->M_admin->get_data('tb_permintaan_masuk',$where);
     $data['list_satuan'] = $this->M_admin->select('tb_satuan');
     $data['avatar'] = $this->M_admin->get_data_gambar('tb_upload_gambar_user',$this->session->userdata('name'));
     $this->load->view('admin/form_barangmasuk/form_update',$data);
   }
 
-  public function delete_barang($id_transaksi)
+  public function delete_barang($site_id)
   {
-    $where = array('id_transaksi' => $id_transaksi);
+    $where = array('site_id' => $site_id);
     $this->M_admin->delete('tb_permintaan_masuk',$where);
     redirect(base_url('admin/tabel_barangmasuk'));
   }
 
   public function proses_databarang_masuk_insert()
   {
-    $this->form_validation->set_rules('lokasi','Lokasi','required');
-    $this->form_validation->set_rules('kode_barang','Kode Barang','required');
-    $this->form_validation->set_rules('nama_barang','Nama Barang','required');
-    $this->form_validation->set_rules('jumlah','Jumlah','required');
+    $this->form_validation->set_rules('region','Kota','required');
+    $this->form_validation->set_rules('kecamatan','Kecamatan','required');
+    $this->form_validation->set_rules('desa','Desa','required');
+    $this->form_validation->set_rules('batch_','Batch','required');
 
     if($this->form_validation->run() == TRUE)
     {
-      $id_transaksi = $this->input->post('id_transaksi',TRUE);
+      $site_id = $this->input->post('site_id',TRUE);
       $tanggal      = $this->input->post('tanggal',TRUE);
-      $lokasi       = $this->input->post('lokasi',TRUE);
-      $kode_barang  = $this->input->post('kode_barang',TRUE);
-      $nama_barang  = $this->input->post('nama_barang',TRUE);
-      $satuan       = $this->input->post('satuan',TRUE);
-      $jumlah       = $this->input->post('jumlah',TRUE);
+      $region       = $this->input->post('region',TRUE);
+      $kecamatan  = $this->input->post('kecamatan',TRUE);
+      $desa  = $this->input->post('desa',TRUE);
+      $paket       = $this->input->post('paket',TRUE);
+      $batch_       = $this->input->post('batch_',TRUE);
 
       $data = array(
-            'id_transaksi' => $id_transaksi,
+            'site_id' => $site_id,
             'tanggal'      => $tanggal,
-            'lokasi'       => $lokasi,
-            'kode_barang'  => $kode_barang,
-            'nama_barang'  => $nama_barang,
-            'satuan'       => $satuan,
-            'jumlah'       => $jumlah
+            'region'       => $region,
+            'kecamatan'  => $kecamatan,
+            'desa'  => $desa,
+            'paket'       => $paket,
+            'batch_'       => $batch_
       );
       $this->M_admin->insert('tb_permintaan_masuk',$data);
 
@@ -327,30 +327,30 @@ class Admin extends CI_Controller{
 
   public function proses_databarang_masuk_update()
   {
-    $this->form_validation->set_rules('lokasi','Lokasi','required');
-    $this->form_validation->set_rules('kode_barang','Kode Barang','required');
-    $this->form_validation->set_rules('nama_barang','Nama Barang','required');
-    $this->form_validation->set_rules('jumlah','Jumlah','required');
+    $this->form_validation->set_rules('region','Kota','required');
+    $this->form_validation->set_rules('kecamatan','Kecamatan','required');
+    $this->form_validation->set_rules('desa','Desa','required');
+    $this->form_validation->set_rules('batch_','Batch','required');
 
     if($this->form_validation->run() == TRUE)
     {
-      $id_transaksi = $this->input->post('id_transaksi',TRUE);
+      $site_id = $this->input->post('site_id',TRUE);
       $tanggal      = $this->input->post('tanggal',TRUE);
-      $lokasi       = $this->input->post('lokasi',TRUE);
-      $kode_barang  = $this->input->post('kode_barang',TRUE);
-      $nama_barang  = $this->input->post('nama_barang',TRUE);
-      $satuan       = $this->input->post('satuan',TRUE);
-      $jumlah       = $this->input->post('jumlah',TRUE);
+      $region       = $this->input->post('region',TRUE);
+      $kecamatan  = $this->input->post('kecamatan',TRUE);
+      $desa  = $this->input->post('desa',TRUE);
+      $paket       = $this->input->post('paket',TRUE);
+      $batch_       = $this->input->post('batch_',TRUE);
 
-      $where = array('id_transaksi' => $id_transaksi);
+      $where = array('site_id' => $site_id);
       $data = array(
-            'id_transaksi' => $id_transaksi,
+            'site_id' => $site_id,
             'tanggal'      => $tanggal,
-            'lokasi'       => $lokasi,
-            'kode_barang'  => $kode_barang,
-            'nama_barang'  => $nama_barang,
-            'satuan'       => $satuan,
-            'jumlah'       => $jumlah
+            'region'       => $region,
+            'kecamatan'  => $kecamatan,
+            'desa'  => $desa,
+            'paket'       => $paket,
+            'batch_'       => $batch_
       );
       $this->M_admin->update('tb_permintaan_masuk',$data,$where);
       $this->session->set_flashdata('msg_berhasil','Data Barang Berhasil Diupdate');
@@ -400,8 +400,8 @@ class Admin extends CI_Controller{
 
   public function proses_satuan_insert()
   {
-    $this->form_validation->set_rules('kode_satuan','Kode Satuan','trim|required|max_length[100]');
-    $this->form_validation->set_rules('nama_satuan','Nama Satuan','trim|required|max_length[100]');
+    $this->form_validation->set_rules('kode_satuan','Kode Paket','trim|required|max_length[100]');
+    $this->form_validation->set_rules('nama_satuan','Nama Paket','trim|required|max_length[100]');
 
     if($this->form_validation->run() ==  TRUE)
     {
@@ -414,7 +414,7 @@ class Admin extends CI_Controller{
       );
       $this->M_admin->insert('tb_satuan',$data);
 
-      $this->session->set_flashdata('msg_berhasil','Data satuan Berhasil Ditambahkan');
+      $this->session->set_flashdata('msg_berhasil','Data paket Berhasil Ditambahkan');
       redirect(base_url('admin/form_satuan'));
     }else {
       $this->load->view('admin/form_satuan/form_insert');
@@ -423,8 +423,8 @@ class Admin extends CI_Controller{
 
   public function proses_satuan_update()
   {
-    $this->form_validation->set_rules('kode_satuan','Kode Satuan','trim|required|max_length[100]');
-    $this->form_validation->set_rules('nama_satuan','Nama Satuan','trim|required|max_length[100]');
+    $this->form_validation->set_rules('kode_satuan','Kode Paket','trim|required|max_length[100]');
+    $this->form_validation->set_rules('nama_satuan','Nama Paket','trim|required|max_length[100]');
 
     if($this->form_validation->run() ==  TRUE)
     {
@@ -442,7 +442,7 @@ class Admin extends CI_Controller{
       );
       $this->M_admin->update('tb_satuan',$data,$where);
 
-      $this->session->set_flashdata('msg_berhasil','Data satuan Berhasil Di Update');
+      $this->session->set_flashdata('msg_berhasil','Data paket Berhasil Di Update');
       redirect(base_url('admin/tabel_satuan'));
     }else {
       $this->load->view('admin/form_satuan/form_update');
@@ -461,7 +461,7 @@ class Admin extends CI_Controller{
   public function barang_keluar()
   {
     $uri = $this->uri->segment(3);
-    $where = array( 'id_transaksi' => $uri);
+    $where = array( 'site_id' => $uri);
     $data['list_data'] = $this->M_admin->get_data('tb_permintaan_masuk',$where);
     $data['list_satuan'] = $this->M_admin->select('tb_satuan');
     $data['avatar'] = $this->M_admin->get_data_gambar('tb_upload_gambar_user',$this->session->userdata('name'));
@@ -470,34 +470,34 @@ class Admin extends CI_Controller{
 
   public function proses_data_keluar()
   {
-    $this->form_validation->set_rules('tanggal_keluar','Tanggal Keluar','trim|required');
+    $this->form_validation->set_rules('provinsi','Provinsi','trim|required');
     if($this->form_validation->run() === TRUE)
     {
-      $id_transaksi   = $this->input->post('id_transaksi',TRUE);
-      $tanggal_masuk  = $this->input->post('tanggal',TRUE);
-      $tanggal_keluar = $this->input->post('tanggal_keluar',TRUE);
-      $lokasi         = $this->input->post('lokasi',TRUE);
-      $kode_barang    = $this->input->post('kode_barang',TRUE);
-      $nama_barang    = $this->input->post('nama_barang',TRUE);
-      $satuan         = $this->input->post('satuan',TRUE);
-      $jumlah         = $this->input->post('jumlah',TRUE);
+      $site_id   = $this->input->post('site_id',TRUE);
+      $region  = $this->input->post('tanggal',TRUE);
+      $provinsi = $this->input->post('provinsi',TRUE);
+      $region         = $this->input->post('region',TRUE);
+      $kecamatan    = $this->input->post('kecamatan',TRUE);
+      $desa    = $this->input->post('desa',TRUE);
+      $paket         = $this->input->post('paket',TRUE);
+      $batch_         = $this->input->post('batch_',TRUE);
 
-      $where = array( 'id_transaksi' => $id_transaksi);
+      $where = array( 'site_id' => $site_id);
       $data = array(
-              'id_transaksi' => $id_transaksi,
-              'tanggal_masuk' => $tanggal_masuk,
-              'tanggal_keluar' => $tanggal_keluar,
-              'lokasi' => $lokasi,
-              'kode_barang' => $kode_barang,
-              'nama_barang' => $nama_barang,
-              'satuan' => $satuan,
-              'jumlah' => $jumlah
+              'site_id' => $site_id,
+              'region' => $region,
+              'provinsi' => $provinsi,
+              'region' => $region,
+              'kecamatan' => $kecamatan,
+              'desa' => $desa,
+              'paket' => $paket,
+              'batch_' => $batch_
       );
         $this->M_admin->insert('tb_site_id',$data);
         $this->session->set_flashdata('msg_berhasil_keluar','Data Berhasil Keluar');
         redirect(base_url('admin/tabel_barangmasuk'));
     }else {
-      $this->load->view('perpindahan_barang/form_update/'.$id_transaksi);
+      $this->load->view('perpindahan_barang/form_update/'.$site_id);
     }
 
   }
