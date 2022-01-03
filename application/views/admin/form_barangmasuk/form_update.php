@@ -255,9 +255,14 @@
                   <label for="no_sertif" style="display:inline;">Sertifikat</label>
                   <input type="text" name="no_sertif" style="margin-left:37px;width:20%;display:inline;" class="form-control"   value="<?=$d->no_sertif?>">
                 </div>
-                <div class="form-group">
+                <div class="keterangan" style="margin-bottom:40px;">
                   <label for="keterangan" style="display:inline;">Keterangan</label>
-                  <input type="text" name="keterangan" style="margin-left:37px;width:20%;display:inline;" class="form-control"   value="<?=$d->keterangan?>">
+                  <select class="form-control" name="keterangan" style="margin-left:37px;width:20%;display:inline;">
+                    <option value="<?=$d->keterangan?>"><?=$d->keterangan?></option>
+                    <option value="300 Site">300 Site</option>
+                    <option value="216 Site">216 Site</option>
+                    <option value="80 Site">80 Site</option>
+                  </select>
                 </div>
                 
             <?php } ?>

@@ -279,7 +279,7 @@ class Admin extends CI_Controller{
     $this->load->view('admin/form_barangmasuk/form_update',$data);
   }
 
-  public function delete_barang($site_id)
+  public function delete_data($site_id)
   {
     $where = array('site_id' => $site_id);
     $this->M_admin->delete('tb_permintaan_masuk',$where);

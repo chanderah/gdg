@@ -51,33 +51,6 @@
                     <option value="Aceh">Aceh</option>
                     <option value="Bali">Bali</option>
                     <option value="Bengkulu">Bengkulu</option>
-                    <option value="Jakarta">Jakarta Raya</option>
-                    <option value="Jambi">Jambi</option>
-                    <option value="Jawa Tengah">Jawa Tengah</option>
-                    <option value="Jawa Timur">Jawa Timur</option>
-                    <option value="Jawa Barat">Jawa Barat</option>
-                    <option value="Papua">Papua</option>
-                    <option value="Yogyakarta">Yogyakarta</option>
-                    <option value="Kalimantan Barat">Kalimantan Barat</option>
-                    <option value="Kalimantan Selatan">Kalimantan Selatan</option>
-                    <option value="Kalimantan Tengah">Kalimantan Tengah</option>
-                    <option value="Kalimantan Timur">Kalimantan Timur</option>
-                    <option value="Lampung">Lampung</option>
-                    <option value="NTB">Nusa Tenggara Barat</option>
-                    <option value="NTT">Nusa Tenggara Timur</option>
-                    <option value="Riau">Riau</option>
-                    <option value="Sulawesi Selatan">Sulawesi Selatan</option>
-                    <option value="Sulawesi Tengah">Sulawesi Tengah</option>
-                    <option value="Sulawesi Tenggara">Sulawesi Tenggara</option>
-                    <option value="Sumatera Barat">Sumatera Barat</option>
-                    <option value="Sumatera Utara">Sumatera Utara</option>
-                    <option value="Maluku">Maluku</option>
-                    <option value="Maluku Utara">Maluku Utara</option>
-                    <option value="Sulawesi Utara">Sulawesi Utara</option>
-                    <option value="Sulawesi Selatan">Sumatera Selatan</option>
-                    <option value="Banten">Banten</option>
-                    <option value="Gorontalo">Gorontalo</option>
-                    <option value="Bangka">Bangka Belitung</option>
                   </select>
                 </div>
                 <div class="form-group" style="display:inline-block;">
