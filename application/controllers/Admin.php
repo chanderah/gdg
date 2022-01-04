@@ -254,11 +254,11 @@ class Admin extends CI_Controller{
         // DATA Data Masuk
   ####################################
 
-  public function form_barangmasuk()
+  public function form_datamasuk()
   {
     $data['list_satuan'] = $this->M_admin->select('tb_satuan');
     $data['avatar'] = $this->M_admin->get_data_gambar('tb_upload_gambar_user',$this->session->userdata('name'));
-    $this->load->view('admin/form_barangmasuk/form_insert',$data);
+    $this->load->view('admin/form_datamasuk/form_insert',$data);
   }
 
   public function tabel_barangmasuk()
@@ -276,7 +276,7 @@ class Admin extends CI_Controller{
     $data['data_barang_update'] = $this->M_admin->get_data('tb_permintaan_masuk',$where);
     $data['list_satuan'] = $this->M_admin->select('tb_satuan');
     $data['avatar'] = $this->M_admin->get_data_gambar('tb_upload_gambar_user',$this->session->userdata('name'));
-    $this->load->view('admin/form_barangmasuk/form_update',$data);
+    $this->load->view('admin/form_datamasuk/form_update',$data);
   }
 
   public function delete_data($site_id)
@@ -288,37 +288,47 @@ class Admin extends CI_Controller{
 
   public function proses_databarang_masuk_insert()
   {
-    $this->form_validation->set_rules('region','Kota','required');
-    $this->form_validation->set_rules('kecamatan','Kecamatan','required');
-    $this->form_validation->set_rules('desa','Desa','required');
-    $this->form_validation->set_rules('batch_','Batch','required');
+    //$this->form_validation->set_rules('region','Kota','required');
 
     if($this->form_validation->run() == TRUE)
     {
       $site_id = $this->input->post('site_id',TRUE);
-      $tanggal = $this->input->post('tanggal',TRUE);
       $region = $this->input->post('region',TRUE);
+      $provinsi = $this->input->post('provinsi',TRUE);
+      $kabupaten = $this->input->post('kabupaten',TRUE);
       $kecamatan = $this->input->post('kecamatan',TRUE);
       $desa = $this->input->post('desa',TRUE);
       $paket = $this->input->post('paket',TRUE);
       $batch_ = $this->input->post('batch_',TRUE);
+      $ctrm = $this->input->post('ctrm',TRUE);
+      $ctsi = $this->input->post('ctsi',TRUE);
+      $amount_insured = $this->input->post('amount_insured',TRUE);
+      $no_sertif = $this->input->post('no_sertif',TRUE);
+      $keterangan = $this->input->post('keterangan',TRUE);
+      //$terbit = $this->input->post('terbit',TRUE);
 
       $data = array(
-            'site_id' => $site_id,
-            'tanggal' => $tanggal,
-            'region' => $region,
-            'kecamatan' => $kecamatan,
-            'desa' => $desa,
-            'paket' => $paket,
-            'batch_' => $batch_
+        'site_id' => $site_id,
+        'region' => $region,
+        'provinsi' => $provinsi,
+        'kabupaten' => $kabupaten,
+        'kecamatan' => $kecamatan,
+        'desa' => $desa,
+        'paket' => $paket,
+        'batch_' => $batch_,
+        'ctrm' => $ctrm,
+        'ctsi' => $ctsi,
+        'amount_insured' => $amount_insured,
+        'no_sertif' => $no_sertif,
+        'keterangan' => $keterangan
       );
       $this->M_admin->insert('tb_permintaan_masuk',$data);
 
-      $this->session->set_flashdata('msg_berhasil','Data Barang Berhasil Ditambahkan');
-      redirect(base_url('admin/form_barangmasuk'));
+      $this->session->set_flashdata('msg_berhasil','Data Berhasil Ditambahkan');
+      redirect(base_url('admin/form_datamasuk'));
     }else {
       $data['list_satuan'] = $this->M_admin->select('tb_satuan');
-      $this->load->view('admin/form_barangmasuk/form_insert',$data);
+      $this->load->view('admin/form_datamasuk/form_insert',$data);
     }
   }
 
@@ -360,14 +370,14 @@ class Admin extends CI_Controller{
             'ctsi' => $ctsi,
             'amount_insured' => $amount_insured,
             'no_sertif' => $no_sertif,
-            'keterangan' => $keterangan,
+            'keterangan' => $keterangan
             //'terbit' => $terbit
       );
       $this->M_admin->update('tb_permintaan_masuk',$data,$where);
-      $this->session->set_flashdata('msg_berhasil','Data Barang Berhasil Diupdate');
+      $this->session->set_flashdata('msg_berhasil','Data Berhasil Diupdate');
       redirect(base_url('admin/tabel_barangmasuk'));
     }else{
-      $this->load->view('admin/form_barangmasuk/form_update');
+      $this->load->view('admin/form_datamasuk/form_update');
     }
   }
   ####################################
@@ -484,25 +494,36 @@ class Admin extends CI_Controller{
     $this->form_validation->set_rules('provinsi','Provinsi','trim|required');
     if($this->form_validation->run() === TRUE)
     {
-      $site_id   = $this->input->post('site_id',TRUE);
-      $region  = $this->input->post('tanggal',TRUE);
+      $site_id = $this->input->post('site_id',TRUE);
+      $region = $this->input->post('region',TRUE);
       $provinsi = $this->input->post('provinsi',TRUE);
-      $region         = $this->input->post('region',TRUE);
-      $kecamatan    = $this->input->post('kecamatan',TRUE);
-      $desa    = $this->input->post('desa',TRUE);
-      $paket         = $this->input->post('paket',TRUE);
-      $batch_         = $this->input->post('batch_',TRUE);
+      $kabupaten = $this->input->post('kabupaten',TRUE);
+      $kecamatan = $this->input->post('kecamatan',TRUE);
+      $desa = $this->input->post('desa',TRUE);
+      $paket = $this->input->post('paket',TRUE);
+      $batch_ = $this->input->post('batch_',TRUE);
+      $ctrm = $this->input->post('ctrm',TRUE);
+      $ctsi = $this->input->post('ctsi',TRUE);
+      $amount_insured = $this->input->post('amount_insured',TRUE);
+      $no_sertif = $this->input->post('no_sertif',TRUE);
+      $keterangan = $this->input->post('keterangan',TRUE);
+      //$terbit = $this->input->post('terbit',TRUE);
 
       $where = array( 'site_id' => $site_id);
       $data = array(
-              'site_id' => $site_id,
-              'region' => $region,
-              'provinsi' => $provinsi,
-              'region' => $region,
-              'kecamatan' => $kecamatan,
-              'desa' => $desa,
-              'paket' => $paket,
-              'batch_' => $batch_
+        'site_id' => $site_id,
+        'region' => $region,
+        'provinsi' => $provinsi,
+        'kabupaten' => $kabupaten,
+        'kecamatan' => $kecamatan,
+        'desa' => $desa,
+        'paket' => $paket,
+        'batch_' => $batch_,
+        'ctrm' => $ctrm,
+        'ctsi' => $ctsi,
+        'amount_insured' => $amount_insured,
+        'no_sertif' => $no_sertif,
+        'keterangan' => $keterangan
       );
         $this->M_admin->insert('tb_site_id',$data);
         $this->session->set_flashdata('msg_berhasil_keluar','Data Berhasil Keluar');

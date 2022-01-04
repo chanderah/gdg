@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 2 | Table Data Masuk</title>
+  <title>Admin - PT. JIS | Tabel Data Masuk</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -136,7 +136,7 @@
                 </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?= base_url('admin/form_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tambah Data Masuk</a></li>
+            <li><a href="<?= base_url('admin/form_datamasuk')?>"><i class="fa fa-circle-o"></i> Tambah Data Masuk</a></li>
             <li><a href="<?= base_url('admin/form_satuan')?>"><i class="fa fa-circle-o"></i> Tambah Paket Barang</a></li>
           </ul>
         </li>
@@ -208,7 +208,7 @@
                </div>
               <?php } ?>
 
-              <a href="<?=base_url('admin/form_barangmasuk')?>" style="margin-bottom:10px;" type="button" class="btn btn-primary" name="tambah_data"><i class="fa fa-plus-circle" aria-hidden="true"></i> Tambah Data Masuk</a>
+              <a href="<?=base_url('admin/form_datamasuk')?>" style="margin-bottom:10px;" type="button" class="btn btn-primary" name="tambah_data"><i class="fa fa-plus-circle" aria-hidden="true"></i> Tambah Data Masuk</a>
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
@@ -251,7 +251,6 @@
                     <td><?=$dd->amount_insured?></td>
                     <td><?=$dd->no_sertif?></td>
                     <td><?=$dd->keterangan?></td>
-                    <!--<td><?=$dd->terbit?></td></-->
                     <td><a type="button" class="btn btn-info"  href="<?=base_url('admin/update_datamasuk/'.$dd->site_id)?>" name="btn_update" style="margin:auto;"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
                     <td><a type="button" class="btn btn-danger btn-delete"  href="<?=base_url('admin/delete_data/'.$dd->site_id)?>" name="btn_delete" style="margin:auto;"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
                     <td><a type="button" class="btn btn-success btn-barangkeluar"  href="<?=base_url('admin/move_data/'.$dd->site_id)?>" name="btn_barangkeluar" style="margin:auto;"><i class="fa fa-sign-out" aria-hidden="true"></i></a></td>
@@ -278,7 +277,6 @@
                   <th>Amount Insured</th>
                   <th>Sertifikat</th>
                   <th>Keterangan</th>
-                  <th>Terbit</th>
                 </tr>
                 </tfoot>
               </table>
