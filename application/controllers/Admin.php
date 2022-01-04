@@ -527,7 +527,9 @@ class Admin extends CI_Controller{
       );
         $this->M_admin->insert('tb_site_id',$data);
         $this->session->set_flashdata('msg_berhasil_keluar','Data Berhasil Keluar');
-        redirect(base_url('admin/tabel_barangmasuk'));
+        
+        redirect(base_url()."admin/delete_data/".$site_id);
+        //redirect(base_url('admin/tabel_barangmasuk'));
     }else {
       $this->load->view('perpindahan_data/form_update/'.$site_id);
     }

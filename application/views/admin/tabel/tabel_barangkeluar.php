@@ -327,8 +327,8 @@ jQuery(document).ready(function($){
       $('.btn-delete').on('click',function(){
           var getLink = $(this).attr('href');
           swal({
-                  title: 'Delete Data',
-                  text: 'Yakin Ingin Menghapus Data ?',
+                  title: 'Delete',
+                  text: 'Delete Data?',
                   html: true,
                   confirmButtonColor: '#d9534f',
                   showCancelButton: true,
