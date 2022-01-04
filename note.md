@@ -11,8 +11,6 @@ select
 <div class="form-group" style="display:inline-block;">
     <label for="paket" style="width:73%;">Paket</label>
     <select class="form-control" name="paket" style="width:110%;margin-right: 18px;">
-    <?php foreach($list_satuan as $s){?>
-        <?php if($d->paket == $s->nama_satuan){?>
     <option value="<?=$d->paket?>" selected=""><?=$d->paket?></option>
     <?php }else{?>
     <option value="<?=$s->kode_satuan?>"><?=$s->nama_satuan?></option>

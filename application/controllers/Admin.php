@@ -286,7 +286,7 @@ class Admin extends CI_Controller{
     redirect(base_url('admin/tabel_barangmasuk'));
   }
 
-  public function proses_databarang_masuk_insert()
+  public function proses_datamasuk_insert()
   {
     //$this->form_validation->set_rules('region','Kota','required');
 

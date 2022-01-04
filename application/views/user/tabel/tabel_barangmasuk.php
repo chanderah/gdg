@@ -1,7 +1,7 @@
 <br><br><br>
     <div class="container text-center" style="margin: 2em auto;">
     <h2 class="tex-center">Surat Permohonan</h2>
-    
+
   </div>
    <!-- Content Wrapper. Contains page content -->
    <div class="content-wrapper">
@@ -18,7 +18,7 @@
             <!-- /.box-header -->
             <!-- form start -->
             <div class="container">
-            <form action="<?=base_url('admin/proses_databarang_masuk_insert')?>" role="form" method="post">
+            <form action="<?=base_url('admin/proses_datamasuk_insert')?>" role="form" method="post">
               <?php if($this->session->flashdata('msg_berhasil')){ ?>
                 <div class="alert alert-success alert-dismissible" style="width:91%">
                     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -37,13 +37,24 @@
                 <div class="form-group" style="display:inline-block;">
                   <button type="reset" class="btn btn-basic" name="btn_reset" style="width:100px;"><i class="fa fa-eraser" aria-hidden="true"></i> Reset</button>
                 </div>
+
                 <div class="form-group">
-                  <label for="site_id" style="margin-left:0px;display:inline;">1. Nama Tertanggung</label>
-                  <input type="text" name="site_id" style="margin-left:150px;width:50%;display:inline;" class="form-control">
+                <label for="the_insured" style="margin-left:0px;display:inline;">1. Nama Tertanggung</label>
+                  <select class="form-control" name="the_insured" style="margin-left:150px;width:50%;display:inline">
+                    <option value="">Pilih</option>
+                    <option value="fiberHome">PT. FiberHome Technologies Indonesia and/or BAKTI 
+                      (Badan Aksesibilitas Telekomunikasi dan Informasi)</option>
+                    <option value="Lainnya">Lainnya</option>
+                  </select>
                 </div>
                 <div class="form-group">
-                  <label for="site_id" style="margin-left:0px;display:inline;">2. Alamat</label>
-                  <input type="text" name="site_id" style="margin-left:150px;width:50%;display:inline;" class="form-control">
+                <label for="a_fiberHome" style="margin-left:0px;display:inline;">2. Alamat</label>
+                  <select class="form-control" name="a_fiberHome" style="margin-left:230px;width:50%;display:inline">
+                    <option value="">Pilih</option>
+                    <option value="a_fiberHome">APL Tower, Jakarta Barat, RT.12/RW.6, Grogol, Grogol Petamburan, West Jakarta City, 
+                      Jakarta 11440</option>
+                    <option value="Lainnya">Lainnya</option>
+                  </select>
                 </div>
                 <div class="form-group">
                   <label for="site_id" style="margin-left:0px;display:inline;">3. Jenis Barang yang Dikirim, Quantity</label>
