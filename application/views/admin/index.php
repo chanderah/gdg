@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 2 | Dashboard</title>
+  <title>Admin - PT. Jasmine Indah Servistama | Dashboard</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -45,9 +45,9 @@
     <!-- Logo -->
     <a href="<?=base_url('admin')?>" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>A</b>LT</span>
+      <span class="logo-mini"><b>JIS</b></span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Admin</b>LTE</span>
+      <span class="logo-lg">PT <b> Jasmine</b></span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -207,7 +207,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?php echo base_url('admin/form_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tambah Data Barang</a></li>
+            <li><a href="<?php echo base_url('admin/form_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tambah Data Masuk</a></li>
             <li><a href="<?php echo base_url('admin/form_satuan')?>"><i class="fa fa-circle-o"></i> Tambah Paket Barang</a></li>
           </ul>
         </li>
@@ -260,14 +260,12 @@
           <!-- small box -->
           <div class="small-box bg-aqua">
             <div class="inner">
-            <?php if(!empty($stokBarangMasuk)){ ?>
-              <?php foreach($stokBarangMasuk as $d){ ?>
-              <h3><?=$d->batch_?></h3>
-              <?php } ?>
+            <?php if(!empty($jumlahPermintaan)){ ?>
+              <h3><?=$jumlahPermintaan?></h3>
             <?php }else{ ?>
               <h3>0</h3>
             <?php } ?>
-              <p>Tabel Data Masuk</p>
+              <p>Jumlah Data Masuk</p>
             </div>
             <div class="icon">
               <i class="ion ion-bag"></i>
@@ -280,14 +278,12 @@
           <!-- small box -->
           <div class="small-box bg-green">
             <div class="inner">
-            <?php if(!empty($stokBarangKeluar)){ ?>
-             <?php foreach($stokBarangKeluar as $d){?>
-              <h3><?=$d->batch_?></h3>
-             <?php } ?>
+            <?php if(!empty($jumlahSite)){ ?>         
+              <h3><?=$jumlahSite?></h3>
              <?php }else{?>
               <h3>0</h3>
              <?php } ?>
-              <p>Tabel Data Keluar</p>
+              <p>Jumlah Data Keluar</p>
             </div>
             <div class="icon">
               <i class="ion ion-stats-bars"></i>
