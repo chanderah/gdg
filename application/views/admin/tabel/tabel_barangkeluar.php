@@ -77,7 +77,6 @@
                 </p>
               </li>
               <!-- Menu Body -->
-
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
@@ -187,7 +186,6 @@
     <section class="content">
       <div class="row">
         <div class="col-xs-12">
-
           <!-- /.box -->
           <div class="box">
             <div class="box-header">
@@ -223,7 +221,6 @@
                   <th>Sertifikat</th>
                   <th>Keterangan</th>
                   <th>Terbit</th>
-                  <th>Invoice</th>
                   <!-- <th></th> -->
                 </tr>
                 </thead>
@@ -246,8 +243,6 @@
                     <td><?=$dd->amount_insured?></td>
                     <td><?=$dd->no_sertif?></td>
                     <td><?=$dd->keterangan?></td>
-                    <td><?=$dd->terbit?></td>
-
                     <td><a type="button" class="btn btn-danger btn-report"  href="<?=base_url('report2/barangKeluar/'.$dd->site_id.'/'.$dd->provinsi)?>" name="btn_report" style="margin:auto;"><i class="fa fa-file-text" aria-hidden="true"></i></a></td>
                 </tr>
               <?php $no++; ?>
@@ -273,7 +268,6 @@
                   <th>Sertifikat</th>
                   <th>Keterangan</th>
                   <th>Terbit</th>
-                  <th>Invoice</th>
                 </tr>
                 </tfoot>
               </table>

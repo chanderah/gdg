@@ -1,9 +1,8 @@
 <br><br><br>
     <div class="container text-center" style="margin: 2em auto;">
     <h2 class="tex-center">Surat Permohonan</h2>
-
+    
   </div>
-
    <!-- Content Wrapper. Contains page content -->
    <div class="content-wrapper">
     <!-- Content Header (Page header) -->
