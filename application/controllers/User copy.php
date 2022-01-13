@@ -119,30 +119,39 @@ class User extends CI_Controller
 
   public function proses_datamasuk_insert()
   {
-        $site_id = $this->input->post('site_id',TRUE);
-        $provinsi = $this->input->post('provinsi',TRUE);
-        $region = $this->input->post('region',TRUE);
-        $kecamatan = $this->input->post('kecamatan',TRUE);
-        $desa = $this->input->post('desa',TRUE);
-        $paket = $this->input->post('paket',TRUE);
-        $batch_ = $this->input->post('batch_',TRUE);
-       
-        $data = array(
-          'site_id' => $site_id,
-          'provinsi' => $provinsi,
-          'region' => $region,
-          'kecamatan' => $kecamatan,
-          'desa' => $desa,
-          'paket' => $paket,
-          'batch_' => $batch_
-        );
 
-        $this->M_user->insert('tb_permintaan_masuk',$data);
-        //$this->M_user->update_password('user',$where,$data);
+    if($this->form_validation->run() == TRUE)
+    {
+      $site_id = $this->input->post('site_id',TRUE);
+      $provinsi = $this->input->post('provinsi',TRUE);
+      $region = $this->input->post('region',TRUE);
+      $kecamatan = $this->input->post('kecamatan',TRUE);
+      $desa = $this->input->post('desa',TRUE);
+      $paket = $this->input->post('paket',TRUE);
+      $batch_ = $this->input->post('batch_',TRUE);
 
-        $this->session->set_flashdata('msg_berhasil','Data Berhasil Ditambahkan');
-        redirect(base_url('user/index'));
-    
+      $data = array(
+            'site_id' => $site_id,
+            'provinsi' => $provinsi,
+            'region' => $region,
+            'kecamatan' => $kecamatan,
+            'desa' => $desa,
+            'paket' => $paket,
+            'batch_' => $batch_
+      );
+      $this->M_admin->insert('tb_permintaan_masuk',$data);
+
+      $this->session->set_flashdata('msg_berhasil','Data Barang Berhasil Ditambahkan');
+      redirect(base_url('user/index'));
+    }else {
+      $this->load->view('user/tabel/tabel_barangmasuk',$data);
+    }
+
+
+
+    //
+
+  
   }
 
 }
