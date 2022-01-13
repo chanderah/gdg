@@ -286,7 +286,7 @@ class Admin extends CI_Controller{
     redirect(base_url('admin/tabel_barangmasuk'));
   }
 
-  public function proses_databarang_masuk_insert()
+  public function proses_datamasuk_insert()
   {
     $this->form_validation->set_rules('region','Kota','required');
     $this->form_validation->set_rules('kecamatan','Kecamatan','required');
@@ -484,16 +484,16 @@ class Admin extends CI_Controller{
     $this->form_validation->set_rules('provinsi','Provinsi','trim|required');
     if($this->form_validation->run() === TRUE)
     {
-      $site_id   = $this->input->post('site_id',TRUE);
-      $region  = $this->input->post('provinsi',TRUE);
+      $site_id = $this->input->post('site_id',TRUE);
+      $region = $this->input->post('provinsi',TRUE);
       $provinsi = $this->input->post('provinsi',TRUE);
-      $region         = $this->input->post('region',TRUE);
-      $kecamatan    = $this->input->post('kecamatan',TRUE);
-      $desa    = $this->input->post('desa',TRUE);
-      $paket         = $this->input->post('paket',TRUE);
-      $batch_         = $this->input->post('batch_',TRUE);
+      $region = $this->input->post('region',TRUE);
+      $kecamatan = $this->input->post('kecamatan',TRUE);
+      $desa = $this->input->post('desa',TRUE);
+      $paket = $this->input->post('paket',TRUE);
+      $batch_ = $this->input->post('batch_',TRUE);
 
-      $where = array( 'site_id' => $site_id);
+      $where = array('site_id' => $site_id);
       $data = array(
               'site_id' => $site_id,
               'region' => $region,
@@ -509,7 +509,7 @@ class Admin extends CI_Controller{
         $this->session->set_flashdata('msg_berhasil_keluar','Data Berhasil Keluar');
         redirect(base_url('admin/tabel_barangmasuk'));
     }else {
-      $this->load->view('perpindahan_data/form_update/'.$site_id);
+        $this->load->view('perpindahan_data/form_update/'.$site_id);
     }
 
   }

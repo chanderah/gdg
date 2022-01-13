@@ -3,11 +3,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class User extends CI_Controller
 {
-
+  
   function __construct()
   {
     parent::__construct();
     $this->load->model('M_user');
+    $this->load->model('M_admin');
+    $this->load->library('upload');
   }
 
   public function index()
@@ -17,8 +19,13 @@ class User extends CI_Controller
       $this->load->view('user/templates/header.php');
       $this->load->view('user/index');
       $this->load->view('user/templates/footer.php');
+      $data['avatar'] = $this->M_admin->get_data_gambar('tb_upload_gambar_user',$this->session->userdata('name'));
+      $data['jumlahPermintaan'] = $this->M_admin->numrows('tb_permintaan_masuk');
+      $data['jumlahSite'] = $this->M_admin->numrows('tb_site_id');      
+      $data['dataUser'] = $this->M_admin->numrows('user');
     }else {
       $this->load->view('login/login');
+      
     }
   }
 
@@ -101,6 +108,45 @@ class User extends CI_Controller
     $data['list_data'] = $this->M_user->select('tb_site_id');
     $this->load->view('user/tabel/tabel_barangkeluar',$data);
     $this->load->view('user/templates/footer.php');
+  }
+
+  
+  
+
+  ####################################
+        // Form Input
+  ####################################
+
+
+  public function proses_datamasuk_insert()
+  {
+
+    if($this->form_validation->run() == TRUE)
+    {
+      $site_id = $this->input->post('site_id',TRUE);
+      $provinsi = $this->input->post('provinsi',TRUE);
+      $region = $this->input->post('region',TRUE);
+      $kecamatan = $this->input->post('kecamatan',TRUE);
+      $desa = $this->input->post('desa',TRUE);
+      $paket = $this->input->post('paket',TRUE);
+      $batch_ = $this->input->post('batch_',TRUE);
+
+      $data = array(
+            'site_id' => $site_id,
+            'provinsi' => $provinsi,
+            'region' => $region,
+            'kecamatan' => $kecamatan,
+            'desa' => $desa,
+            'paket' => $paket,
+            'batch_' => $batch_
+      );
+      $this->M_admin->insert('tb_permintaan_masuk',$data);
+
+      $this->session->set_flashdata('msg_berhasil','Data Barang Berhasil Ditambahkan');
+      redirect(base_url('user/index'));
+    }else {
+      $this->load->view('user/tabel/tabel_barangmasuk',$data);
+    }
   }
 
 }

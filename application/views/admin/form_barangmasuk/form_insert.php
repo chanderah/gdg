@@ -192,7 +192,7 @@
             <!-- /.box-header -->
             <!-- form start -->
             <div class="container">
-            <form action="<?=base_url('admin/proses_databarang_masuk_insert')?>" role="form" method="post">
+            <form action="<?=base_url('admin/proses_datamasuk_insert')?>" role="form" method="post">
 
               <?php if($this->session->flashdata('msg_berhasil')){ ?>
                 <div class="alert alert-success alert-dismissible" style="width:91%">
