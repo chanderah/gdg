@@ -41,8 +41,8 @@
                   value="WG-<?=date("Y");?><?=random_string('numeric', 8);?>">
                 </div>
                 <div class="form-group">
-                  <label for="tanggal" style="margin-left:200px;display:inline;">Region</label>
-                  <input type="text" name="tanggal" style="margin-left:25px;width:50%;display:inline;" class="form-control form_datetime" placeholder="Klik Disini">
+                  <label for="provinsi" style="margin-left:200px;display:inline;">Region</label>
+                  <input type="text" name="provinsi" style="margin-left:25px;width:50%;display:inline;" class="form-control form_datetime" placeholder="Klik Disini">
                 </div>
                 <div class="form-group" style="margin-bottom:40px;">
                   <label for="desa" style="margin-left:200px;display:inline;">Provinsi</label>

@@ -296,7 +296,7 @@ class Admin extends CI_Controller{
     if($this->form_validation->run() == TRUE)
     {
       $site_id = $this->input->post('site_id',TRUE);
-      $tanggal = $this->input->post('tanggal',TRUE);
+      $provinsi = $this->input->post('provinsi',TRUE);
       $region = $this->input->post('region',TRUE);
       $kecamatan = $this->input->post('kecamatan',TRUE);
       $desa = $this->input->post('desa',TRUE);
@@ -305,7 +305,7 @@ class Admin extends CI_Controller{
 
       $data = array(
             'site_id' => $site_id,
-            'tanggal' => $tanggal,
+            'provinsi' => $provinsi,
             'region' => $region,
             'kecamatan' => $kecamatan,
             'desa' => $desa,
@@ -485,7 +485,7 @@ class Admin extends CI_Controller{
     if($this->form_validation->run() === TRUE)
     {
       $site_id   = $this->input->post('site_id',TRUE);
-      $region  = $this->input->post('tanggal',TRUE);
+      $region  = $this->input->post('provinsi',TRUE);
       $provinsi = $this->input->post('provinsi',TRUE);
       $region         = $this->input->post('region',TRUE);
       $kecamatan    = $this->input->post('kecamatan',TRUE);

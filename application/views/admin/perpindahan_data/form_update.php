@@ -208,8 +208,8 @@
                   <input type="text" name="site_id" style="margin-left:84px;width:20%;display:inline;" class="form-control" readonly="readonly" value="<?=$d->site_id?>">
                 </div>
                 <div class="form-group">
-                  <label for="tanggal" style="margin-left:220px;display:inline;">Region</label>
-                  <input type="text" name="tanggal" style="margin-left:66px;width:20%;display:inline;" class="form-control" readonly="readonly" value="<?=$d->tanggal?>">
+                  <label for="provinsi" style="margin-left:220px;display:inline;">Region</label>
+                  <input type="text" name="provinsi" style="margin-left:66px;width:20%;display:inline;" class="form-control" readonly="readonly" value="<?=$d->provinsi?>">
                 </div>
                 <div class="form-group">
                   <label for="provinsi" style="margin-left:220px;display:inline;">Provinsi</label>

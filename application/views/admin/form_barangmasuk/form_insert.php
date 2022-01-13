@@ -214,8 +214,8 @@
                   <input type="text" name="site_id" style="margin-left:37px;width:20%;display:inline;" class="form-control" readonly="readonly" value="WG-<?=date("Y");?><?=random_string('numeric', 8);?>">
                 </div>
                 <div class="form-group">
-                  <label for="tanggal" style="margin-left:220px;display:inline;">Tanggal</label>
-                  <input type="text" name="tanggal" style="margin-left:66px;width:20%;display:inline;" class="form-control form_datetime" placeholder="Klik Disini">
+                  <label for="provinsi" style="margin-left:220px;display:inline;">Tanggal</label>
+                  <input type="text" name="provinsi" style="margin-left:66px;width:20%;display:inline;" class="form-control form_datetime" placeholder="Klik Disini">
                 </div>
                 <div class="form-group" style="margin-bottom:40px;">
                   <label for="desa" style="margin-left:220px;display:inline;">Kota</label>
