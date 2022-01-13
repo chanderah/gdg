@@ -505,6 +505,7 @@ class Admin extends CI_Controller{
               'batch_' => $batch_
       );
         $this->M_admin->insert('tb_site_id',$data);
+        $this->M_admin->delete('tb_permintaan_masuk',$where);
         $this->session->set_flashdata('msg_berhasil_keluar','Data Berhasil Keluar');
         redirect(base_url('admin/tabel_barangmasuk'));
     }else {
