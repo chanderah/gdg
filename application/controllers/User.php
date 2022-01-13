@@ -3,13 +3,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class User extends CI_Controller
 {
-  
+
   function __construct()
   {
     parent::__construct();
     $this->load->model('M_user');
     $this->load->model('M_admin');
-    $this->load->library('upload');
   }
 
   public function index()
@@ -120,6 +119,10 @@ class User extends CI_Controller
 
   public function proses_datamasuk_insert()
   {
+    $this->form_validation->set_rules('region','Kota','required');
+    $this->form_validation->set_rules('kecamatan','Kecamatan','required');
+    $this->form_validation->set_rules('desa','Desa','required');
+    $this->form_validation->set_rules('batch_','Batch','required');
 
     if($this->form_validation->run() == TRUE)
     {
