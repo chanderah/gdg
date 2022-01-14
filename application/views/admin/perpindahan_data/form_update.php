@@ -204,6 +204,10 @@
               <div class="box-body">
                 <div class="form-group">
                   <?php foreach($list_data as $d){ ?>
+                  <label for="dummy_id" style="margin-left:220px;display:inline;">ID</label>
+                  <input type="text" name="dummy_id" style="margin-left:66px;width:20%;display:inline;" class="form-control" readonly="readonly" value="<?=$d->dummy_id?>">
+                </div>
+                <div class="form-group">
                   <label for="site_id" style="margin-left:220px;display:inline;">SITE ID</label>
                   <input type="text" name="site_id" style="margin-left:84px;width:20%;display:inline;" class="form-control" readonly="readonly" value="<?=$d->site_id?>">
                 </div>

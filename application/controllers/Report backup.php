@@ -99,7 +99,7 @@ class Report extends CI_Controller
     $pdf->Output('contoh_report.pdf','I');
   }
 
-  public function dataKeluar()
+  public function barangKeluar()
   {
     $id = $this->uri->segment(3);
     $tgl1 = $this->uri->segment(4);

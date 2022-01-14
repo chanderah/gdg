@@ -492,9 +492,11 @@ class Admin extends CI_Controller{
       $desa = $this->input->post('desa',TRUE);
       $paket = $this->input->post('paket',TRUE);
       $batch_ = $this->input->post('batch_',TRUE);
+      $dummy_id = $this->input->post('dummy_id',TRUE);
 
       $where = array('site_id' => $site_id);
       $data = array(
+              'dummy_id' => $dummy_id, 
               'site_id' => $site_id,
               'region' => $region,
               'provinsi' => $provinsi,
