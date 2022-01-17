@@ -210,6 +210,33 @@
 
               <div class="box-body">
                 <div class="form-group">
+                  
+		            <div class="form-group form-group-lg">
+                  <label for="site_id" style="margin-left:15px;display:inline;">1. Nama Tertanggung</label>
+                  <select class="form-control" name="the_insured" style="margin-left:58px;width:50%;display:inline">
+                    <option value="">Pilih</option>
+                    <option value="fiberHome">PT. FiberHome Technologies Indonesia and/or BAKTI 
+                      (Badan Aksesibilitas Telekomunikasi dan Informasi)</option>
+                    <option value="Lainnya">Lainnya</option>
+                  </select>
+                </div>
+               
+                <div class="form-group form-group-lg">
+                  <label for="site_id" style="margin-left:15px;display:inline;">2. Alamat</label>
+                  <select class="form-control" name="a_fiberHome" style="margin-left:132px;width:50%;display:inline">
+                    <option value="">Pilih</option>
+                    <option value="a_fiberHome">APL Tower, Jakarta Barat, RT.12/RW.6, Grogol, Grogol Petamburan, West Jakarta City, 
+                      Jakarta 11440</option>
+                    <option value="Lainnya">Lainnya</option>
+                  </select>
+                </div>
+
+                <div class="form-group form-group-lg">
+                  <label for="site_id" style="margin-left:15px;display:inline;">3. Jenis Barang yang Dikirim</label>
+                  <input type="text" name="site_id" style="margin-left:15px;width:50%;display:inline;" class="form-control">
+                </div>
+               
+            
                   <label for="site_id" style="margin-left:220px;display:inline;">SITE ID</label>
                   <input type="text" name="site_id" style="margin-left:37px;width:20%;display:inline;" class="form-control" readonly="readonly" value="WG-<?=date("Y");?><?=random_string('numeric', 8);?>">
                 </div>
