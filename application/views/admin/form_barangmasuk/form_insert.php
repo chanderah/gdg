@@ -232,11 +232,16 @@
                 </div>
 
                 <div class="form-group form-group-lg">
-                  <label for="site_id" style="margin-left:15px;display:inline;">3. Jenis Barang yang Dikirim</label>
-                  <input type="text" name="site_id" style="margin-left:15px;width:50%;display:inline;" class="form-control">
+                  <label for="site_id" style="margin-left:15px;display:inline-block;">3. Jenis Barang yang Dikirim</label>
+                  <input type="text" name="site_id" style="margin-left:15px;width:30%;display:inline;" class="form-control" placeholder="Jenis Barang">
+                  
+                  <label for="qty" style="margin-left:20px;width:13%">Quantity</label>
+                  <input type="number" name="qty" style="width:12%;margin-left:-80px;display:inline;" class="form-control" id="qty" placeholder="@ pcs">
                 </div>
-               
-            
+                <div class="form-group" style="display:inline-block;">
+                  
+                </div>
+                <div>
                   <label for="site_id" style="margin-left:220px;display:inline;">SITE ID</label>
                   <input type="text" name="site_id" style="margin-left:37px;width:20%;display:inline;" class="form-control" readonly="readonly" value="WG-<?=date("Y");?><?=random_string('numeric', 8);?>">
                 </div>
@@ -290,20 +295,12 @@
               </div>
                 <div class="form-group" style="display:inline-block;">
                   <label for="paket" style="width:73%;">Paket</label>
-                  <select class="form-control" name="paket" style="width:110%;margin-right: 18px;">
-                    <option value="" selected="">-- Pilih --</option>
-                    <?php foreach($list_satuan as $s){ ?>
-                    <option value="<?=$s->kode_satuan?>"><?=$s->nama_satuan?></option>
-                    <?php } ?>
-                  </select>
               </div>
               <div class="form-group" style="display:inline-block;">
                 <label for="batch_" style="width:73%;margin-left:33px;">Batch</label>
                 <input type="number" name="batch_" style="width:41%;margin-left:34px;margin-right:18px;" class="form-control" id="batch_">
             </div>
-            <div class="form-group" style="display:inline-block;">
-              <button type="reset" class="btn btn-basic" name="btn_reset" style="width:95px;margin-left:-70px;"><i class="fa fa-eraser" aria-hidden="true"></i> Reset</button>
-            </div>
+
               <!-- /.box-body -->
               <div class="box-footer" style="width:93%;">
                 <a type="button" class="btn btn-default" style="width:10%;margin-right:26%" onclick="history.back(-1)" name="btn_kembali"><i class="fa fa-arrow-left" aria-hidden="true"></i> Kembali</a>
