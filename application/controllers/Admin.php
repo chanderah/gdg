@@ -97,8 +97,7 @@ class Admin extends CI_Controller{
       if( ! $this->upload->do_upload('userpicture'))
       {
         $this->session->set_flashdata('msg_error_gambar', $this->upload->display_errors());
-        $this->load->view('admin/profile');
-        //$this->load->view('admin/profile',$data); //,$data
+        $this->load->view('admin/profile',$data);
       }else{
         $upload_data = $this->upload->data();
         $nama_file = $upload_data['file_name'];
@@ -289,10 +288,10 @@ class Admin extends CI_Controller{
 
   public function proses_datamasuk_insert()
   {
-    //$this->form_validation->set_rules('region','Kota','required');
-    //$this->form_validation->set_rules('kecamatan','Kecamatan','required');
-    //$this->form_validation->set_rules('desa','Desa','required');
-    //$this->form_validation->set_rules('batch_','Batch','required');
+    $this->form_validation->set_rules('region','Kota','required');
+    $this->form_validation->set_rules('kecamatan','Kecamatan','required');
+    $this->form_validation->set_rules('desa','Desa','required');
+    $this->form_validation->set_rules('batch_','Batch','required');
 
     if($this->form_validation->run() == TRUE)
     {
@@ -345,7 +344,6 @@ class Admin extends CI_Controller{
       $amount_insured = $this->input->post('amount_insured',TRUE);
       $no_sertif = $this->input->post('no_sertif',TRUE);
       $keterangan = $this->input->post('keterangan',TRUE);
-      
       //$terbit = $this->input->post('terbit',TRUE);
 
       $where = array('site_id' => $site_id);
@@ -486,20 +484,15 @@ class Admin extends CI_Controller{
     $this->form_validation->set_rules('provinsi','Provinsi','trim|required');
     if($this->form_validation->run() === TRUE)
     {
-      $dummy_id = $this->input->post('dummy_id',TRUE);
-
       $site_id = $this->input->post('site_id',TRUE);
-      $region = $this->input->post('region',TRUE);
+      $region = $this->input->post('provinsi',TRUE);
       $provinsi = $this->input->post('provinsi',TRUE);
+      $region = $this->input->post('region',TRUE);
       $kecamatan = $this->input->post('kecamatan',TRUE);
       $desa = $this->input->post('desa',TRUE);
       $paket = $this->input->post('paket',TRUE);
       $batch_ = $this->input->post('batch_',TRUE);
-      $ctrm = $this->input->post('ctrm',TRUE);
-      $ctsi = $this->input->post('ctsi',TRUE);
-      $amount_insured = $this->input->post('amount_insured',TRUE);
-      $no_sertif = $this->input->post('no_sertif',TRUE);
-      $keterangan = $this->input->post('keterangan',TRUE);
+      $dummy_id = $this->input->post('dummy_id',TRUE);
 
       $where = array('site_id' => $site_id);
       $data = array(
@@ -511,20 +504,14 @@ class Admin extends CI_Controller{
               'kecamatan' => $kecamatan,
               'desa' => $desa,
               'paket' => $paket,
-              'batch_' => $batch_,
-              'ctrm' => $ctrm,
-              'ctsi' => $ctsi,
-              'amount_insured' => $amount_insured,
-              'no_sertif' => $no_sertif,
-              'keterangan' => $keterangan,
+              'batch_' => $batch_
       );
         $this->M_admin->insert('tb_site_id',$data);
         $this->M_admin->delete('tb_permintaan_masuk',$where);
         $this->session->set_flashdata('msg_berhasil_keluar','Data Berhasil Keluar');
         redirect(base_url('admin/tabel_barangmasuk'));
     }else {
-        $this->load->view('perpindahan_data/form_update/');
-        //$this->load->view('perpindahan_data/form_update/'.$site_id);
+        $this->load->view('perpindahan_data/form_update/'.$site_id);
     }
 
   }
