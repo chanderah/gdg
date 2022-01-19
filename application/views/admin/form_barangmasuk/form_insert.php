@@ -244,9 +244,9 @@
                 <div class="form-group" style="display:inline-block;">
                   
                 </div>
-                <div>
+                <div class="form-group">
                   <label for="site_id" style="margin-left:220px;display:inline;">SITE ID</label>
-                  <input type="text" name="site_id" style="margin-left:37px;width:20%;display:inline;" class="form-control" readonly="readonly" value="abcd">
+                  <input type="text" name="site_id" style="margin-left:37px;width:20%;display:inline;" class="form-control" value="" placeholder="Site ID">
                 </div>
                 <div class="form-group">
                   <label for="provinsi" style="margin-left:220px;display:inline;">Tanggal</label>
