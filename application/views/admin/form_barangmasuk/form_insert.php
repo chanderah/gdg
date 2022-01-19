@@ -211,7 +211,7 @@
               <div class="box-body">
                 <div class="form-group">
                   <label for="dummy_id" style="margin-left:15px;display:none;">ID</label>
-                  <input type="text" name="dummy_id" style="margin-left:37px;width:20%;display:none;" class="form-control" readonly="readonly" value="<?=date("Y");?><?=random_string('md5', 20);?>">
+                  <input type="text" name="dummy_id" style="margin-left:37px;width:20%;display:none;" class="form-control" readonly="readonly" value="<?=random_string('alpha', 10);?><?=random_string('sha1');?>">
                 </div>  
                 
 		            <div class="form-group form-group-lg">
@@ -246,7 +246,7 @@
                 </div>
                 <div>
                   <label for="site_id" style="margin-left:220px;display:inline;">SITE ID</label>
-                  <input type="text" name="site_id" style="margin-left:37px;width:20%;display:inline;" class="form-control" readonly="readonly" value="<?=date("Y");?><?=random_string('md5', 20);?>">
+                  <input type="text" name="site_id" style="margin-left:37px;width:20%;display:inline;" class="form-control" readonly="readonly" value="abcd">
                 </div>
                 <div class="form-group">
                   <label for="provinsi" style="margin-left:220px;display:inline;">Tanggal</label>
