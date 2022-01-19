@@ -331,6 +331,7 @@ class Admin extends CI_Controller{
 
     if($this->form_validation->run() == TRUE)
     {
+      $dummy_id = $this->input->post('dummy_id',TRUE);
       $site_id = $this->input->post('site_id',TRUE);
       $region = $this->input->post('region',TRUE);
       $provinsi = $this->input->post('provinsi',TRUE);
@@ -346,8 +347,9 @@ class Admin extends CI_Controller{
       $keterangan = $this->input->post('keterangan',TRUE);
       //$terbit = $this->input->post('terbit',TRUE);
 
-      $where = array('site_id' => $site_id);
+      $where = array('dummy_id' => $dummy_id);
       $data = array(
+            'dummy_id' => $dummy_id,
             'site_id' => $site_id,
             'region' => $region,
             'provinsi' => $provinsi,
@@ -484,27 +486,39 @@ class Admin extends CI_Controller{
     $this->form_validation->set_rules('provinsi','Provinsi','trim|required');
     if($this->form_validation->run() === TRUE)
     {
+      $dummy_id = $this->input->post('dummy_id',TRUE);
       $site_id = $this->input->post('site_id',TRUE);
-      $region = $this->input->post('provinsi',TRUE);
-      $provinsi = $this->input->post('provinsi',TRUE);
       $region = $this->input->post('region',TRUE);
+      $provinsi = $this->input->post('provinsi',TRUE);
+      $kabupaten = $this->input->post('kabupaten',TRUE);
       $kecamatan = $this->input->post('kecamatan',TRUE);
       $desa = $this->input->post('desa',TRUE);
       $paket = $this->input->post('paket',TRUE);
       $batch_ = $this->input->post('batch_',TRUE);
-      $dummy_id = $this->input->post('dummy_id',TRUE);
+      $ctrm = $this->input->post('ctrm',TRUE);
+      $ctsi = $this->input->post('ctsi',TRUE);
+      $amount_insured = $this->input->post('amount_insured',TRUE);
+      $no_sertif = $this->input->post('no_sertif',TRUE);
+      $keterangan = $this->input->post('keterangan',TRUE);
+      //$terbit = $this->input->post('terbit',TRUE);
 
-      $where = array('site_id' => $site_id);
+      $where = array('dummy_id' => $dummy_id);
       $data = array(
-              'dummy_id' => $dummy_id, 
-              'site_id' => $site_id,
-              'region' => $region,
-              'provinsi' => $provinsi,
-              'region' => $region,
-              'kecamatan' => $kecamatan,
-              'desa' => $desa,
-              'paket' => $paket,
-              'batch_' => $batch_
+            'dummy_id' => $dummy_id,
+            'site_id' => $site_id,
+            'region' => $region,
+            'provinsi' => $provinsi,
+            'kabupaten' => $kabupaten,
+            'kecamatan' => $kecamatan,
+            'desa' => $desa,
+            'paket' => $paket,
+            'batch_' => $batch_,
+            'ctrm' => $ctrm,
+            'ctsi' => $ctsi,
+            'amount_insured' => $amount_insured,
+            'no_sertif' => $no_sertif,
+            'keterangan' => $keterangan
+            //'terbit' => $terbit
       );
         $this->M_admin->insert('tb_site_id',$data);
         $this->M_admin->delete('tb_permintaan_masuk',$where);
