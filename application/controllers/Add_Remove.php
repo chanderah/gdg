@@ -21,7 +21,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       //$terbit = $this->input->post('terbit',TRUE);
 
       $where = array('dummy_id' => $dummy_id);
-      $data[0] = array(
+      $data = array(
             'dummy_id' => $dummy_id,
             'site_id' => $site_id,
             'region' => $region
