@@ -210,7 +210,10 @@
 
               <div class="box-body">
                 <div class="form-group">
-                  
+                  <label for="dummy_id" style="margin-left:15px;display:none;">ID</label>
+                  <input type="text" name="dummy_id" style="margin-left:37px;width:20%;display:none;" class="form-control" readonly="readonly" value="<?=date("Y");?><?=random_string('md5', 20);?>">
+                </div>  
+                
 		            <div class="form-group form-group-lg">
                   <label for="site_id" style="margin-left:15px;display:inline;">1. Nama Tertanggung</label>
                   <select class="form-control" name="the_insured" style="margin-left:58px;width:50%;display:inline">
@@ -243,7 +246,7 @@
                 </div>
                 <div>
                   <label for="site_id" style="margin-left:220px;display:inline;">SITE ID</label>
-                  <input type="text" name="site_id" style="margin-left:37px;width:20%;display:inline;" class="form-control" readonly="readonly" value="WG-<?=date("Y");?><?=random_string('numeric', 8);?>">
+                  <input type="text" name="site_id" style="margin-left:37px;width:20%;display:inline;" class="form-control" readonly="readonly" value="<?=date("Y");?><?=random_string('md5', 20);?>">
                 </div>
                 <div class="form-group">
                   <label for="provinsi" style="margin-left:220px;display:inline;">Tanggal</label>

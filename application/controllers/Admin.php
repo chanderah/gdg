@@ -270,9 +270,9 @@ class Admin extends CI_Controller{
     $this->load->view('admin/tabel/tabel_barangmasuk',$data);
   }
 
-  public function update_datamasuk($site_id)
+  public function update_datamasuk($dummy_id)
   {
-    $where = array('site_id' => $site_id);
+    $where = array('dummy_id' => $dummy_id);
     $data['data_barang_update'] = $this->M_admin->get_data('tb_permintaan_masuk',$where);
     $data['list_satuan'] = $this->M_admin->select('tb_satuan');
     $data['avatar'] = $this->M_admin->get_data_gambar('tb_upload_gambar_user',$this->session->userdata('name'));
@@ -288,6 +288,8 @@ class Admin extends CI_Controller{
 
   public function proses_datamasuk_insert()
   {
+    
+    $this->load->helper('string');
     $this->form_validation->set_rules('site_id','site_id','required');
 
     if($this->form_validation->run() == TRUE)
@@ -330,6 +332,7 @@ class Admin extends CI_Controller{
         'site_id2' => $site_id,
         'qty' => $qty
       );
+      
       $this->M_admin->insert('tb_permintaan_masuk',$data);
       $this->M_admin->insert('tb_interest_insured',$data2);
 
