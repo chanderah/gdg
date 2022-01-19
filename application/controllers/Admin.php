@@ -306,6 +306,7 @@ class Admin extends CI_Controller{
       $amount_insured = $this->input->post('amount_insured',TRUE);
       $no_sertif = $this->input->post('no_sertif',TRUE);
       $keterangan = $this->input->post('keterangan',TRUE);
+      $qty = $this->input->post('qty',TRUE);
 
       $data = array(
         'dummy_id' => $dummy_id,
@@ -323,7 +324,14 @@ class Admin extends CI_Controller{
         'no_sertif' => $no_sertif,
         'keterangan' => $keterangan
       );
+
+      $data2 = array(
+        'dummy_id' => $dummy_id,
+        'site_id2' => $site_id,
+        'qty' => $qty
+      );
       $this->M_admin->insert('tb_permintaan_masuk',$data);
+      $this->M_admin->insert('tb_interest_insured',$data2);
 
       $this->session->set_flashdata('msg_berhasil','Data Barang Berhasil Ditambahkan');
       redirect(base_url('admin/form_barangmasuk'));
