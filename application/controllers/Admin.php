@@ -288,29 +288,40 @@ class Admin extends CI_Controller{
 
   public function proses_datamasuk_insert()
   {
-    $this->form_validation->set_rules('region','Kota','required');
-    $this->form_validation->set_rules('kecamatan','Kecamatan','required');
-    $this->form_validation->set_rules('desa','Desa','required');
-    $this->form_validation->set_rules('batch_','Batch','required');
+    $this->form_validation->set_rules('site_id','site_id','required');
 
     if($this->form_validation->run() == TRUE)
     {
+      $dummy_id = $this->input->post('dummy_id',TRUE);
       $site_id = $this->input->post('site_id',TRUE);
-      $provinsi = $this->input->post('provinsi',TRUE);
       $region = $this->input->post('region',TRUE);
+      $provinsi = $this->input->post('provinsi',TRUE);
+      $kabupaten = $this->input->post('kabupaten',TRUE);
       $kecamatan = $this->input->post('kecamatan',TRUE);
       $desa = $this->input->post('desa',TRUE);
       $paket = $this->input->post('paket',TRUE);
       $batch_ = $this->input->post('batch_',TRUE);
+      $ctrm = $this->input->post('ctrm',TRUE);
+      $ctsi = $this->input->post('ctsi',TRUE);
+      $amount_insured = $this->input->post('amount_insured',TRUE);
+      $no_sertif = $this->input->post('no_sertif',TRUE);
+      $keterangan = $this->input->post('keterangan',TRUE);
 
       $data = array(
-            'site_id' => $site_id,
-            'provinsi' => $provinsi,
-            'region' => $region,
-            'kecamatan' => $kecamatan,
-            'desa' => $desa,
-            'paket' => $paket,
-            'batch_' => $batch_
+        'dummy_id' => $dummy_id,
+        'site_id' => $site_id,
+        'region' => $region,
+        'provinsi' => $provinsi,
+        'kabupaten' => $kabupaten,
+        'kecamatan' => $kecamatan,
+        'desa' => $desa,
+        'paket' => $paket,
+        'batch_' => $batch_,
+        'ctrm' => $ctrm,
+        'ctsi' => $ctsi,
+        'amount_insured' => $amount_insured,
+        'no_sertif' => $no_sertif,
+        'keterangan' => $keterangan
       );
       $this->M_admin->insert('tb_permintaan_masuk',$data);
 
