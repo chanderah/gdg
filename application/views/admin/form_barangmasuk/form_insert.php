@@ -244,50 +244,6 @@
                 <div class="form-group" style="display:inline-block;">
                   
                 </div>
-                <div class="form-group">
-                  <label for="site_id" style="margin-left:220px;display:inline;">SITE ID</label>
-                  <input type="text" name="site_id" style="margin-left:37px;width:20%;display:inline;" class="form-control" value="" placeholder="Site ID">
-                </div>
-                <div class="form-group">
-                  <label for="provinsi" style="margin-left:220px;display:inline;">Tanggal</label>
-                  <input type="text" name="provinsi" style="margin-left:66px;width:20%;display:inline;" class="form-control form_datetime" placeholder="Klik Disini">
-                </div>
-                <div class="form-group" style="margin-bottom:40px;">
-                  <label for="desa" style="margin-left:220px;display:inline;">Kota</label>
-                  <select class="form-control" name="region" style="margin-left:75px;width:20%;display:inline;">
-                    <option value="">-- Pilih --</option>
-                    <option value="Aceh">Aceh</option>
-                    <option value="Bali">Bali</option>
-                    <option value="Bengkulu">Bengkulu</option>
-                    <option value="Jakarta">Jakarta Raya</option>
-                    <option value="Jambi">Jambi</option>
-                    <option value="Jawa Tengah">Jawa Tengah</option>
-                    <option value="Jawa Timur">Jawa Timur</option>
-                    <option value="Jawa Barat">Jawa Barat</option>
-                    <option value="Papua">Papua</option>
-                    <option value="Yogyakarta">Yogyakarta</option>
-                    <option value="Kalimantan Barat">Kalimantan Barat</option>
-                    <option value="Kalimantan Selatan">Kalimantan Selatan</option>
-                    <option value="Kalimantan Tengah">Kalimantan Tengah</option>
-                    <option value="Kalimantan Timur">Kalimantan Timur</option>
-                    <option value="Lampung">Lampung</option>
-                    <option value="NTB">Nusa Tenggara Barat</option>
-                    <option value="NTT">Nusa Tenggara Timur</option>
-                    <option value="Riau">Riau</option>
-                    <option value="Sulawesi Selatan">Sulawesi Selatan</option>
-                    <option value="Sulawesi Tengah">Sulawesi Tengah</option>
-                    <option value="Sulawesi Tenggara">Sulawesi Tenggara</option>
-                    <option value="Sumatera Barat">Sumatera Barat</option>
-                    <option value="Sumatera Utara">Sumatera Utara</option>
-                    <option value="Maluku">Maluku</option>
-                    <option value="Maluku Utara">Maluku Utara</option>
-                    <option value="Sulawesi Utara">Sulawesi Utara</option>
-                    <option value="Sulawesi Selatan">Sumatera Selatan</option>
-                    <option value="Banten">Banten</option>
-                    <option value="Gorontalo">Gorontalo</option>
-                    <option value="Bangka">Bangka Belitung</option>
-                  </select>
-                </div>
                 <div class="form-group" style="display:inline-block;">
                   <label for="kecamatan" style="width:87%;margin-left: 12px;">Kecamatan / Barcode</label>
                   <input type="text" name="kecamatan" style="width: 90%;margin-right: 67px;margin-left: 11px;" class="form-control" id="kecamatan" placeholder="Kecamatan">
