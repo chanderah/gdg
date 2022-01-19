@@ -237,29 +237,20 @@
                 <div class="form-group form-group-lg">
                   <label for="site_id" style="margin-left:15px;display:inline-block;">3. Jenis Barang yang Dikirim</label>
                   <input type="text" name="site_id" style="margin-left:15px;width:30%;display:inline;" class="form-control" placeholder="Jenis Barang">
-                  
                   <label for="qty" style="margin-left:20px;width:13%">Quantity</label>
                   <input type="number" name="qty" style="width:12%;margin-left:-80px;display:inline;" class="form-control" id="qty" placeholder="@ pcs">
                 </div>
-                <div class="form-group" style="display:inline-block;">
-                  
+                            
+                <div class="form-group form-group-lg">
+                  <label for="pengiriman" style="margin-left:15px;display:inline;">4. Pengiriman Melalui</label>
+                  <select class="form-control" name="pengiriman" style="margin-left:55px;width:50%;display:inline">
+                    <option value="">Pilih</option>
+                    <option value="Darat">Darat</option>
+                    <option value="Laut">Laut</option>
+                    <option value="Udara">Udara</option>
+                    <option value="Lainnya">Lainnya</option>
+                  </select>
                 </div>
-                <div class="form-group" style="display:inline-block;">
-                  <label for="kecamatan" style="width:87%;margin-left: 12px;">Kecamatan / Barcode</label>
-                  <input type="text" name="kecamatan" style="width: 90%;margin-right: 67px;margin-left: 11px;" class="form-control" id="kecamatan" placeholder="Kecamatan">
-                </div>
-                <div class="form-group" style="display:inline-block;">
-                  <label for="nama_Barang" style="width:73%;">Desa</label>
-                  <input type="text" name="desa" style="width:90%;margin-right: 67px;" class="form-control" id="nama_Barang" placeholder="Desa">
-              </div>
-                <div class="form-group" style="display:inline-block;">
-                  <label for="paket" style="width:73%;">Paket</label>
-              </div>
-              <div class="form-group" style="display:inline-block;">
-                <label for="batch_" style="width:73%;margin-left:33px;">Batch</label>
-                <input type="number" name="batch_" style="width:41%;margin-left:34px;margin-right:18px;" class="form-control" id="batch_">
-            </div>
-
               <!-- /.box-body -->
               <div class="box-footer" style="width:93%;">
                 <a type="button" class="btn btn-default" style="width:10%;margin-right:26%" onclick="history.back(-1)" name="btn_kembali"><i class="fa fa-arrow-left" aria-hidden="true"></i> Kembali</a>
