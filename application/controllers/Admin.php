@@ -279,9 +279,9 @@ class Admin extends CI_Controller{
     $this->load->view('admin/form_barangmasuk/form_update',$data);
   }
 
-  public function delete_data($site_id)
+  public function delete_data($dummy_id)
   {
-    $where = array('site_id' => $site_id);
+    $where = array('dummy_id' => $dummy_id);
     $this->M_admin->delete('tb_permintaan_masuk',$where);
     redirect(base_url('admin/tabel_barangmasuk'));
   }
@@ -496,7 +496,7 @@ class Admin extends CI_Controller{
   public function move_data()
   {
     $uri = $this->uri->segment(3);
-    $where = array( 'site_id' => $uri);
+    $where = array( 'dummy_id' => $uri);
     $data['list_data'] = $this->M_admin->get_data('tb_permintaan_masuk',$where);
     $data['list_satuan'] = $this->M_admin->select('tb_satuan');
     $data['avatar'] = $this->M_admin->get_data_gambar('tb_upload_gambar_user',$this->session->userdata('name'));
