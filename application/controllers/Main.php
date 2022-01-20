@@ -31,10 +31,7 @@ class Main extends CI_Controller {
                 'site_id2' => $site_id,
                 'bill_id' => $id,
                 'title' => $this->input->post("txtTitle")[$i],
-				'description' => $this->input->post("txtDescription")[$i],
-				'count' => $this->input->post("txtCount")[$i],
-				'amount' => $this->input->post("txtItemAmount")[$i],
-                'total' => $this->input->post("txtTotal")[$i],
+				'description' => $this->input->post("txtDescription")[$i]
             ];
             array_push($list,$data);
         }
@@ -43,7 +40,6 @@ class Main extends CI_Controller {
             'site_id' => $site_id,
             'id' => $id,
             'name' => $name,
-            'total' => $total,
             'status' => "1",
         ];
 
