@@ -167,7 +167,6 @@
                 }
             });
 
-//submit
             $('#form_add_to_cart').submit(function(e) {
                 e.preventDefault();
                 var data = $("#form_add_to_cart").serialize();
