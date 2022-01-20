@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>CRUD Database | Paket Barang</title>
+  <title>CRUD Database | Data Masuk</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -17,7 +17,7 @@
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="<?php echo base_url()?>assets/web_admin/dist/css/skins/_all-skins.min.css">
-
+  <link rel="stylesheet" href="<?php echo base_url()?>assets/datetimepicker/css/bootstrap-datetimepicker.css">
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -30,7 +30,6 @@
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
-
   <header class="main-header">
     <!-- Logo -->
     <a href="<?php echo base_url('admin')?>" class="logo">
@@ -54,7 +53,7 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <?php foreach($avatar as $a){ ?>
+              <?php foreach($avatar as $a){?>
               <img src="<?php echo base_url('assets/upload/user/img/'.$a->nama_file)?>" class="user-image" alt="User Image">
               <?php } ?>
               <span class="hidden-xs"><?=$this->session->userdata('name')?></span>
@@ -65,9 +64,10 @@
                 <?php foreach($avatar as $a){ ?>
                 <img src="<?php echo base_url('assets/upload/user/img/'.$a->nama_file)?>" class="img-circle" alt="User Image">
                 <?php } ?>
+
                 <p>
                   <?=$this->session->userdata('name')?> - Web Developer
-                  <small>Last Login : <?=$this->session->userdata('last_login')?></small>
+                  <small>Last Login: <?=$this->session->userdata('last_login')?></small>
                 </p>
               </li>
               <!-- Menu Body -->
@@ -120,11 +120,11 @@
           </a>
           <!-- <ul class="treeview-menu">
             <li><a href="<?php echo base_url()?>assets/web_admin/index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
-            <li><a href="<?php echo base_url('admin')?>"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
+            <li><a href="<?php echo base_url()?>assets/web_admin/index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
           </ul> -->
         </li>
 
-        <li class="treeview">
+        <li class="treeview active">
           <a href="#">
             <i class="fa fa-edit"></i> <span>Forms</span>
             <span class="pull-right-container">
@@ -132,7 +132,7 @@
                 </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?= base_url('admin/form_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tambah Data Masuk</a></li>
+            <li class="active"><a href="<?= base_url('admin/form_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tambah Data Masuk</a></li>
             <li><a href="<?= base_url('admin/form_satuan')?>"><i class="fa fa-circle-o"></i> Tambah Paket Barang</a></li>
           </ul>
         </li>
@@ -149,12 +149,13 @@
             <li><a href="<?= base_url('admin/tabel_satuan')?>"><i class="fa fa-circle-o"></i> Tabel Satuan</a></li>
           </ul>
         </li>
+        <li>
         <li class="header">LABELS</li>
         <li>
           <a href="<?php echo base_url('admin/profile')?>">
          <i class="fa fa-cogs" aria-hidden="true"></i> <span>Profile</span></a>
         </li>
-        <li class="active">
+        <li>
           <a href="<?php echo base_url('admin/users')?>">
          <i class="fa fa-fw fa-users" aria-hidden="true"></i> <span>Users</span></a>
         </li>
@@ -168,12 +169,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Update User
+        Input Data Masuk
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a href="#">Forms</a></li>
-        <li class="active">Paket Barang</li>
+        <li class="active">Data Barang</li>
       </ol>
     </section>
 
@@ -186,12 +187,12 @@
             <!-- general form elements -->
           <div class="box box-primary" style="width:94%;">
             <div class="box-header with-border">
-              <h3 class="box-title"><i class="fa fa-fw fa-user" aria-hidden="true"></i> Update Users Data</h3>
+              <h3 class="box-title"><i class="fa fa-archive" aria-hidden="true"></i> Tambah Data Masuk</h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->
             <div class="container">
-            <form action="<?=base_url('admin/proses_update_user')?>" role="form" method="post">
+            <form action="<?=base_url('admin/proses_datamasuk_insert')?>" role="form" method="post">
 
               <?php if($this->session->flashdata('msg_berhasil')){ ?>
                 <div class="alert alert-success alert-dismissible" style="width:91%">
@@ -208,40 +209,53 @@
             <?php } ?>
 
               <div class="box-body">
-                <?php foreach($list_data as $d){ ?>
-                  <input type="hidden" name="id" value="<?=$d->id?>">
-                <div class="form-group" style="display:block;">
-                  <label for="username" style="width:87%;margin-left: 0px;">Username</label>
-                  <input type="text" name="username" style="width: 30%;margin-right: 67px;margin-left: 0px;"  required="" class="form-control" id="username" value="<?=$d->username?>">
+                <div class="form-group">
+                  <label for="dummy_id" style="margin-left:15px;display:none;">ID</label>
+                  <input type="text" name="dummy_id" style="margin-left:37px;width:20%;display:none;" class="form-control" readonly="readonly" value="<?=random_string('alpha', 10);?><?=random_string('sha1');?>">
+                </div>  
+                
+		            <div class="form-group form-group-lg">
+                  <label for="site_id" style="margin-left:15px;display:inline;">1. Nama Tertanggung</label>
+                  <select class="form-control" name="the_insured" style="margin-left:58px;width:50%;display:inline">
+                    <option value="">Pilih</option>
+                    <option value="fiberHome">PT. FiberHome Technologies Indonesia and/or BAKTI 
+                      (Badan Aksesibilitas Telekomunikasi dan Informasi)</option>
+                    <option value="Lainnya">Lainnya</option>
+                  </select>
                 </div>
-                <div class="form-group" style="display:block;">
-                  <label for="email" style="width:73%;">Email</label>
-                  <input type="email" name="email" style="width:30%;margin-right: 67px;" class="form-control" id="email" required="" value="<?=$d->email?>">
-              </div>
-              <div class="form-group" style="display:block;">
-                <label for="role" style="width:73%;">Role</label>
-                <select class="form-control" name="role" style="width:11%;margin-right: 18px;">
-                  <?php if($d->role == 1){ ?>
-                  <option value="1" selected="">User Admin</option>
-                  <option value="0">User Biasa</option>
-                  <?php }else{ ?>
-                  <option value="1">User Admin</option>
-                  <option value="0" selected="">User Biasa</option>
-                  <?php } ?>
-                </select>
-            </div>
-            <?php } ?>
-              <!-- /.box-body -->
-              <?php if(isset($token_generate)){ ?>
-                <input type="hidden" name="token"  class="form-control" value="<?= $token_generate?>">
-              <?php }else {
-                redirect(base_url('admin/update_user'));
-              }?>
+               
+                <div class="form-group form-group-lg">
+                  <label for="site_id" style="margin-left:15px;display:inline;">2. Alamat</label>
+                  <select class="form-control" name="a_fiberHome" style="margin-left:132px;width:50%;display:inline">
+                    <option value="">Pilih</option>
+                    <option value="a_fiberHome">APL Tower, Jakarta Barat, RT.12/RW.6, Grogol, Grogol Petamburan, West Jakarta City, 
+                      Jakarta 11440</option>
+                    <option value="Lainnya">Lainnya</option>
+                  </select>
+                </div>
 
+                <div class="form-group form-group-lg">
+                  <label for="site_id" style="margin-left:15px;display:inline-block;">3. Jenis Barang yang Dikirim</label>
+                  <input type="text" name="site_id" style="margin-left:15px;width:30%;display:inline;" class="form-control" placeholder="Jenis Barang">
+                  <label for="qty" style="margin-left:20px;width:13%">Quantity</label>
+                  <input type="number" name="qty" style="width:12%;margin-left:-80px;display:inline;" class="form-control" id="qty" placeholder="@ pcs">
+                </div>
+                            
+                <div class="form-group form-group-lg">
+                  <label for="pengiriman" style="margin-left:15px;display:inline;">4. Pengiriman Melalui</label>
+                  <select class="form-control" name="pengiriman" style="margin-left:55px;width:50%;display:inline">
+                    <option value="">Pilih</option>
+                    <option value="Darat">Darat</option>
+                    <option value="Laut">Laut</option>
+                    <option value="Udara">Udara</option>
+                    <option value="Lainnya">Lainnya</option>
+                  </select>
+                </div>
+              <!-- /.box-body -->
               <div class="box-footer" style="width:93%;">
                 <a type="button" class="btn btn-default" style="width:10%;margin-right:26%" onclick="history.back(-1)" name="btn_kembali"><i class="fa fa-arrow-left" aria-hidden="true"></i> Kembali</a>
-                <a type="button" class="btn btn-info" style="width:13%;margin-right:29%" href="<?=base_url('admin/users')?>" name="btn_listusers"><i class="fa fa-table" aria-hidden="true"></i> Lihat Users</a>
-                <button type="submit" style="width:20%" class="btn btn-primary"><i class="fa fa-check" aria-hidden="true"></i> Submit</button>
+                <a type="button" class="btn btn-info" style="width:18%;margin-right:20%" href="<?=base_url('admin/tabel_barangmasuk')?>" name="btn_listbarang"><i class="fa fa-table" aria-hidden="true"></i> Lihat List Permintaan</a>
+                <button type="submit" style="width:20%" class="btn btn-success"><i class="fa fa-check" aria-hidden="true"></i> Submit</button>
               </div>
             </form>
           </div>
@@ -284,7 +298,6 @@
        <b>Version</b> 1
     </div>
     <strong>Copyright &copy; <?=date('Y')?></strong>
-    
   </footer>
 
    
@@ -303,7 +316,19 @@
   <script src="<?php echo base_url()?>assets/web_admin/bower_components/fastclick/lib/fastclick.js"></script>
   <!-- AdminLTE App -->
   <script src="<?php echo base_url()?>assets/web_admin/dist/js/adminlte.min.js"></script>
+  <script src="<?php echo base_url()?>assets/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
   <!-- AdminLTE for demo purposes -->
   <script src="<?php echo base_url()?>assets/web_admin/dist/js/demo.js"></script>
+
+  <script type="text/javascript">
+      $(".form_datetime").datetimepicker({
+        format: 'dd/mm/yyyy',
+        autoclose: true,
+        todayBtn: true,
+        pickTime: false,
+        minView: 2,
+        maxView: 4,
+      });
+  </script>
   </body>
   </html>

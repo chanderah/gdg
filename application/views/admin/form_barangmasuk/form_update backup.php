@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>CRUD Database | Paket Barang</title>
+  <title>CRUD Database | Data Masuk</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -62,7 +62,7 @@
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <?php foreach($avatar as $a){ ?>
+                <?php foreach($avatar as $a){?>
                 <img src="<?php echo base_url('assets/upload/user/img/'.$a->nama_file)?>" class="img-circle" alt="User Image">
                 <?php } ?>
                 <p>
@@ -136,7 +136,7 @@
             <li><a href="<?= base_url('admin/form_satuan')?>"><i class="fa fa-circle-o"></i> Tambah Paket Barang</a></li>
           </ul>
         </li>
-        <li class="treeview ">
+        <li class="treeview active">
           <a href="#">
             <i class="fa fa-table"></i> <span>Tables</span>
             <span class="pull-right-container">
@@ -144,17 +144,18 @@
                 </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?= base_url('admin/tabel_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tabel Data Masuk</a></li>
+            <li class="active"><a href="<?= base_url('admin/tabel_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tabel Data Masuk</a></li>
             <li><a href="<?= base_url('admin/tabel_barangkeluar')?>"><i class="fa fa-circle-o"></i> Tabel Data Keluar</a></li>
             <li><a href="<?= base_url('admin/tabel_satuan')?>"><i class="fa fa-circle-o"></i> Tabel Satuan</a></li>
           </ul>
         </li>
+        <li>
         <li class="header">LABELS</li>
         <li>
           <a href="<?php echo base_url('admin/profile')?>">
          <i class="fa fa-cogs" aria-hidden="true"></i> <span>Profile</span></a>
         </li>
-        <li class="active">
+        <li>
           <a href="<?php echo base_url('admin/users')?>">
          <i class="fa fa-fw fa-users" aria-hidden="true"></i> <span>Users</span></a>
         </li>
@@ -168,12 +169,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Update User
+        Update Data Masuk
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a href="#">Forms</a></li>
-        <li class="active">Paket Barang</li>
+        <li class="active">General Elements</li>
       </ol>
     </section>
 
@@ -186,19 +187,12 @@
             <!-- general form elements -->
           <div class="box box-primary" style="width:94%;">
             <div class="box-header with-border">
-              <h3 class="box-title"><i class="fa fa-fw fa-user" aria-hidden="true"></i> Update Users Data</h3>
+              <h3 class="box-title"><i class="fa fa-archive" aria-hidden="true"></i> Update Data Masuk</h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->
             <div class="container">
-            <form action="<?=base_url('admin/proses_update_user')?>" role="form" method="post">
-
-              <?php if($this->session->flashdata('msg_berhasil')){ ?>
-                <div class="alert alert-success alert-dismissible" style="width:91%">
-                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                    <strong>Success!</strong><br> <?php echo $this->session->flashdata('msg_berhasil');?>
-               </div>
-              <?php } ?>
+            <form action="<?=base_url('admin/proses_databarang_masuk_update')?>" role="form" method="post">
 
               <?php if(validation_errors()){ ?>
               <div class="alert alert-warning alert-dismissible">
@@ -208,40 +202,17 @@
             <?php } ?>
 
               <div class="box-body">
-                <?php foreach($list_data as $d){ ?>
-                  <input type="hidden" name="id" value="<?=$d->id?>">
-                <div class="form-group" style="display:block;">
-                  <label for="username" style="width:87%;margin-left: 0px;">Username</label>
-                  <input type="text" name="username" style="width: 30%;margin-right: 67px;margin-left: 0px;"  required="" class="form-control" id="username" value="<?=$d->username?>">
-                </div>
-                <div class="form-group" style="display:block;">
-                  <label for="email" style="width:73%;">Email</label>
-                  <input type="email" name="email" style="width:30%;margin-right: 67px;" class="form-control" id="email" required="" value="<?=$d->email?>">
-              </div>
-              <div class="form-group" style="display:block;">
-                <label for="role" style="width:73%;">Role</label>
-                <select class="form-control" name="role" style="width:11%;margin-right: 18px;">
-                  <?php if($d->role == 1){ ?>
-                  <option value="1" selected="">User Admin</option>
-                  <option value="0">User Biasa</option>
-                  <?php }else{ ?>
-                  <option value="1">User Admin</option>
-                  <option value="0" selected="">User Biasa</option>
-                  <?php } ?>
-                </select>
-            </div>
+                <div class="form-group">
+                  <?php foreach($data_barang_update as $d){ ?>
+                  <label for="site_id" style="margin-left:220px;display:inline;">SITE ID</label>
+                  <input type="text" name="site_id" style="margin-left:37px;width:20%;display:inline;" class="form-control" readonly="readonly" value="<?=$d->site_id?>">
+                  </div>
             <?php } ?>
               <!-- /.box-body -->
-              <?php if(isset($token_generate)){ ?>
-                <input type="hidden" name="token"  class="form-control" value="<?= $token_generate?>">
-              <?php }else {
-                redirect(base_url('admin/update_user'));
-              }?>
 
               <div class="box-footer" style="width:93%;">
-                <a type="button" class="btn btn-default" style="width:10%;margin-right:26%" onclick="history.back(-1)" name="btn_kembali"><i class="fa fa-arrow-left" aria-hidden="true"></i> Kembali</a>
-                <a type="button" class="btn btn-info" style="width:13%;margin-right:29%" href="<?=base_url('admin/users')?>" name="btn_listusers"><i class="fa fa-table" aria-hidden="true"></i> Lihat Users</a>
-                <button type="submit" style="width:20%" class="btn btn-primary"><i class="fa fa-check" aria-hidden="true"></i> Submit</button>
+                <a type="button" class="btn btn-default" style="width:10%" onclick="history.back(-1)" name="btn_kembali"><i class="fa fa-arrow-left" aria-hidden="true"></i> Kembali</a>
+                <button type="submit" style="width:20%;margin-left:689px;" class="btn btn-primary"><i class="fa fa-check" aria-hidden="true"></i> Submit</button>&nbsp;&nbsp;&nbsp;
               </div>
             </form>
           </div>

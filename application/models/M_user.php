@@ -13,6 +13,11 @@ class M_user extends CI_Model{
                     ->from($tabel)
                     ->get()->result();
   }
+
+  public function insert($tabel,$data)
+  {
+    $this->db->insert($tabel,$data);
+  }
 }
 
  ?>

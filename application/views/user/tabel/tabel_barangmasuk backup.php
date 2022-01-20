@@ -19,7 +19,7 @@
             <!-- /.box-header -->
             <!-- form start -->
             <div class="container">
-            <form action="<?=base_url('admin/proses_datamasuk_insert')?>" role="form" method="post">
+            <form action="<?=base_url('admin/proses_databarang_masuk_insert')?>" role="form" method="post">
               <?php if($this->session->flashdata('msg_berhasil')){ ?>
                 <div class="alert alert-success alert-dismissible" style="width:91%">
                     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -41,8 +41,8 @@
                   value="WG-<?=date("Y");?><?=random_string('numeric', 8);?>">
                 </div>
                 <div class="form-group">
-                  <label for="tanggal" style="margin-left:200px;display:inline;">Region</label>
-                  <input type="text" name="tanggal" style="margin-left:25px;width:50%;display:inline;" class="form-control form_datetime" placeholder="Klik Disini">
+                  <label for="provinsi" style="margin-left:200px;display:inline;">Region</label>
+                  <input type="text" name="provinsi" style="margin-left:25px;width:50%;display:inline;" class="form-control form_datetime" placeholder="Klik Disini">
                 </div>
                 <div class="form-group" style="margin-bottom:40px;">
                   <label for="desa" style="margin-left:200px;display:inline;">Provinsi</label>

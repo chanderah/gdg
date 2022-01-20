@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Admin - PT. JIS | Tabel Satuan</title>
+  <title>AdminLTE 2 | Table Paket</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -136,7 +136,7 @@
                 </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?= base_url('admin/form_datamasuk')?>"><i class="fa fa-circle-o"></i> Tambah Data Masuk</a></li>
+            <li><a href="<?= base_url('admin/form_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tambah Data Masuk</a></li>
             <li><a href="<?= base_url('admin/form_satuan')?>"><i class="fa fa-circle-o"></i> Tambah Paket Barang</a></li>
           </ul>
         </li>
@@ -288,8 +288,8 @@ jQuery(document).ready(function($){
       $('.btn-delete').on('click',function(){
           var getLink = $(this).attr('href');
           swal({
-                  title: 'Delete',
-                  text: 'Delete Data?',
+                  title: 'Delete Data',
+                  text: 'Yakin Ingin Menghapus Data ?',
                   html: true,
                   confirmButtonColor: '#d9534f',
                   showCancelButton: true,
