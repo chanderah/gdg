@@ -218,12 +218,6 @@
                   </select>
                 </div>
 
-                <div class="form-group form-group-lg">
-                  <label for="site_id">3. Jenis Barang yang Dikirim</label>
-                  <input type="text" name="site_id" style="margin-left:15px;width:50%;display:inline;" class="form-control" placeholder="Jenis Barang">
-                  <label for="qty" style="margin-left:20px;width:13%">Quantity</label>
-                  <input type="number" name="qty" style="width:12%;margin-left:-80px;display:inline;" class="form-control" id="qty" placeholder="@ pcs">
-                </div>
 
                 <table id="cart_table" class="table table-sm table-stripped table-hover">
                     <thead>

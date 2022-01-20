@@ -28,7 +28,7 @@ class Main extends CI_Controller {
         for($i=0; $i<count($title); $i++) {
             $data = [
                 //tb_site_desc
-                'site_id2' => $site_id,
+                //'site_id2' => $site_id,
                 'bill_id' => $id,
                 'title' => $this->input->post("txtTitle")[$i],
 				'description' => $this->input->post("txtDescription")[$i]
