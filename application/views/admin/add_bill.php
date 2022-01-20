@@ -15,70 +15,69 @@
     <div class="container">
         <h3>Dynamic Form Table Using CodeIgniter</h3>
         <h4>Create Bill</h4>
-        <div id="user_message"></div>
-        <form id="form_add_to_cart" method="post" autocomplete="off" accept-charset="utf-8"> 
-            <div class="form-group">
-            <input type="text" id="txtName" name="txtName" placeholder="Customer Name" required="required" class="form-control" />
-            </div>       
-            <table id="cart_table" class="table table-sm table-stripped table-hover">
-                <thead>
-                    <tr>
-                        <th width="19%">Title</th>
-                        <th width="19%">Description</th>
-                        <th width="19%">Count</th>
-                        <th width="19%">Amount</th>
-                        <th width="19%">Total</th>
-                        <th width="5%"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <div class="form-group">
-                                <input type="text" name="txtTitle[]" placeholder="Title" required="required" class="form-control"/>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="form-group">
-                                <input type="text" name="txtDescription[]" class="form-control" placeholder="Description" required="required"/>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="form-group">
-                                <input type="text" id="txtCount" name="txtCount[]" placeholder="Count" class="combat form-control" required="required" />
-                            </div>
-                        </td>
-                        <td>
-                            <div class="form-group">
-                                <input type="text" id="txtItemAmount" name="txtItemAmount[]" placeholder="Amount" class="combat form-control" required="required" />
-                            </div>
-                        </td>
-                        <td>
-                            <div class="form-group">
-                                <input type="text" id="txtTotal" name="txtTotal[]" placeholder="Total" class="forTotal form-control" readonly="readonly" />
-                            </div>
-                        </td>
-                        <td>
-                            <button id="addItem" name="addItem" type="button" class="btn btn-success btn-block btn-sm add_button"><i style="color:#fff" class="fa fa-plus-circle"></i></button>
-                            <button id="removeItem" name="removeItem" type="button" class="btn btn-danger btn-block btn-sm remove_button"><i style="color:#fff;" class="fa fa-trash-o"></i></button>
-                        </td>
-                    </tr>
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <td colspan="4" class="text-center">
-                            <input type="submit" id="btnSave" name="btnSave" value="Create" class="btn btn-md btn-success" />
-                        </td>
-                        <td>
-                            <div class="form-group">
-                                <input type="text" id="txtGrandTotal" name="txtGrandTotal" placeholder="Grand Total" class="forTotal form-control" readonly="readonly" />
-                            </div>
-                        </td>
-                        <td></td>
-                    </tr>
-                </tfoot>
-            </table>
-        </form>
+            <form id="form_insert_site" method="post" autocomplete="off" accept-charset="utf-8"> 
+                <div class="form-group">
+                    <input type="text" id="txtName" name="txtName" placeholder="Customer Name" required="required" class="form-control" />
+                </div>       
+                <table id="cart_table" class="table table-sm table-stripped table-hover">
+                    <thead>
+                        <tr>
+                            <th width="19%">Title</th>
+                            <th width="19%">Description</th>
+                            <th width="19%">Count</th>
+                            <th width="19%">Amount</th>
+                            <th width="19%">Total</th>
+                            <th width="5%"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="form-group">
+                                    <input type="text" name="txtTitle[]" placeholder="Title" required="required" class="form-control"/>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <input type="text" name="txtDescription[]" class="form-control" placeholder="Description" required="required"/>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <input type="text" id="txtCount" name="txtCount[]" placeholder="Count" class="combat form-control" required="required" />
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <input type="text" id="txtItemAmount" name="txtItemAmount[]" placeholder="Amount" class="combat form-control" required="required" />
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <input type="text" id="txtTotal" name="txtTotal[]" placeholder="Total" class="forTotal form-control" readonly="readonly" />
+                                </div>
+                            </td>
+                            <td>
+                                <button id="addItem" name="addItem" type="button" class="btn btn-success btn-block btn-sm add_button"><i style="color:#fff" class="fa fa-plus-circle"></i></button>
+                                <button id="removeItem" name="removeItem" type="button" class="btn btn-danger btn-block btn-sm remove_button"><i style="color:#fff;" class="fa fa-trash-o"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="4" class="text-center">
+                                <input type="submit" id="btnSave" name="btnSave" value="Create" class="btn btn-md btn-success" />
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <input type="text" id="txtGrandTotal" name="txtGrandTotal" placeholder="Grand Total" class="forTotal form-control" readonly="readonly" />
+                                </div>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </form>
     </div>
     
     <script src="<?php echo base_url("assets/js/jquery.min.js");?>"></script>
@@ -167,9 +166,9 @@
                 }
             });
 
-            $('#form_add_to_cart').submit(function(e) {
+            $('#form_insert_site').submit(function(e) {
                 e.preventDefault();
-                var data = $("#form_add_to_cart").serialize();
+                var data = $("#form_insert_site").serialize();
                 $.ajax({
                     type:"POST",
                     url:'<?php echo base_url("main/add_to_cart"); ?>',

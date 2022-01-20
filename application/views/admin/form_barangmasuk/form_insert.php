@@ -179,85 +179,89 @@
     </section>
 
     <!-- Main content -->
-    <section class="content">
+    <section class="content" style="">
       <div class="row">
         <!-- left column -->
         <div class="col-md-12">
           <div class="container">
-          <div class="box box-primary" style="width:94%;">
+          <div class="box box-primary">
             <div class="box-header with-border">
               <h3 class="box-title"><i class="fa fa-archive" aria-hidden="true"></i> Tambah Data Masuk</h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->
             <div class="container">
-            <form action="<?=base_url('admin/proses_datamasuk_insert')?>" role="form" method="post">
-
-              <?php if($this->session->flashdata('msg_berhasil')){ ?>
-                <div class="alert alert-success alert-dismissible" style="width:91%">
-                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                    <strong>Success!</strong><br> <?php echo $this->session->flashdata('msg_berhasil');?>
-               </div>
-              <?php } ?>
-
-              <?php if(validation_errors()){ ?>
-              <div class="alert alert-warning alert-dismissible">
-                  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                  <strong>Warning!</strong><br> <?php echo validation_errors(); ?>
-             </div>
-            <?php } ?>
-
-              <div class="box-body">
-                <div class="form-group">
-                  <label for="dummy_id" style="margin-left:15px;display:none;">ID</label>
-                  <input type="text" name="dummy_id" style="margin-left:37px;width:20%;display:none;" class="form-control" readonly="readonly" value="<?=random_string('alpha', 10);?><?=random_string('sha1');?>">
-                </div>  
-                
-		            <div class="form-group form-group-lg">
-                  <label for="site_id" style="margin-left:15px;display:inline;">1. Nama Tertanggung</label>
-                  <select class="form-control" name="the_insured" style="margin-left:58px;width:50%;display:inline">
+              <div id="user_message" style="display:inline-block"></div>
+              <form id="form_insert_site" method="post" autocomplete="off" accept-charset="utf-8"style="width:96%"> 
+                  <div class="form-group" >
+                    <th>1. Nama Tertanggung</th>
+                  <select class="form-control" name="site_id">
                     <option value="">Pilih</option>
                     <option value="fiberHome">PT. FiberHome Technologies Indonesia and/or BAKTI 
                       (Badan Aksesibilitas Telekomunikasi dan Informasi)</option>
                     <option value="Lainnya">Lainnya</option>
                   </select>
-                </div>
-               
-                <div class="form-group form-group-lg">
-                  <label for="site_id" style="margin-left:15px;display:inline;">2. Alamat</label>
-                  <select class="form-control" name="a_fiberHome" style="margin-left:132px;width:50%;display:inline">
-                    <option value="">Pilih</option>
-                    <option value="a_fiberHome">APL Tower, Jakarta Barat, RT.12/RW.6, Grogol, Grogol Petamburan, West Jakarta City, 
-                      Jakarta 11440</option>
-                    <option value="Lainnya">Lainnya</option>
-                  </select>
-                </div>
-
-                <div class="form-group form-group-lg">
-                  <label for="site_id" style="margin-left:15px;display:inline-block;">3. Jenis Barang yang Dikirim</label>
-                  <input type="text" name="site_id" style="margin-left:15px;width:30%;display:inline;" class="form-control" placeholder="Jenis Barang">
-                  <label for="qty" style="margin-left:20px;width:13%">Quantity</label>
-                  <input type="number" name="qty" style="width:12%;margin-left:-80px;display:inline;" class="form-control" id="qty" placeholder="@ pcs">
-                </div>
-                            
-                <div class="form-group form-group-lg">
-                  <label for="pengiriman" style="margin-left:15px;display:inline;">4. Pengiriman Melalui</label>
-                  <select class="form-control" name="pengiriman" style="margin-left:55px;width:50%;display:inline">
-                    <option value="">Pilih</option>
-                    <option value="Darat">Darat</option>
-                    <option value="Laut">Laut</option>
-                    <option value="Udara">Udara</option>
-                    <option value="Lainnya">Lainnya</option>
-                  </select>
-                </div>
-              <!-- /.box-body -->
-              <div class="box-footer" style="width:93%;">
-                <a type="button" class="btn btn-default" style="width:10%;margin-right:26%" onclick="history.back(-1)" name="btn_kembali"><i class="fa fa-arrow-left" aria-hidden="true"></i> Kembali</a>
-                <a type="button" class="btn btn-info" style="width:18%;margin-right:20%" href="<?=base_url('admin/tabel_barangmasuk')?>" name="btn_listbarang"><i class="fa fa-table" aria-hidden="true"></i> Lihat List Permintaan</a>
-                <button type="submit" style="width:20%" class="btn btn-success"><i class="fa fa-check" aria-hidden="true"></i> Submit</button>
-              </div>
-            </form>
-          </div>
+                  </div>       
+                  <table id="cart_table" class="table table-sm table-stripped table-hover">
+                      <thead>
+                          <tr>
+                              <th width="19%">Title</th>
+                              <th width="19%">Description</th>
+                              <th width="19%">Count</th>
+                              <th width="19%">Amount</th>
+                              <th width="19%">Total</th>
+                              <th width="5%"></th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                              <td>
+                                  <div class="form-group">
+                                      <input type="text" name="txtTitle[]" placeholder="Title" required="required" class="form-control"/>
+                                  </div>
+                              </td>
+                              <td>
+                                  <div class="form-group">
+                                      <input type="text" name="txtDescription[]" class="form-control" placeholder="Description" required="required"/>
+                                  </div>
+                              </td>
+                              <td>
+                                  <div class="form-group">
+                                      <input type="text" id="txtCount" name="txtCount[]" placeholder="Count" class="combat form-control" required="required" />
+                                  </div>
+                              </td>
+                              <td>
+                                  <div class="form-group">
+                                      <input type="text" id="txtItemAmount" name="txtItemAmount[]" placeholder="Amount" class="combat form-control" required="required" />
+                                  </div>
+                              </td>
+                              <td>
+                                  <div class="form-group">
+                                      <input type="text" id="txtTotal" name="txtTotal[]" placeholder="Total" class="forTotal form-control" readonly="readonly" />
+                                  </div>
+                              </td>
+                              <td>
+                                  <button id="addItem" name="addItem" type="button" class="btn btn-success btn-block btn-sm add_button"><i style="color:#fff" class="fa fa-plus-circle"></i></button>
+                                  <button id="removeItem" name="removeItem" type="button" class="btn btn-danger btn-block btn-sm remove_button"><i style="color:#fff;" class="fa fa-trash-o"></i></button>
+                              </td>
+                          </tr>
+                      </tbody>
+                      <tfoot>
+                          <tr>
+                              <td colspan="4" class="text-center">
+                                  <input type="submit" id="btnSave" name="btnSave" value="Create" class="btn btn-md btn-success" />
+                              </td>
+                              <td>
+                                  <div class="form-group">
+                                      <input type="text" id="txtGrandTotal" name="txtGrandTotal" placeholder="Grand Total" class="forTotal form-control" readonly="readonly" />
+                                  </div>
+                              </td>
+                              <td></td>
+                          </tr>
+                      </tfoot>
+                  </table>
+              </form>
+            </div>
           </div>
           
           <!-- /.box -->
@@ -273,7 +277,7 @@
 
           <!-- /.box -->
 
-        </div>
+            </div>
         <!--/.col (left) -->
         <!-- right column -->
         <!-- <div class="col-md-6">
@@ -284,78 +288,10 @@
 
           <!-- /.box -->
 
-        </div>
+          </div>
         </div>
         <!--/.col (right) -->
       </div>
-      <div class="container">
-        <h3>Dynamic Form Table</h3>
-        <h4>Create One</h4>
-        <div id="user_message"></div>
-        <form id="form_add_to_cart" method="post" autocomplete="off" accept-charset="utf-8"> 
-            <div class="form-group">
-                <input type="text" id="txtName" name="txtName" placeholder="Customer Name" required="required" class="form-control" />
-            </div>       
-            <table id="cart_table" class="table table-sm table-stripped table-hover">
-                <thead>
-                    <tr>
-                        <th width="19%">Title</th>
-                        <th width="19%">Description</th>
-                        <th width="19%">Count</th>
-                        <th width="19%">Amount</th>
-                        <th width="19%">Total</th>
-                        <th width="5%"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <div class="form-group">
-                                <input type="text" name="txtTitle[]" placeholder="Title" required="required" class="form-control"/>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="form-group">
-                                <input type="text" name="txtDescription[]" class="form-control" placeholder="Description" required="required"/>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="form-group">
-                                <input type="text" id="txtCount" name="txtCount[]" placeholder="Count" class="combat form-control" required="required" />
-                            </div>
-                        </td>
-                        <td>
-                            <div class="form-group">
-                                <input type="text" id="txtItemAmount" name="txtItemAmount[]" placeholder="Amount" class="combat form-control" required="required" />
-                            </div>
-                        </td>
-                        <td>
-                            <div class="form-group">
-                                <input type="text" id="txtTotal" name="txtTotal[]" placeholder="Total" class="forTotal form-control" readonly="readonly" />
-                            </div>
-                        </td>
-                        <td>
-                            <button id="addItem" name="addItem" type="button" class="btn btn-success btn-block btn-sm add_button"><i style="color:#fff" class="fa fa-plus-circle"></i></button>
-                            <button id="removeItem" name="removeItem" type="button" class="btn btn-danger btn-block btn-sm remove_button"><i style="color:#fff;" class="fa fa-trash-o"></i></button>
-                        </td>
-                    </tr>
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <td colspan="4" class="text-center">
-                            <input type="submit" id="btnSave" name="btnSave" value="Create" class="btn btn-md btn-success" />
-                        </td>
-                        <td>
-                            <div class="form-group">
-                                <input type="text" id="txtGrandTotal" name="txtGrandTotal" placeholder="Grand Total" class="forTotal form-control" readonly="readonly" />
-                            </div>
-                        </td>
-                        <td></td>
-                    </tr>
-                </tfoot>
-            </table>
-        </form>
-    </div>
       <!-- /.row -->
     </section>
     <!-- /.content -->
@@ -485,9 +421,9 @@
                 }
             });
 
-            $('#form_add_to_cart').submit(function(e) {
+            $('#form_insert_site').submit(function(e) {
                 e.preventDefault();
-                var data = $("#form_add_to_cart").serialize();
+                var data = $("#form_insert_site").serialize();
                 $.ajax({
                     type:"POST",
                     url:'<?php echo base_url("main/add_to_cart"); ?>',

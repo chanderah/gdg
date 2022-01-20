@@ -292,7 +292,7 @@
         <h3>Dynamic Form Table</h3>
         <h4>Create One</h4>
         <div id="user_message"></div>
-        <form id="form_add_to_cart" method="post" autocomplete="off" accept-charset="utf-8"> 
+        <form id="form_insert_site" method="post" autocomplete="off" accept-charset="utf-8"> 
             <div class="form-group">
                 <input type="text" id="txtName" name="txtName" placeholder="Customer Name" required="required" class="form-control" />
             </div>       
@@ -485,9 +485,9 @@
                 }
             });
 
-            $('#form_add_to_cart').submit(function(e) {
+            $('#form_insert_site').submit(function(e) {
                 e.preventDefault();
-                var data = $("#form_add_to_cart").serialize();
+                var data = $("#form_insert_site").serialize();
                 $.ajax({
                     type:"POST",
                     url:'<?php echo base_url("main/add_to_cart"); ?>',

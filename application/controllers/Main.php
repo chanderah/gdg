@@ -19,6 +19,7 @@ class Main extends CI_Controller {
         
         $name =$this->input->post("txtName");
         $total =$this->input->post("txtGrandTotal");
+        $site_id =$this->input->post("site_id");
         
         $id = $max_id=$this->m_admin->get_max_id('id','tb_site_in');
 
@@ -26,6 +27,8 @@ class Main extends CI_Controller {
         $title =$this->input->post("txtTitle");
         for($i=0; $i<count($title); $i++) {
             $data = [
+                //tb_site_desc
+                'site_id2' => $site_id,
                 'bill_id' => $id,
                 'title' => $this->input->post("txtTitle")[$i],
 				'description' => $this->input->post("txtDescription")[$i],
@@ -36,6 +39,8 @@ class Main extends CI_Controller {
             array_push($list,$data);
         }
         $data = [
+            //tb_site_in
+            'site_id' => $site_id,
             'id' => $id,
             'name' => $name,
             'total' => $total,
