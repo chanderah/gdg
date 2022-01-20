@@ -251,23 +251,6 @@
                     <option value="Lainnya">Lainnya</option>
                   </select>
                 </div>
-                <div class="form-group form-group-lg">
-                    <input type="text" style="margin-left:55px;width:50%" name="txtTitle[]" placeholder="Title" required="required" class="form-control"/>
-                </div>
-                <div class="form-group">
-                    <input type="text" name="txtDescription[]" class="form-control" placeholder="Description" required="required"/>
-                </div>
-                <div class="form-group">
-                    <input type="text" id="txtCount" name="txtCount[]" placeholder="Count" class="combat form-control" required="required" />
-                </div>
-                <div class="form-group">
-                    <input type="text" id="txtItemAmount" name="txtItemAmount[]" placeholder="Amount" class="combat form-control" required="required" />
-                </div>
-                <div class="form-group">
-                    <input type="text" id="txtTotal" name="txtTotal[]" placeholder="Total" class="forTotal form-control" readonly="readonly" />
-                </div>
-                <button id="addItem" name="addItem" type="button" class="btn btn-success btn-block btn-sm add_button"><i style="color:#fff" class="fa fa-plus-circle"></i></button>
-                <button id="removeItem" name="removeItem" type="button" class="btn btn-danger btn-block btn-sm remove_button"><i style="color:#fff;" class="fa fa-trash-o"></i></button>
               <!-- /.box-body -->
               <div class="box-footer" style="width:93%;">
                 <a type="button" class="btn btn-default" style="width:10%;margin-right:26%" onclick="history.back(-1)" name="btn_kembali"><i class="fa fa-arrow-left" aria-hidden="true"></i> Kembali</a>
