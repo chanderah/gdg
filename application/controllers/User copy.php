@@ -20,7 +20,7 @@ class User extends CI_Controller
       $this->load->view('user/templates/footer.php');
       $data['avatar'] = $this->M_admin->get_data_gambar('tb_upload_gambar_user',$this->session->userdata('name'));
       $data['jumlahPermintaan'] = $this->M_admin->numrows('tb_permintaan_masuk');
-      $data['jumlahSite'] = $this->M_admin->numrows('tb_site_id');      
+      $data['jumlahSite'] = $this->M_admin->numrows('tb_site_out');      
       $data['dataUser'] = $this->M_admin->numrows('user');
     }else {
       $this->load->view('login/login');
@@ -104,7 +104,7 @@ class User extends CI_Controller
   public function tabel_barangkeluar()
   {
     $this->load->view('user/templates/header.php');
-    $data['list_data'] = $this->M_user->select('tb_site_id');
+    $data['list_data'] = $this->M_user->select('tb_site_out');
     $this->load->view('user/tabel/tabel_barangkeluar',$data);
     $this->load->view('user/templates/footer.php');
   }

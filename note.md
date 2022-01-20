@@ -1,6 +1,5 @@
     $this->form_validation->set_rules('region','Kota','required');
 
-
 tanggal
 <div class="form-group">
     <label for="tanggal" style="margin-left:220px;display:inline;">Region</label>

@@ -20,7 +20,7 @@ class Main extends CI_Controller {
         $name =$this->input->post("txtName");
         $total =$this->input->post("txtGrandTotal");
         
-        $id = $max_id=$this->m_admin->get_max_id('id','bill_info');
+        $id = $max_id=$this->m_admin->get_max_id('id','tb_site_in');
 
         $list = array();
         $title =$this->input->post("txtTitle");
@@ -42,8 +42,8 @@ class Main extends CI_Controller {
             'status' => "1",
         ];
 
-        if( $this->m_admin->insert_into_table("bill_info", $data) and 
-            $this->m_admin->insert_batch_into_table("bill_cart_info", $list)) {
+        if( $this->m_admin->insert_into_table("tb_site_in", $data) and 
+            $this->m_admin->insert_batch_into_table("tb_site_desc", $list)) {
                 echo '<div class="alert alert-success alert-dismissible">
                         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                         <strong>Success!</strong> Bill is created successfully.

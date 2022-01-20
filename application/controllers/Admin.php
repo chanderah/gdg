@@ -12,8 +12,8 @@ class Admin extends CI_Controller{
   public function index(){
     if($this->session->userdata('status') == 'login' && $this->session->userdata('role') == 1){
       $data['avatar'] = $this->M_admin->get_data_gambar('tb_upload_gambar_user',$this->session->userdata('name'));
-      $data['jumlahPermintaan'] = $this->M_admin->numrows('tb_permintaan_masuk');
-      $data['jumlahSite'] = $this->M_admin->numrows('tb_site_id');      
+      $data['jumlahPermintaan'] = $this->M_admin->numrows('tb_site_in');
+      $data['jumlahSite'] = $this->M_admin->numrows('tb_site_out');      
       $data['dataUser'] = $this->M_admin->numrows('user');
       $this->load->view('admin/index',$data);
     }else {
@@ -264,7 +264,7 @@ class Admin extends CI_Controller{
   public function tabel_barangmasuk()
   {
     $data = array(
-              'list_data' => $this->M_admin->select('tb_permintaan_masuk'),
+              'list_data' => $this->M_admin->select('tb_site_in'),
               'avatar'    => $this->M_admin->get_data_gambar('tb_upload_gambar_user',$this->session->userdata('name'))
             );
     $this->load->view('admin/tabel/tabel_barangmasuk',$data);
@@ -273,7 +273,7 @@ class Admin extends CI_Controller{
   public function update_datamasuk($dummy_id)
   {
     $where = array('dummy_id' => $dummy_id);
-    $data['data_barang_update'] = $this->M_admin->get_data('tb_permintaan_masuk',$where);
+    $data['data_barang_update'] = $this->M_admin->get_data('tb_site_in',$where);
     $data['list_satuan'] = $this->M_admin->select('tb_satuan');
     $data['avatar'] = $this->M_admin->get_data_gambar('tb_upload_gambar_user',$this->session->userdata('name'));
     $this->load->view('admin/form_barangmasuk/form_update',$data);
@@ -282,15 +282,14 @@ class Admin extends CI_Controller{
   public function delete_data($dummy_id)
   {
     $where = array('dummy_id' => $dummy_id);
-    $this->M_admin->delete('tb_permintaan_masuk',$where);
+    $this->M_admin->delete('tb_site_in',$where);
     redirect(base_url('admin/tabel_barangmasuk'));
   }
 
   public function proses_datamasuk_insert()
   {
-    
     $this->load->helper('string');
-    $this->form_validation->set_rules('site_id','site_id','required');
+    $this->form_validation->set_rules('dummy_id','Dummy ID','required');
 
     if($this->form_validation->run() == TRUE)
     {
@@ -333,8 +332,8 @@ class Admin extends CI_Controller{
         'qty' => $qty
       );
       
-      $this->M_admin->insert('tb_permintaan_masuk',$data);
-      $this->M_admin->insert('tb_interest_insured',$data2);
+      $this->M_admin->insert('tb_site_in',$data);
+      $this->M_admin->insert('tb_site_desc',$data2);
 
       $this->session->set_flashdata('msg_berhasil','Data Barang Berhasil Ditambahkan');
       redirect(base_url('admin/form_barangmasuk'));
@@ -387,7 +386,7 @@ class Admin extends CI_Controller{
             'keterangan' => $keterangan,
             //'terbit' => $terbit
       );
-      $this->M_admin->update('tb_permintaan_masuk',$data,$where);
+      $this->M_admin->update('tb_site_in',$data,$where);
       $this->session->set_flashdata('msg_berhasil','Data Barang Berhasil Diupdate');
       redirect(base_url('admin/tabel_barangmasuk'));
     }else{
@@ -497,7 +496,7 @@ class Admin extends CI_Controller{
   {
     $uri = $this->uri->segment(3);
     $where = array( 'dummy_id' => $uri);
-    $data['list_data'] = $this->M_admin->get_data('tb_permintaan_masuk',$where);
+    $data['list_data'] = $this->M_admin->get_data('tb_site_in',$where);
     $data['list_satuan'] = $this->M_admin->select('tb_satuan');
     $data['avatar'] = $this->M_admin->get_data_gambar('tb_upload_gambar_user',$this->session->userdata('name'));
     $this->load->view('admin/perpindahan_data/form_update',$data);
@@ -505,7 +504,7 @@ class Admin extends CI_Controller{
 
   public function proses_data_keluar()
   {
-    $this->form_validation->set_rules('provinsi','Provinsi','trim|required');
+    $this->form_validation->set_rules('dummy_id','Dummy ID','trim|required');
     if($this->form_validation->run() === TRUE)
     {
       $dummy_id = $this->input->post('dummy_id',TRUE);
@@ -542,12 +541,12 @@ class Admin extends CI_Controller{
             'keterangan' => $keterangan
             //'terbit' => $terbit
       );
-        $this->M_admin->insert('tb_site_id',$data);
-        $this->M_admin->delete('tb_permintaan_masuk',$where);
+        $this->M_admin->insert('tb_site_out',$data);
+        $this->M_admin->delete('tb_site_in',$where);
         $this->session->set_flashdata('msg_berhasil_keluar','Data Berhasil Keluar');
         redirect(base_url('admin/tabel_barangmasuk'));
     }else {
-        $this->load->view('perpindahan_data/form_update/'.$site_id);
+        $this->load->view('perpindahan_data/form_update/'.$dummy_id);
     }
 
   }
@@ -562,7 +561,7 @@ class Admin extends CI_Controller{
 
   public function tabel_barangkeluar()
   {
-    $data['list_data'] = $this->M_admin->select('tb_site_id');
+    $data['list_data'] = $this->M_admin->select('tb_site_out');
     $data['avatar'] = $this->M_admin->get_data_gambar('tb_upload_gambar_user',$this->session->userdata('name'));
     $this->load->view('admin/tabel/tabel_barangkeluar',$data);
   }

@@ -106,7 +106,7 @@ class Report extends CI_Controller
     $tgl2 = $this->uri->segment(5);
     $tgl3 = $this->uri->segment(6);
     $ls   = array('site_id' => $id ,'provinsi' => $tgl1.'/'.$tgl2.'/'.$tgl3);
-    $data = $this->M_admin->get_data('tb_site_id',$ls);
+    $data = $this->M_admin->get_data('tb_site_out',$ls);
 
     $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 

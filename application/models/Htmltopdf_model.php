@@ -4,12 +4,12 @@ class Htmltopdf_model extends CI_Model
  function fetch()
  {
   $this->db->order_by('site_id', 'region');
-  return $this->db->get('tb_site_id');
+  return $this->db->get('tb_site_out');
  }
  function fetch_single_details($site_id)
  {
   $this->db->where('site_id', $site_id);
-  $data = $this->db->get('tb_site_id');
+  $data = $this->db->get('tb_site_out');
   $output = '<table width="100%" cellspacing="5" cellpadding="5">';
   foreach($data->result() as $row)
   {
