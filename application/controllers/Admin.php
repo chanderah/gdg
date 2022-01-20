@@ -12,8 +12,8 @@ class Admin extends CI_Controller{
   public function index(){
     if($this->session->userdata('status') == 'login' && $this->session->userdata('role') == 1){
       $data['avatar'] = $this->M_admin->get_data_gambar('tb_upload_gambar_user',$this->session->userdata('name'));
-      $data['jumlahPermintaan'] = $this->M_admin->numrows('tb_site_in');
-      $data['jumlahSite'] = $this->M_admin->numrows('tb_site_out');      
+      $data['jumlahPermintaan'] = $this->M_admin->numrows('tb_permintaan_masuk');
+      $data['jumlahSite'] = $this->M_admin->numrows('tb_site_id');      
       $data['dataUser'] = $this->M_admin->numrows('user');
       $this->load->view('admin/index',$data);
     }else {
@@ -264,7 +264,7 @@ class Admin extends CI_Controller{
   public function tabel_barangmasuk()
   {
     $data = array(
-              'list_data' => $this->M_admin->select('tb_site_in'),
+              'list_data' => $this->M_admin->select('tb_permintaan_masuk'),
               'avatar'    => $this->M_admin->get_data_gambar('tb_upload_gambar_user',$this->session->userdata('name'))
             );
     $this->load->view('admin/tabel/tabel_barangmasuk',$data);
@@ -273,7 +273,7 @@ class Admin extends CI_Controller{
   public function update_datamasuk($dummy_id)
   {
     $where = array('dummy_id' => $dummy_id);
-    $data['data_barang_update'] = $this->M_admin->get_data('tb_site_in',$where);
+    $data['data_barang_update'] = $this->M_admin->get_data('tb_permintaan_masuk',$where);
     $data['list_satuan'] = $this->M_admin->select('tb_satuan');
     $data['avatar'] = $this->M_admin->get_data_gambar('tb_upload_gambar_user',$this->session->userdata('name'));
     $this->load->view('admin/form_barangmasuk/form_update',$data);
@@ -282,7 +282,7 @@ class Admin extends CI_Controller{
   public function delete_data($dummy_id)
   {
     $where = array('dummy_id' => $dummy_id);
-    $this->M_admin->delete('tb_site_in',$where);
+    $this->M_admin->delete('tb_permintaan_masuk',$where);
     redirect(base_url('admin/tabel_barangmasuk'));
   }
 
@@ -333,8 +333,8 @@ class Admin extends CI_Controller{
         'qty' => $qty
       );
       
-      $this->M_admin->insert('tb_site_in',$data);
-      $this->M_admin->insert('tb_site_desc',$data2);
+      $this->M_admin->insert('tb_permintaan_masuk',$data);
+      $this->M_admin->insert('tb_interest_insured',$data2);
 
       $this->session->set_flashdata('msg_berhasil','Data Barang Berhasil Ditambahkan');
       redirect(base_url('admin/form_barangmasuk'));
@@ -387,7 +387,7 @@ class Admin extends CI_Controller{
             'keterangan' => $keterangan,
             //'terbit' => $terbit
       );
-      $this->M_admin->update('tb_site_in',$data,$where);
+      $this->M_admin->update('tb_permintaan_masuk',$data,$where);
       $this->session->set_flashdata('msg_berhasil','Data Barang Berhasil Diupdate');
       redirect(base_url('admin/tabel_barangmasuk'));
     }else{
@@ -497,7 +497,7 @@ class Admin extends CI_Controller{
   {
     $uri = $this->uri->segment(3);
     $where = array( 'dummy_id' => $uri);
-    $data['list_data'] = $this->M_admin->get_data('tb_site_in',$where);
+    $data['list_data'] = $this->M_admin->get_data('tb_permintaan_masuk',$where);
     $data['list_satuan'] = $this->M_admin->select('tb_satuan');
     $data['avatar'] = $this->M_admin->get_data_gambar('tb_upload_gambar_user',$this->session->userdata('name'));
     $this->load->view('admin/perpindahan_data/form_update',$data);
@@ -542,8 +542,8 @@ class Admin extends CI_Controller{
             'keterangan' => $keterangan
             //'terbit' => $terbit
       );
-        $this->M_admin->insert('tb_site_out',$data);
-        $this->M_admin->delete('tb_site_in',$where);
+        $this->M_admin->insert('tb_site_id',$data);
+        $this->M_admin->delete('tb_permintaan_masuk',$where);
         $this->session->set_flashdata('msg_berhasil_keluar','Data Berhasil Keluar');
         redirect(base_url('admin/tabel_barangmasuk'));
     }else {
@@ -562,7 +562,7 @@ class Admin extends CI_Controller{
 
   public function tabel_barangkeluar()
   {
-    $data['list_data'] = $this->M_admin->select('tb_site_out');
+    $data['list_data'] = $this->M_admin->select('tb_site_id');
     $data['avatar'] = $this->M_admin->get_data_gambar('tb_upload_gambar_user',$this->session->userdata('name'));
     $this->load->view('admin/tabel/tabel_barangkeluar',$data);
   }

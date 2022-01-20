@@ -19,8 +19,8 @@ class User extends CI_Controller
       $this->load->view('user/index');
       $this->load->view('user/templates/footer.php');
       $data['avatar'] = $this->M_admin->get_data_gambar('tb_upload_gambar_user',$this->session->userdata('name'));
-      $data['jumlahPermintaan'] = $this->M_admin->numrows('tb_site_in');
-      $data['jumlahSite'] = $this->M_admin->numrows('tb_site_out');      
+      $data['jumlahPermintaan'] = $this->M_admin->numrows('tb_permintaan_masuk');
+      $data['jumlahSite'] = $this->M_admin->numrows('tb_site_id');      
       $data['dataUser'] = $this->M_admin->numrows('user');
     }else {
       $this->load->view('login/login');
@@ -91,7 +91,7 @@ class User extends CI_Controller
   public function tabel_barangmasuk()
   {
     $this->load->view('user/templates/header.php');
-    $data['list_data'] = $this->M_user->select('tb_site_in');
+    $data['list_data'] = $this->M_user->select('tb_permintaan_masuk');
     $this->load->view('user/tabel/tabel_barangmasuk',$data);
     $this->load->view('user/templates/footer.php');
   }
@@ -104,7 +104,7 @@ class User extends CI_Controller
   public function tabel_barangkeluar()
   {
     $this->load->view('user/templates/header.php');
-    $data['list_data'] = $this->M_user->select('tb_site_out');
+    $data['list_data'] = $this->M_user->select('tb_site_id');
     $this->load->view('user/tabel/tabel_barangkeluar',$data);
     $this->load->view('user/templates/footer.php');
   }
@@ -137,7 +137,7 @@ class User extends CI_Controller
           'batch_' => $batch_
         );
 
-        $this->M_user->insert('tb_site_in',$data);
+        $this->M_user->insert('tb_permintaan_masuk',$data);
         //$this->M_user->update_password('user',$where,$data);
 
         $this->session->set_flashdata('msg_berhasil','Data Berhasil Ditambahkan');
