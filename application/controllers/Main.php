@@ -17,9 +17,10 @@ class Main extends CI_Controller {
     
     public function add_to_cart() {
         
-        $name =$this->input->post("txtName");
+        $name =$this->input->post("site_id");
         $total =$this->input->post("txtGrandTotal");
         $site_id =$this->input->post("site_id");
+        $dummy_id =$this->input->post("dummy_id");
         
         $id = $max_id=$this->m_admin->get_max_id('id','tb_site_in');
 
@@ -30,6 +31,7 @@ class Main extends CI_Controller {
                 //tb_site_desc
                 //'site_id2' => $site_id,
                 'bill_id' => $id,
+                'dummy_id' => $dummy_id,
                 'title' => $this->input->post("txtTitle")[$i],
 				'description' => $this->input->post("txtDescription")[$i]
             ];
@@ -37,6 +39,7 @@ class Main extends CI_Controller {
         }
         $data = [
             //tb_site_in
+            'dummy_id' => $dummy_id,
             'site_id' => $site_id,
             'id' => $id,
             'name' => $name,
@@ -45,6 +48,7 @@ class Main extends CI_Controller {
 
         if( $this->m_admin->insert_into_table("tb_site_in", $data) and 
             $this->m_admin->insert_batch_into_table("tb_site_desc", $list)) {
+                
                 echo '<div class="alert alert-success alert-dismissible">
                         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                         <strong>Success!</strong> Bill is created successfully.

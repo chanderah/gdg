@@ -193,14 +193,17 @@
             <div class="container">
               <div id="user_message" style="display:inline-block"></div>
               <form id="form_insert_site" method="post" autocomplete="off" accept-charset="utf-8"style="width:95%;margin-left:10px">   
-                <div>                
+                <div>      
+                <div class="form-group" style="display:inline-block; margin-left:75px">
+                  <button type="reset" class="btn btn-basic" name="btn_reset" style="width:95px;margin-left:-70px;"><i class="fa fa-eraser" aria-hidden="true"></i> Reset</button>
+                </div>          
                   <label for="dummy_id" style="display:none;">ID</label>
                   <input type="text" name="dummy_id" style="margin-left:37px;width:20%;display:none;" class="form-control" readonly="readonly" value="<?=random_string('alpha', 10);?><?=random_string('sha1');?>">
                 </div>  
                 
 		            <div class="form-group form-group-lg">
                   <label for="site_id">1. Nama Tertanggung</label>
-                  <select class="form-control" name="the_insured">
+                  <select class="form-control" name="site_id">
                     <option value="">Pilih</option>
                     <option value="fiberHome">PT. FiberHome Technologies Indonesia and/or BAKTI 
                       (Badan Aksesibilitas Telekomunikasi dan Informasi)</option>
@@ -210,14 +213,13 @@
                
                 <div class="form-group form-group-lg">
                   <label for="site_id">2. Alamat</label>
-                  <select class="form-control" name="a_fiberHome">
+                  <select class="form-control" name="site_id">
                     <option value="">Pilih</option>
                     <option value="a_fiberHome">APL Tower, Jakarta Barat, RT.12/RW.6, Grogol, Grogol Petamburan, West Jakarta City, 
                       Jakarta 11440</option>
                     <option value="Lainnya">Lainnya</option>
                   </select>
                 </div>
-
 
                 <table id="cart_table" class="table table-sm table-stripped table-hover">
                     <thead>
@@ -251,12 +253,17 @@
                     <tfoot>
                         <tr>
                             <td colspan="4" class="text-center">
-                                <input type="submit" id="btnSave" name="btnSave" value="Create" class="btn btn-md btn-success" />
                             </td>
                             <td></td>
                         </tr>
                     </tfoot>
                 </table>
+                <div class="box-footer" style="width:100%; margin-left:25px; margin-bottom:10px">
+                  <a type="button" class="btn btn-default" style="width:10%;margin-right:26%" onclick="history.back(-1)" name="btn_kembali"><i class="fa fa-arrow-left" aria-hidden="true"></i> Kembali</a>
+                  <a type="button" class="btn btn-info" style="width:18%;margin-right:20%" href="<?=base_url('admin/tabel_barangmasuk')?>" name="btn_listbarang">
+                  <i class="fa fa-table" aria-hidden="true"></i> Lihat List Permintaan</a>
+                  <button type="submit" input type="submit" style="width:20%" id="btnSave" class="btn btn-md btn-success"><i class="fa fa-check" aria-hidden="true"></i>Create</button>
+                </div>
               </form>
             </div>
           </div>
