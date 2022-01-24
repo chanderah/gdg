@@ -196,27 +196,27 @@
                 <div class="form-group" style="display:inline-block; margin-left:75px">
                   <button type="reset" class="btn btn-basic" name="btn_reset" style="width:95px;margin-left:-70px;"><i class="fa fa-eraser" aria-hidden="true"></i> Reset</button>
                 </div>                 
-		            <div class="form-group form-group-lg">
+                <div class="form-group form-group-lg col-md-12">
                   <label for="site_id">1. Nama Tertanggung</label>
-                  <select class="form-control" name="site_id">
-                    <option value="">Pilih</option>
-                    <option value="fiberHome">PT. FiberHome Technologies Indonesia and/or BAKTI 
-                      (Badan Aksesibilitas Telekomunikasi dan Informasi)</option>
-                    <option value="Lainnya">Lainnya</option>
-                  </select>
+                    <select id="site_id" class="form-control">
+                      <option selected>Choose...</option>
+                      <option value="fiberHome">PT. FiberHome Technologies Indonesia and/or BAKTI 
+                        (Badan Aksesibilitas Telekomunikasi dan Informasi)</option>
+                      <option value="Lainnya">Lainnya</option>
+                    </select>
                 </div>
                
-                <div class="form-group form-group-lg">
+                <div class="form-group form-group-lg col-md-12">
                   <label for="site_id">2. Alamat</label>
-                  <select class="form-control" name="site_id">
-                    <option value="">Pilih</option>
-                    <option value="a_fiberHome">APL Tower, Jakarta Barat, RT.12/RW.6, Grogol, Grogol Petamburan, West Jakarta City, 
-                      Jakarta 11440</option>
-                    <option value="Lainnya">Lainnya</option>
-                  </select>
+                    <select class="form-control" name="site_id">
+                      <option selected>Choose...</option>
+                      <option value="a_fiberHome">APL Tower, Jakarta Barat, RT.12/RW.6, Grogol, Grogol Petamburan, West Jakarta City, 
+                        Jakarta 11440</option>
+                      <option value="Lainnya">Lainnya</option>
+                    </select>
                 </div>
 
-                <table id="cart_table" class="table table-sm table-stripped table-hover">
+                <table id="cart_table" class="table table-sm table-stripped table-hover" style="margin-left:7px;width:99%">
                     <thead>
                         <tr>
                             <th width="80%">3. Jenis Barang yang Dikirim</th>
@@ -246,31 +246,65 @@
                         </tr>
                     </tbody>
                 </table>
-                <div class="form-group form-group-lg">
+                <div class="form-group form-group-lg col-md-12" style="margin-top:-30px">
                   <label for="site_id">4. Pengiriman Melalui</label>
-                  <input type="text" name="txtTitle[]" placeholder="Jenis Barang" required="required" class="form-control"/>
+                  <input type="text" placeholder="Jenis Barang" required="required" class="form-control"/>
 
-                </div>
-                <div class="form-group form-group-lg form-inline" style="margin-top:25px">
-                  <label for="site_id" style="margin-right:10px">5. Tempat Pemberangkatan</label>
-                  <input type="text" name="txtTitle[]" placeholder="Dari" required="required" class="form-control" style="width:36%;"/>
-                  <label for="site_id"style="margin-left:10px;margin-right:8px">Tujuan Akhir</label>
-                  <input type="text" name="txtTitle[]" placeholder="Ke" required="required" class="form-control"style="width:36%;"/>
-
-                </div>
-
-                <div class="form-group form-group-lg form-inline">
-                  <label for="site_id">6. Tanggal Keberangkatan</label>
-                  <input type="text" name="txtTitle[]" placeholder="Jenis Barang" required="required" class="form-control"/>
                 </div>
                 
-                <div class="box-footer" style="width:100%; margin-left:25px; margin-bottom:10px">
+                <div class="form-group form-group-lg col-md-6">
+                  <label for="inputEmail4">5. Tempat Keberangkatan</label>
+                  <input type="text" class="form-control" id="inputEmail4" placeholder="Dari">
+                </div>
+                <div class="form-group form-group-lg col-md-6">
+                  <label for="inputPassword4">Tujuan Akhir</label>
+                  <input type="text" class="form-control" id="inputPassword4" placeholder="Ke">
+                </div>
+
+                <div class="form-group form-group-lg col-md-12">
+                  <label for="site_id">6. Tanggal Keberangkatan</label>
+                  <input type="text" placeholder="Jenis Barang" required="required" class="form-control"/>
+                </div>
+
+                <div class="form-group form-group-lg col-md-12">
+                  <label for="site_id">7. Nilai Barang yang Diangkut</label>
+                  <input type="text" placeholder="Jenis Barang" required="required" class="form-control"/>
+                </div>
+
+                <div class="form-group form-group-lg col-md-12">
+                  <label for="site_id">8. Lampiran Data Pendukung</label>
+                </div>
+                <div class="form-group form-group-lg col-md-4">
+                  <label for="inputEmail4">Bill of Lading (B/L)</label>
+                  <input type="text" class="form-control" id="inputEmail4" placeholder="Dari">
+                </div>
+                <div class="form-group form-group-lg col-md-4">
+                  <label for="inputPassword4">Letter of Credit (L/C) *</label>
+                  <input type="text" class="form-control" id="inputPassword4" placeholder="Ke">
+                </div>
+                <div class="form-group form-group-lg col-md-4">
+                  <label for="inputPassword4">Invoice</label>
+                  <input type="text" class="form-control" id="inputPassword4" placeholder="Ke">
+                </div>
+                <div class="form-group form-group-lg col-md-6">
+                  <label for="inputPassword4">Packing List</label>
+                  <input type="text" class="form-control" id="inputPassword4" placeholder="Ke">
+                </div>
+                <div class="form-group form-group-lg col-md-6">
+                  <label for="inputPassword4">Delivery Order (DO)</label>
+                  <input type="text" class="form-control" id="inputPassword4" placeholder="Ke">
+                </div>
+                
+                
+                <div class="box-footer col-md-12" style="width:100%; margin-left:30px; margin-bottom:10px; margin-top:5px">
                   <a type="button" class="btn btn-default" style="width:10%;margin-right:26%" onclick="history.back(-1)" name="btn_kembali"><i class="fa fa-arrow-left" aria-hidden="true"></i> Kembali</a>
                   <a type="button" class="btn btn-info" style="width:18%;margin-right:20%" href="<?=base_url('admin/tabel_barangmasuk')?>" name="btn_listbarang">
                   <i class="fa fa-table" aria-hidden="true"></i> Lihat List Permintaan</a>
                   <button type="submit" input type="submit" style="width:20%" id="btnSave" class="btn btn-md btn-success"><i class="fa fa-check" aria-hidden="true"></i>Create</button>
                 </div>
               </form>
+
+              
             </div>
           </div>
           
