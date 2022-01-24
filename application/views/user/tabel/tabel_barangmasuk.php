@@ -38,7 +38,10 @@
                 <div class="form-group form-group-lg" style="display:inline-block;">
                   <button type="reset" class="btn btn-basic" name="btn_reset" style="width:100px;"><i class="fa fa-eraser" aria-hidden="true"></i> Reset</button>
                 </div>
-
+                </div>          
+                  <label for="dummy_id" style="display:none;">ID</label>
+                  <input type="text" name="dummy_id" style="margin-left:37px;width:20%;display:none;" class="form-control" readonly="readonly" value="<?=random_string('alpha', 10);?><?=random_string('sha1');?>">
+                </div>  
                 <div class="form-group form-group-lg">
                 <label for="the_insured" style="margin-left:0px;display:inline;">1. Nama Tertanggung</label>
                   <select class="form-control" name="the_insured" style="margin-left:150px;width:50%;display:inline">

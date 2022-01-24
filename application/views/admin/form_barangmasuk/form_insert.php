@@ -197,8 +197,8 @@
                 <div class="form-group" style="display:inline-block; margin-left:75px">
                   <button type="reset" class="btn btn-basic" name="btn_reset" style="width:95px;margin-left:-70px;"><i class="fa fa-eraser" aria-hidden="true"></i> Reset</button>
                 </div>          
-                  <label for="dummy_id" style="display:none;">ID</label>
-                  <input type="text" name="dummy_id" style="margin-left:37px;width:20%;display:none;" class="form-control" readonly="readonly" value="<?=random_string('alpha', 10);?><?=random_string('sha1');?>">
+                  <label for="dummy_id" style="display:inline;">ID</label>
+                  <input type="text" name="dummy_id" style="margin-left:37px;width:20%;display:inline;" class="form-control" readonly="readonly" value="<?=random_string('alpha', 10);?><?=random_string('sha1');?>">
                 </div>  
                 
 		            <div class="form-group form-group-lg">
@@ -409,22 +409,6 @@
         var display_bill_table = "";
         $(document).ready(function() {
 
-            display_bill_table = $('#display_bill_table').DataTable({
-                "ajax": {
-                    url : '<?php echo base_url("main/get_display_bills"); ?>',
-					type : 'GET'
-                },
-            });
-
-            $('#display_bill_table tbody').on( 'click', 'button', function () {
-                if(this.name == "btnDelete") {
-                    var isDelete = confirm("Once you delete the Bill, it will remove permanantly.");
-                    if(isDelete) {
-                        delete_bill(this.id);
-                    } 
-                }
-            });
-
             $('#form_insert_site').submit(function(e) {
                 e.preventDefault();
                 var data = $("#form_insert_site").serialize();
@@ -440,41 +424,8 @@
                 });
             });
             //end
-
-            $('#cart_table').keyup(function(e) {
-                calculate_total();
-            });
         });
 
-        function delete_bill(id) {
-            $.ajax({
-                    type:"POST",
-                    url:'<?php echo base_url("main/delet_single_bill"); ?>',
-                    data: {_id:id},
-                    success: function(data) {
-                        $("#user_message").html(data);
-                        display_bill_table.ajax.reload();
-                    },
-                });
-        }
-
-        function calculate_total() {
-            var grand_total = 0;
-            $('#cart_table> tbody> tr').each(function(index, tr) { 
-                var sum = 0;
-                var amount = count = 0;
-                $(this).find('.combat').each(function(inner_index) {
-                    if(inner_index == 0) count = $(this).val();               
-                    if(inner_index == 1) amount = $(this).val();     
-                    if(amount != 0 && count != 0) {
-                        sum = parseFloat(count) * parseFloat(amount);;
-                    }
-                });
-                $('.forTotal',this).val(sum); 
-                grand_total += sum; 
-            });
-            $("#txtGrandTotal").val(grand_total);
-        }
     </script>
   </body>
 

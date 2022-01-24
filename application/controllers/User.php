@@ -119,30 +119,43 @@ class User extends CI_Controller
 
   public function proses_datamasuk_insert()
   {
-        $site_id = $this->input->post('site_id',TRUE);
-        $provinsi = $this->input->post('provinsi',TRUE);
-        $region = $this->input->post('region',TRUE);
-        $kecamatan = $this->input->post('kecamatan',TRUE);
-        $desa = $this->input->post('desa',TRUE);
-        $paket = $this->input->post('paket',TRUE);
-        $batch_ = $this->input->post('batch_',TRUE);
-       
-        $data = array(
-          'site_id' => $site_id,
-          'provinsi' => $provinsi,
-          'region' => $region,
-          'kecamatan' => $kecamatan,
-          'desa' => $desa,
-          'paket' => $paket,
-          'batch_' => $batch_
-        );
+    $this->form_validation->set_rules('dummy_id','dummy_id','required');
 
-        $this->M_user->insert('tb_site_in',$data);
-        //$this->M_user->update_password('user',$where,$data);
+    if($this->form_validation->run() == TRUE)
+    {
+      $dummy_id = $this->input->post('dummy_id',TRUE);
+      $site_id = $this->input->post('site_id',TRUE);
+      $provinsi = $this->input->post('provinsi',TRUE);
+      $region = $this->input->post('region',TRUE);
+      $kecamatan = $this->input->post('kecamatan',TRUE);
+      $desa = $this->input->post('desa',TRUE);
+      $paket = $this->input->post('paket',TRUE);
+      $batch_ = $this->input->post('batch_',TRUE);
+  
+      $data = array(
+            'dummy_id' => $dummy_id,
+            'site_id' => $site_id,
+            'provinsi' => $provinsi,
+            'region' => $region,
+            'kecamatan' => $kecamatan,
+            'desa' => $desa,
+            'paket' => $paket,
+            'batch_' => $batch_
+      );
 
-        $this->session->set_flashdata('msg_berhasil','Data Berhasil Ditambahkan');
-        redirect(base_url('user/index'));
-    
+      $this->M_admin->insert('tb_site_in',$data);
+
+      $this->session->set_flashdata('msg_berhasil','Data Barang Berhasil Ditambahkan');
+      redirect(base_url('user/index'));
+    }else {
+      //$this->load->view('user/tabel/tabel_barangmasuk');
+      $this->tabel_barangmasuk();
+      //$this->load->view('user/tabel/tabel_barangmasuk',data);
+      $this->session->set_flashdata('msg_error_gambar','Data Gagal');
+
+    }
+
+
   }
 
 }
