@@ -193,14 +193,9 @@
             <div class="container">
               <div id="user_message" style="display:inline-block"></div>
               <form id="form_insert_site" method="post" autocomplete="off" accept-charset="utf-8"style="width:95%;margin-left:10px">   
-                <div>      
                 <div class="form-group" style="display:inline-block; margin-left:75px">
                   <button type="reset" class="btn btn-basic" name="btn_reset" style="width:95px;margin-left:-70px;"><i class="fa fa-eraser" aria-hidden="true"></i> Reset</button>
-                </div>          
-                  <label for="dummy_id" style="display:inline;">ID</label>
-                  <input type="text" name="dummy_id" style="margin-left:37px;width:20%;display:inline;" class="form-control" readonly="readonly" value="<?=random_string('alpha', 10);?><?=random_string('sha1');?>">
-                </div>  
-                
+                </div>                 
 		            <div class="form-group form-group-lg">
                   <label for="site_id">1. Nama Tertanggung</label>
                   <select class="form-control" name="site_id">
@@ -250,14 +245,25 @@
                             </td>
                         </tr>
                     </tbody>
-                    <tfoot>
-                        <tr>
-                            <td colspan="4" class="text-center">
-                            </td>
-                            <td></td>
-                        </tr>
-                    </tfoot>
                 </table>
+                <div class="form-group form-group-lg">
+                  <label for="site_id">4. Pengiriman Melalui</label>
+                  <input type="text" name="txtTitle[]" placeholder="Jenis Barang" required="required" class="form-control"/>
+
+                </div>
+                <div class="form-group form-group-lg form-inline" style="margin-top:25px">
+                  <label for="site_id" style="margin-right:10px">5. Tempat Pemberangkatan</label>
+                  <input type="text" name="txtTitle[]" placeholder="Dari" required="required" class="form-control" style="width:36%;"/>
+                  <label for="site_id"style="margin-left:10px;margin-right:8px">Tujuan Akhir</label>
+                  <input type="text" name="txtTitle[]" placeholder="Ke" required="required" class="form-control"style="width:36%;"/>
+
+                </div>
+
+                <div class="form-group form-group-lg form-inline">
+                  <label for="site_id">6. Tanggal Keberangkatan</label>
+                  <input type="text" name="txtTitle[]" placeholder="Jenis Barang" required="required" class="form-control"/>
+                </div>
+                
                 <div class="box-footer" style="width:100%; margin-left:25px; margin-bottom:10px">
                   <a type="button" class="btn btn-default" style="width:10%;margin-right:26%" onclick="history.back(-1)" name="btn_kembali"><i class="fa fa-arrow-left" aria-hidden="true"></i> Kembali</a>
                   <a type="button" class="btn btn-info" style="width:18%;margin-right:20%" href="<?=base_url('admin/tabel_barangmasuk')?>" name="btn_listbarang">

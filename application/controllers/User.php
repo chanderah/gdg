@@ -119,11 +119,14 @@ class User extends CI_Controller
 
   public function proses_datamasuk_insert()
   {
-    $this->form_validation->set_rules('dummy_id','dummy_id','required');
+    $this->form_validation->set_rules('site_id','site_id','required');
 
     if($this->form_validation->run() == TRUE)
-    {
-      $dummy_id = $this->input->post('dummy_id',TRUE);
+    {        
+      $sha1 = random_string('alpha', 10);
+      $sha2 = random_string('sha1');
+      $dummy_id = $sha1.$sha2;
+      
       $site_id = $this->input->post('site_id',TRUE);
       $provinsi = $this->input->post('provinsi',TRUE);
       $region = $this->input->post('region',TRUE);
