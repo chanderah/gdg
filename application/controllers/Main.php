@@ -20,10 +20,11 @@ class Main extends CI_Controller {
         $name =$this->input->post("site_id");
         $total =$this->input->post("txtGrandTotal");
         $site_id =$this->input->post("site_id");
-        //$dummy_id =$this->input->post("dummy_id");
         $sha1 = random_string('alpha', 10);
         $sha2 = random_string('sha1');
+
         $dummy_id = $sha1.$sha2;
+        $the_insured =$this->input->post("site_id");
         
         $id = $max_id=$this->m_admin->get_max_id('id','tb_site_in');
 
@@ -43,7 +44,9 @@ class Main extends CI_Controller {
         $data = [
             //tb_site_in
             'dummy_id' => $dummy_id,
-            'site_id' => $site_id,
+            'the_insured' => $the_insured,
+            
+            //'site_id' => $site_id,
             'id' => $id,
             'name' => $name,
             'status' => "1",

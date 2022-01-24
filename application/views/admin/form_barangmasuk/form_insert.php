@@ -197,8 +197,8 @@
                   <button type="reset" class="btn btn-basic" name="btn_reset" style="width:95px;margin-left:-70px;"><i class="fa fa-eraser" aria-hidden="true"></i> Reset</button>
                 </div>                 
                 <div class="form-group form-group-lg col-md-12">
-                  <label for="site_id">1. Nama Tertanggung</label>
-                    <select id="site_id" class="form-control">
+                  <label for="the_insured">1. Nama Tertanggung</label>
+                    <select id="the_insured" class="form-control">
                       <option selected>Choose...</option>
                       <option value="fiberHome">PT. FiberHome Technologies Indonesia and/or BAKTI 
                         (Badan Aksesibilitas Telekomunikasi dan Informasi)</option>
@@ -207,8 +207,8 @@
                 </div>
                
                 <div class="form-group form-group-lg col-md-12">
-                  <label for="site_id">2. Alamat</label>
-                    <select class="form-control" name="site_id">
+                  <label for="address_">2. Alamat</label>
+                    <select class="form-control" name="address_">
                       <option selected>Choose...</option>
                       <option value="a_fiberHome">APL Tower, Jakarta Barat, RT.12/RW.6, Grogol, Grogol Petamburan, West Jakarta City, 
                         Jakarta 11440</option>
@@ -247,52 +247,51 @@
                     </tbody>
                 </table>
                 <div class="form-group form-group-lg col-md-12" style="margin-top:-30px">
-                  <label for="site_id">4. Pengiriman Melalui</label>
-                  <input type="text" placeholder="Jenis Barang" required="required" class="form-control"/>
-
+                  <label for="conveyance">4. Pengiriman Melalui</label>
+                  <input type="text" name="conveyance" placeholder="Darat / Laut / Udara" required="required" class="form-control" />
                 </div>
                 
                 <div class="form-group form-group-lg col-md-6">
-                  <label for="inputEmail4">5. Tempat Keberangkatan</label>
-                  <input type="text" class="form-control" id="inputEmail4" placeholder="Dari">
+                  <label for="destination_from">5. Tempat Keberangkatan</label>
+                  <input type="text" name="destination_from" class="form-control" id="inputEmail4" placeholder="Dari">
                 </div>
                 <div class="form-group form-group-lg col-md-6">
-                  <label for="inputPassword4">Tujuan Akhir</label>
-                  <input type="text" class="form-control" id="inputPassword4" placeholder="Ke">
+                  <label for="destination_to">Tujuan Akhir</label>
+                  <input type="text" class="form-control" id="destination_to" placeholder="Ke">
                 </div>
 
                 <div class="form-group form-group-lg col-md-12">
-                  <label for="site_id">6. Tanggal Keberangkatan</label>
-                  <input type="text" placeholder="Jenis Barang" required="required" class="form-control"/>
+                  <label for="sailing_date">6. Tanggal Keberangkatan</label>
+                  <input type="text" placeholder="Tanggal Keberangkatan" name= "sailing_date" required="required" class="form-control"/>
                 </div>
 
                 <div class="form-group form-group-lg col-md-12">
-                  <label for="site_id">7. Nilai Barang yang Diangkut</label>
-                  <input type="text" placeholder="Jenis Barang" required="required" class="form-control"/>
+                  <label for="amount_insured">7. Nilai Barang yang Diangkut</label>
+                  <input type="text" name="amount_insured" placeholder="Nilai Barang" required="required" class="form-control"/>
                 </div>
 
                 <div class="form-group form-group-lg col-md-12">
-                  <label for="site_id">8. Lampiran Data Pendukung</label>
+                  <label for="lampiran">8. Lampiran Data Pendukung</label>
                 </div>
                 <div class="form-group form-group-lg col-md-4">
-                  <label for="inputEmail4">Bill of Lading (B/L)</label>
-                  <input type="text" class="form-control" id="inputEmail4" placeholder="Dari">
+                  <label for="lampiran_BL">Bill of Lading (B/L)</label>
+                  <input type="text" class="form-control" id="lampiran_BL" placeholder="B/L">
                 </div>
                 <div class="form-group form-group-lg col-md-4">
-                  <label for="inputPassword4">Letter of Credit (L/C) *</label>
-                  <input type="text" class="form-control" id="inputPassword4" placeholder="Ke">
+                  <label for="lampiran_LC">Letter of Credit (L/C) *</label>
+                  <input type="text" class="form-control" id="inputPassword4" placeholder="L/C">
                 </div>
                 <div class="form-group form-group-lg col-md-4">
-                  <label for="inputPassword4">Invoice</label>
-                  <input type="text" class="form-control" id="inputPassword4" placeholder="Ke">
+                  <label for="lampiran_invoice">Invoice</label>
+                  <input type="text" class="form-control" id="inputPassword4" placeholder="Invoice">
                 </div>
                 <div class="form-group form-group-lg col-md-6">
-                  <label for="inputPassword4">Packing List</label>
-                  <input type="text" class="form-control" id="inputPassword4" placeholder="Ke">
+                  <label for="lampiran_packinglist">Packing List</label>
+                  <input type="text" class="form-control" id="inputPassword4" placeholder="Packing List">
                 </div>
                 <div class="form-group form-group-lg col-md-6">
-                  <label for="inputPassword4">Delivery Order (DO)</label>
-                  <input type="text" class="form-control" id="inputPassword4" placeholder="Ke">
+                  <label for="lampiran_DO">Delivery Order (DO)</label>
+                  <input type="text" class="form-control" id="inputPassword4" placeholder="DO">
                 </div>
                 
                 
