@@ -345,7 +345,7 @@ class Admin extends CI_Controller{
 
   public function proses_datamasuk_update()
   {
-    $this->form_validation->set_rules('site_id','SITE ID','required');
+    $this->form_validation->set_rules('dummy_id','dummy_id','required');
     //$this->form_validation->set_rules('kecamatan','Kecamatan','required');
     //$this->form_validation->set_rules('desa','Desa','required');
     //$this->form_validation->set_rules('batch_','Batch','required');
@@ -495,7 +495,7 @@ class Admin extends CI_Controller{
   public function move_data()
   {
     $uri = $this->uri->segment(3);
-    $where = array( 'dummy_id' => $uri);
+    $where = array('dummy_id' => $uri);
     $data['list_data'] = $this->M_admin->get_data('tb_site_in',$where);
     $data['list_satuan'] = $this->M_admin->select('tb_satuan');
     $data['avatar'] = $this->M_admin->get_data_gambar('tb_upload_gambar_user',$this->session->userdata('name'));

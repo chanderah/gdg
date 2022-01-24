@@ -198,7 +198,7 @@
                 </div>                 
                 <div class="form-group form-group-lg col-md-12">
                   <label for="the_insured">1. Nama Tertanggung</label>
-                    <select id="the_insured" class="form-control">
+                    <select name="the_insured" class="form-control">
                       <option selected>Choose...</option>
                       <option value="fiberHome">PT. FiberHome Technologies Indonesia and/or BAKTI 
                         (Badan Aksesibilitas Telekomunikasi dan Informasi)</option>
@@ -229,12 +229,12 @@
                     <tbody>
                         <tr>
                             <td>
-                                <div class="form-group">
+                                <div class="form-group form-group-lg">
                                     <input type="text" name="txtTitle[]" placeholder="Jenis Barang" required="required" class="form-control"/>
                                 </div>
                             </td> 
                             <td>
-                                <div class="form-group">
+                                <div class="form-group form-group-lg">
                                     <input type="number" name="txtDescription[]" class="form-control" placeholder="@ pcs" required="required"/>
                                 </div>
                             </td>
@@ -246,23 +246,29 @@
                         </tr>
                     </tbody>
                 </table>
-                <div class="form-group form-group-lg col-md-12" style="margin-top:-30px">
+
+                <div class="form-group form-group-lg col-md-12">
                   <label for="conveyance">4. Pengiriman Melalui</label>
-                  <input type="text" name="conveyance" placeholder="Darat / Laut / Udara" required="required" class="form-control" />
+                    <select class="form-control" name="conveyance">
+                      <option selected>Choose...</option>
+                      <option value="Darat">Darat</option>
+                      <option value="Laut">Laut</option>
+                      <option value="Udara">Udara</option>
+                    </select>
                 </div>
                 
                 <div class="form-group form-group-lg col-md-6">
                   <label for="destination_from">5. Tempat Keberangkatan</label>
-                  <input type="text" name="destination_from" class="form-control" id="inputEmail4" placeholder="Dari">
+                  <input type="text" name="destination_from" class="form-control" placeholder="Dari">
                 </div>
                 <div class="form-group form-group-lg col-md-6">
                   <label for="destination_to">Tujuan Akhir</label>
-                  <input type="text" class="form-control" id="destination_to" placeholder="Ke">
+                  <input type="text" class="form-control" name="destination_to" placeholder="Ke">
                 </div>
 
                 <div class="form-group form-group-lg col-md-12">
                   <label for="sailing_date">6. Tanggal Keberangkatan</label>
-                  <input type="text" placeholder="Tanggal Keberangkatan" name= "sailing_date" required="required" class="form-control"/>
+                  <input type="text" placeholder="Tanggal Keberangkatan" name="sailing_date" required="required" class="form-control"/>
                 </div>
 
                 <div class="form-group form-group-lg col-md-12">
@@ -275,25 +281,32 @@
                 </div>
                 <div class="form-group form-group-lg col-md-4">
                   <label for="lampiran_BL">Bill of Lading (B/L)</label>
-                  <input type="text" class="form-control" id="lampiran_BL" placeholder="B/L">
+                  <input type="text" class="form-control" name="lampiran_BL" placeholder="B/L">
                 </div>
                 <div class="form-group form-group-lg col-md-4">
                   <label for="lampiran_LC">Letter of Credit (L/C) *</label>
-                  <input type="text" class="form-control" id="inputPassword4" placeholder="L/C">
+                  <input type="text" class="form-control" name="lampiran_LC" placeholder="L/C">
                 </div>
                 <div class="form-group form-group-lg col-md-4">
                   <label for="lampiran_invoice">Invoice</label>
-                  <input type="text" class="form-control" id="inputPassword4" placeholder="Invoice">
+                  <input type="text" class="form-control" name="lampiran_invoice" placeholder="Invoice">
                 </div>
                 <div class="form-group form-group-lg col-md-6">
                   <label for="lampiran_packinglist">Packing List</label>
-                  <input type="text" class="form-control" id="inputPassword4" placeholder="Packing List">
+                  <input type="text" class="form-control" name="lampiran_packinglist" placeholder="Packing List">
                 </div>
                 <div class="form-group form-group-lg col-md-6">
                   <label for="lampiran_DO">Delivery Order (DO)</label>
-                  <input type="text" class="form-control" id="inputPassword4" placeholder="DO">
-                </div>
-                
+                  <input type="text" class="form-control" name="lampiran_DO" placeholder="DO">
+                </div>                <div class="form-group form-group-lg col-md-12">
+                  <label for="address_">2. Alamat</label>
+                    <select class="form-control" name="address_">
+                      <option selected>Choose...</option>
+                      <option value="a_fiberHome">APL Tower, Jakarta Barat, RT.12/RW.6, Grogol, Grogol Petamburan, West Jakarta City, 
+                        Jakarta 11440</option>
+                      <option value="Lainnya">Lainnya</option>
+                    </select>
+                </div>                
                 
                 <div class="box-footer col-md-12" style="width:100%; margin-left:30px; margin-bottom:10px; margin-top:5px">
                   <a type="button" class="btn btn-default" style="width:10%;margin-right:26%" onclick="history.back(-1)" name="btn_kembali"><i class="fa fa-arrow-left" aria-hidden="true"></i> Kembali</a>
