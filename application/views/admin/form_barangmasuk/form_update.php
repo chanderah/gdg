@@ -185,14 +185,14 @@
         <div class="col-md-12">
           <div class="container">
             <!-- general form elements -->
-          <div class="box box-primary" style="width:94%;">
+          <div class="box box-primary">
             <div class="box-header with-border">
               <h3 class="box-title"><i class="fa fa-archive" aria-hidden="true"></i> Update Data Masuk</h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->
             <div class="container">
-            <form action="<?=base_url('admin/proses_datamasuk_update')?>" role="form" method="post">
+            <form action="<?=base_url('admin/proses_datamasuk_update')?>" role="form" method="post" style="width:95%;margin-left:10px">
 
               <?php if(validation_errors()){ ?>
               <div class="alert alert-warning alert-dismissible">
@@ -200,82 +200,79 @@
                   <strong>Warning!</strong><br> <?php echo validation_errors(); ?>
              </div>
             <?php } ?>
-
               <div class="box-body">
-              <?php foreach($data_barang_update as $d){ ?>
-                <div class="form-group">
-                  <label for="dummy_id" style="display:none;">ID</label>
-                  <input type="text" name="dummy_id" style="margin-left:37px;width:20%;display:none;" class="form-control" readonly="readonly" value="<?=$d->dummy_id?>">
-                </div> 
-                <div class="form-group">
-                  <label for="site_id" style="display:inline;">SITE ID</label>
-                  <input type="text" name="site_id" style="margin-left:37px;width:20%;display:inline;" class="form-control" value="<?=$d->site_id?>">
-                </div>
-                <div class="form-group">
-                  <label for="region" style="display:inline;">Region</label>
-                  <input type="text" name="region" style="margin-left:37px;width:20%;display:inline;" class="form-control"   value="<?=$d->region?>">
-                </div>
-                <div class="form-group">
-                  <label for="provinsi" style="display:inline;">Provinsi</label>
-                  <input type="text" name="provinsi" style="margin-left:37px;width:20%;display:inline;" class="form-control"   value="<?=$d->provinsi?>">
-                </div>
-                <div class="form-group">
-                  <label for="kabupaten" style="display:inline;">Kabupaten</label>
-                  <input type="text" name="kabupaten" style="margin-left:37px;width:20%;display:inline;" class="form-control"   value="<?=$d->kabupaten?>">
-                </div>
-                <div class="form-group">
-                  <label for="kecamatan" style="display:inline;">Kecamatan</label>
-                  <input type="text" name="kecamatan" style="margin-left:37px;width:20%;display:inline;" class="form-control"   value="<?=$d->kecamatan?>">
-                </div>
-                <div class="form-group">
-                  <label for="desa" style="display:inline;">Desa</label>
-                  <input type="text" name="desa" style="margin-left:37px;width:20%;display:inline;" class="form-control"   value="<?=$d->desa?>">
-                </div>
-                <div class="form-group">
-                  <label for="paket" style="display:inline;">Paket</label>
-                  <input type="text" name="paket" style="margin-left:37px;width:20%;display:inline;" class="form-control"   value="<?=$d->paket?>">
-                </div>
-                <div class="form-group">
-                  <label for="batch_" style="display:inline;">Batch</label>
-                  <input type="text" name="batch_" style="margin-left:37px;width:20%;display:inline;" class="form-control"   value="<?=$d->batch_?>">
-                </div>
-                <div class="form-group">
-                  <label for="ctrm" style="display:inline;">TRM</label>
-                  <input type="text" name="ctrm" style="margin-left:37px;width:20%;display:inline;" class="form-control"   value="<?=$d->ctrm?>">
-                </div>
-                <div class="form-group">
-                  <label for="ctsi" style="display:inline;">TSI</label>
-                  <input type="text" name="ctsi" style="margin-left:37px;width:20%;display:inline;" class="form-control"   value="<?=$d->ctsi?>">
-                </div>
-                <div class="form-group">
-                  <label for="amount_insured" style="display:inline;">Amount Insured</label>
-                  <input type="text" name="amount_insured" style="margin-left:37px;width:20%;display:inline;" class="form-control"   value="<?=$d->amount_insured?>">
-                </div><!--
-                <div class="form-group">
-                  <label for="terbit" style="display:inline;">Terbit</label>
-                  <input type="text" name="terbit" style="margin-left:37px;width:20%;display:inline;" class="form-control"   value="<?=$d->terbit?>">
-                </div></-->
-                <div class="form-group">
-                  <label for="no_sertif" style="display:inline;">Sertifikat</label>
-                  <input type="text" name="no_sertif" style="margin-left:37px;width:20%;display:inline;" class="form-control"   value="<?=$d->no_sertif?>">
-                </div>
-                <div class="keterangan" style="margin-bottom:40px;">
-                  <label for="keterangan" style="display:inline;">Keterangan</label>
-                  <select class="form-control" name="keterangan" style="margin-left:37px;width:20%;display:inline;">
-                    <option value="<?=$d->keterangan?>"><?=$d->keterangan?></option>
-                    <option value="300 Site">300 Site</option>
-                    <option value="216 Site">216 Site</option>
-                    <option value="80 Site">80 Site</option>
-                  </select>
-                </div>
-                
-            <?php } ?>
+                <?php foreach($data_barang_update as $d){ ?>
+                  <div class="form-group">
+                    <label for="dummy_id" style="display:none;">ID</label>
+                    <input type="text" name="dummy_id" style="  display:none;" class="form-control" readonly="readonly" value="<?=$d->dummy_id?>">
+                  </div> 
+                  <div class="form-group form-group-lg col-md-12">
+                    <label for="site_id" style="display:inline;">SITE ID</label>
+                    <input type="text" name="site_id" style="  display:inline;" class="form-control" placeholder="Site ID" value="<?=$d->site_id?>">
+                  </div>
+                  <div class="form-group form-group-lg col-md-12">
+                    <label for="region" style="display:inline;">Region</label>
+                    <input type="text" name="region" style="  display:inline;" class="form-control" placeholder="Region" value="<?=$d->region?>">
+                  </div>
+                  <div class="form-group form-group-lg col-md-12">
+                    <label for="provinsi" style="display:inline;">Provinsi</label>
+                    <input type="text" name="provinsi" style="  display:inline;" class="form-control" placeholder="Provinsi" value="<?=$d->provinsi?>">
+                  </div>
+                  <div class="form-group form-group-lg col-md-12">
+                    <label for="kabupaten" style="display:inline;">Kabupaten</label>
+                    <input type="text" name="kabupaten" style="  display:inline;" class="form-control" placeholder="Kabupaten"  value="<?=$d->kabupaten?>">
+                  </div>
+                  <div class="form-group form-group-lg col-md-12">
+                    <label for="kecamatan" style="display:inline;">Kecamatan</label>
+                    <input type="text" name="kecamatan" style="  display:inline;" class="form-control" placeholder="Kecamatan" value="<?=$d->kecamatan?>">
+                  </div>
+                  <div class="form-group form-group-lg col-md-12">
+                    <label for="desa" style="display:inline;">Desa</label>
+                    <input type="text" name="desa" style="  display:inline;" class="form-control" placeholder="Desa" value="<?=$d->desa?>">
+                  </div>
+                  <div class="form-group form-group-lg col-md-12">
+                    <label for="paket" style="display:inline;">Paket</label>
+                    <input type="text" name="paket" style="  display:inline;" class="form-control" placeholder="Paket" value="<?=$d->paket?>">
+                  </div>
+                  <div class="form-group form-group-lg col-md-12">
+                    <label for="batch_" style="display:inline;">Batch</label>
+                    <input type="text" name="batch_" style="  display:inline;" class="form-control" placeholder="Batch" value="<?=$d->batch_?>">
+                  </div>
+                  <div class="form-group form-group-lg col-md-12">
+                    <label for="ctrm" style="display:inline;">TRM</label>
+                    <input type="text" name="ctrm" style="  display:inline;" class="form-control" placeholder="TRM" value="<?=$d->ctrm?>">
+                  </div>
+                  <div class="form-group form-group-lg col-md-12">
+                    <label for="ctsi" style="display:inline;">TSI</label>
+                    <input type="text" name="ctsi" style="  display:inline;" class="form-control" placeholder="TSI" value="<?=$d->ctsi?>">
+                  </div>
+                  <div class="form-group form-group-lg col-md-12">
+                    <label for="amount_insured" style="display:inline;">Amount Insured</label>
+                    <input type="text" name="amount_insured" style="  display:inline;" class="form-control" placeholder="Amount Insured" value="<?=$d->amount_insured?>">
+                  </div>
+                  <div class="form-group form-group-lg col-md-12">
+                    <label for="no_sertif" style="display:inline;">Sertifikat</label>
+                    <input type="text" name="no_sertif" style="  display:inline;" class="form-control" placeholder="Sertifikat" value="<?=$d->no_sertif?>">
+                  </div>
+                  <div class="form-group form-group-lg col-md-12" style="margin-bottom:40px;">
+                    <label for="keterangan" style="display:inline;">Keterangan</label>
+                    <select class="form-control" name="keterangan" style="  display:inline;">
+                      <option value="<?=$d->keterangan?>"><?=$d->keterangan?></option>
+                      <option value="300 Site">300 Site</option>
+                      <option value="216 Site">216 Site</option>
+                      <option value="80 Site">80 Site</option>
+                    </select>
+                  </div>
+                <?php } ?>
+              </div>
               <!-- /.box-body -->
 
-              <div class="box-footer" style="width:93%;">
-                <a type="button" class="btn btn-default" style="width:10%" onclick="history.back(-1)" name="btn_kembali"><i class="fa fa-arrow-left" aria-hidden="true"></i> Kembali</a>
-                <button type="submit" style="width:20%;margin-left:689px;" class="btn btn-primary"><i class="fa fa-check" aria-hidden="true"></i> Submit</button>&nbsp;&nbsp;&nbsp;
-              </div>
+              <div class="box-footer col-md-12" style="width:100%; margin-left:30px; margin-bottom:10px; margin-top:5px">
+                  <a type="button" class="btn btn-default" style="width:10%;margin-right:26%" onclick="history.back(-1)" name="btn_kembali"><i class="fa fa-arrow-left" aria-hidden="true"></i> Kembali</a>
+                  <a type="button" class="btn btn-info" style="width:18%;margin-right:20%" href="<?=base_url('admin/tabel_barangmasuk')?>" name="btn_listbarang">
+                  <i class="fa fa-table" aria-hidden="true"></i> Lihat List Permintaan</a>
+                  <button type="submit" input type="submit" style="width:20%" id="btnSave" class="btn btn-md btn-success"><i class="fa fa-check" aria-hidden="true"></i>Submit</button>
+                </div>
             </form>
           </div>
           </div>
