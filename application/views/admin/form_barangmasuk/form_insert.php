@@ -298,15 +298,7 @@
                 <div class="form-group form-group-lg col-md-6">
                   <label for="lampiran_DO">Delivery Order (DO)</label>
                   <input type="text" class="form-control" name="lampiran_DO" placeholder="DO">
-                </div>                <div class="form-group form-group-lg col-md-12">
-                  <label for="address_">2. Alamat</label>
-                    <select class="form-control" name="address_">
-                      <option selected>Choose...</option>
-                      <option value="a_fiberHome">APL Tower, Jakarta Barat, RT.12/RW.6, Grogol, Grogol Petamburan, West Jakarta City, 
-                        Jakarta 11440</option>
-                      <option value="Lainnya">Lainnya</option>
-                    </select>
-                </div>                
+                </div>          
                 
                 <div class="box-footer col-md-12" style="width:100%; margin-left:30px; margin-bottom:10px; margin-top:5px">
                   <a type="button" class="btn btn-default" style="width:10%;margin-right:26%" onclick="history.back(-1)" name="btn_kembali"><i class="fa fa-arrow-left" aria-hidden="true"></i> Kembali</a>

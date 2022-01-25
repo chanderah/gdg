@@ -18,143 +18,125 @@
           <div class="box box-primary" style="width:94%;">
             <!-- /.box-header -->
             <!-- form start -->
-            <div class="container">
-            <form action="<?=base_url('user/proses_datamasuk_insert')?>" role="form" method="post">
-              <?php if($this->session->flashdata('msg_berhasil')){ ?>
-                <div class="alert alert-success alert-dismissible" style="width:91%">
-                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                    <strong>Success!</strong><br> <?php echo $this->session->flashdata('msg_berhasil');?>
-               </div>
-              <?php } ?>
-
-              <?php if(validation_errors()){ ?>
-              <div class="alert alert-warning alert-dismissible">
-                  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                  <strong>Warning!</strong><br> <?php echo validation_errors(); ?>
-             </div>
-            <?php } ?>
-
-            <div class="box-body">
-                <div class="form-group form-group-lg" style="display:inline-block;">
-                  <button type="reset" class="btn btn-basic" name="btn_reset" style="width:100px;"><i class="fa fa-eraser" aria-hidden="true"></i> Reset</button>
-                </div>
-                </div>          
-                  <label for="dummy_id" style="display:none;">ID</label>
-                  <input type="text" name="dummy_id" style="margin-left:37px;width:20%;display:none;" class="form-control" readonly="readonly" value="<?=random_string('alpha', 10);?><?=random_string('sha1');?>">
-                </div>  
-                <div class="form-group form-group-lg">
-                <label for="the_insured" style="margin-left:0px;display:inline;">1. Nama Tertanggung</label>
-                  <select class="form-control" name="the_insured" style="margin-left:150px;width:50%;display:inline">
-                    <option value="">Pilih</option>
-                    <option value="fiberHome">PT. FiberHome Technologies Indonesia and/or BAKTI 
-                      (Badan Aksesibilitas Telekomunikasi dan Informasi)</option>
-                    <option value="Lainnya">Lainnya</option>
-                  </select>
-                </div>
-                <div class="form-group form-group-lg">
-                <label for="a_fiberHome" style="margin-left:0px;display:inline;">2. Alamat</label>
-                  <select class="form-control" name="a_fiberHome" style="margin-left:230px;width:50%;display:inline">
-                    <option value="">Pilih</option>
-                    <option value="a_fiberHome">APL Tower, Jakarta Barat, RT.12/RW.6, Grogol, Grogol Petamburan, West Jakarta City, 
-                      Jakarta 11440</option>
-                    <option value="Lainnya">Lainnya</option>
-                  </select>
-                </div>
-                <div class="form-group form-group-lg">
-                  <label for="site_id" style="margin-left:0px;display:inline;">3. Jenis Barang yang Dikirim, Quantity</label>
-                  <input type="text" name="site_id" style="margin-left:150px;width:50%;display:inline;" class="form-control">
-                </div>
-                <div class="form-group form-group-lg">
-                  <label for="provinsi" style="margin-left:0px;display:inline;">4. Pengiriman Melalui (Pilih, Darat Laut Perairan Udara)</label>
-                  <input type="text" name="provinsi" style="margin-left:150px;width:50%;display:inline;" class="form-control">
-                </div>
-
-                <div class="form-group form-group-lg">
-                  <label for="desa" style="margin-left:0px;display:inline;">Darat</label>
-                  <input type="text" name="desa" style="margin-left:150px;width:50%;display:inline;" class="form-control">
-                </div>
-                <div class="form-group form-group-lg">
-                  <label for="kecamatan" style="margin-left:0px;display:inline;">a. Jenis Alat Angkut (Pilih, Truck / Pickup / Container / Lainnya</label>
-                  <input type="text" name="kecamatan" style="margin-left:150px;width:50%;display:inline;" class="form-control">
-                </div>
-                <div class="form-group form-group-lg">
-                  <label for="nama_Barang" style="margin-left:0px;display:inline;">b. Plat Nomer</label>
-                  <input type="text" name="nama_Barang" style="margin-left:150px;width:50%;display:inline;" class="form-control">
-                </div>
-                <div class="form-group form-group-lg">
-                  <label for="paket" style="margin-left:0px;display:inline;">c. Usia Kendaraan</label>
-                  <input type="text" name="paket" style="margin-left:150px;width:50%;display:inline;" class="form-control">
-                </div>
-                <div class="form-group form-group-lg">
-                  <label for="batch_" style="margin-left:0px;display:inline;">d. No. SIM / Registrasi</label>
-                  <input type="text" name="batch_" style="margin-left:150px;width:50%;display:inline;" class="form-control">
-                </div>
-                <div class="form-group form-group-lg">
-                  <label for="site_id" style="margin-left:0px;display:inline;">e. Pengemudi</label>
-                  <input type="text" name="site_id" style="margin-left:150px;width:50%;display:inline;" class="form-control">
-                </div>
-
-                <div class="form-group form-group-lg">
-                  <label for="site_id" style="margin-left:0px;display:inline;">Laut</label>
-                  <input type="text" name="site_id" style="margin-left:150px;width:50%;display:inline;" class="form-control">
-                </div>
-                <div class="form-group form-group-lg">
-                  <label for="site_id" style="margin-left:0px;display:inline;">a. Nama Kapal</label>
-                  <input type="text" name="site_id" style="margin-left:150px;width:50%;display:inline;" class="form-control">
-                </div>
-                <div class="form-group form-group-lg">
-                  <label for="site_id" style="margin-left:0px;display:inline;">b. Jenis Kapal</label>
-                  <input type="text" name="site_id" style="margin-left:150px;width:50%;display:inline;" class="form-control">
-                </div>
-                <div class="form-group form-group-lg">
-                  <label for="site_id" style="margin-left:0px;display:inline;">c. Usia Kapal</label>
-                  <input type="text" name="site_id" style="margin-left:150px;width:50%;display:inline;" class="form-control">
-                </div>
-                <div class="form-group form-group-lg">
-                  <label for="site_id" style="margin-left:0px;display:inline;">d. GRT Kapal</label>
-                  <input type="text" name="site_id" style="margin-left:150px;width:50%;display:inline;" class="form-control">
-                </div>
-
-                <div class="form-group form-group-lg">
-                  <label for="site_id" style="margin-left:0px;display:inline;">Udara</label>
-                  <input type="text" name="site_id" style="margin-left:150px;width:50%;display:inline;" class="form-control">
-                </div>
-                <div class="form-group form-group-lg">
-                  <label for="site_id" style="margin-left:0px;display:inline;">a. Jenis Pesawat</label>
-                  <input type="text" name="site_id" style="margin-left:150px;width:50%;display:inline;" class="form-control">
-                </div>
-                <div class="form-group form-group-lg">
-                  <label for="site_id" style="margin-left:0px;display:inline;">b. No. AWB (Pilih, Cargo Penumpang Helicopter Charter</label>
-                  <input type="text" name="site_id" style="margin-left:150px;width:50%;display:inline;" class="form-control">
-                </div>
-                <div class="form-group form-group-lg">
-                  <label for="site_id" style="margin-left:0px;display:inline;">5. Dari (Tempat Pemberangkatan)</label>
-                  <input type="text" name="site_id" style="margin-left:150px;width:50%;display:inline;" class="form-control">
-                </div>
-                <div class="form-group form-group-lg">
-                  <label for="site_id" style="margin-left:0px;display:inline;">Tujuan Akhir</label>
-                  <input type="text" name="site_id" style="margin-left:150px;width:50%;display:inline;" class="form-control">
-                </div>
-                <div class="form-group form-group-lg">
-                  <label for="site_id" style="margin-left:0px;display:inline;">6. Tanggal Keberangkatan</label>
-                  <input type="text" name="site_id" style="margin-left:150px;width:50%;display:inline;" class="form-control">
-                </div>
-                <div class="form-group form-group-lg">
-                  <label for="site_id" style="margin-left:0px;display:inline;">7. Batch Pertanggungan / Nilai Barang yang Diangkut</label>
-                  <input type="text" name="site_id" style="margin-left:150px;width:50%;display:inline;" class="form-control">
-                </div>
-                <div class="form-group form-group-lg">
-                  <label for="site_id" style="margin-left:0px;display:inline;">8. Lampiran Data Pendukung (-Bill of Landing [B/L], Letter of Credit [L/C], Invoice, Packing List, Delivery Order [DO]</label>
-                  <input type="text" name="site_id" style="margin-left:150px;width:50%;display:inline;" class="form-control">
-                </div>
             
-              <!-- /.box-body -->
-              <div class="box-footer" style="width:93%;">
-                <a type="button" class="btn btn-default" style="width:10%;margin-right:26%" onclick="history.back(-1)" name="btn_kembali"><i class="fa fa-arrow-left" aria-hidden="true"></i> Kembali</a>
-                <button type="submit" style="width:20%" class="btn btn-success"><i class="fa fa-check" aria-hidden="true"></i> Submit</button>
-              </div>
-            </form>
-          </div>
+            <div class="container">
+              <div id="user_message" style="display:inline-block"></div>
+              <form id="form_insert_site" method="post" autocomplete="off" accept-charset="utf-8"style="width:95%;margin-left:10px">   
+                <div class="form-group" style="display:inline-block; margin-left:75px">
+                  <button type="reset" class="btn btn-basic" name="btn_reset" style="width:95px;margin-left:-70px;"><i class="fa fa-eraser" aria-hidden="true"></i> Reset</button>
+                </div>                 
+                <div class="form-group form-group-lg col-md-12">
+                  <label for="the_insured">1. Nama Tertanggung</label>
+                    <select name="the_insured" class="form-control">
+                      <option selected>Choose...</option>
+                      <option value="fiberHome">PT. FiberHome Technologies Indonesia and/or BAKTI 
+                        (Badan Aksesibilitas Telekomunikasi dan Informasi)</option>
+                      <option value="Lainnya">Lainnya</option>
+                    </select>
+                </div>
+               
+                <div class="form-group form-group-lg col-md-12">
+                  <label for="address_">2. Alamat</label>
+                    <select class="form-control" name="address_">
+                      <option selected>Choose...</option>
+                      <option value="a_fiberHome">APL Tower, Jakarta Barat, RT.12/RW.6, Grogol, Grogol Petamburan, West Jakarta City, 
+                        Jakarta 11440</option>
+                      <option value="Lainnya">Lainnya</option>
+                    </select>
+                </div>
+
+                <table id="cart_table" class="table table-sm table-stripped table-hover" style="margin-left:7px;width:99%">
+                    <thead>
+                        <tr>
+                            <th width="80%">3. Jenis Barang yang Dikirim</th>
+                            <th width="20%">Quantity</th>
+                            <th width="5%"></th>
+                        </tr>
+                        <tr>
+                        </tr> 
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="form-group form-group-lg">
+                                    <input type="text" name="txtTitle[]" placeholder="Jenis Barang" required="required" class="form-control"/>
+                                </div>
+                            </td> 
+                            <td>
+                                <div class="form-group form-group-lg">
+                                    <input type="number" name="txtDescription[]" class="form-control" placeholder="@ pcs" required="required"/>
+                                </div>
+                            </td>
+                            
+                            <td>
+                                <button id="addItem" name="addItem" type="button" class="btn btn-success btn-block btn-sm add_button"><i style="color:#fff" class="fa fa-plus-circle"></i></button>
+                                <button id="removeItem" name="removeItem" type="button" class="btn btn-danger btn-block btn-sm remove_button"><i style="color:#fff;" class="fa fa-trash-o"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="form-group form-group-lg col-md-12">
+                  <label for="conveyance">4. Pengiriman Melalui</label>
+                    <select class="form-control" name="conveyance">
+                      <option selected>Choose...</option>
+                      <option value="Darat">Darat</option>
+                      <option value="Laut">Laut</option>
+                      <option value="Udara">Udara</option>
+                    </select>
+                </div>
+                
+                <div class="form-group form-group-lg col-md-6">
+                  <label for="destination_from">5. Tempat Keberangkatan</label>
+                  <input type="text" name="destination_from" class="form-control" placeholder="Dari">
+                </div>
+                <div class="form-group form-group-lg col-md-6">
+                  <label for="destination_to">Tujuan Akhir</label>
+                  <input type="text" class="form-control" name="destination_to" placeholder="Ke">
+                </div>
+
+                <div class="form-group form-group-lg col-md-12">
+                  <label for="sailing_date">6. Tanggal Keberangkatan</label>
+                  <input type="text" placeholder="Tanggal Keberangkatan" name="sailing_date" required="required" class="form-control"/>
+                </div>
+
+                <div class="form-group form-group-lg col-md-12">
+                  <label for="amount_insured">7. Nilai Barang yang Diangkut</label>
+                  <input type="text" name="amount_insured" placeholder="Nilai Barang" required="required" class="form-control"/>
+                </div>
+
+                <div class="form-group form-group-lg col-md-12">
+                  <label for="lampiran">8. Lampiran Data Pendukung</label>
+                </div>
+                <div class="form-group form-group-lg col-md-4">
+                  <label for="lampiran_BL">Bill of Lading (B/L)</label>
+                  <input type="text" class="form-control" name="lampiran_BL" placeholder="B/L">
+                </div>
+                <div class="form-group form-group-lg col-md-4">
+                  <label for="lampiran_LC">Letter of Credit (L/C) *</label>
+                  <input type="text" class="form-control" name="lampiran_LC" placeholder="L/C">
+                </div>
+                <div class="form-group form-group-lg col-md-4">
+                  <label for="lampiran_invoice">Invoice</label>
+                  <input type="text" class="form-control" name="lampiran_invoice" placeholder="Invoice">
+                </div>
+                <div class="form-group form-group-lg col-md-6">
+                  <label for="lampiran_packinglist">Packing List</label>
+                  <input type="text" class="form-control" name="lampiran_packinglist" placeholder="Packing List">
+                </div>
+                <div class="form-group form-group-lg col-md-6">
+                  <label for="lampiran_DO">Delivery Order (DO)</label>
+                  <input type="text" class="form-control" name="lampiran_DO" placeholder="DO">
+                </div>          
+                
+                <div class="box-footer col-md-12" style="width:100%; margin-left:30px; margin-bottom:10px; margin-top:5px">
+                  <a type="button" class="btn btn-default" style="width:10%;margin-right:26%" onclick="history.back(-1)" name="btn_kembali"><i class="fa fa-arrow-left" aria-hidden="true"></i> Kembali</a>
+                  <a type="button" class="btn btn-info" style="width:18%;margin-right:20%" href="<?=base_url('admin/tabel_barangmasuk')?>" name="btn_listbarang">
+                  <i class="fa fa-table" aria-hidden="true"></i> Lihat List Permintaan</a>
+                  <button type="submit" input type="submit" style="width:20%" id="btnSave" class="btn btn-md btn-success"><i class="fa fa-check" aria-hidden="true"></i>Create</button>
+                </div>
+              </form>
+            </div>
           </div>
           <!-- /.box -->
 
@@ -189,8 +171,116 @@
     <!-- /.content -->
   </div>
 
-<script type="text/javascript">
-  $(document).ready(function(){
-    $('#tabel_barangmasuk').DataTable();
-  });
-</script>
+  
+  <!-- jQuery 3 -->
+  <script src="<?php echo base_url()?>assets/web_admin/bower_components/jquery/dist/jquery.min.js"></script>
+  <!-- Bootstrap 3.3.7 -->
+  <script src="<?php echo base_url()?>assets/web_admin/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <!-- FastClick -->
+  <script src="<?php echo base_url()?>assets/web_admin/bower_components/fastclick/lib/fastclick.js"></script>
+  <!-- AdminLTE App -->
+  <script src="<?php echo base_url()?>assets/web_admin/dist/js/adminlte.min.js"></script>
+  <script src="<?php echo base_url()?>assets/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+  <!-- AdminLTE for demo purposes -->
+  <script src="<?php echo base_url()?>assets/web_admin/dist/js/demo.js"></script>
+
+  <script type="text/javascript">
+      $(".form_datetime").datetimepicker({
+        format: 'dd/mm/yyyy',
+        autoclose: true,
+        todayBtn: true,
+        pickTime: false,
+        minView: 2,
+        maxView: 4,
+      });
+  </script>
+
+  <script src="<?php echo base_url("assets/js/jquery.min.js");?>"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+        var i = 1, max = 50;
+        var cartTable = {
+            options: {
+                table: "#cart_table"
+            },
+            initialize: function() {
+                this.setVars().events();
+            },
+            setVars: function() {
+                this.$table = $(this.options.table);
+                this.$totalLines = $(this.options.table).find('tr').length - 1;
+                return this;
+            },
+            updateLines: function() {
+                var totalLines = $(this.options.table).find('tr').length - 1;
+                if (totalLines == 1) {
+                    $('.add_button').show();
+                    $('.remove_button').hide();
+                }
+                return this;
+            },
+            events: function() {
+                var _self = this;
+                _self.updateLines();
+                this.$table.on('click', 'button.add_button', function(e) {
+                    e.preventDefault();
+                    if(max > i) {
+                        var $tr = $(this).closest('tr');
+                        var $clone = $tr.clone();
+                        $clone.find(':text').val('');
+                        $tr.after($clone);
+                        if (_self.setVars().$totalLines > 1) {
+                            $('.remove_button').show();
+                            $('.add_button').show();
+                        }
+                        i++;
+                    }
+                }).on('click', 'button.remove_button', function(e) {
+                    if (i > 1) {
+                        e.preventDefault();
+                        var $tr = $(this).closest('tr');
+                        $tr.remove();
+                        //if have delete last button with button add visible, add another button to last tr
+                        if (_self.setVars().$totalLines > 1) {
+                            _self.$table.find('tr:last').find('.add').show();
+                        }
+                        i--;
+                    }
+                });
+
+                return this;
+            }
+        };
+
+        function initializeCartTable() {
+            cartTable.initialize();
+        }
+        window.addEventListener('load', initializeCartTable, false);
+    </script>
+
+    <script>
+        var display_bill_table = "";
+        $(document).ready(function() {
+
+            $('#form_insert_site').submit(function(e) {
+                e.preventDefault();
+                var data = $("#form_insert_site").serialize();
+                $.ajax({
+                    type:"POST",
+                    url:'<?php echo base_url("main/add_to_cart"); ?>',
+                    data: data,
+                    success: function(data) {
+                        $("#user_message").html(data);
+                        $(":text").val('');
+                        display_bill_table.ajax.reload();
+                    },
+                });
+            });
+            //end
+        });
+
+    </script>
+ 

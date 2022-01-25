@@ -209,7 +209,7 @@
                 </div> 
                 <div class="form-group">
                   <label for="site_id" style="display:inline;">SITE ID</label>
-                  <input type="text" name="site_id" style="margin-left:37px;width:20%;display:inline;" class="form-control" readonly="readonly" value="<?=$d->site_id?>">
+                  <input type="text" name="site_id" style="margin-left:37px;width:20%;display:inline;" class="form-control" value="<?=$d->site_id?>">
                 </div>
                 <div class="form-group">
                   <label for="region" style="display:inline;">Region</label>
