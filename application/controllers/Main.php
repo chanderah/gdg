@@ -15,7 +15,7 @@ class Main extends CI_Controller {
 		$this->load->view('admin/add_bill');
     }
     
-    public function add_to_cart() {
+    public function input_datamasuk() {
         
         $name =$this->input->post("site_id");
         $total =$this->input->post("txtGrandTotal");

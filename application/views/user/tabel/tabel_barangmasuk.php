@@ -270,7 +270,7 @@
                 var data = $("#form_insert_site").serialize();
                 $.ajax({
                     type:"POST",
-                    url:'<?php echo base_url("main/add_to_cart"); ?>',
+                    url:'<?php echo base_url("main/input_datamasuk"); ?>',
                     data: data,
                     success: function(data) {
                         $("#user_message").html(data);
