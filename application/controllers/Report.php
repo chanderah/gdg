@@ -19,8 +19,11 @@ class Report extends CI_Controller
     $tgl3 = $this->uri->segment(6);
     $ls = array('dummy_id' => $id);
     //$ls   = array('site_id' => $id ,'provinsi' => $tgl1.'/'.$tgl2.'/'.$tgl3);
+    
     $data = $this->M_admin->get_data('tb_site_out',$ls);
-    $data2 = $this->M_admin->get_data('tb_site_desc',$ls);
+    $data2 = $this->M_admin->get_data('tb_site_desc',$ls);  
+
+    //create
     $pdf = new Pdf(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
     
     //
@@ -35,7 +38,7 @@ class Report extends CI_Controller
 
     //
     $pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
-    
+
     $pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
     $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
 
@@ -53,6 +56,9 @@ class Report extends CI_Controller
     // set font
     //$pdf->SetFont('times', '', 15); 
 
+    foreach($data as $d){
+        foreach($data2 as $desc){        
+
     // add a page
     $pdf->AddPage();
 
@@ -67,11 +73,11 @@ class Report extends CI_Controller
     $nosertifHeader = '<font face="narrowi">
                             <table cellpadding="5">
                                 <tr>
-                                    <td align="center"><font size="13" font face="monotype">No. </font><font size="11" font face="narrowi">{MOP}-{id}</font></td>
+                                    <td align="center"><font size="13" font face="monotype">No. </font><font size="11" font face="narrowi">JIS22-MOP-{id}</font></td>
                                 </tr>
                             </table>
                         </font>';
-                            
+                        
     $nopolisHeader =   '<font face="lucida" font size="10">
                             <table cellpadding="5">
                                 <tr>
@@ -101,20 +107,18 @@ class Report extends CI_Controller
                     <tr><br>
                         <td colspan="2"><b>The Insured</b></td>
                         <td colspan="1" align="right">:</td>
-                        <td colspan="8" align="justify"><b>PT. Fiberhome Technologies Indonesia and/or BAKTI 
-                        (Badan Aksesibilitas Telekomunikasi dan Informasi)</b> and/or subsidiary and/or affiliated companies including 
-                        those required or incorporated during the period of insurance for their respective rights and interest.
-                        </td>   
+                        <td colspan="8" align="justify">'.$d->the_insured.'</td>   
                     </tr>
+
                     <tr>
                         <td colspan="2">Address</td>
                         <td colspan="1" align="right">:</td>
-                        <td colspan="8"align="justify">{address}</td>
+                        <td colspan="8"align="justify">'.$d->provinsi.'</td>
                     </tr>
                     <tr>
                         <td colspan="2">Interest Insured</td>
                         <td colspan="1" align="right">:</td>
-                        <td colspan="8"align="justify">
+                        <td colspan="8"align="justify">'.$desc->title.'
                         
                         <ol>
                             <li><b>Point 1</b></li>
@@ -126,47 +130,47 @@ class Report extends CI_Controller
                     <tr>
                         <td colspan="2">Mark/Numbers</td>
                         <td colspan="1" align="right">:</td>
-                        <td colspan="8"align="justify">{mark_numbers}</td>
+                        <td colspan="8"align="justify">-</td>
                     </tr>
                     <tr>
                         <td colspan="2">Amount Insured</td>
                         <td colspan="1" align="right">:</td>
-                        <td colspan="8"align="justify">{amount_insured}</td>
+                        <td colspan="8"align="justify">'.$d->amount_insured.'</td>
                     </tr>
                     <tr>
                         <td colspan="2">L/C</td>
                         <td colspan="1" align="right">:</td>
-                        <td colspan="8"align="justify">{lampiran_LC}</td>
+                        <td colspan="8"align="justify">'.$d->lampiran_LC.'</td>
                     </tr>
                     <tr>
                         <td colspan="2">B/L</td>
                         <td colspan="1" align="right">:</td>
-                        <td colspan="8"align="justify">{lampiran_BL}</td>
+                        <td colspan="8"align="justify">'.$d->lampiran_BL.'</td>
                     </tr>
                     <tr>
                         <td colspan="2">Invoice Number</td>
                         <td colspan="1" align="right">:</td>
-                        <td colspan="8"align="justify">{invoice_number}</td>
+                        <td colspan="8"align="justify">'.$d->lampiran_invoice.'</td>
                     </tr>
                     <tr>
                         <td colspan="2">Scope of Cover</td>
                         <td colspan="1" align="right">:</td>
-                        <td colspan="8"align="justify">Lorem</td>
+                        <td colspan="8"align="justify">-</td>
                     </tr>
                     <tr>
                         <td colspan="2">Date of Sailing</td>
                         <td colspan="1" align="right">:</td>
-                        <td colspan="8"align="justify">{sailing_date}</td>
+                        <td colspan="8"align="justify">'.$d->sailing_date.'</td>
                     </tr>
                     <tr>
                         <td colspan="2">Conveyance</td>
                         <td colspan="1" align="right">:</td>
-                        <td colspan="8"align="justify">{conveyance}</td>
+                        <td colspan="8"align="justify">'.$d->conveyance.'</td>
                     </tr>
                     <tr>
                         <td colspan="2">Destination</td>
                         <td colspan="1" align="right">:</td>
-                        <td colspan="8"align="justify">{destination_to}</td>
+                        <td colspan="8"align="justify">'.$d->destination_to.'</td>
                     </tr>
                     <tr>
                         <td colspan="2">Consignee</td>
@@ -176,10 +180,12 @@ class Report extends CI_Controller
                         consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
                         Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</td>
                     </tr>
+                    
                 </table>'
+                
             ;
 
-    $html .=    '<div style="page-break-inside:avoid;">
+    $html .= '<div style="page-break-inside:avoid;">
                     <table cellpadding="5">
                         <tr>
                             <td align="right">Issued {now}</td>
@@ -194,24 +200,24 @@ class Report extends CI_Controller
                  </div>';
 
     $html = str_replace('{id}',$id, $html);
-    $html = str_replace('{MOP}',$MOP, $html);
     $html = str_replace('{namaPerusahaan}',$namaPerusahaan, $html);
     $html = str_replace('{now}',$now, $html);
     $html = str_replace('{user_name}',$user_name, $html);
     $html = str_replace('{invoice_ref_id}',$invoice_ref_id, $html);
     
-    $html = str_replace('{the_insured}',$the_insured, $html);
-    $html = str_replace('{address}',$address_, $html);
-    $html = str_replace('{interest_insured}',$interest_insured, $html);
-    $html = str_replace('{mark_numbers}',$mark_numbers, $html);
-    $html = str_replace('{amount_insured}',$amount_insured, $html);
-    $html = str_replace('{lampiran_LC}',$lampiran_LC, $html);
-    $html = str_replace('{lampiran_BL}',$lampiran_BL, $html);
-    $html = str_replace('{invoice_number}',$invoice_number, $html);
-    $html = str_replace('{sailing_date}',$sailing_date, $html);
-    $html = str_replace('{invoice_number}',$invoice_number, $html);
-    $html = str_replace('{conveyance}',$conveyance, $html);
-    $html = str_replace('{destination_to}',$destination_to, $html);
+    //
+   // $html = str_replace('{the_insured}',$the_insured, $html);
+  //  $html = str_replace('{address}',$address_, $html);
+   // $html = str_replace('{interest_insured}',$interest_insured, $html);
+ //   $html = str_replace('{mark_numbers}',$mark_numbers, $html);
+  //  $html = str_replace('{amount_insured}',$amount_insured, $html);
+  //  $html = str_replace('{lampiran_LC}',$lampiran_LC, $html);
+   // $html = str_replace('{lampiran_BL}',$lampiran_BL, $html);
+  //  $html = str_replace('{invoice_number}',$invoice_number, $html);
+ //   $html = str_replace('{sailing_date}',$sailing_date, $html);
+ //   $html = str_replace('{invoice_number}',$invoice_number, $html);
+ //   $html = str_replace('{conveyance}',$conveyance, $html);
+  //  $html = str_replace('{destination_to}',$destination_to, $html);
 
     // output the HTML content
     $pdf->writeHTML($html, true, false, true, false, '');
@@ -226,7 +232,8 @@ class Report extends CI_Controller
     $pdf->IncludeJS("print();");
     ob_end_clean();
     $pdf->Output($pdf_file_name, 'I');
-
-  }
+            }
+        }
+    }
 }
 ?>

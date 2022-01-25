@@ -521,10 +521,13 @@ class Admin extends CI_Controller{
       $amount_insured = $this->input->post('amount_insured',TRUE);
       $no_sertif = $this->input->post('no_sertif',TRUE);
       $keterangan = $this->input->post('keterangan',TRUE);
+
+      //$the_insured = $this->db->get_where('tb_site_in', array('dummy_id' => $dummy_id));
       //$terbit = $this->input->post('terbit',TRUE);
 
       $where = array('dummy_id' => $dummy_id);
       $data = array(
+            //'the_insured' => $the_insured,
             'dummy_id' => $dummy_id,
             'site_id' => $site_id,
             'region' => $region,
@@ -538,7 +541,7 @@ class Admin extends CI_Controller{
             'ctsi' => $ctsi,
             'amount_insured' => $amount_insured,
             'no_sertif' => $no_sertif,
-            'keterangan' => $keterangan
+            'keterangan' => $keterangan,
             //'terbit' => $terbit
       );
         $this->M_admin->insert('tb_site_out',$data);
