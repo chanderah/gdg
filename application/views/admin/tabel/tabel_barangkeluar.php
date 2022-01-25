@@ -248,7 +248,7 @@
                     <td><?=$dd->keterangan?></td>
                     <td><?=$dd->terbit?></td>
 
-                    <td><a type="button" class="btn btn-danger btn-report"  href="<?=base_url('report/dataKeluar/'.$dd->site_id.'/'.$dd->provinsi)?>" name="btn_report" style="margin:auto;"><i class="fa fa-file-text" aria-hidden="true"></i></a></td>
+                    <td><a type="button" class="btn btn-danger btn-report"  href="<?=base_url('report/dataKeluar/'.$dd->dummy_id)?>" name="btn_report" style="margin:auto;"><i class="fa fa-file-text" aria-hidden="true"></i></a></td>
                 </tr>
               <?php $no++; ?>
               <?php endforeach;?>

@@ -248,7 +248,7 @@
                   </div>
                   <div class="form-group form-group-lg col-md-12">
                     <label for="amount_insured" style="display:inline;">Amount Insured</label>
-                    <input type="text" name="amount_insured" style="  display:inline;" class="form-control" placeholder="Amount Insured" value="<?=$d->amount_insured?>">
+                    <input type="number" name="amount_insured" style="  display:inline;" class="form-control" placeholder="Amount Insured" value="<?=$d->amount_insured?>">
                   </div>
                   <div class="form-group form-group-lg col-md-12">
                     <label for="no_sertif" style="display:inline;">Sertifikat</label>

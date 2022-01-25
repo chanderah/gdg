@@ -273,7 +273,7 @@
 
                 <div class="form-group form-group-lg col-md-12">
                   <label for="amount_insured">7. Nilai Barang yang Diangkut</label>
-                  <input type="text" name="amount_insured" placeholder="Nilai Barang" required="required" class="form-control"/>
+                  <input type="number" name="amount_insured" placeholder="Nilai Barang" required="required" class="form-control"/>
                 </div>
 
                 <div class="form-group form-group-lg col-md-12">
