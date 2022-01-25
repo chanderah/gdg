@@ -67,17 +67,18 @@ class Report extends CI_Controller
     $nosertifHeader = '<font face="narrowi">
                             <table cellpadding="5">
                                 <tr>
-                                    <td align="center"><font size="13" font face="monotype">No.</font> <font size="11" font face="narrowi">{id}</font></td>
+                                    <td align="center"><font size="13" font face="monotype">No. </font><font size="11" font face="narrowi">{MOP}-{id}</font></td>
                                 </tr>
                             </table>
                         </font>';
                             
-    $nopolisHeader =  '<font face="lucida" font size="10">
+    $nopolisHeader =   '<font face="lucida" font size="10">
                             <table cellpadding="5">
                                 <tr>
                                     <td colspan="1" align="left">THIS TO CERTIFY that insurance has been effected as per Open Policy No. <i>0608032100001</i></td>
                                 </tr>
-                            </table></font>';
+                            </table>
+                        </font>';
 
     // *** IMP: The value of $html and $html_terms can come from db
     // But, If these values contain, other language special characters, then
@@ -85,7 +86,7 @@ class Report extends CI_Controller
     // make use of its html entity substitute 
     // for ex. If copyright is invalid character then use &copy; in html content
 
-        // set font
+    // set font
     $pdf->SetFont('lucida', '', 9.5); 
     $html .= $nosertifHeader;
     $style = array('width' => 0.2, 'cap' => 'butt', 'join' => 'miter', 'dash' => 0, 'color' => array(0, 0, 0));
@@ -96,86 +97,86 @@ class Report extends CI_Controller
 
     $pdf->setListIndentWidth(4.75);
     $html .= '
-            <table border="" cellpadding="2">
-                <tr><br>
-                    <td colspan="2"><b>The Insured</b></td>
-                    <td colspan="1" align="right">:</td>
-                    <td colspan="8" align="justify"><b>PT. Fiberhome Technologies Indonesia and/or BAKTI 
-                    (Badan Aksesibilitas Telekomunikasi dan Informasi)</b> and/or subsidiary and/or affiliated companies including 
-                    those required or incorporated during the period of insurance for their respective rights and interest.
-                    </td>   
-                </tr>
-                <tr>
-                    <td colspan="2">Address</td>
-                    <td colspan="1" align="right">:</td>
-                    <td colspan="8"align="justify">{address_}</td>
-                </tr>
-                <tr>
-                    <td colspan="2">Interest Insured</td>
-                    <td colspan="1" align="right">:</td>
-                    <td colspan="8"align="justify">
-                    
-                    <ol>
-                        <li><b>Point 1</b></li>
-                        <li><i>Point 2</i></li>
-                    </ol>
-                    
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">Mark/Numbers</td>
-                    <td colspan="1" align="right">:</td>
-                    <td colspan="8"align="justify">{mark_numbers}</td>
-                </tr>
-                <tr>
-                    <td colspan="2">Amount Insured</td>
-                    <td colspan="1" align="right">:</td>
-                    <td colspan="8"align="justify">{amount_insured}</td>
-                </tr>
-                <tr>
-                    <td colspan="2">L/C</td>
-                    <td colspan="1" align="right">:</td>
-                    <td colspan="8"align="justify">{lampiran_LC}</td>
-                </tr>
-                <tr>
-                    <td colspan="2">B/L</td>
-                    <td colspan="1" align="right">:</td>
-                    <td colspan="8"align="justify">{lampiran_BL}</td>
-                </tr>
-                <tr>
-                    <td colspan="2">Invoice Number</td>
-                    <td colspan="1" align="right">:</td>
-                    <td colspan="8"align="justify">{invoice_number}</td>
-                </tr>
-                <tr>
-                    <td colspan="2">Scope of Cover</td>
-                    <td colspan="1" align="right">:</td>
-                    <td colspan="8"align="justify">Lorem</td>
-                </tr>
-                <tr>
-                    <td colspan="2">Date of Sailing</td>
-                    <td colspan="1" align="right">:</td>
-                    <td colspan="8"align="justify">{sailing_date}</td>
-                </tr>
-                <tr>
-                    <td colspan="2">Conveyance</td>
-                    <td colspan="1" align="right">:</td>
-                    <td colspan="8"align="justify">{conveyance}</td>
-                </tr>
-                <tr>
-                    <td colspan="2">Destination</td>
-                    <td colspan="1" align="right">:</td>
-                    <td colspan="8"align="justify">{destination_to}</td>
-                </tr>
-                <tr>
-                    <td colspan="2">Consignee</td>
-                    <td colspan="1" align="right">:</td>
-                    <td colspan="8"align="justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
-                    labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                     consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                     Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</td>
-                </tr>
-            </table>'
+                <table border="" cellpadding="2">
+                    <tr><br>
+                        <td colspan="2"><b>The Insured</b></td>
+                        <td colspan="1" align="right">:</td>
+                        <td colspan="8" align="justify"><b>PT. Fiberhome Technologies Indonesia and/or BAKTI 
+                        (Badan Aksesibilitas Telekomunikasi dan Informasi)</b> and/or subsidiary and/or affiliated companies including 
+                        those required or incorporated during the period of insurance for their respective rights and interest.
+                        </td>   
+                    </tr>
+                    <tr>
+                        <td colspan="2">Address</td>
+                        <td colspan="1" align="right">:</td>
+                        <td colspan="8"align="justify">{address}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">Interest Insured</td>
+                        <td colspan="1" align="right">:</td>
+                        <td colspan="8"align="justify">
+                        
+                        <ol>
+                            <li><b>Point 1</b></li>
+                            <li><i>Point 2</i></li>
+                        </ol>
+                        
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">Mark/Numbers</td>
+                        <td colspan="1" align="right">:</td>
+                        <td colspan="8"align="justify">{mark_numbers}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">Amount Insured</td>
+                        <td colspan="1" align="right">:</td>
+                        <td colspan="8"align="justify">{amount_insured}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">L/C</td>
+                        <td colspan="1" align="right">:</td>
+                        <td colspan="8"align="justify">{lampiran_LC}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">B/L</td>
+                        <td colspan="1" align="right">:</td>
+                        <td colspan="8"align="justify">{lampiran_BL}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">Invoice Number</td>
+                        <td colspan="1" align="right">:</td>
+                        <td colspan="8"align="justify">{invoice_number}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">Scope of Cover</td>
+                        <td colspan="1" align="right">:</td>
+                        <td colspan="8"align="justify">Lorem</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">Date of Sailing</td>
+                        <td colspan="1" align="right">:</td>
+                        <td colspan="8"align="justify">{sailing_date}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">Conveyance</td>
+                        <td colspan="1" align="right">:</td>
+                        <td colspan="8"align="justify">{conveyance}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">Destination</td>
+                        <td colspan="1" align="right">:</td>
+                        <td colspan="8"align="justify">{destination_to}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">Consignee</td>
+                        <td colspan="1" align="right">:</td>
+                        <td colspan="8"align="justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
+                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</td>
+                    </tr>
+                </table>'
             ;
 
     $html .=    '<div style="page-break-inside:avoid;">
@@ -193,6 +194,7 @@ class Report extends CI_Controller
                  </div>';
 
     $html = str_replace('{id}',$id, $html);
+    $html = str_replace('{MOP}',$MOP, $html);
     $html = str_replace('{namaPerusahaan}',$namaPerusahaan, $html);
     $html = str_replace('{now}',$now, $html);
     $html = str_replace('{user_name}',$user_name, $html);
@@ -218,7 +220,7 @@ class Report extends CI_Controller
     $pdf->lastPage();
 
     // ---------------------------------------------------------
-
+    
     //Close and output PDF document
     $pdf_file_name = 'Certificate of Insurance.pdf';
     $pdf->IncludeJS("print();");
