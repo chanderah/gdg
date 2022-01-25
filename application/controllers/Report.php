@@ -22,7 +22,7 @@ class Report extends CI_Controller
     $data = $this->M_admin->get_data('tb_site_out',$ls);
     $data2 = $this->M_admin->get_data('tb_site_desc',$ls);
     $pdf = new Pdf(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
-
+    
     //
     $pdf->SetCreator(PDF_CREATOR);
     $pdf->SetAuthor('Chandra SA');
@@ -190,7 +190,7 @@ class Report extends CI_Controller
                             <td align="right">{namaPerusahaan}</td>
                         </tr>
                     </table>    
-                </div>';
+                 </div>';
 
     $html = str_replace('{id}',$id, $html);
     $html = str_replace('{namaPerusahaan}',$namaPerusahaan, $html);
