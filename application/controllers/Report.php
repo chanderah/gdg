@@ -182,8 +182,18 @@ class Report extends CI_Controller
                     </tr>
                     
                 </table>'
-                
             ;
+
+            $no = 1;
+            foreach($data2 as $d){
+              $html .= '<tr>';
+              $html .= '<td align="center">'.$no.'</td>';
+              $html .= '<td align="center">'.$d->title.'</td>';
+              $html .= '<td align="center">'.$d->description.'</td>';
+              $html .= '</tr>';
+              $no++;
+              $pdf->Ln();
+            }
 
     $html .= '<div style="page-break-inside:avoid;">
                     <table cellpadding="5">

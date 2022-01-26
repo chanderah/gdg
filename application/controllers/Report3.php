@@ -19,7 +19,7 @@ class Report extends CI_Controller
     $tgl3 = $this->uri->segment(6);
     $ls = array('dummy_id' => $id);
     //$ls   = array('site_id' => $id ,'provinsi' => $tgl1.'/'.$tgl2.'/'.$tgl3);
-    $data = $this->M_admin->get_data('tb_site_out',$ls);
+    $data = $this->M_admin->get_data('tb_site_desc',$ls);
     $data2 = $this->M_admin->get_data('tb_site_desc',$ls);
 
     //create
@@ -129,23 +129,14 @@ class Report extends CI_Controller
             $html .= '<tr>';
             $html .= '<td align="center">'.$no.'</td>';
             $html .= '<td align="center">{site_id}</td>';
-            $html .= '<td align="center">'.$d->region.'</td>';
-            $html .= ''.$d->provinsi.'';
-            $html .= '<td align="center">'.$d->region.'</td>';
-            $html .= '<td align="center">'.$d->kecamatan.'</td>';
-            $html .= '<td align="center">'.$d->desa.'</td>';
-            $html .= '<td align="center">'.$d->paket.'</td>';
-            $html .= '<td align="center">'.$d->batch_.'</td>';
-            $html .= '</tr>';
-
-            $html .= '<tr>';
-            $html .= '<td align="center" colspan="8"><b>Batch</b></td>';
-            $html .= '<td align="center">'.$d->batch_.'</td>';
+            $html .= '<td align="center">'.$d->title.'</td>';
+            $html .= '<td align="center">'.$d->description.'</td>';
             $html .= '</tr>';
             $no++;
+            $pdf->Ln();
           }
 
-        $html .='.$d->site_id.
+        $html .='
                     </table><br>
                     <h6>Mengetahui</h6><br><br><br>
                     <h6>Admin</h6> 

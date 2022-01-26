@@ -32,14 +32,24 @@ class M_admin extends CI_Model
     return $query->result_array();
   }
 
-  public function get_data($tabel,$site_id)
+  public function get_data($tabel,$dummy_id)
   {
     $query = $this->db->select()
                       ->from($tabel)
-                      ->where($site_id)
+                      ->where($dummy_id)
                       ->get();
     return $query->result();
   }
+
+	public function get_data_all($tabel,$dummy_id)
+	{
+    $query = $this->db->select()
+                      ->from($tabel)
+                      ->where($dummy_id)
+                      ->get();
+    return $query->result();
+	}
+
 
   public function update($tabel,$data,$where)
   {
