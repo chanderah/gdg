@@ -222,7 +222,6 @@
                   <th>Amount Insured</th>
                   <th>Sertifikat</th>
                   <th>Keterangan</th>
-                  <th>Terbit</th>
                   <th>Invoice</th>
                   <!-- <th></th> -->
                 </tr>
@@ -272,7 +271,6 @@
                   <th>Amount Insured</th>
                   <th>Sertifikat</th>
                   <th>Keterangan</th>
-                  <th>Terbit</th>
                   <th>Invoice</th>
                 </tr>
                 </tfoot>

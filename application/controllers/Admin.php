@@ -293,6 +293,7 @@ class Admin extends CI_Controller{
   {
     $where = array('dummy_id' => $dummy_id);
     $this->M_admin->delete('tb_site_in',$where);
+    $this->M_admin->delete('tb_site_desc',$where);
     redirect(base_url('admin/tabel_barangmasuk'));
   }
 
@@ -374,7 +375,6 @@ class Admin extends CI_Controller{
       $ctrm = $this->input->post('ctrm',TRUE);
       $ctsi = $this->input->post('ctsi',TRUE);
       $amount_insured = $this->input->post('amount_insured',TRUE);
-      $no_sertif = $this->input->post('no_sertif',TRUE);
       $keterangan = $this->input->post('keterangan',TRUE);
       //$terbit = $this->input->post('terbit',TRUE);
 
@@ -392,7 +392,6 @@ class Admin extends CI_Controller{
             'ctrm' => $ctrm,
             'ctsi' => $ctsi,
             'amount_insured' => $amount_insured,
-            'no_sertif' => $no_sertif,
             'keterangan' => $keterangan,
             //'terbit' => $terbit
       );
@@ -518,6 +517,8 @@ class Admin extends CI_Controller{
     $this->form_validation->set_rules('dummy_id','Dummy ID','trim|required');
     if($this->form_validation->run() === TRUE)
     {
+      $no_sertif = $max_id=$this->M_admin->get_max_id('no_sertif','tb_site_out');
+
       $dummy_id = $this->input->post('dummy_id',TRUE);
       $site_id = $this->input->post('site_id',TRUE);
       $region = $this->input->post('region',TRUE);
@@ -530,7 +531,7 @@ class Admin extends CI_Controller{
       $ctrm = $this->input->post('ctrm',TRUE);
       $ctsi = $this->input->post('ctsi',TRUE);
       $amount_insured = $this->input->post('amount_insured',TRUE);
-      $no_sertif = $this->input->post('no_sertif',TRUE);
+
       $keterangan = $this->input->post('keterangan',TRUE);
       
       $the_insured =$this->input->post("the_insured");
@@ -552,6 +553,7 @@ class Admin extends CI_Controller{
       $where = array('dummy_id' => $dummy_id);
       $data = array(
             //'the_insured' => $the_insured,
+            'no_sertif' => $no_sertif,
             'dummy_id' => $dummy_id,
             'site_id' => $site_id,
             'region' => $region,
@@ -564,7 +566,6 @@ class Admin extends CI_Controller{
             'ctrm' => $ctrm,
             'ctsi' => $ctsi,
             'amount_insured' => $amount_insured,
-            'no_sertif' => $no_sertif,
             'keterangan' => $keterangan,
 
             //'terbit' => $terbit

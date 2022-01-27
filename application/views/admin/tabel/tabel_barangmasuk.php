@@ -280,8 +280,7 @@
                   <th>Amount Insured</th>
                   <th>Sertifikat</th>
                   <th>Keterangan</th>
-                  <th>Terbit</th>
-                </tr>
+                  </tr>
                 </tfoot>
               </table>
             </div>

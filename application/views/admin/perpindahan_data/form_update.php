@@ -250,10 +250,7 @@
                     <label for="amount_insured" style="display:inline;">Amount Insured</label>
                     <input type="number" name="amount_insured" style="  display:inline;" class="form-control" placeholder="Amount Insured" value="<?=$d->amount_insured?>">
                   </div>
-                  <div class="form-group form-group-lg col-md-12">
-                    <label for="no_sertif" style="display:inline;">Sertifikat</label>
-                    <input type="text" name="no_sertif" style="  display:inline;" class="form-control" placeholder="Sertifikat" value="<?=$d->no_sertif?>">
-                  </div>
+
                   <div class="form-group form-group-lg col-md-12">
                     <label for="keterangan" style="display:inline;">Keterangan</label>
                     <select class="form-control" name="keterangan" style="  display:inline;">

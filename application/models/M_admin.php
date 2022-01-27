@@ -114,6 +114,13 @@ class M_admin extends CI_Model
   public function get_max_id($table_id, $table_name) {
     $row = $this->db->select_max($table_id)
       ->get($table_name)->row_array();
+    $max_id = $row[$table_id] + 1; 
+return $max_id;
+}
+
+  public function get_max_sertif_id($table_id, $table_name) {
+    $row = $this->db->select_max($table_id)
+      ->get($table_name)->row_array();
 $max_id = $row[$table_id] + 1; 
 return $max_id;
 }
