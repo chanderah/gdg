@@ -13,6 +13,8 @@ class Report extends CI_Controller
 
   public function dataKeluar()
   {
+    $this->load->helper('text');
+
     $id = $this->uri->segment(3);
     $tgl1 = $this->uri->segment(4);
     $tgl2 = $this->uri->segment(5);
@@ -75,7 +77,7 @@ class Report extends CI_Controller
     $nosertifHeader = '<font face="narrowi">
                             <table cellpadding="5">
                                 <tr>
-                                    <td align="center"><font size="13" font face="monotype">No. </font><font size="11" font face="narrowi">JIS22-MOP-{id}</font></td>
+                                    <td align="center"><font size="13" font face="monotype">No. </font><font size="11" font face="narrowi">JIS22-{MOP}-{no_sertif}</font></td>
                                 </tr>
                             </table>
                         </font>';
@@ -83,7 +85,7 @@ class Report extends CI_Controller
     $nopolisHeader =   '<font face="lucida" font size="10">
                             <table cellpadding="5">
                                 <tr>
-                                    <td colspan="1" align="left">THIS TO CERTIFY that insurance has been effected as per Open Policy No. <i>0608032100001</i></td>
+                                    <td colspan="1" align="left">THIS TO CERTIFY that insurance has been effected as per Open Policy No. {MOP}</td>
                                 </tr>
                             </table>
                         </font>';
@@ -105,17 +107,17 @@ class Report extends CI_Controller
 
     $pdf->setListIndentWidth(4.75);
     $html .= '
-                <table border="" cellpadding="2">
+                <table border="" cellpadding="3">
                     <tr><br>
                         <td colspan="2"><b>The Insured</b></td>
                         <td colspan="1" align="right">:</td>
-                        <td colspan="8" align="justify">'.$d->the_insured.'</td>   
+                        <td colspan="8" align="justify">'.$d->the_insured.' and/or subsidiary and/or affiliated companies including those required or incorporated during the period of insurance for their respective rights and interest.</td>   
                     </tr>
 
                     <tr>
                         <td colspan="2">Address</td>
                         <td colspan="1" align="right">:</td>
-                        <td colspan="8"align="justify">'.$d->provinsi.'</td>
+                        <td colspan="8"align="justify">'.$d->address_.'</td>
                     </tr>
                     <tr>
                         <td colspan="2">Interest Insured</td>
@@ -139,7 +141,7 @@ class Report extends CI_Controller
             }
 
             $html .= '
-            <table border="" cellpadding="2">
+            <table border="" cellpadding="3">
                 
             <tr>
             <td colspan="2">Mark/Numbers</td>
@@ -184,7 +186,7 @@ class Report extends CI_Controller
         <tr>
             <td colspan="2">Destination</td>
             <td colspan="1" align="right">:</td>
-            <td colspan="8"align="justify">'.$d->destination_to.'</td>
+            <td colspan="8"align="justify">'.$d->destination_to.'<br>1. SITE ID : '.$d->site_id.'</td>
         </tr>
         <tr>
             <td colspan="2">Consignee</td>
@@ -211,10 +213,29 @@ class Report extends CI_Controller
                     </table>    
                 </div>';
 
-    $html = str_replace('{id}',$id, $html);
+
+    if ($d->keterangan == "300 Site") {    
+        $mop = '0608032100001';
+    } elseif ($d->keterangan == "58 Site"){
+        $mop = '0608032100003';
+    }elseif ($d->keterangan == "216 Site"){
+        $mop = '0608032100004';
+    }elseif ($d->keterangan == "491 Site"){
+        $mop = '0608032100005';
+    }elseif ($d->keterangan == "180 Site"){
+        $mop = '0608032100006';
+    }elseif ($d->keterangan == "236 Site"){
+        $mop = '0608032100007';
+    }
+
+    $no_sertif = $d->no_sertif;
+    $str_length = 5;
+    $no_sertif_5 = substr("00000{$no_sertif}", -$str_length);
+
+    $html = str_replace('{no_sertif}',$no_sertif_5, $html);
     $html = str_replace('{namaPerusahaan}',$namaPerusahaan, $html);
     $html = str_replace('{now}',$now, $html);
-    $html = str_replace('{now}',$now, $html);
+    $html = str_replace('{MOP}',$mop, $html);
     $html = str_replace('{invoice_ref_id}',$invoice_ref_id, $html);
     
     //

@@ -224,7 +224,6 @@
                   <th>TRM</th>
                   <th>TSI</th>
                   <th>Amount Insured</th>
-                  <th>Sertifikat</th>
                   <th>Keterangan</th>
                   <!-- <th>Terbit</th> </-->
                   <th>Info</th>
@@ -250,9 +249,7 @@
                     <td><?=$dd->ctrm?></td>
                     <td><?=$dd->ctsi?></td>
                     <td><?=$dd->amount_insured?></td>
-                    <td><?=$dd->no_sertif?></td>
                     <td><?=$dd->keterangan?></td>
-                    <!--<td><?=$dd->terbit?></td></-->
                     <td><a type="button" class="btn btn-info"  href="<?=base_url('admin/info_datamasuk/'.$dd->dummy_id)?>" name="btn_update" style="margin:auto;"><i class="fa fa-info" aria-hidden="true"></i></a></td>
                     <td><a type="button" class="btn btn-info"  href="<?=base_url('admin/update_datamasuk/'.$dd->dummy_id)?>" name="btn_update" style="margin:auto;"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
                     <td><a type="button" class="btn btn-danger btn-delete"  href="<?=base_url('admin/delete_data/'.$dd->dummy_id)?>" name="btn_delete" style="margin:auto;"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
@@ -278,7 +275,6 @@
                   <th>TRM</th>
                   <th>TSI</th>
                   <th>Amount Insured</th>
-                  <th>Sertifikat</th>
                   <th>Keterangan</th>
                   </tr>
                 </tfoot>

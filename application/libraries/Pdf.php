@@ -13,8 +13,8 @@ class Pdf extends TCPDF
   public function Header() {
 
     // Logo
-    $image_file = 'pdf/asuransi.png'; // *** Very IMP: make sure this image is available on given path on your server
-    $image_file2 = 'pdf/maximus.png'; // *** Very IMP: make sure this image is available on given path on your server
+    $image_file = 'pdf/asuransi.png'; // *** Very IMP
+    $image_file2 = 'pdf/maximus.png'; // *** Very IMP
     $this->Image($image_file,15,8,27);
     // Set font
     $this->SetFont('monotype', 'C', 24);
@@ -22,7 +22,7 @@ class Pdf extends TCPDF
     $this->Ln();        
     $this->Image($image_file2,150,13,45);
     $this->Ln(40);        
-    // We need to adjust the x and y positions of this text ... first two parameters
+    //adjust the x and y positions of this text ... first two parameters
     if ($this->page == 1) {    
     $this->Cell(170, 0, 'Certificate of Insurance', 0, false, 'C', 0, '', 0, false, 'M', 'M');
 

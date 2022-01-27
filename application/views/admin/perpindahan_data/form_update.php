@@ -287,7 +287,7 @@
 
                 <div class="form-group form-group-lg col-md-12">
                   <label for="sailing_date">Tanggal Keberangkatan</label>
-                  <input type="text" name="sailing_date" readonly="readonly" class="form-control" value="<?=$d->sailing_date?>">
+                  <input type="date" name="sailing_date" readonly="readonly" class="form-control" value="<?=$d->sailing_date?>">
                 </div>
 
                 <div class="form-group form-group-lg col-md-12">

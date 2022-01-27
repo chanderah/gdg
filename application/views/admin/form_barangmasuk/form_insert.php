@@ -209,7 +209,7 @@
                   <label for="address_">2. Alamat</label>
                     <select class="form-control" name="address_">
                       <option selected>Choose...</option>
-                      <option value="APL Tower, Jakarta Barat, RT.12/RW.6, Grogol, Grogol Petamburan, West Jakarta City, Jakarta 11440">APL Tower, Jakarta Barat, RT.12/RW.6, Grogol, Grogol Petamburan, West Jakarta City, Jakarta 11440</option>
+                      <option value="APL Tower, 30 Floor, Grogol, West Jakarta">APL Tower, 30 Floor, Grogol, West Jakarta</option>
                       <option value="Lainnya">Lainnya</option>
                     </select>
                 </div>
@@ -266,7 +266,7 @@
 
                 <div class="form-group form-group-lg col-md-12">
                   <label for="sailing_date">6. Tanggal Keberangkatan</label>
-                  <input type="text" placeholder="Tanggal Keberangkatan" name="sailing_date" required="required" class="form-control"/>
+                  <input type="date" placeholder="Tanggal Keberangkatan" name="sailing_date" required="required" class="form-control"/>
                 </div>
 
                 <div class="form-group form-group-lg col-md-12">

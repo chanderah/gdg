@@ -202,26 +202,32 @@
             <?php } ?>
               <div class="box-body">
                 <?php foreach($data_barang_info as $d){ ?>
-                <div class="form-group form-group-lg col-md-12">
-                  <label for="the_insured">1. Nama Tertanggung</label>
-                  <input type="text" name="the_insured" class="form-control" readonly="readonly" placeholder="Dari"value="<?=$d->the_insured?>">
-                </div>
+                  <div class="form-group form-group-lg col-md-12">
+                    <label for="the_insured">1. Nama Tertanggung</label>
+                    <input type="text" name="the_insured" class="form-control" readonly="readonly" placeholder="Dari"value="<?=$d->the_insured?>">
+                  </div>
                
                 <div class="form-group form-group-lg col-md-12">
                   <label for="address_">2. Alamat</label>
                   <input type="text" name="address_" readonly="readonly" class="form-control" value="<?=$d->address_?>">
 
                 </div>
-                  
+                 
+                <div class="form-group form-group-lg col-md-6">
+                  <label for="destination_from">3. Jenis Barang yang Dikirim</label>
+                  <input type="text" name="destination_from" readonly="readonly" class="form-control">
+                </div>
+                <div class="form-group form-group-lg col-md-6">
+                <label for="destination_to">Quantity</label>
+                  <input type="text" name="destination_from" readonly="readonly" class="form-control">
+                </div>
                 <?php foreach($data_barang_desc as $d2){ ?>
 
                 <div class="form-group form-group-lg col-md-6">
-                  <label for="destination_from">3. Jenis Barang yang Dikirim</label>
                   <input type="text" name="destination_from" readonly="readonly" class="form-control" value="<?=$d2->title?>">
                 </div>
                 <div class="form-group form-group-lg col-md-6">
-                  <label for="destination_to">Quantity</label>
-                  <input type="text" name="destination_to" readonly="readonly" class="form-control" value="<?=$d2->description?>">
+                  <input type="text" name="destination_to" readonly="readonly" class="form-control" value="<?=$d2->description?> Pcs">
                 </div>
                 <?php } ?>
 
