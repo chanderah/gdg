@@ -17,7 +17,7 @@
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="<?php echo base_url()?>assets/web_admin/dist/css/skins/_all-skins.min.css">
-  <link rel="stylesheet" href="<?php echo base_url()?>assets/datetimepicker/css/bootstrap-datetimepicker.css">
+
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -30,6 +30,7 @@
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
+
   <header class="main-header">
     <!-- Logo -->
     <a href="<?php echo base_url('admin')?>" class="logo">
@@ -53,7 +54,7 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <?php foreach($avatar as $a){?>
+              <?php foreach($avatar as $a){ ?>
               <img src="<?php echo base_url('assets/upload/user/img/'.$a->nama_file)?>" class="user-image" alt="User Image">
               <?php } ?>
               <span class="hidden-xs"><?=$this->session->userdata('name')?></span>
@@ -61,13 +62,12 @@
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <?php foreach($avatar as $a){ ?>
+                <?php foreach($avatar as $a){?>
                 <img src="<?php echo base_url('assets/upload/user/img/'.$a->nama_file)?>" class="img-circle" alt="User Image">
                 <?php } ?>
-
                 <p>
                   <?=$this->session->userdata('name')?> - Web Developer
-                  <small>Last Login: <?=$this->session->userdata('last_login')?></small>
+                  <small>Last Login : <?=$this->session->userdata('last_login')?></small>
                 </p>
               </li>
               <!-- Menu Body -->
@@ -120,11 +120,11 @@
           </a>
           <!-- <ul class="treeview-menu">
             <li><a href="<?php echo base_url()?>assets/web_admin/index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
-            <li><a href="<?php echo base_url()?>assets/web_admin/index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
+            <li><a href="<?php echo base_url('admin')?>"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
           </ul> -->
         </li>
 
-        <li class="treeview active">
+        <li class="treeview">
           <a href="#">
             <i class="fa fa-edit"></i> <span>Forms</span>
             <span class="pull-right-container">
@@ -132,11 +132,11 @@
                 </span>
           </a>
           <ul class="treeview-menu">
-            <li class="active"><a href="<?= base_url('admin/form_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tambah Data Masuk</a></li>
+            <li><a href="<?= base_url('admin/form_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tambah Data Masuk</a></li>
             <li><a href="<?= base_url('admin/form_satuan')?>"><i class="fa fa-circle-o"></i> Tambah Paket Barang</a></li>
           </ul>
         </li>
-        <li class="treeview ">
+        <li class="treeview active">
           <a href="#">
             <i class="fa fa-table"></i> <span>Tables</span>
             <span class="pull-right-container">
@@ -144,7 +144,7 @@
                 </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?= base_url('admin/tabel_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tabel Data Masuk</a></li>
+            <li class="active"><a href="<?= base_url('admin/tabel_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tabel Data Masuk</a></li>
             <li><a href="<?= base_url('admin/tabel_barangkeluar')?>"><i class="fa fa-circle-o"></i> Tabel Data Keluar</a></li>
             <li><a href="<?= base_url('admin/tabel_satuan')?>"><i class="fa fa-circle-o"></i> Tabel Satuan</a></li>
           </ul>
@@ -169,109 +169,86 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Input Data Masuk
+        Informasi Data Masuk
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a href="#">Forms</a></li>
-        <li class="active">Data Barang</li>
+        <li class="active">General Elements</li>
       </ol>
     </section>
 
     <!-- Main content -->
-    <section class="content" style="">
+    <section class="content">
       <div class="row">
         <!-- left column -->
         <div class="col-md-12">
           <div class="container">
+            <!-- general form elements -->
           <div class="box box-primary">
             <div class="box-header with-border">
-              <h3 class="box-title"><i class="fa fa-archive" aria-hidden="true"></i> Tambah Data Masuk</h3>
+              <h3 class="box-title"><i class="fa fa-archive" aria-hidden="true"></i> Informasi Data Masuk</h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->
             <div class="container">
-              <div id="user_message" style="display:inline-block"></div>
-              <form id="form_insert_site" method="post" autocomplete="off" accept-charset="utf-8"style="width:95%;margin-left:10px">   
-                <div class="form-group" style="display:inline-block; margin-left:75px">
-                  <button type="reset" class="btn btn-basic" name="btn_reset" style="width:95px;margin-left:-70px;"><i class="fa fa-eraser" aria-hidden="true"></i> Reset</button>
-                </div>                 
-                <div class="form-group form-group-lg col-md-12">
+            <form action="<?=base_url('admin/proses_datamasuk_update')?>" role="form" method="post" style="width:95%;margin-left:10px">
+
+              <?php if(validation_errors()){ ?>
+              <div class="alert alert-warning alert-dismissible">
+                  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                  <strong>Warning!</strong><br> <?php echo validation_errors(); ?>
+             </div>
+            <?php } ?>
+              <div class="box-body">
+                <?php foreach($data_barang_info as $d){ ?>
+                  <div class="form-group form-group-lg col-md-12">
                   <label for="the_insured">1. Nama Tertanggung</label>
-                    <select name="the_insured" class="form-control">
-                      <option selected>Choose...</option>
-                      <option value="PT. FiberHome Technologies Indonesia and/or BAKTI (Badan Aksesibilitas Telekomunikasi dan Informasi)">PT. FiberHome Technologies Indonesia and/or BAKTI (Badan Aksesibilitas Telekomunikasi dan Informasi)</option>
-                      <option value="Lainnya">Lainnya</option>
-                    </select>
+                  <input type="text" name="destination_from" class="form-control" readonly="readonly" placeholder="Dari"value="<?=$d->the_insured?>">
                 </div>
                
                 <div class="form-group form-group-lg col-md-12">
                   <label for="address_">2. Alamat</label>
-                    <select class="form-control" name="address_">
-                      <option selected>Choose...</option>
-                      <option value="APL Tower, Jakarta Barat, RT.12/RW.6, Grogol, Grogol Petamburan, West Jakarta City, Jakarta 11440">APL Tower, Jakarta Barat, RT.12/RW.6, Grogol, Grogol Petamburan, West Jakarta City, Jakarta 11440</option>
-                      <option value="Lainnya">Lainnya</option>
-                    </select>
+                  <input type="text" name="destination_from" readonly="readonly" class="form-control" value="<?=$d->address_?>">
+
                 </div>
+                  
+                <?php foreach($data_barang_desc as $d2){ ?>
 
-                <table id="cart_table" class="table table-sm table-stripped table-hover" style="margin-left:7px;width:99%">
-                    <thead>
-                        <tr>
-                            <th width="80%">3. Jenis Barang yang Dikirim</th>
-                            <th width="20%">Quantity</th>
-                            <th width="5%"></th>
-                        </tr>
-                        <tr>
-                        </tr> 
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                                <div class="form-group form-group-lg">
-                                    <input type="text" name="txtTitle[]" placeholder="Jenis Barang" required="required" class="form-control"/>
-                                </div>
-                            </td> 
-                            <td>
-                                <div class="form-group form-group-lg">
-                                    <input type="number" name="txtDescription[]" class="form-control" placeholder="@ pcs" required="required"/>
-                                </div>
-                            </td>
-                            
-                            <td>
-                                <button id="addItem" name="addItem" type="button" class="btn btn-success btn-block btn-sm add_button"><i style="color:#fff" class="fa fa-plus-circle"></i></button>
-                                <button id="removeItem" name="removeItem" type="button" class="btn btn-danger btn-block btn-sm remove_button"><i style="color:#fff;" class="fa fa-trash-o"></i></button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="form-group form-group-lg col-md-6">
+                  <label for="destination_from">3. Jenis Barang yang Dikirim</label>
+                  <input type="text" name="destination_from" readonly="readonly" class="form-control" value="<?=$d2->title?>">
+                </div>
+                <div class="form-group form-group-lg col-md-6">
+                  <label for="destination_to">Quantity</label>
+                  <input type="text" name="destination_from" readonly="readonly" class="form-control" value="<?=$d2->description?>">
+                </div>
+                <?php } ?>
 
+
+                  
                 <div class="form-group form-group-lg col-md-12">
                   <label for="conveyance">4. Pengiriman Melalui</label>
-                    <select class="form-control" name="conveyance">
-                      <option selected>Choose...</option>
-                      <option value="Darat">Darat</option>
-                      <option value="Laut">Laut</option>
-                      <option value="Udara">Udara</option>
-                    </select>
+                  <input type="text" name="destination_from" readonly="readonly" class="form-control" value="<?=$d->conveyance?>">
                 </div>
                 
                 <div class="form-group form-group-lg col-md-6">
                   <label for="destination_from">5. Tempat Keberangkatan</label>
-                  <input type="text" name="destination_from" class="form-control" placeholder="Dari">
+                  <input type="text" name="destination_from" readonly="readonly" class="form-control" value="<?=$d->destination_from?>">
                 </div>
                 <div class="form-group form-group-lg col-md-6">
                   <label for="destination_to">Tujuan Akhir</label>
-                  <input type="text" class="form-control" name="destination_to" placeholder="Ke">
+                  <input type="text" name="destination_from" readonly="readonly" class="form-control" value="<?=$d->destination_to?>">
                 </div>
 
                 <div class="form-group form-group-lg col-md-12">
                   <label for="sailing_date">6. Tanggal Keberangkatan</label>
-                  <input type="text" placeholder="Tanggal Keberangkatan" name="sailing_date" required="required" class="form-control"/>
+                  <input type="text" name="destination_from" readonly="readonly" class="form-control" value="<?=$d->sailing_date?>">
                 </div>
 
                 <div class="form-group form-group-lg col-md-12">
                   <label for="amount_insured">7. Nilai Barang yang Diangkut</label>
-                  <input type="number" name="amount_insured" placeholder="Nilai Barang" required="required" class="form-control"/>
+                  <input type="text" name="destination_from" readonly="readonly" class="form-control" value="Rp. <?=$d->amount_insured?>">
                 </div>
 
                 <div class="form-group form-group-lg col-md-12">
@@ -279,37 +256,38 @@
                 </div>
                 <div class="form-group form-group-lg col-md-4">
                   <label for="lampiran_BL">Bill of Lading (B/L)</label>
-                  <input type="text" class="form-control" name="lampiran_BL" placeholder="B/L">
+                  <input type="text" name="destination_from" readonly="readonly" class="form-control" value="<?=$d->lampiran_BL?>">
                 </div>
                 <div class="form-group form-group-lg col-md-4">
                   <label for="lampiran_LC">Letter of Credit (L/C) *</label>
-                  <input type="text" class="form-control" name="lampiran_LC" placeholder="L/C">
+                  <input type="text" name="destination_from" readonly="readonly" class="form-control" value="<?=$d->lampiran_LC?>">
                 </div>
                 <div class="form-group form-group-lg col-md-4">
                   <label for="lampiran_invoice">Invoice</label>
-                  <input type="text" class="form-control" name="lampiran_invoice" placeholder="Invoice">
+                  <input type="text" name="destination_from" readonly="readonly" class="form-control" value="<?=$d->lampiran_invoice?>">
                 </div>
                 <div class="form-group form-group-lg col-md-6">
                   <label for="lampiran_packinglist">Packing List</label>
-                  <input type="text" class="form-control" name="lampiran_packinglist" placeholder="Packing List">
+                  <input type="text" name="destination_from" readonly="readonly" class="form-control" value="<?=$d->lampiran_packinglist?>">
                 </div>
                 <div class="form-group form-group-lg col-md-6">
                   <label for="lampiran_DO">Delivery Order (DO)</label>
-                  <input type="text" class="form-control" name="lampiran_DO" placeholder="DO">
+                  <input type="text" name="destination_from" readonly="readonly" class="form-control" value="<?=$d->lampiran_DO?>">
                 </div>          
-                
                 <div class="box-footer col-md-12" style="width:100%; margin-left:30px; margin-bottom:10px; margin-top:5px">
                   <a type="button" class="btn btn-default" style="width:10%;margin-right:26%" onclick="history.back(-1)" name="btn_kembali"><i class="fa fa-arrow-left" aria-hidden="true"></i> Kembali</a>
+                <!--
                   <a type="button" class="btn btn-info" style="width:18%;margin-right:20%" href="<?=base_url('admin/tabel_barangmasuk')?>" name="btn_listbarang">
                   <i class="fa fa-table" aria-hidden="true"></i> Lihat List Permintaan</a>
-                  <button type="submit" input type="submit" style="width:20%" id="btnSave" class="btn btn-md btn-success"><i class="fa fa-check" aria-hidden="true"></i>Create</button>
+                  <button type="submit" input type="submit" style="width:20%" id="btnSave" class="btn btn-md btn-success"><i class="fa fa-check" aria-hidden="true"></i>Update</button>
+                -->
                 </div>
-              </form>
-
-              
-            </div>
+                <?php } ?>
+              </div>
+              <!-- /.box-body -->
+            </form>
           </div>
-          
+          </div>
           <!-- /.box -->
 
           <!-- Form Element sizes -->
@@ -323,7 +301,7 @@
 
           <!-- /.box -->
 
-            </div>
+        </div>
         <!--/.col (left) -->
         <!-- right column -->
         <!-- <div class="col-md-6">
@@ -334,7 +312,7 @@
 
           <!-- /.box -->
 
-          </div>
+        </div>
         </div>
         <!--/.col (right) -->
       </div>
@@ -348,6 +326,7 @@
        <b>Version</b> 1
     </div>
     <strong>Copyright &copy; <?=date('Y')?></strong>
+    
   </footer>
 
    
@@ -366,110 +345,7 @@
   <script src="<?php echo base_url()?>assets/web_admin/bower_components/fastclick/lib/fastclick.js"></script>
   <!-- AdminLTE App -->
   <script src="<?php echo base_url()?>assets/web_admin/dist/js/adminlte.min.js"></script>
-  <script src="<?php echo base_url()?>assets/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
   <!-- AdminLTE for demo purposes -->
   <script src="<?php echo base_url()?>assets/web_admin/dist/js/demo.js"></script>
-
-  <script type="text/javascript">
-      $(".form_datetime").datetimepicker({
-        format: 'dd/mm/yyyy',
-        autoclose: true,
-        todayBtn: true,
-        pickTime: false,
-        minView: 2,
-        maxView: 4,
-      });
-  </script>
-
-  <script src="<?php echo base_url("assets/js/jquery.min.js");?>"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap.min.js"></script>
-
-    <script type="text/javascript">
-        var i = 1, max = 50;
-        var cartTable = {
-            options: {
-                table: "#cart_table"
-            },
-            initialize: function() {
-                this.setVars().events();
-            },
-            setVars: function() {
-                this.$table = $(this.options.table);
-                this.$totalLines = $(this.options.table).find('tr').length - 1;
-                return this;
-            },
-            updateLines: function() {
-                var totalLines = $(this.options.table).find('tr').length - 1;
-                if (totalLines == 1) {
-                    $('.add_button').show();
-                    $('.remove_button').hide();
-                }
-                return this;
-            },
-            events: function() {
-                var _self = this;
-                _self.updateLines();
-                this.$table.on('click', 'button.add_button', function(e) {
-                    e.preventDefault();
-                    if(max > i) {
-                        var $tr = $(this).closest('tr');
-                        var $clone = $tr.clone();
-                        $clone.find(':text').val('');
-                        $tr.after($clone);
-                        if (_self.setVars().$totalLines > 1) {
-                            $('.remove_button').show();
-                            $('.add_button').show();
-                        }
-                        i++;
-                    }
-                }).on('click', 'button.remove_button', function(e) {
-                    if (i > 1) {
-                        e.preventDefault();
-                        var $tr = $(this).closest('tr');
-                        $tr.remove();
-                        //if have delete last button with button add visible, add another button to last tr
-                        if (_self.setVars().$totalLines > 1) {
-                            _self.$table.find('tr:last').find('.add').show();
-                        }
-                        i--;
-                    }
-                });
-
-                return this;
-            }
-        };
-
-        function initializeCartTable() {
-            cartTable.initialize();
-        }
-        window.addEventListener('load', initializeCartTable, false);
-    </script>
-
-    <script>
-        var display_bill_table = "";
-        $(document).ready(function() {
-
-            $('#form_insert_site').submit(function(e) {
-                e.preventDefault();
-                var data = $("#form_insert_site").serialize();
-                $.ajax({
-                    type:"POST",
-                    url:'<?php echo base_url("main/input_datamasuk"); ?>',
-                    data: data,
-                    success: function(data) {
-                        $("#user_message").html(data);
-                        $(":text").val('');
-                        display_bill_table.ajax.reload();
-                    },
-                });
-            });
-            //end
-        });
-
-    </script>
   </body>
-
-  
   </html>

@@ -202,11 +202,23 @@
             <?php } ?>
               <div class="box-body">
                 <?php foreach($data_barang_update as $d){ ?>
+                    <div class="form-group form-group-lg col-md-12"style="margin-top:20px;">
+                    <label for="keterangan" style="display:inline;">Keterangan</label>
+                    <select class="form-control" name="keterangan" style="  display:inline;">
+                      <option value="<?=$d->keterangan?>"><?=$d->keterangan?></option>
+                      <option value="80 Site">80 Site</option>
+                      <option value="180 Site">180 Site</option>
+                      <option value="216 Site">216 Site</option>
+                      <option value="236 Site">236 Site</option>
+                      <option value="300 Site">300 Site</option>
+                      <option value="491 Site">491 Site</option>
+                    </select>
+                  </div>
                   <div class="form-group">
                     <label for="dummy_id" style="display:none;">ID</label>
                     <input type="text" name="dummy_id" style="  display:none;" class="form-control" readonly="readonly" value="<?=$d->dummy_id?>">
                   </div> 
-                  <div class="form-group form-group-lg col-md-12">
+                  <div class="form-group form-group-lg col-md-12" >
                     <label for="site_id" style="display:inline;">SITE ID</label>
                     <input type="text" name="site_id" style="  display:inline;" class="form-control" placeholder="Site ID" value="<?=$d->site_id?>">
                   </div>
@@ -250,18 +262,9 @@
                     <label for="amount_insured" style="display:inline;">Amount Insured</label>
                     <input type="number" name="amount_insured" style="  display:inline;" class="form-control" placeholder="Amount Insured" value="<?=$d->amount_insured?>">
                   </div>
-                  <div class="form-group form-group-lg col-md-12">
+                  <div class="form-group form-group-lg col-md-12"style="margin-bottom:10px;">
                     <label for="no_sertif" style="display:inline;">Sertifikat</label>
                     <input type="text" name="no_sertif" style="  display:inline;" class="form-control" placeholder="Sertifikat" value="<?=$d->no_sertif?>">
-                  </div>
-                  <div class="form-group form-group-lg col-md-12" style="margin-bottom:40px;">
-                    <label for="keterangan" style="display:inline;">Keterangan</label>
-                    <select class="form-control" name="keterangan" style="  display:inline;">
-                      <option value="<?=$d->keterangan?>"><?=$d->keterangan?></option>
-                      <option value="300 Site">300 Site</option>
-                      <option value="216 Site">216 Site</option>
-                      <option value="80 Site">80 Site</option>
-                    </select>
                   </div>
                 <?php } ?>
               </div>

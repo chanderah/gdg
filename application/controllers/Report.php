@@ -118,84 +118,84 @@ class Report extends CI_Controller
                     <tr>
                         <td colspan="2">Interest Insured</td>
                         <td colspan="1" align="right">:</td>
-                        <td colspan="8"align="justify">'.$desc->title.'
-                        
-                        <ol>
-                            <li><b>Point 1</b></li>
-                            <li><i>Point 2</i></li>
-                        </ol>
-                        
-                        </td>
                     </tr>
-                    <tr>
-                        <td colspan="2">Mark/Numbers</td>
-                        <td colspan="1" align="right">:</td>
-                        <td colspan="8"align="justify">-</td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">Amount Insured</td>
-                        <td colspan="1" align="right">:</td>
-                        <td colspan="8"align="justify">'.$d->amount_insured.'</td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">L/C</td>
-                        <td colspan="1" align="right">:</td>
-                        <td colspan="8"align="justify">'.$d->lampiran_LC.'</td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">B/L</td>
-                        <td colspan="1" align="right">:</td>
-                        <td colspan="8"align="justify">'.$d->lampiran_BL.'</td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">Invoice Number</td>
-                        <td colspan="1" align="right">:</td>
-                        <td colspan="8"align="justify">'.$d->lampiran_invoice.'</td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">Scope of Cover</td>
-                        <td colspan="1" align="right">:</td>
-                        <td colspan="8"align="justify">-</td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">Date of Sailing</td>
-                        <td colspan="1" align="right">:</td>
-                        <td colspan="8"align="justify">'.$d->sailing_date.'</td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">Conveyance</td>
-                        <td colspan="1" align="right">:</td>
-                        <td colspan="8"align="justify">'.$d->conveyance.'</td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">Destination</td>
-                        <td colspan="1" align="right">:</td>
-                        <td colspan="8"align="justify">'.$d->destination_to.'</td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">Consignee</td>
-                        <td colspan="1" align="right">:</td>
-                        <td colspan="8"align="justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
-                        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</td>
-                    </tr>
-                    
                 </table>'
             ;
 
+            //2
+        
             $no = 1;
-            foreach($data2 as $d){
+            foreach($data2 as $d2){
               $html .= '<tr>';
-              $html .= '<td align="center">'.$no.'</td>';
-              $html .= '<td align="center">'.$d->title.'</td>';
-              $html .= '<td align="center">'.$d->description.'</td>';
+              $html .= '<td></td>';
+              $html .= '<td></td>';
+              $html .= '<td></td>';
+              $html .= '<td colspan="4"> '.$no.'. '.$d2->title.' - '.$d2->description.' Pcs</td>';
               $html .= '</tr>';
               $no++;
               $pdf->Ln();
             }
 
-    $html .= '<div style="page-break-inside:avoid;">
+            $html .= '
+            <table border="" cellpadding="2">
+                
+            <tr>
+            <td colspan="2">Mark/Numbers</td>
+            <td colspan="1" align="right">:</td>
+            <td colspan="8"align="justify">-</td>
+        </tr>
+        <tr>
+            <td colspan="2">Amount Insured</td>
+            <td colspan="1" align="right">:</td>
+            <td colspan="8"align="justify">'.$d->amount_insured.'</td>
+        </tr>
+        <tr>
+            <td colspan="2">L/C</td>
+            <td colspan="1" align="right">:</td>
+            <td colspan="8"align="justify">'.$d->lampiran_LC.'</td>
+        </tr>
+        <tr>
+            <td colspan="2">B/L</td>
+            <td colspan="1" align="right">:</td>
+            <td colspan="8"align="justify">'.$d->lampiran_BL.'</td>
+        </tr>
+        <tr>
+            <td colspan="2">Invoice Number</td>
+            <td colspan="1" align="right">:</td>
+            <td colspan="8"align="justify">'.$d->lampiran_invoice.'</td>
+        </tr>
+        <tr>
+            <td colspan="2">Scope of Cover</td>
+            <td colspan="1" align="right">:</td>
+            <td colspan="8"align="justify">-</td>
+        </tr>
+        <tr>
+            <td colspan="2">Date of Sailing</td>
+            <td colspan="1" align="right">:</td>
+            <td colspan="8"align="justify">'.$d->sailing_date.'</td>
+        </tr>
+        <tr>
+            <td colspan="2">Conveyance</td>
+            <td colspan="1" align="right">:</td>
+            <td colspan="8"align="justify">'.$d->conveyance.'</td>
+        </tr>
+        <tr>
+            <td colspan="2">Destination</td>
+            <td colspan="1" align="right">:</td>
+            <td colspan="8"align="justify">'.$d->destination_to.'</td>
+        </tr>
+        <tr>
+            <td colspan="2">Consignee</td>
+            <td colspan="1" align="right">:</td>
+            <td colspan="8"align="justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
+            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</td>
+        </tr>
+            </table>'
+;
+
+    $html .=    '<div style="page-break-inside:avoid;">
                     <table cellpadding="5">
                         <tr>
                             <td align="right">Issued {now}</td>
@@ -207,7 +207,7 @@ class Report extends CI_Controller
                             <td align="right">{namaPerusahaan}</td>
                         </tr>
                     </table>    
-                 </div>';
+                </div>';
 
     $html = str_replace('{id}',$id, $html);
     $html = str_replace('{namaPerusahaan}',$namaPerusahaan, $html);
