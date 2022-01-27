@@ -18,6 +18,7 @@ class Report extends CI_Controller
     $tgl2 = $this->uri->segment(5);
     $tgl3 = $this->uri->segment(6);
     $ls = array('dummy_id' => $id);
+    
     //$ls   = array('site_id' => $id ,'provinsi' => $tgl1.'/'.$tgl2.'/'.$tgl3);
     
     $data = $this->M_admin->get_data('tb_site_out',$ls);
@@ -57,13 +58,14 @@ class Report extends CI_Controller
     //$pdf->SetFont('times', '', 15); 
 
     foreach($data as $d){
-        foreach($data2 as $desc){        
+        foreach($data2 as $desc){      
+    
 
     // add a page
     $pdf->AddPage();
 
     // create some HTML content    
-    $now = date("F jS, Y");
+    $now = date("F jS, Y",strtotime($d->created_at));
     //$data = 'ABC Company';
 
     $user_name = 'Mr. Lorel Ispum';
@@ -212,7 +214,7 @@ class Report extends CI_Controller
     $html = str_replace('{id}',$id, $html);
     $html = str_replace('{namaPerusahaan}',$namaPerusahaan, $html);
     $html = str_replace('{now}',$now, $html);
-    $html = str_replace('{user_name}',$user_name, $html);
+    $html = str_replace('{now}',$now, $html);
     $html = str_replace('{invoice_ref_id}',$invoice_ref_id, $html);
     
     //
