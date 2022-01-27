@@ -202,14 +202,14 @@
             <?php } ?>
               <div class="box-body">
                 <?php foreach($data_barang_info as $d){ ?>
-                  <div class="form-group form-group-lg col-md-12">
+                <div class="form-group form-group-lg col-md-12">
                   <label for="the_insured">1. Nama Tertanggung</label>
-                  <input type="text" name="destination_from" class="form-control" readonly="readonly" placeholder="Dari"value="<?=$d->the_insured?>">
+                  <input type="text" name="the_insured" class="form-control" readonly="readonly" placeholder="Dari"value="<?=$d->the_insured?>">
                 </div>
                
                 <div class="form-group form-group-lg col-md-12">
                   <label for="address_">2. Alamat</label>
-                  <input type="text" name="destination_from" readonly="readonly" class="form-control" value="<?=$d->address_?>">
+                  <input type="text" name="address_" readonly="readonly" class="form-control" value="<?=$d->address_?>">
 
                 </div>
                   
@@ -221,15 +221,13 @@
                 </div>
                 <div class="form-group form-group-lg col-md-6">
                   <label for="destination_to">Quantity</label>
-                  <input type="text" name="destination_from" readonly="readonly" class="form-control" value="<?=$d2->description?>">
+                  <input type="text" name="destination_to" readonly="readonly" class="form-control" value="<?=$d2->description?>">
                 </div>
                 <?php } ?>
 
-
-                  
                 <div class="form-group form-group-lg col-md-12">
                   <label for="conveyance">4. Pengiriman Melalui</label>
-                  <input type="text" name="destination_from" readonly="readonly" class="form-control" value="<?=$d->conveyance?>">
+                  <input type="text" name="conveyance" readonly="readonly" class="form-control" value="<?=$d->conveyance?>">
                 </div>
                 
                 <div class="form-group form-group-lg col-md-6">
@@ -238,17 +236,17 @@
                 </div>
                 <div class="form-group form-group-lg col-md-6">
                   <label for="destination_to">Tujuan Akhir</label>
-                  <input type="text" name="destination_from" readonly="readonly" class="form-control" value="<?=$d->destination_to?>">
+                  <input type="text" name="destination_to" readonly="readonly" class="form-control" value="<?=$d->destination_to?>">
                 </div>
 
                 <div class="form-group form-group-lg col-md-12">
                   <label for="sailing_date">6. Tanggal Keberangkatan</label>
-                  <input type="text" name="destination_from" readonly="readonly" class="form-control" value="<?=$d->sailing_date?>">
+                  <input type="text" name="sailing_date" readonly="readonly" class="form-control" value="<?=$d->sailing_date?>">
                 </div>
 
                 <div class="form-group form-group-lg col-md-12">
                   <label for="amount_insured">7. Nilai Barang yang Diangkut</label>
-                  <input type="text" name="destination_from" readonly="readonly" class="form-control" value="Rp. <?=$d->amount_insured?>">
+                  <input type="text" name="amount_insured" readonly="readonly" class="form-control" value="Rp. <?=$d->amount_insured?>">
                 </div>
 
                 <div class="form-group form-group-lg col-md-12">
@@ -256,23 +254,23 @@
                 </div>
                 <div class="form-group form-group-lg col-md-4">
                   <label for="lampiran_BL">Bill of Lading (B/L)</label>
-                  <input type="text" name="destination_from" readonly="readonly" class="form-control" value="<?=$d->lampiran_BL?>">
+                  <input type="text" name="lampiran_BL" readonly="readonly" class="form-control" value="<?=$d->lampiran_BL?>">
                 </div>
                 <div class="form-group form-group-lg col-md-4">
                   <label for="lampiran_LC">Letter of Credit (L/C) *</label>
-                  <input type="text" name="destination_from" readonly="readonly" class="form-control" value="<?=$d->lampiran_LC?>">
+                  <input type="text" name="lampiran_LC" readonly="readonly" class="form-control" value="<?=$d->lampiran_LC?>">
                 </div>
                 <div class="form-group form-group-lg col-md-4">
                   <label for="lampiran_invoice">Invoice</label>
-                  <input type="text" name="destination_from" readonly="readonly" class="form-control" value="<?=$d->lampiran_invoice?>">
+                  <input type="text" name="lampiran_invoice" readonly="readonly" class="form-control" value="<?=$d->lampiran_invoice?>">
                 </div>
                 <div class="form-group form-group-lg col-md-6">
                   <label for="lampiran_packinglist">Packing List</label>
-                  <input type="text" name="destination_from" readonly="readonly" class="form-control" value="<?=$d->lampiran_packinglist?>">
+                  <input type="text" name="lampiran_packinglist" readonly="readonly" class="form-control" value="<?=$d->lampiran_packinglist?>">
                 </div>
                 <div class="form-group form-group-lg col-md-6">
                   <label for="lampiran_DO">Delivery Order (DO)</label>
-                  <input type="text" name="destination_from" readonly="readonly" class="form-control" value="<?=$d->lampiran_DO?>">
+                  <input type="text" name="lampiran_DO" readonly="readonly" class="form-control" value="<?=$d->lampiran_DO?>">
                 </div>          
                 <div class="box-footer col-md-12" style="width:100%; margin-left:30px; margin-bottom:10px; margin-top:5px">
                   <a type="button" class="btn btn-default" style="width:10%;margin-right:26%" onclick="history.back(-1)" name="btn_kembali"><i class="fa fa-arrow-left" aria-hidden="true"></i> Kembali</a>

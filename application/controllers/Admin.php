@@ -507,6 +507,7 @@ class Admin extends CI_Controller{
     $uri = $this->uri->segment(3);
     $where = array('dummy_id' => $uri);
     $data['list_data'] = $this->M_admin->get_data('tb_site_in',$where);
+    $data['list_data_desc'] = $this->M_admin->get_data('tb_site_desc',$where);
     $data['list_satuan'] = $this->M_admin->select('tb_satuan');
     $data['avatar'] = $this->M_admin->get_data_gambar('tb_upload_gambar_user',$this->session->userdata('name'));
     $this->load->view('admin/perpindahan_data/form_update',$data);
@@ -531,6 +532,19 @@ class Admin extends CI_Controller{
       $amount_insured = $this->input->post('amount_insured',TRUE);
       $no_sertif = $this->input->post('no_sertif',TRUE);
       $keterangan = $this->input->post('keterangan',TRUE);
+      
+      $the_insured =$this->input->post("the_insured");
+      $address_ =$this->input->post("address_");
+      $conveyance =$this->input->post("conveyance");
+      $destination_from =$this->input->post("destination_from");
+      $destination_to =$this->input->post("destination_to");
+      $sailing_date =$this->input->post("sailing_date");
+      $amount_insured =$this->input->post("amount_insured");
+      $lampiran_BL =$this->input->post("lampiran_BL");
+      $lampiran_LC =$this->input->post("lampiran_LC");
+      $lampiran_invoice =$this->input->post("lampiran_invoice");
+      $lampiran_packinglist =$this->input->post("lampiran_packinglist");
+      $lampiran_DO =$this->input->post("lampiran_DO");
 
       //$the_insured = $this->db->get_where('tb_site_in', array('dummy_id' => $dummy_id));
       //$terbit = $this->input->post('terbit',TRUE);
@@ -552,7 +566,21 @@ class Admin extends CI_Controller{
             'amount_insured' => $amount_insured,
             'no_sertif' => $no_sertif,
             'keterangan' => $keterangan,
+
             //'terbit' => $terbit
+
+            'the_insured' => $the_insured,
+            'address_' => $address_,
+            'conveyance' => $conveyance,
+            'destination_from' => $destination_from,
+            'destination_to' => $destination_to,
+            'sailing_date' => $sailing_date,
+            'amount_insured' => $amount_insured,
+            'lampiran_BL' => $lampiran_BL,
+            'lampiran_LC' => $lampiran_LC,
+            'lampiran_invoice' => $lampiran_invoice,
+            'lampiran_packinglist' => $lampiran_packinglist,
+            'lampiran_DO' => $lampiran_DO,
       );
         $this->M_admin->insert('tb_site_out',$data);
         $this->M_admin->delete('tb_site_in',$where);
