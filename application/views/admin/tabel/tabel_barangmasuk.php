@@ -226,6 +226,7 @@
                   <th>Amount Insured</th>
                   <th>Keterangan</th>
                   <!-- <th>Terbit</th> </-->
+                  <th>Linked With</th>
                   <th>Info</th>
                   <th>Update</th>
                   <th>Delete</th>
@@ -250,6 +251,7 @@
                     <td><?=$dd->ctsi?></td>
                     <td><?=$dd->amount_insured?></td>
                     <td><?=$dd->keterangan?></td>
+                    <td><?=$dd->linked_with?></td>
                     <td><a type="button" class="btn btn-info"  href="<?=base_url('admin/info_datamasuk/'.$dd->dummy_id)?>" name="btn_update" style="margin:auto;"><i class="fa fa-info" aria-hidden="true"></i></a></td>
                     <td><a type="button" class="btn btn-info"  href="<?=base_url('admin/update_datamasuk/'.$dd->dummy_id)?>" name="btn_update" style="margin:auto;"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
                     <td><a type="button" class="btn btn-danger btn-delete"  href="<?=base_url('admin/delete_data/'.$dd->dummy_id)?>" name="btn_delete" style="margin:auto;"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
@@ -276,6 +278,7 @@
                   <th>TSI</th>
                   <th>Amount Insured</th>
                   <th>Keterangan</th>
+                  <th>Linked With</th>
                   </tr>
                 </tfoot>
               </table>

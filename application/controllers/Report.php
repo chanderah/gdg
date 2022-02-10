@@ -214,7 +214,7 @@ class Report extends CI_Controller
                 </div>';
 
 
-    
+
     if ($d->keterangan == "300 Site") {    
         $mop = '0608032100001';
     } elseif ($d->keterangan == "58 Site"){
