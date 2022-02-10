@@ -121,8 +121,8 @@
                   <input type="text" class="form-control" name="lampiran_invoice" placeholder="Invoice">
                 </div>
                 <div class="form-group form-group-lg col-md-6">
-                  <label for="lampiran_packinglist">Packing List</label>
-                  <input type="text" class="form-control" name="lampiran_packinglist" placeholder="Packing List">
+                  <label for="lampiran_PL">Packing List</label>
+                  <input type="text" class="form-control" name="lampiran_PL" placeholder="Packing List">
                 </div>
                 <div class="form-group form-group-lg col-md-6">
                   <label for="lampiran_DO">Delivery Order (DO)</label>

@@ -34,7 +34,7 @@ class Main extends CI_Controller {
         $lampiran_BL =$this->input->post("lampiran_BL");
         $lampiran_LC =$this->input->post("lampiran_LC");
         $lampiran_invoice =$this->input->post("lampiran_invoice");
-        $lampiran_packinglist =$this->input->post("lampiran_packinglist");
+        $lampiran_PL =$this->input->post("lampiran_PL");
         $lampiran_DO =$this->input->post("lampiran_DO");
         
         $id = $max_id=$this->m_admin->get_max_id('id','tb_site_in');
@@ -65,7 +65,7 @@ class Main extends CI_Controller {
             'lampiran_BL' => $lampiran_BL,
             'lampiran_LC' => $lampiran_LC,
             'lampiran_invoice' => $lampiran_invoice,
-            'lampiran_packinglist' => $lampiran_packinglist,
+            'lampiran_PL' => $lampiran_PL,
             'lampiran_DO' => $lampiran_DO,
             
             //'site_id' => $site_id,

@@ -311,8 +311,8 @@
                   <input type="text" name="lampiran_invoice" readonly="readonly" class="form-control" value="<?=$d->lampiran_invoice?>">
                 </div>
                 <div class="form-group form-group-lg col-md-6">
-                  <label for="lampiran_packinglist">Packing List</label>
-                  <input type="text" name="lampiran_packinglist" readonly="readonly" class="form-control" value="<?=$d->lampiran_packinglist?>">
+                  <label for="lampiran_PL">Packing List</label>
+                  <input type="text" name="lampiran_PL" readonly="readonly" class="form-control" value="<?=$d->lampiran_PL?>">
                 </div>
                 <div class="form-group form-group-lg col-md-6">
                   <label for="lampiran_DO">Delivery Order (DO)</label>

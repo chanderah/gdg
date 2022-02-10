@@ -544,7 +544,7 @@ class Admin extends CI_Controller{
       $lampiran_BL =$this->input->post("lampiran_BL");
       $lampiran_LC =$this->input->post("lampiran_LC");
       $lampiran_invoice =$this->input->post("lampiran_invoice");
-      $lampiran_packinglist =$this->input->post("lampiran_packinglist");
+      $lampiran_PL =$this->input->post("lampiran_PL");
       $lampiran_DO =$this->input->post("lampiran_DO");
 
       //$the_insured = $this->db->get_where('tb_site_in', array('dummy_id' => $dummy_id));
@@ -580,7 +580,7 @@ class Admin extends CI_Controller{
             'lampiran_BL' => $lampiran_BL,
             'lampiran_LC' => $lampiran_LC,
             'lampiran_invoice' => $lampiran_invoice,
-            'lampiran_packinglist' => $lampiran_packinglist,
+            'lampiran_PL' => $lampiran_PL,
             'lampiran_DO' => $lampiran_DO,
       );
         $this->M_admin->insert('tb_site_out',$data);
