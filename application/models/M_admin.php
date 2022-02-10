@@ -41,6 +41,14 @@ class M_admin extends CI_Model
     return $query->result();
   }
 
+  public function getAllDataLinkedWith($tabel)
+  {
+    $query = $this->db->select()
+                      ->from($tabel)
+                      ->get();
+    return $query->result();
+  }
+
 	public function get_data_all($tabel,$dummy_id)
 	{
     $query = $this->db->select()

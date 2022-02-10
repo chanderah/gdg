@@ -273,7 +273,9 @@ class Admin extends CI_Controller{
   public function update_datamasuk($dummy_id)
   {
     $where = array('dummy_id' => $dummy_id);
+    $where2 = array('dummy_id' => $dummy_id);
     $data['data_barang_update'] = $this->M_admin->get_data('tb_site_in',$where);
+    $data['data_linked_with'] = $this->M_admin->getAllDataLinkedWith('tb_site_in');
     $data['list_satuan'] = $this->M_admin->select('tb_satuan');
     $data['avatar'] = $this->M_admin->get_data_gambar('tb_upload_gambar_user',$this->session->userdata('name'));
     $this->load->view('admin/form_barangmasuk/form_update',$data);
@@ -365,6 +367,7 @@ class Admin extends CI_Controller{
     {
       $dummy_id = $this->input->post('dummy_id',TRUE);
       $site_id = $this->input->post('site_id',TRUE);
+      $linked_with = $this->input->post('linked_with',TRUE);
       $region = $this->input->post('region',TRUE);
       $provinsi = $this->input->post('provinsi',TRUE);
       $kabupaten = $this->input->post('kabupaten',TRUE);
@@ -393,6 +396,7 @@ class Admin extends CI_Controller{
             'ctsi' => $ctsi,
             'amount_insured' => $amount_insured,
             'keterangan' => $keterangan,
+            'linked_with' => $linked_with,
             //'terbit' => $terbit
       );
       $this->M_admin->update('tb_site_in',$data,$where);
