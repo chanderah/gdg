@@ -525,6 +525,8 @@ class Admin extends CI_Controller{
 
       $dummy_id = $this->input->post('dummy_id',TRUE);
       $site_id = $this->input->post('site_id',TRUE);
+      $linked_with = $this->input->post('linked_with',TRUE);
+
       $region = $this->input->post('region',TRUE);
       $provinsi = $this->input->post('provinsi',TRUE);
       $kabupaten = $this->input->post('kabupaten',TRUE);
@@ -560,6 +562,8 @@ class Admin extends CI_Controller{
             'no_sertif' => $no_sertif,
             'dummy_id' => $dummy_id,
             'site_id' => $site_id,
+            'linked_with' => $linked_with,
+
             'region' => $region,
             'provinsi' => $provinsi,
             'kabupaten' => $kabupaten,
