@@ -77,7 +77,7 @@ class Report extends CI_Controller
     $nosertifHeader = '<font face="narrowi">
                             <table cellpadding="5">
                                 <tr>
-                                    <td align="center"><font size="13" font face="monotype">No. </font><font size="11" font face="narrowi">JIS22-{MOP}-{no_sertif}</font></td>
+                                    <td align="center"><font size="13" font face="monotype">No. </font><font size="11" font face="narrowi">JIS22-{MOP_Header}-{no_sertif}</font></td>
                                 </tr>
                             </table>
                         </font>';
@@ -214,6 +214,7 @@ class Report extends CI_Controller
                 </div>';
 
 
+    
     if ($d->keterangan == "300 Site") {    
         $mop = '0608032100001';
     } elseif ($d->keterangan == "58 Site"){
@@ -228,6 +229,8 @@ class Report extends CI_Controller
         $mop = '0608032100007';
     }
 
+
+    $mop_header = '0608032100001';
     $no_sertif = $d->no_sertif;
     $str_length = 5;
     $no_sertif_5 = substr("00000{$no_sertif}", -$str_length);
@@ -236,6 +239,7 @@ class Report extends CI_Controller
     $html = str_replace('{namaPerusahaan}',$namaPerusahaan, $html);
     $html = str_replace('{now}',$now, $html);
     $html = str_replace('{MOP}',$mop, $html);
+    $html = str_replace('{MOP_Header}',$mop_header, $html);
     $html = str_replace('{invoice_ref_id}',$invoice_ref_id, $html);
     
     //

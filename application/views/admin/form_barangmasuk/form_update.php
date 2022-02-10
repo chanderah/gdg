@@ -206,7 +206,7 @@
                     <label for="keterangan" style="display:inline;">Keterangan</label>
                     <select class="form-control" name="keterangan" style="  display:inline;">
                       <option value="<?=$d->keterangan?>"><?=$d->keterangan?></option>
-                      <option value="80 Site">80 Site</option>
+                      <option value="58 Site">58 Site</option>
                       <option value="180 Site">180 Site</option>
                       <option value="216 Site">216 Site</option>
                       <option value="236 Site">236 Site</option>
