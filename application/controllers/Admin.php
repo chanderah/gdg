@@ -513,7 +513,7 @@ class Admin extends CI_Controller{
     $data['list_data_desc'] = $this->M_admin->get_data('tb_site_desc',$where);
     $data['list_satuan'] = $this->M_admin->select('tb_satuan');
     $data['avatar'] = $this->M_admin->get_data_gambar('tb_upload_gambar_user',$this->session->userdata('name'));
-    $this->load->view('admin/perpindahan_data/form_update',$data);
+    $this->load->view('admin/perpindahan_data/form_movedata',$data);
   }
 
   public function proses_data_keluar()
