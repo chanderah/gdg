@@ -23,7 +23,7 @@ class Report extends CI_Controller
     
     //$ls   = array('site_id' => $id ,'provinsi' => $tgl1.'/'.$tgl2.'/'.$tgl3);
     
-    $data = $this->M_admin->get_data('tb_site_out',$ls);
+    $data = $this->M_admin->get_data('tb_site_in',$ls);
     $data2 = $this->M_admin->get_data('tb_site_desc',$ls);  
 
     //create
@@ -186,18 +186,39 @@ class Report extends CI_Controller
         <tr>
             <td colspan="2">Destination</td>
             <td colspan="1" align="right">:</td>
-            <td colspan="8"align="justify">'.$d->destination_to.'<br>1. SITE ID : '.$d->site_id.'</td>
         </tr>
-        <tr>
-            <td colspan="2">Consignee</td>
-            <td colspan="1" align="right">:</td>
-            <td colspan="8"align="justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
-            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</td>
-        </tr>
-            </table>'
+        </table>'
+        ;
+
+        if ($d2->linked_with !== ""){
+            $no = 1;
+            foreach($data as $d2){
+                $html .= '<tr>';
+                $html .= '<td></td>';
+                $html .= '<td></td>';
+                $html .= '<td></td>';   
+                $html .= '<td colspan="4"> '.$no.'. SITE ID : '.$d2->site_id.'</td>';
+                $html .= '</tr>';
+                $no++;
+                $pdf->Ln();     
+        }
+
+        }
+        
+        $html .=    '
+        <table border="" cellpadding="3">
+            <tr>
+                <td colspan="2">Consignee</td>
+                <td colspan="1" align="right">:</td>
+                <td colspan="8"align="justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
+                labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</td>
+            </tr>
+        </table>'
 ;
+
+                
 
     $html .=    '<div style="page-break-inside:avoid;">
                     <table cellpadding="5">
@@ -213,8 +234,6 @@ class Report extends CI_Controller
                     </table>    
                 </div>';
 
-
-
     if ($d->keterangan == "300 Site") {    
         $mop = '0608032100001';
     } elseif ($d->keterangan == "58 Site"){
@@ -228,7 +247,6 @@ class Report extends CI_Controller
     }elseif ($d->keterangan == "236 Site"){
         $mop = '0608032100007';
     }
-
 
     $mop_header = '0608032100001';
     $no_sertif = $d->no_sertif;

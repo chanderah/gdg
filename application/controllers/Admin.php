@@ -381,6 +381,19 @@ class Admin extends CI_Controller{
       $keterangan = $this->input->post('keterangan',TRUE);
       //$terbit = $this->input->post('terbit',TRUE);
 
+      $the_insured =$this->input->post("the_insured");
+      $address_ =$this->input->post("address_");
+      $conveyance =$this->input->post("conveyance");
+      $destination_from =$this->input->post("destination_from");
+      $destination_to =$this->input->post("destination_to");
+      $sailing_date =$this->input->post("sailing_date");
+      $amount_insured =$this->input->post("amount_insured");
+      $lampiran_BL =$this->input->post("lampiran_BL");
+      $lampiran_LC =$this->input->post("lampiran_LC");
+      $lampiran_invoice =$this->input->post("lampiran_invoice");
+      $lampiran_PL =$this->input->post("lampiran_PL");
+      $lampiran_DO =$this->input->post("lampiran_DO");
+
       $where = array('dummy_id' => $dummy_id);
       $data = array(
             'dummy_id' => $dummy_id,
@@ -398,7 +411,23 @@ class Admin extends CI_Controller{
             'keterangan' => $keterangan,
             'linked_with' => $linked_with,
             //'terbit' => $terbit
+
+            'the_insured' => $the_insured,
+            'address_' => $address_,
+            'conveyance' => $conveyance,
+            'destination_from' => $destination_from,
+            'destination_to' => $destination_to,
+            'sailing_date' => $sailing_date,
+            'amount_insured' => $amount_insured,
+            'lampiran_BL' => $lampiran_BL,
+            'lampiran_LC' => $lampiran_LC,
+            'lampiran_invoice' => $lampiran_invoice,
+            'lampiran_PL' => $lampiran_PL,
+            'lampiran_DO' => $lampiran_DO,
+            
       );
+
+
       $this->M_admin->update('tb_site_in',$data,$where);
       $this->session->set_flashdata('msg_berhasil','Data Barang Berhasil Diupdate');
       redirect(base_url('admin/tabel_barangmasuk'));
@@ -521,7 +550,7 @@ class Admin extends CI_Controller{
     $this->form_validation->set_rules('dummy_id','Dummy ID','trim|required');
     if($this->form_validation->run() === TRUE)
     {
-      $no_sertif = $max_id=$this->M_admin->get_max_id('no_sertif','tb_site_out');
+      $no_sertif = $max_id=$this->M_admin->get_max_id('no_sertif','tb_site_in');
 
       $dummy_id = $this->input->post('dummy_id',TRUE);
       $site_id = $this->input->post('site_id',TRUE);
@@ -539,7 +568,6 @@ class Admin extends CI_Controller{
       $amount_insured = $this->input->post('amount_insured',TRUE);
 
       $keterangan = $this->input->post('keterangan',TRUE);
-      
       $the_insured =$this->input->post("the_insured");
       $address_ =$this->input->post("address_");
       $conveyance =$this->input->post("conveyance");
@@ -591,8 +619,7 @@ class Admin extends CI_Controller{
             'lampiran_PL' => $lampiran_PL,
             'lampiran_DO' => $lampiran_DO,
       );
-        $this->M_admin->insert('tb_site_out',$data);
-        $this->M_admin->delete('tb_site_in',$where);
+        $this->M_admin->update('tb_site_in',$data,$where);  
         $this->session->set_flashdata('msg_berhasil_keluar','Data Berhasil Keluar');
         redirect(base_url('admin/tabel_barangmasuk'));
     }else {
