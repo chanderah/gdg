@@ -350,6 +350,7 @@ class Admin extends CI_Controller{
 
       $this->session->set_flashdata('msg_berhasil','Data Barang Berhasil Ditambahkan');
       redirect(base_url('admin/form_barangmasuk'));
+      
     }else {
       $data['list_satuan'] = $this->M_admin->select('tb_satuan');
       $this->load->view('admin/form_barangmasuk/form_insert',$data);
@@ -438,97 +439,6 @@ class Admin extends CI_Controller{
   ####################################
       // END DATA Data Masuk
   ####################################
-
-
-  ####################################
-              // SATUAN
-  ####################################
-
-  public function form_satuan()
-  {
-    $data['avatar'] = $this->M_admin->get_data_gambar('tb_upload_gambar_user',$this->session->userdata('name'));
-    $this->load->view('admin/form_satuan/form_insert',$data);
-  }
-
-  public function tabel_satuan()
-  {
-    $data['list_data'] = $this->M_admin->select('tb_satuan');
-    $data['avatar'] = $this->M_admin->get_data_gambar('tb_upload_gambar_user',$this->session->userdata('name'));
-    $this->load->view('admin/tabel/tabel_satuan',$data);
-  }
-
-  public function update_satuan()
-  {
-    $uri = $this->uri->segment(3);
-    $where = array('id_satuan' => $uri);
-    $data['data_satuan'] = $this->M_admin->get_data('tb_satuan',$where);
-    $data['avatar'] = $this->M_admin->get_data_gambar('tb_upload_gambar_user',$this->session->userdata('name'));
-    $this->load->view('admin/form_satuan/form_update',$data);
-  }
-
-  public function delete_satuan()
-  {
-    $uri = $this->uri->segment(3);
-    $where = array('id_satuan' => $uri);
-    $this->M_admin->delete('tb_satuan',$where);
-    redirect(base_url('admin/tabel_satuan'));
-  }
-
-  public function proses_satuan_insert()
-  {
-    $this->form_validation->set_rules('kode_satuan','Kode Paket','trim|required|max_length[100]');
-    $this->form_validation->set_rules('nama_satuan','Nama Paket','trim|required|max_length[100]');
-
-    if($this->form_validation->run() ==  TRUE)
-    {
-      $kode_satuan = $this->input->post('kode_satuan' ,TRUE);
-      $nama_satuan = $this->input->post('nama_satuan' ,TRUE);
-
-      $data = array(
-            'kode_satuan' => $kode_satuan,
-            'nama_satuan' => $nama_satuan
-      );
-      $this->M_admin->insert('tb_satuan',$data);
-
-      $this->session->set_flashdata('msg_berhasil','Data paket Berhasil Ditambahkan');
-      redirect(base_url('admin/form_satuan'));
-    }else {
-      $this->load->view('admin/form_satuan/form_insert');
-    }
-  }
-
-  public function proses_satuan_update()
-  {
-    $this->form_validation->set_rules('kode_satuan','Kode Paket','trim|required|max_length[100]');
-    $this->form_validation->set_rules('nama_satuan','Nama Paket','trim|required|max_length[100]');
-
-    if($this->form_validation->run() ==  TRUE)
-    {
-      $id_satuan   = $this->input->post('id_satuan' ,TRUE);
-      $kode_satuan = $this->input->post('kode_satuan' ,TRUE);
-      $nama_satuan = $this->input->post('nama_satuan' ,TRUE);
-
-      $where = array(
-            'id_satuan' => $id_satuan
-      );
-
-      $data = array(
-            'kode_satuan' => $kode_satuan,
-            'nama_satuan' => $nama_satuan
-      );
-      $this->M_admin->update('tb_satuan',$data,$where);
-
-      $this->session->set_flashdata('msg_berhasil','Data paket Berhasil Di Update');
-      redirect(base_url('admin/tabel_satuan'));
-    }else {
-      $this->load->view('admin/form_satuan/form_update');
-    }
-  }
-
-  ####################################
-            // END SATUAN
-  ####################################
-
 
   ####################################
      // DATA MASUK KE DATA KELUAR
