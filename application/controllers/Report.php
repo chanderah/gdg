@@ -203,16 +203,7 @@ class Report extends CI_Controller
                     <td colspan="8"align="justify">'.$d->destination_to.'</td>
                 </tr>
             </table>'
-        ;
-
-            $html .= '<table border="" cellpadding="1">
-                        <tr>
-                        <td colspan="2"></td>
-                        <td colspan="1"></td>
-                        <td colspan="8"> 1. SITE ID : '.$d->site_id.'</td>
-                        </tr>
-            ';
-            
+        ;         
 
             if(defined('FPDF_FONTPATH'))
             {
@@ -221,22 +212,41 @@ class Report extends CI_Controller
                     $this->fontpath .= '/';
             }
 
-            if ($d->linked_with == true)
-            
+            if ($d->linked_with == true )
             {
-                $no = 2;
                 $explodeLink = explode(', ', $d->linked_with);
-                foreach($explodeLink as $d2){
-                    $html .= '  <tr>
-                                    <td colspan="2"></td>
-                                    <td colspan="1"></td>
-                                    <td colspan="8"> '.$no.'. SITE ID : '.$d2.'</td>
-                                </tr>
-                                ';
-                    $no++;
-                    $pdf->Ln();     
-                }
+                $totalLink = count($explodelink);
 
+                if ($totalLink < 10){
+                    $html .= '<table border="" cellpadding="1">
+                                <tr>
+                                <td colspan="2"></td>
+                                <td colspan="1"></td>
+                                <td colspan="8"> 1. SITE ID : '.$d->site_id.'</td>
+                                </tr>
+                             ';
+                    
+                                $no = 2;
+                                foreach($explodeLink as $d2){
+                                    $html .= '  <tr>
+                                                    <td colspan="2"></td>
+                                                    <td colspan="1"></td>
+                                                    <td colspan="8"> '.$no.'. SITE ID : '.$d2.'</td>
+                                                </tr>
+                                            ';
+                                    $no++;
+                                    $pdf->Ln();     
+                                }
+                }
+                else {
+                    $html .= '<table border="" cellpadding="1">
+                                <tr>
+                                <td colspan="2"></td>
+                                <td colspan="1"></td>
+                                <td colspan="8"> SITE ID : As Attached</td>
+                                </tr>
+                             ';
+                }
             }
             $html .= '</table>';          
         
