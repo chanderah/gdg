@@ -275,8 +275,26 @@
                   <div class="form-group form-group-lg col-md-12">
                     <label for="address_">Alamat</label>
                     <input type="text" name="address_"   class="form-control" value="<?=$d->address_?>">
-
                   </div>
+                   
+                <div class="form-group form-group-lg col-md-6" style="margin-bottom:-1px">
+                  <label for="destination_from">Jenis Barang yang Dikirim</label>
+                  <!-- <input type="text" name="destination_from" readonly="readonly" class="form-control"> -->
+                </div>
+
+                <div class="form-group form-group-lg col-md-6"style="margin-bottom:-1px">
+                  <label for="destination_to">Quantity</label>
+                  <!-- <input type="text" name="destination_from" readonly="readonly" class="form-control"> -->
+                </div>
+
+                <?php foreach($data_barang_desc as $d2){ ?>
+                  <div class="form-group form-group-lg col-md-6">
+                    <input type="text" name="title" readonly="readonly" class="form-control" value="<?=$d2->title?>">
+                  </div>
+                  <div class="form-group form-group-lg col-md-6">
+                    <input type="text" name="description" readonly="readonly" class="form-control" value="<?=$d2->description?> Pcs">
+                  </div>
+                <?php } ?>
 
                   <div class="form-group form-group-lg col-md-12">
                     <label for="conveyance">Pengiriman Melalui</label>

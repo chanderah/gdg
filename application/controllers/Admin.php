@@ -274,6 +274,7 @@ class Admin extends CI_Controller{
   {
     $where = array('dummy_id' => $dummy_id);
     $where2 = array('dummy_id' => $dummy_id);
+    $data['data_barang_desc'] = $this->M_admin->get_data('tb_site_desc',$where);
     $data['data_barang_update'] = $this->M_admin->get_data('tb_site_in',$where);
     $data['data_linked_with'] = $this->M_admin->getAllDataLinkedWith('tb_site_in');
     $data['list_satuan'] = $this->M_admin->select('tb_satuan');
@@ -424,8 +425,7 @@ class Admin extends CI_Controller{
             'lampiran_LC' => $lampiran_LC,
             'lampiran_invoice' => $lampiran_invoice,
             'lampiran_PL' => $lampiran_PL,
-            'lampiran_DO' => $lampiran_DO,
-            
+            'lampiran_DO' => $lampiran_DO,  
       );
 
 

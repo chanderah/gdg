@@ -67,7 +67,7 @@ class Report extends CI_Controller
     $pdf->AddPage();
 
     // create some HTML content    
-    $now = date("F jS, Y",strtotime($d->created_at));
+    $dateIssued = date("F jS, Y",strtotime($d->created_at));
     //$data = 'ABC Company';
 
     $user_name = 'Mr. Lorel Ispum';
@@ -122,131 +122,164 @@ class Report extends CI_Controller
                     <tr>
                         <td colspan="2">Interest Insured</td>
                         <td colspan="1" align="right">:</td>
-                    </tr>
-                </table>'
-            ;
+                    </tr> 
+                ';
 
             //2
         
             $no = 1;
-            foreach($data2 as $d2){
-              $html .= '<tr>';
-              $html .= '<td></td>';
-              $html .= '<td></td>';
-              $html .= '<td></td>';
-              $html .= '<td colspan="4"> '.$no.'. '.$d2->title.' - '.$d2->description.' Pcs</td>';
-              $html .= '</tr>';
+            foreach($data2 as $d2){ 
+              $html .= '
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td colspan="4">'.$no.'. '.$d2->title.' - '.$d2->description.' Pcs</td>
+                        </tr>
+                        ';
               $no++;
               $pdf->Ln();
             }
+            $html .= '</table>';
 
             $html .= '
             <table border="" cellpadding="3">
-                
-            <tr>
-            <td colspan="2">Mark/Numbers</td>
-            <td colspan="1" align="right">:</td>
-            <td colspan="8"align="justify">-</td>
-        </tr>
-        <tr>
-            <td colspan="2">Amount Insured</td>
-            <td colspan="1" align="right">:</td>
-            <td colspan="8"align="justify">'.$d->amount_insured.'</td>
-        </tr>
-        <tr>
-            <td colspan="2">L/C</td>
-            <td colspan="1" align="right">:</td>
-            <td colspan="8"align="justify">'.$d->lampiran_LC.'</td>
-        </tr>
-        <tr>
-            <td colspan="2">B/L</td>
-            <td colspan="1" align="right">:</td>
-            <td colspan="8"align="justify">'.$d->lampiran_BL.'</td>
-        </tr>
-        <tr>
-            <td colspan="2">Invoice Number</td>
-            <td colspan="1" align="right">:</td>
-            <td colspan="8"align="justify">'.$d->lampiran_invoice.'</td>
-        </tr>
-        <tr>
-            <td colspan="2">Scope of Cover</td>
-            <td colspan="1" align="right">:</td>
-            <td colspan="8"align="justify">-</td>
-        </tr>
-        <tr>
-            <td colspan="2">Date of Sailing</td>
-            <td colspan="1" align="right">:</td>
-            <td colspan="8"align="justify">'.$d->sailing_date.'</td>
-        </tr>
-        <tr>
-            <td colspan="2">Conveyance</td>
-            <td colspan="1" align="right">:</td>
-            <td colspan="8"align="justify">'.$d->conveyance.'</td>
-        </tr>
-        <tr>
-            <td colspan="2">Destination</td>
-            <td colspan="1" align="right">:</td>
-        </tr>
-        </table>'
+                <tr>
+                <td colspan="2">Mark/Numbers</td>
+                <td colspan="1" align="right">:</td>
+                <td colspan="8"align="justify">-</td>
+                </tr>
+                <tr>
+                    <td colspan="2">Amount Insured</td>
+                    <td colspan="1" align="right">:</td>
+                    <td colspan="8"align="justify">'.$d->amount_insured.'</td>
+                </tr>
+                <tr>
+                    <td colspan="2">L/C</td>
+                    <td colspan="1" align="right">:</td>
+                    <td colspan="8"align="justify">'.$d->lampiran_LC.'</td>
+                </tr>
+                <tr>
+                    <td colspan="2">B/L</td>
+                    <td colspan="1" align="right">:</td>
+                    <td colspan="8"align="justify">'.$d->lampiran_BL.'</td>
+                </tr>
+                <tr>
+                    <td colspan="2">Invoice Number</td>
+                    <td colspan="1" align="right">:</td>
+                    <td colspan="8"align="justify">'.$d->lampiran_invoice.'</td>
+                </tr>
+                <tr>
+                    <td colspan="2">Scope of Cover</td>
+                    <td colspan="1" align="right">:</td>
+                    <td colspan="8"align="justify">-</td>
+                </tr>
+                <tr>
+                    <td colspan="2">Date of Sailing</td>
+                    <td colspan="1" align="right">:</td>
+                    <td colspan="8"align="justify">'.$d->sailing_date.'</td>
+                </tr>
+                <tr>
+                    <td colspan="2">Conveyance</td>
+                    <td colspan="1" align="right">:</td>
+                    <td colspan="8"align="justify">'.$d->conveyance.'</td>
+                </tr>
+                <tr>
+                    <td colspan="2">Destination</td>
+                </tr>
+                <tr>
+                    <td colspan="2">   - At & From</td>
+                    <td colspan="1" align="right">:</td>
+                    <td colspan="8"align="justify">'.$d->destination_from.'</td>
+                </tr>
+                <tr>
+                    <td colspan="2">   - Transhipment</td>
+                    <td colspan="1" align="right">:</td>
+                    <td colspan="8"align="justify"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">   - To</td>
+                    <td colspan="1" align="right">:</td>
+                    <td colspan="8"align="justify">'.$d->destination_to.'</td>
+                </tr>
+            </table>'
         ;
 
-        if ($d2->linked_with !== ""){
-            $no = 1;
-            foreach($data as $d2){
-                $html .= '<tr>';
-                $html .= '<td></td>';
-                $html .= '<td></td>';
-                $html .= '<td></td>';   
-                $html .= '<td colspan="4"> '.$no.'. SITE ID : '.$d2->site_id.'</td>';
-                $html .= '</tr>';
-                $no++;
-                $pdf->Ln();     
-        }
+            $html .= '<table border="" cellpadding="1">
+                        <tr>
+                        <td colspan="2"></td>
+                        <td colspan="1"></td>
+                        <td colspan="8"> 1. SITE ID : '.$d->site_id.'</td>
+                        </tr>
+            ';
+            
 
-        }
+            if(defined('FPDF_FONTPATH'))
+            {
+                $this->fontpath = FPDF_FONTPATH;
+                if(substr($this->fontpath,-1)!='/' && substr($this->fontpath,-1)!='\\')
+                    $this->fontpath .= '/';
+            }
+
+            if ($d->linked_with == true)
+            
+            {
+                $no = 2;
+                $explodeLink = explode(', ', $d->linked_with);
+                foreach($explodeLink as $d2){
+                    $html .= '  <tr>
+                                    <td colspan="2"></td>
+                                    <td colspan="1"></td>
+                                    <td colspan="8"> '.$no.'. SITE ID : '.$d2.'</td>
+                                </tr>
+                                ';
+                    $no++;
+                    $pdf->Ln();     
+                }
+
+            }
+            $html .= '</table>';          
         
-        $html .=    '
-        <table border="" cellpadding="3">
-            <tr>
-                <td colspan="2">Consignee</td>
-                <td colspan="1" align="right">:</td>
-                <td colspan="8"align="justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
-                labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</td>
-            </tr>
-        </table>'
-;
-
-                
-
-    $html .=    '<div style="page-break-inside:avoid;">
-                    <table cellpadding="5">
+        $html .=    '   
+                    <table border="" cellpadding="3">
                         <tr>
-                            <td align="right">Issued {now}</td>
+                            <td colspan="2">Consignee</td>
+                            <td colspan="1" align="right">:</td>
+                            <td colspan="8"align="justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
+                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+                            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</td>
                         </tr>
-                        <tr>
-                            <td align="right">Signed On Behalf</td>
-                        </tr>
-                        <tr><br><br><br><br><br>
-                            <td align="right">{namaPerusahaan}</td>
-                        </tr>
-                    </table>    
-                </div>';
+                    </table>';
 
-    if ($d->keterangan == "300 Site") {    
-        $mop = '0608032100001';
-    } elseif ($d->keterangan == "58 Site"){
-        $mop = '0608032100003';
-    }elseif ($d->keterangan == "216 Site"){
-        $mop = '0608032100004';
-    }elseif ($d->keterangan == "491 Site"){
-        $mop = '0608032100005';
-    }elseif ($d->keterangan == "180 Site"){
-        $mop = '0608032100006';
-    }elseif ($d->keterangan == "236 Site"){
-        $mop = '0608032100007';
-    }
+            
+        $html .=    '<div style="page-break-inside:avoid;">
+                        <table cellpadding="2">
+                            <tr>
+                                <td align="right">Issued {dateIssued}</td>
+                            </tr>
+                            <tr>
+                                <td align="right">Signed On Behalf</td>
+                            </tr>
+                            <tr><br><br><br><br><br>
+                                <td align="right">{namaPerusahaan}</td>
+                            </tr>
+                        </table>    
+                    </div>';
+
+        if ($d->keterangan == "300 Site") {    
+            $mop = '0608032100001';
+        } elseif ($d->keterangan == "58 Site"){
+            $mop = '0608032100003';
+        }elseif ($d->keterangan == "216 Site"){
+            $mop = '0608032100004';
+        }elseif ($d->keterangan == "491 Site"){
+            $mop = '0608032100005';
+        }elseif ($d->keterangan == "180 Site"){
+            $mop = '0608032100006';
+        }elseif ($d->keterangan == "236 Site"){
+            $mop = '0608032100007';
+        }
 
     $mop_header = '0608032100001';
     $no_sertif = $d->no_sertif;
@@ -255,8 +288,11 @@ class Report extends CI_Controller
 
     $html = str_replace('{no_sertif}',$no_sertif_5, $html);
     $html = str_replace('{namaPerusahaan}',$namaPerusahaan, $html);
-    $html = str_replace('{now}',$now, $html);
+    $html = str_replace('{dateIssued}',$dateIssued, $html);
+    
     $html = str_replace('{MOP}',$mop, $html);
+    //$html = str_replace('{linked_with}',$d->linked_with, $html);
+    
     $html = str_replace('{MOP_Header}',$mop_header, $html);
     $html = str_replace('{invoice_ref_id}',$invoice_ref_id, $html);
     
