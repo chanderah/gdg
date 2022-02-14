@@ -43,7 +43,7 @@ class Main extends CI_Controller {
         $title =$this->input->post("txtTitle");
         for($i=0; $i<count($title); $i++) {
             $data = [
-                //tb_site_desc
+                //tb_site_in_desc
                 //'site_id2' => $site_id,
                 'dummy_id' => $dummy_id,
                 'bill_id' => $id,
@@ -75,7 +75,7 @@ class Main extends CI_Controller {
         ];
 
         if( $this->m_admin->insert_into_table("tb_site_in", $data) and 
-            $this->m_admin->insert_batch_into_table("tb_site_desc", $list)) {
+            $this->m_admin->insert_batch_into_table("tb_site_in_desc", $list)) {
                 
                 echo '<div class="alert alert-success alert-dismissible">
                         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
