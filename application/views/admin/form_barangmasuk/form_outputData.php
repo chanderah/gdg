@@ -124,7 +124,7 @@
           </ul> -->
         </li>
 
-        <li class="treeview active">
+        <li class="treeview">
           <a href="#">
             <i class="fa fa-edit"></i> <span>Forms</span>
             <span class="pull-right-container">
@@ -132,11 +132,11 @@
                 </span>
           </a>
           <ul class="treeview-menu">
-            <li class="active"><a href="<?= base_url('admin/form_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tambah Data Masuk</a></li>
+            <li><a href="<?= base_url('admin/form_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tambah Data Masuk</a></li>
             <li><a href="<?= base_url('admin/form_satuan')?>"><i class="fa fa-circle-o"></i> Tambah Paket Barang</a></li>
           </ul>
         </li>
-        <li class="treeview ">
+        <li class="treeview active">
           <a href="#">
             <i class="fa fa-table"></i> <span>Tables</span>
             <span class="pull-right-container">
@@ -144,7 +144,7 @@
                 </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?= base_url('admin/tabel_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tabel Data Masuk</a></li>
+            <li class="active"><a href="<?= base_url('admin/tabel_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tabel Data Masuk</a></li>
             <li><a href="<?= base_url('admin/tabel_barangkeluar')?>"><i class="fa fa-circle-o"></i> Tabel Data Keluar</a></li>
             <li><a href="<?= base_url('admin/tabel_satuan')?>"><i class="fa fa-circle-o"></i> Tabel Satuan</a></li>
           </ul>
@@ -169,7 +169,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Input Data Masuk
+        Export Data
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -186,7 +186,7 @@
           <div class="container">
           <div class="box box-primary">
             <div class="box-header with-border">
-              <h3 class="box-title"><i class="fa fa-archive" aria-hidden="true"></i> Tambah Data Masuk</h3>
+              <h3 class="box-title"><i class="fa fa-archive" aria-hidden="true"></i> Export Data</h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->
@@ -207,7 +207,7 @@
                 </div>
                 <div class="form-group form-group-lg col-md-12" >
                   <label for="site_id" style="display:inline;">Linked With</label>  
-                  <input type="text" name="linked_with" class="form-control" value="<?=$d->linked_with?>">
+                  <input type="text" name="site_linked" class="form-control" value="<?=$d->site_linked?>">
                 </div>           
                 <div class="form-group form-group-lg col-md-12">
                   <label for="the_insured">1. Nama Tertanggung</label>

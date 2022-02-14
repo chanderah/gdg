@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>CRUD Database | Paket Barang</title>
+  <title>AdminLTE 2 | Tabel Data Keluar</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -12,8 +12,12 @@
   <link rel="stylesheet" href="<?php echo base_url()?>assets/web_admin/bower_components/font-awesome/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="<?php echo base_url()?>assets/web_admin/bower_components/Ionicons/css/ionicons.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="<?php echo base_url()?>assets/web_admin/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="<?php echo base_url()?>assets/web_admin/dist/css/AdminLTE.min.css">
+
+  <link rel="stylesheet" href="<?php echo base_url()?>assets/sweetalert/dist/sweetalert.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="<?php echo base_url()?>assets/web_admin/dist/css/skins/_all-skins.min.css">
@@ -26,7 +30,8 @@
   <![endif]-->
 
   <!-- Google Font -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -65,6 +70,7 @@
                 <?php foreach($avatar as $a){ ?>
                 <img src="<?php echo base_url('assets/upload/user/img/'.$a->nama_file)?>" class="img-circle" alt="User Image">
                 <?php } ?>
+
                 <p>
                   <?=$this->session->userdata('name')?> - Web Developer
                   <small>Last Login : <?=$this->session->userdata('last_login')?></small>
@@ -89,7 +95,6 @@
     </nav>
   </header>
   <!-- Left side column. contains the logo and sidebar -->
-
   <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
@@ -132,11 +137,11 @@
                 </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?= base_url('admin/form_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tambah Data Masuk</a></li>
-            <li><a href="<?= base_url('admin/form_satuan')?>"><i class="fa fa-circle-o"></i> Tambah Paket Barang</a></li>
+            <li><a href="<?= base_url('admin/form_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tambah Data Masuk Masuk</a></li>
+            <li><a href="<?= base_url('admin/form_satuan')?>"><i class="fa fa-circle-o"></i> Tambah Satuan Barang</a></li>
           </ul>
         </li>
-        <li class="treeview ">
+        <li class="treeview active">
           <a href="#">
             <i class="fa fa-table"></i> <span>Tables</span>
             <span class="pull-right-container">
@@ -145,16 +150,17 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="<?= base_url('admin/tabel_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tabel Data Masuk</a></li>
-            <li><a href="<?= base_url('admin/tabel_barangkeluar')?>"><i class="fa fa-circle-o"></i> Tabel Data Keluar</a></li>
+            <li class="active"><a href="<?= base_url('admin/tabel_barangkeluar')?>"><i class="fa fa-circle-o"></i> Tabel Data Keluar</a></li>
             <li><a href="<?= base_url('admin/tabel_satuan')?>"><i class="fa fa-circle-o"></i> Tabel Satuan</a></li>
           </ul>
         </li>
+
         <li class="header">LABELS</li>
         <li>
           <a href="<?php echo base_url('admin/profile')?>">
          <i class="fa fa-cogs" aria-hidden="true"></i> <span>Profile</span></a>
         </li>
-        <li class="active">
+        <li>
           <a href="<?php echo base_url('admin/users')?>">
          <i class="fa fa-fw fa-users" aria-hidden="true"></i> <span>Users</span></a>
         </li>
@@ -168,111 +174,114 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Update User
+        Tabel Data Keluar
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Forms</a></li>
-        <li class="active">Paket Barang</li>
+        <li><a href="<?=base_url('admin')?>"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li>Tables</li>
+        <li class="active"><a href="<?=base_url('admin/tabel_barangkeluar')?>">Tabel Data Keluar</a></li>
       </ol>
     </section>
 
     <!-- Main content -->
     <section class="content">
       <div class="row">
-        <!-- left column -->
-        <div class="col-md-12">
-          <div class="container">
-            <!-- general form elements -->
-          <div class="box box-primary" style="width:94%;">
-            <div class="box-header with-border">
-              <h3 class="box-title"><i class="fa fa-fw fa-user" aria-hidden="true"></i> Update Users Data</h3>
+        <div class="col-xs-12">
+
+          <!-- /.box -->
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title"><i class="fa fa-table" aria-hidden="true"></i> Tabel CRUD Site ID</h3>
             </div>
             <!-- /.box-header -->
-            <!-- form start -->
-            <div class="container">
-            <form action="<?=base_url('admin/proses_update_user')?>" role="form" method="post">
+            <div class="box-body">
 
               <?php if($this->session->flashdata('msg_berhasil')){ ?>
-                <div class="alert alert-success alert-dismissible" style="width:91%">
+                <div class="alert alert-success alert-dismissible" style="width:100%">
                     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                     <strong>Success!</strong><br> <?php echo $this->session->flashdata('msg_berhasil');?>
                </div>
               <?php } ?>
 
-              <?php if(validation_errors()){ ?>
-              <div class="alert alert-warning alert-dismissible">
-                  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                  <strong>Warning!</strong><br> <?php echo validation_errors(); ?>
-             </div>
-            <?php } ?>
+              <a href="<?=base_url('admin/tabel_barangmasuk')?>" style="margin-bottom:10px;" type="button" class="btn btn-primary" name="tambah_data"><i class="fa fa-plus-circle" aria-hidden="true"></i> Tambah Data Keluar</a>
+              <!-- <a href="<?=base_url('report/barangKeluarManual')?>" style="margin-bottom:10px;" type="button" class="btn btn-danger" name="laporan_data"><i class="fa fa-file-text" aria-hidden="true"></i> Invoice Manual</a>
+              -->
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>No</th>
+                  <th>SITE ID</th>
+                  <th>Region</th>
+                  <th>Provinsi</th>
+                  <th>Kota</th>
+                  <th>Kecamatan</th>
+                  <th>Desa</th>
+                  <th>Paket</th>
+                  <th>Batch</th>
+                  <th>TRM</th>
+                  <th>TSI</th>
+                  <th>Amount Insured</th>
+                  <th>Sertifikat</th>
+                  <th>Keterangan</th>
+                  <th>Invoice</th>
+                  <!-- <th></th> -->
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <?php if(is_array($list_data)){ ?>
+                  <?php $no = 1;?>
+                  <?php foreach($list_data as $dd): ?>
+                    <td><?=$no?></td>
+                    <td><?=$dd->site_id?></td>
+                    <td><?=$dd->region?></td>
+                    <td><?=$dd->provinsi?></td>
+                    <td><?=$dd->region?></td>
+                    <td><?=$dd->kecamatan?></td>
+                    <td><?=$dd->desa?></td>
+                    <td><?=$dd->paket?></td>
+                    <td><?=$dd->batch_?></td>
+                    <td><?=$dd->ctrm?></td>
+                    <td><?=$dd->ctsi?></td>
+                    <td><?=$dd->amount_insured?></td>
+                    <td><?=$dd->no_sertif?></td>
+                    <td><?=$dd->keterangan?></td>
+                    <td><?=$dd->terbit?></td>
 
-              <div class="box-body">
-                <?php foreach($list_data as $d){ ?>
-                  <input type="hidden" name="id" value="<?=$d->id?>">
-                <div class="form-group" style="display:block;">
-                  <label for="username" style="width:87%;margin-left: 0px;">Username</label>
-                  <input type="text" name="username" style="width: 30%;margin-right: 67px;margin-left: 0px;"  required="" class="form-control" id="username" value="<?=$d->username?>">
-                </div>
-                <div class="form-group" style="display:block;">
-                  <label for="email" style="width:73%;">Email</label>
-                  <input type="email" name="email" style="width:30%;margin-right: 67px;" class="form-control" id="email" required="" value="<?=$d->email?>">
-              </div>
-              <div class="form-group" style="display:block;">
-                <label for="role" style="width:73%;">Role</label>
-                <select class="form-control" name="role" style="width:11%;margin-right: 18px;">
-                  <?php if($d->role == 1){ ?>
-                  <option value="1" selected="">User Admin</option>
-                  <option value="0">User Biasa</option>
-                  <?php }else{ ?>
-                  <option value="1">User Admin</option>
-                  <option value="0" selected="">User Biasa</option>
-                  <?php } ?>
-                </select>
+                    <td><a type="button" class="btn btn-danger btn-report" href="<?=base_url('report/dataKeluar/'.$dd->dummy_id)?>" name="btn_report" style="margin:auto;"><i class="fa fa-file-text" aria-hidden="true"></i></a></td>
+                </tr>
+              <?php $no++; ?>
+              <?php endforeach;?>
+              <?php }else { ?>
+                    <td colspan="7" align="center"><strong>Data Kosong</strong></td>
+              <?php } ?>
+                </tbody>
+                <tfoot>
+                <tr>
+                <th>No</th>
+                  <th>SITE ID</th>
+                  <th>Region</th>
+                  <th>Provinsi</th>
+                  <th>Kota</th>
+                  <th>Kecamatan</th>
+                  <th>Desa</th>
+                  <th>Paket</th>
+                  <th>Batch</th>
+                  <th>TRM</th>
+                  <th>TSI</th>
+                  <th>Amount Insured</th>
+                  <th>Sertifikat</th>
+                  <th>Keterangan</th>
+                  <th>Invoice</th>
+                </tr>
+                </tfoot>
+              </table>
             </div>
-            <?php } ?>
-              <!-- /.box-body -->
-              <?php if(isset($token_generate)){ ?>
-                <input type="hidden" name="token"  class="form-control" value="<?= $token_generate?>">
-              <?php }else {
-                redirect(base_url('admin/update_user'));
-              }?>
-
-              <div class="box-footer" style="width:93%;">
-                <a type="button" class="btn btn-default" style="width:10%;margin-right:26%" onclick="history.back(-1)" name="btn_kembali"><i class="fa fa-arrow-left" aria-hidden="true"></i> Kembali</a>
-                <a type="button" class="btn btn-info" style="width:13%;margin-right:29%" href="<?=base_url('admin/users')?>" name="btn_listusers"><i class="fa fa-table" aria-hidden="true"></i> Lihat Users</a>
-                <button type="submit" style="width:20%" class="btn btn-primary"><i class="fa fa-check" aria-hidden="true"></i> Submit</button>
-              </div>
-            </form>
+            <!-- /.box-body -->
           </div>
-          </div>
-          <!-- /.box -->
-
-          <!-- Form Element sizes -->
-
-          <!-- /.box -->
 
 
-          <!-- /.box -->
-
-          <!-- Input addon -->
-
-          <!-- /.box -->
-
-        </div>
-        <!--/.col (left) -->
-        <!-- right column -->
-        <!-- <div class="col-md-6">
-          <!-- Horizontal Form -->
-
-          <!-- /.box -->
-          <!-- general form elements disabled -->
-
-          <!-- /.box -->
-
-        </div>
-        </div>
-        <!--/.col (right) -->
+        <!-- /.col -->
       </div>
       <!-- /.row -->
     </section>
@@ -292,18 +301,56 @@
   <!-- Add the sidebar's background. This div must be placed
        immediately after the control sidebar -->
   <div class="control-sidebar-bg"></div>
-  </div>
-  <!-- ./wrapper -->
+</div>
+<!-- ./wrapper -->
 
-  <!-- jQuery 3 -->
-  <script src="<?php echo base_url()?>assets/web_admin/bower_components/jquery/dist/jquery.min.js"></script>
-  <!-- Bootstrap 3.3.7 -->
-  <script src="<?php echo base_url()?>assets/web_admin/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-  <!-- FastClick -->
-  <script src="<?php echo base_url()?>assets/web_admin/bower_components/fastclick/lib/fastclick.js"></script>
-  <!-- AdminLTE App -->
-  <script src="<?php echo base_url()?>assets/web_admin/dist/js/adminlte.min.js"></script>
-  <!-- AdminLTE for demo purposes -->
-  <script src="<?php echo base_url()?>assets/web_admin/dist/js/demo.js"></script>
-  </body>
-  </html>
+<!-- jQuery 3 -->
+<script src="<?php echo base_url()?>assets/web_admin/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="<?php echo base_url()?>assets/sweetalert/dist/sweetalert.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="<?php echo base_url()?>assets/web_admin/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- DataTables -->
+<script src="<?php echo base_url()?>assets/web_admin/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="<?php echo base_url()?>assets/web_admin/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<!-- SlimScroll -->
+<script src="<?php echo base_url()?>assets/web_admin/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script src="<?php echo base_url()?>assets/web_admin/bower_components/fastclick/lib/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="<?php echo base_url()?>assets/web_admin/dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="<?php echo base_url()?>assets/web_admin/dist/js/demo.js"></script>
+<!-- page script -->
+<script>
+jQuery(document).ready(function($){
+      $('.btn-delete').on('click',function(){
+          var getLink = $(this).attr('href');
+          swal({
+                  title: 'Delete Data',
+                  text: 'Yakin Ingin Menghapus Data ?',
+                  html: true,
+                  confirmButtonColor: '#d9534f',
+                  showCancelButton: true,
+                  },function(){
+                  window.location.href = getLink
+              });
+          return false;
+      });
+  });
+
+  $(function () {
+    $('#example1').DataTable();
+    $('#example2').DataTable({
+      'paging'      : true,
+      'lengthChange': false,
+      'searching'   : false,
+      'ordering'    : true,
+      'info'        : true,
+      'autoWidth'   : false
+    })
+  });
+
+
+</script>
+</body>
+</html>

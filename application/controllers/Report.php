@@ -24,7 +24,7 @@ class Report extends CI_Controller
     //$ls   = array('site_id' => $id ,'provinsi' => $tgl1.'/'.$tgl2.'/'.$tgl3);
     
     $data = $this->M_admin->get_data('tb_site_in',$ls);
-    $data2 = $this->M_admin->get_data('tb_site_in_desc',$ls);  
+    $data2 = $this->M_admin->get_data('tb_site_out_items',$ls);  
 
     //create
     $pdf = new Pdf(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
@@ -212,9 +212,9 @@ class Report extends CI_Controller
                     $this->fontpath .= '/';
             }
 
-            if ($d->linked_with == true )
+            if ($d->site_linked == true )
             {
-                $explodeLink = explode(', ', $d->linked_with);
+                $explodeLink = explode(', ', $d->site_linked);
                 $totalLink = count($explodeLink);
 
                 if ($totalLink < 10){
@@ -301,7 +301,7 @@ class Report extends CI_Controller
     $html = str_replace('{dateIssued}',$dateIssued, $html);
     
     $html = str_replace('{MOP}',$mop, $html);
-    //$html = str_replace('{linked_with}',$d->linked_with, $html);
+    //$html = str_replace('{site_linked}',$d->site_linked, $html);
     
     $html = str_replace('{MOP_Header}',$mop_header, $html);
     $html = str_replace('{invoice_ref_id}',$invoice_ref_id, $html);

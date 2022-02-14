@@ -212,7 +212,7 @@
                   </div>
                   <div class="form-group form-group-lg col-md-12" >
                     <label for="site_id" style="display:inline;">Linked With</label>  
-                    <input type="text" name="linked_with" class="form-control" value="<?=$d->linked_with?>">
+                    <input type="text" name="site_linked" class="form-control" value="<?=$d->site_linked?>">
                   </div>
 
                   <div class="form-group form-group-lg col-md-12" >

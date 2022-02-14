@@ -227,7 +227,6 @@
                   <th>Keterangan</th>
                   <th>Sertifikat</th>
                   <!-- <th>Terbit</th> </-->
-                  <th>Info</th>
                   <th>Update</th>
                   <th>Delete</th>
                   <th>Keluarkan</th>
@@ -252,7 +251,6 @@
                     <td><?=$dd->amount_insured?></td>
                     <td><?=$dd->keterangan?></td>
                     <td><br><?=$dd->no_sertif?></td>
-                    <td><a type="button" class="btn btn-info" href="<?=base_url('admin/info_datamasuk/'.$dd->dummy_id)?>" name="btn_update" style="margin:auto;"><i class="fa fa-info" aria-hidden="true"></i></a></td>
                     <td><a type="button" class="btn btn-info" href="<?=base_url('admin/update_datamasuk/'.$dd->dummy_id)?>" name="btn_update" style="margin:auto;"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
                     <td><a type="button" class="btn btn-danger btn-delete" href="<?=base_url('admin/delete_data/'.$dd->dummy_id)?>" name="btn_delete" style="margin:auto;"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
                     <td><a type="button" class="btn btn-success btn-barangkeluar" href="<?=base_url('admin/output_data/'.$dd->dummy_id)?>" name="btn_barangkeluar" style="margin:auto;"><i class="fa fa-sign-out" aria-hidden="true"></i></a></td>
