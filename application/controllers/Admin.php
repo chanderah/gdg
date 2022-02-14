@@ -261,16 +261,6 @@ class Admin extends CI_Controller{
     $this->load->view('admin/form_barangmasuk/form_insert',$data);
   }
 
-  public function output_Data()
-  {
-    $uri = $this->uri->segment(3);
-    $where = array('dummy_id' => $uri);
-    $data['list_data'] = $this->M_admin->get_data('tb_site_in',$where);
-    $data['list_data_desc'] = $this->M_admin->get_data('tb_site_in_desc',$where);
-    $data['avatar'] = $this->M_admin->get_data_gambar('tb_upload_gambar_user',$this->session->userdata('name'));
-    $this->load->view('admin/form_barangmasuk/form_outputdata',$data);
-  }
-
   public function tabel_barangmasuk()
   {
     $data = array(
@@ -292,12 +282,6 @@ class Admin extends CI_Controller{
     $this->load->view('admin/form_barangmasuk/form_update',$data);
   }
 
-  public function insert_datamasuk()
-  {
-    $data['avatar'] = $this->M_admin->get_data_gambar('tb_upload_gambar_user',$this->session->userdata('name'));
-    $this->load->view('admin/form_barangmasuk/form_insert2',$data);  
-  }
-
   public function info_datamasuk($dummy_id)
   {
     $where = array('dummy_id' => $dummy_id);
@@ -314,60 +298,6 @@ class Admin extends CI_Controller{
     $this->M_admin->delete('tb_site_in',$where);
     $this->M_admin->delete('tb_site_in_desc',$where);
     redirect(base_url('admin/tabel_barangmasuk'));
-  }
-
-
-  public function proses_insert_datamasuk()
-  {
-    $this->form_validation->set_rules('site_id','site_id','required');
-    //$this->form_validation->set_rules('kecamatan','Kecamatan','required');
-    //$this->form_validation->set_rules('desa','Desa','required');
-    //$this->form_validation->set_rules('batch_','Batch','required');
-
-    if($this->form_validation->run() == TRUE)
-    {
-
-      $sha1 = random_string('alpha', 10);
-      $sha2 = random_string('sha1');
-      $dummy_id = $sha1.$sha2;
-
-      $site_id = $this->input->post('site_id',TRUE);
-      $region = $this->input->post('region',TRUE);
-      $provinsi = $this->input->post('provinsi',TRUE);
-      $kabupaten = $this->input->post('kabupaten',TRUE);
-      $kecamatan = $this->input->post('kecamatan',TRUE);
-      $desa = $this->input->post('desa',TRUE);
-      $paket = $this->input->post('paket',TRUE);
-      $batch_ = $this->input->post('batch_',TRUE);
-      $ctrm = $this->input->post('ctrm',TRUE);
-      $ctsi = $this->input->post('ctsi',TRUE);
-      $amount_insured = $this->input->post('amount_insured',TRUE);
-      $keterangan = $this->input->post('keterangan',TRUE);
-      //$terbit = $this->input->post('terbit',TRUE);
-
-      $data = array(
-            'dummy_id' => $dummy_id,
-            'site_id' => $site_id,
-            'region' => $region,
-            'provinsi' => $provinsi,
-            'kabupaten' => $kabupaten,
-            'kecamatan' => $kecamatan,
-            'desa' => $desa,
-            'paket' => $paket,
-            'batch_' => $batch_,
-            'ctrm' => $ctrm,
-            'ctsi' => $ctsi,
-            'amount_insured' => $amount_insured,
-            'keterangan' => $keterangan,
-            //'terbit' => $terbit
-      );
-
-      $this->M_admin->insert('tb_site_in',$data);
-      $this->session->set_flashdata('msg_berhasil','Data Berhasil Ditambahkan');
-      redirect(base_url('admin/tabel_barangmasuk'));
-    }else{
-      $this->load->view('admin/form_barangmasuk/form_insert2');
-    }
   }
 
   public function proses_datamasuk_insert()
