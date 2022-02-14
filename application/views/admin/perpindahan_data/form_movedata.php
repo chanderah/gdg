@@ -208,13 +208,66 @@
                   </div> 
                   <div class="form-group form-group-lg col-md-12">
                     <label for="site_id" style="display:inline;">SITE ID</label>
-                    <input type="text" name="site_id" style="  display:inline;" class="form-control" readonly="readonly" placeholder="Site ID" value="<?=$d->site_id?>">
+                    <input type="text" name="site_id" style="  display:inline;" class="form-control" placeholder="Site ID" value="<?=$d->site_id?>">
                   </div>
                   <div class="form-group form-group-lg col-md-12" >
                     <label for="site_id" style="display:inline;">Linked With</label>  
                     <input type="text" name="linked_with" class="form-control" value="<?=$d->linked_with?>">
                   </div>
+                  <div class="form-group form-group-lg col-md-12">
+                    <label for="region" style="display:inline;">Region</label>
+                    <input type="text" name="region" style="  display:inline;" class="form-control" placeholder="Region" value="<?=$d->region?>">
+                  </div>
+                  <div class="form-group form-group-lg col-md-12">
+                    <label for="provinsi" style="display:inline;">Provinsi</label>
+                    <input type="text" name="provinsi" style="  display:inline;" class="form-control" placeholder="Provinsi" value="<?=$d->provinsi?>">
+                  </div>
+                  <div class="form-group form-group-lg col-md-12">
+                    <label for="kabupaten" style="display:inline;">Kabupaten</label>
+                    <input type="text" name="kabupaten" style="  display:inline;" class="form-control" placeholder="Kabupaten"  value="<?=$d->kabupaten?>">
+                  </div>
+                  <div class="form-group form-group-lg col-md-12">
+                    <label for="kecamatan" style="display:inline;">Kecamatan</label>
+                    <input type="text" name="kecamatan" style="  display:inline;" class="form-control" placeholder="Kecamatan" value="<?=$d->kecamatan?>">
+                  </div>
+                  <div class="form-group form-group-lg col-md-12">
+                    <label for="desa" style="display:inline;">Desa</label>
+                    <input type="text" name="desa" style="  display:inline;" class="form-control" placeholder="Desa" value="<?=$d->desa?>">
+                  </div>
+                  <div class="form-group form-group-lg col-md-12">
+                    <label for="paket" style="display:inline;">Paket</label>
+                    <input type="text" name="paket" style="  display:inline;" class="form-control" placeholder="Paket" value="<?=$d->paket?>">
+                  </div>
+                  <div class="form-group form-group-lg col-md-12">
+                    <label for="batch_" style="display:inline;">Batch</label>
+                    <input type="text" name="batch_" style="  display:inline;" class="form-control" placeholder="Batch" value="<?=$d->batch_?>">
+                  </div>
+                  <div class="form-group form-group-lg col-md-12">
+                    <label for="ctrm" style="display:inline;">TRM</label>
+                    <input type="text" name="ctrm" style="  display:inline;" class="form-control" placeholder="TRM" value="<?=$d->ctrm?>">
+                  </div>
+                  <div class="form-group form-group-lg col-md-12">
+                    <label for="ctsi" style="display:inline;">TSI</label>
+                    <input type="text" name="ctsi" style="  display:inline;" class="form-control" placeholder="TSI" value="<?=$d->ctsi?>">
+                  </div>
+                  <div class="form-group form-group-lg col-md-12">
+                    <label for="amount_insured" style="display:inline;">Amount Insured</label>
+                    <input type="number" name="amount_insured" style="  display:inline;" class="form-control" placeholder="Amount Insured" value="<?=$d->amount_insured?>">
+                  </div>
 
+                  <div class="form-group form-group-lg col-md-12">
+                    <label for="keterangan" style="display:inline;">Keterangan</label>
+                    <select class="form-control" name="keterangan" style="  display:inline;">
+                      <option value="<?=$d->keterangan?>"><?=$d->keterangan?></option>
+                      <option value="58 Site">58 Site</option>
+                      <option value="180 Site">180 Site</option>
+                      <option value="216 Site">216 Site</option>
+                      <option value="236 Site">236 Site</option>
+                      <option value="300 Site">300 Site</option>
+                      <option value="491 Site">491 Site</option>
+                    </select>
+                  </div>
+                  
                   <div class="form-group form-group-lg col-md-12" >
                     <label for="the_insured">Nama Tertanggung</label>
                     <input type="text" name="the_insured" class="form-control" readonly="readonly" placeholder="Dari"value="<?=$d->the_insured?>">
@@ -247,7 +300,7 @@
 
                   <div class="form-group form-group-lg col-md-12">
                     <label for="amount_insured">Nilai Barang yang Diangkut</label>
-                    <input type="text" name="amount_insured" readonly="readonly" class="form-control" value="<?=$d->amount_insured?>">
+                    <input type="text" name="amount_insured" readonly="readonly" class="form-control" value="Rp. <?=$d->amount_insured?>">
                   </div>
 
                   <div class="form-group form-group-lg col-md-12">
