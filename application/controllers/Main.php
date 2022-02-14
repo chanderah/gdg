@@ -18,7 +18,6 @@ class Main extends CI_Controller {
     public function input_datamasuk() {
         
         $name =$this->input->post("site_id");
-        $total =$this->input->post("txtGrandTotal");
         $site_id =$this->input->post("site_id");
         $sha1 = random_string('alpha', 10);
         $sha2 = random_string('sha1');

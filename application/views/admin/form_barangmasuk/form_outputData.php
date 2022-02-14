@@ -179,85 +179,149 @@
     </section>
 
     <!-- Main content -->
-    <section class="content">
+    <section class="content" style="">
       <div class="row">
         <!-- left column -->
         <div class="col-md-12">
           <div class="container">
-          <div class="box box-primary" style="width:94%;">
+          <div class="box box-primary">
             <div class="box-header with-border">
               <h3 class="box-title"><i class="fa fa-archive" aria-hidden="true"></i> Tambah Data Masuk</h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->
             <div class="container">
-            <form action="<?=base_url('admin/proses_datamasuk_insert')?>" role="form" method="post">
-
-              <?php if($this->session->flashdata('msg_berhasil')){ ?>
-                <div class="alert alert-success alert-dismissible" style="width:91%">
-                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                    <strong>Success!</strong><br> <?php echo $this->session->flashdata('msg_berhasil');?>
-               </div>
-              <?php } ?>
-
-              <?php if(validation_errors()){ ?>
-              <div class="alert alert-warning alert-dismissible">
-                  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                  <strong>Warning!</strong><br> <?php echo validation_errors(); ?>
-             </div>
-            <?php } ?>
-
-              <div class="box-body">
+              <div id="user_message" style="display:inline-block"></div>
+              <form id="form_insert_site" method="post" autocomplete="off" accept-charset="utf-8"style="width:95%;margin-left:10px">   
+                <div class="form-group" style="display:inline-block; margin-left:75px">
+                  <button type="reset" class="btn btn-basic" name="btn_reset" style="width:95px;margin-left:-70px;"><i class="fa fa-eraser" aria-hidden="true"></i> Reset</button>
+                </div>      
+              <?php foreach($list_data as $d){ ?>
                 <div class="form-group">
-                  <label for="dummy_id" style="margin-left:15px;display:none;">ID</label>
-                  <input type="text" name="dummy_id" style="margin-left:37px;width:20%;display:none;" class="form-control" readonly="readonly" value="<?=random_string('alpha', 10);?><?=random_string('sha1');?>">
-                </div>  
-                
-		            <div class="form-group form-group-lg">
-                  <label for="site_id" style="margin-left:15px;display:inline;">1. Nama Tertanggung</label>
-                  <select class="form-control" name="the_insured" style="margin-left:58px;width:50%;display:inline">
-                    <option value="">Pilih</option>
-                    <option value="fiberHome">PT. FiberHome Technologies Indonesia and/or BAKTI 
-                      (Badan Aksesibilitas Telekomunikasi dan Informasi)</option>
-                    <option value="Lainnya">Lainnya</option>
-                  </select>
+                  <label for="dummy_id" style="display:none;">ID</label>
+                  <input type="text" name="dummy_id" style="  display:none;" class="form-control" readonly="readonly" value="<?=$d->dummy_id?>">
+                </div> 
+                <div class="form-group form-group-lg col-md-12">
+                  <label for="site_id" style="display:inline;">SITE ID</label>
+                  <input type="text" name="site_id" style="  display:inline;" class="form-control" readonly="readonly" placeholder="Site ID" value="<?=$d->site_id?>">
+                </div>
+                <div class="form-group form-group-lg col-md-12" >
+                  <label for="site_id" style="display:inline;">Linked With</label>  
+                  <input type="text" name="linked_with" class="form-control" value="<?=$d->linked_with?>">
+                </div>           
+                <div class="form-group form-group-lg col-md-12">
+                  <label for="the_insured">1. Nama Tertanggung</label>
+                    <select name="the_insured" class="form-control">
+                      <option selected>Choose...</option>
+                      <option value="PT. FiberHome Technologies Indonesia and/or BAKTI (Badan Aksesibilitas Telekomunikasi dan Informasi)">PT. FiberHome Technologies Indonesia and/or BAKTI (Badan Aksesibilitas Telekomunikasi dan Informasi)</option>
+                      <option value="Lainnya">Lainnya</option>
+                    </select>
                 </div>
                
-                <div class="form-group form-group-lg">
-                  <label for="site_id" style="margin-left:15px;display:inline;">2. Alamat</label>
-                  <select class="form-control" name="a_fiberHome" style="margin-left:132px;width:50%;display:inline">
-                    <option value="">Pilih</option>
-                    <option value="a_fiberHome">APL Tower, Jakarta Barat, RT.12/RW.6, Grogol, Grogol Petamburan, West Jakarta City, 
-                      Jakarta 11440</option>
-                    <option value="Lainnya">Lainnya</option>
-                  </select>
+                <div class="form-group form-group-lg col-md-12">
+                  <label for="address_">2. Alamat</label>
+                    <select class="form-control" name="address_">
+                      <option selected>Choose...</option>
+                      <option value="APL Tower, 30 Floor, Grogol, West Jakarta">APL Tower, 30 Floor, Grogol, West Jakarta</option>
+                      <option value="Lainnya">Lainnya</option>
+                    </select>
                 </div>
 
-                <div class="form-group form-group-lg">
-                  <label for="site_id" style="margin-left:15px;display:inline-block;">3. Jenis Barang yang Dikirim</label>
-                  <input type="text" name="site_id" style="margin-left:15px;width:30%;display:inline;" class="form-control" placeholder="Jenis Barang">
-                  <label for="qty" style="margin-left:20px;width:13%">Quantity</label>
-                  <input type="number" name="qty" style="width:12%;margin-left:-80px;display:inline;" class="form-control" id="qty" placeholder="@ pcs">
-                </div>
+                <table id="cart_table" class="table table-sm table-stripped table-hover" style="margin-left:7px;width:99%">
+                    <thead>
+                        <tr>
+                            <th width="80%">3. Jenis Barang yang Dikirim</th>
+                            <th width="20%">Quantity</th>
+                            <th width="5%"></th>
+                        </tr>
+                        <tr>
+                        </tr> 
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="form-group form-group-lg">
+                                    <input type="text" name="txtTitle[]" placeholder="Jenis Barang" required="required" class="form-control"/>
+                                </div>
+                            </td> 
+                            <td>
+                                <div class="form-group form-group-lg">
+                                    <input type="number" name="txtDescription[]" class="form-control" placeholder="@ pcs" required="required"/>
+                                </div>
+                            </td>
                             
-                <div class="form-group form-group-lg">
-                  <label for="pengiriman" style="margin-left:15px;display:inline;">4. Pengiriman Melalui</label>
-                  <select class="form-control" name="pengiriman" style="margin-left:55px;width:50%;display:inline">
-                    <option value="">Pilih</option>
-                    <option value="Darat">Darat</option>
-                    <option value="Laut">Laut</option>
-                    <option value="Udara">Udara</option>
-                    <option value="Lainnya">Lainnya</option>
-                  </select>
+                            <td>
+                                <button id="addItem" name="addItem" type="button" class="btn btn-success btn-block btn-sm add_button"><i style="color:#fff" class="fa fa-plus-circle"></i></button>
+                                <button id="removeItem" name="removeItem" type="button" class="btn btn-danger btn-block btn-sm remove_button"><i style="color:#fff;" class="fa fa-trash-o"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="form-group form-group-lg col-md-12">
+                  <label for="conveyance">4. Pengiriman Melalui</label>
+                    <select class="form-control" name="conveyance">
+                      <option selected>Choose...</option>
+                      <option value="Darat">Darat</option>
+                      <option value="Laut">Laut</option>
+                      <option value="Udara">Udara</option>
+                    </select>
                 </div>
-              <!-- /.box-body -->
-              <div class="box-footer" style="width:93%;">
-                <a type="button" class="btn btn-default" style="width:10%;margin-right:26%" onclick="history.back(-1)" name="btn_kembali"><i class="fa fa-arrow-left" aria-hidden="true"></i> Kembali</a>
-                <a type="button" class="btn btn-info" style="width:18%;margin-right:20%" href="<?=base_url('admin/tabel_barangmasuk')?>" name="btn_listbarang"><i class="fa fa-table" aria-hidden="true"></i> Lihat List Permintaan</a>
-                <button type="submit" style="width:20%" class="btn btn-success"><i class="fa fa-check" aria-hidden="true"></i> Submit</button>
-              </div>
-            </form>
-          </div>
+                
+                <div class="form-group form-group-lg col-md-6">
+                  <label for="destination_from">5. Tempat Keberangkatan</label>
+                  <input type="text" name="destination_from" class="form-control" placeholder="Dari">
+                </div>
+                <div class="form-group form-group-lg col-md-6">
+                  <label for="destination_to">Tujuan Akhir</label>
+                  <input type="text" class="form-control" name="destination_to" placeholder="Ke">
+                </div>
+
+                <div class="form-group form-group-lg col-md-12">
+                  <label for="sailing_date">6. Tanggal Keberangkatan</label>
+                  <input type="date" placeholder="Tanggal Keberangkatan" name="sailing_date" required="required" class="form-control"/>
+                </div>
+
+                <div class="form-group form-group-lg col-md-12">
+                  <label for="amount_insured">7. Nilai Barang yang Diangkut</label>
+                  <input type="number" name="amount_insured" placeholder="Nilai Barang" required="required" class="form-control"/>
+                </div>
+
+                <div class="form-group form-group-lg col-md-12">
+                  <label for="lampiran">8. Lampiran Data Pendukung</label>
+                </div>
+                <div class="form-group form-group-lg col-md-4">
+                  <label for="lampiran_BL">Bill of Lading (B/L)</label>
+                  <input type="text" class="form-control" name="lampiran_BL" placeholder="B/L">
+                </div>
+                <div class="form-group form-group-lg col-md-4">
+                  <label for="lampiran_LC">Letter of Credit (L/C) *</label>
+                  <input type="text" class="form-control" name="lampiran_LC" placeholder="L/C">
+                </div>
+                <div class="form-group form-group-lg col-md-4">
+                  <label for="lampiran_invoice">Invoice</label>
+                  <input type="text" class="form-control" name="lampiran_invoice" placeholder="Invoice">
+                </div>
+                <div class="form-group form-group-lg col-md-6">
+                  <label for="lampiran_PL">Packing List</label>
+                  <input type="text" class="form-control" name="lampiran_PL" placeholder="Packing List">
+                </div>
+                <div class="form-group form-group-lg col-md-6">
+                  <label for="lampiran_DO">Delivery Order (DO)</label>
+                  <input type="text" class="form-control" name="lampiran_DO" placeholder="DO">
+                </div>          
+                
+                <div class="box-footer col-md-12" style="width:100%; margin-left:30px; margin-bottom:10px; margin-top:5px">
+                  <a type="button" class="btn btn-default" style="width:10%;margin-right:26%" onclick="history.back(-1)" name="btn_kembali"><i class="fa fa-arrow-left" aria-hidden="true"></i> Kembali</a>
+                  <a type="button" class="btn btn-info" style="width:18%;margin-right:20%" href="<?=base_url('admin/tabel_barangmasuk')?>" name="btn_listbarang">
+                  <i class="fa fa-table" aria-hidden="true"></i> Lihat List Permintaan</a>
+                  <button type="submit" input type="submit" style="width:20%" id="btnSave" class="btn btn-md btn-success"><i class="fa fa-check" aria-hidden="true"></i>Create</button>
+                </div>
+              <?php } ?>
+              </form>
+
+              
+            </div>
           </div>
           
           <!-- /.box -->
@@ -273,7 +337,7 @@
 
           <!-- /.box -->
 
-        </div>
+            </div>
         <!--/.col (left) -->
         <!-- right column -->
         <!-- <div class="col-md-6">
@@ -284,78 +348,10 @@
 
           <!-- /.box -->
 
-        </div>
+          </div>
         </div>
         <!--/.col (right) -->
       </div>
-      <div class="container">
-        <h3>Dynamic Form Table</h3>
-        <h4>Create One</h4>
-        <div id="user_message"></div>
-        <form id="form_insert_site" method="post" autocomplete="off" accept-charset="utf-8"> 
-            <div class="form-group">
-                <input type="text" id="txtName" name="txtName" placeholder="Customer Name" required="required" class="form-control" />
-            </div>       
-            <table id="cart_table" class="table table-sm table-stripped table-hover">
-                <thead>
-                    <tr>
-                        <th width="19%">Title</th>
-                        <th width="19%">Description</th>
-                        <th width="19%">Count</th>
-                        <th width="19%">Amount</th>
-                        <th width="19%">Total</th>
-                        <th width="5%"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <div class="form-group">
-                                <input type="text" name="txtTitle[]" placeholder="Title" required="required" class="form-control"/>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="form-group">
-                                <input type="text" name="txtDescription[]" class="form-control" placeholder="Description" required="required"/>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="form-group">
-                                <input type="text" id="txtCount" name="txtCount[]" placeholder="Count" class="combat form-control" required="required" />
-                            </div>
-                        </td>
-                        <td>
-                            <div class="form-group">
-                                <input type="text" id="txtItemAmount" name="txtItemAmount[]" placeholder="Amount" class="combat form-control" required="required" />
-                            </div>
-                        </td>
-                        <td>
-                            <div class="form-group">
-                                <input type="text" id="txtTotal" name="txtTotal[]" placeholder="Total" class="forTotal form-control" readonly="readonly" />
-                            </div>
-                        </td>
-                        <td>
-                            <button id="addItem" name="addItem" type="button" class="btn btn-success btn-block btn-sm add_button"><i style="color:#fff" class="fa fa-plus-circle"></i></button>
-                            <button id="removeItem" name="removeItem" type="button" class="btn btn-danger btn-block btn-sm remove_button"><i style="color:#fff;" class="fa fa-trash-o"></i></button>
-                        </td>
-                    </tr>
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <td colspan="4" class="text-center">
-                            <input type="submit" id="btnSave" name="btnSave" value="Create" class="btn btn-md btn-success" />
-                        </td>
-                        <td>
-                            <div class="form-group">
-                                <input type="text" id="txtGrandTotal" name="txtGrandTotal" placeholder="Grand Total" class="forTotal form-control" readonly="readonly" />
-                            </div>
-                        </td>
-                        <td></td>
-                    </tr>
-                </tfoot>
-            </table>
-        </form>
-    </div>
       <!-- /.row -->
     </section>
     <!-- /.content -->
@@ -469,22 +465,6 @@
         var display_bill_table = "";
         $(document).ready(function() {
 
-            display_bill_table = $('#display_bill_table').DataTable({
-                "ajax": {
-                    url : '<?php echo base_url("main/get_display_bills"); ?>',
-					type : 'GET'
-                },
-            });
-
-            $('#display_bill_table tbody').on( 'click', 'button', function () {
-                if(this.name == "btnDelete") {
-                    var isDelete = confirm("Once you delete the Bill, it will remove permanantly.");
-                    if(isDelete) {
-                        delete_bill(this.id);
-                    } 
-                }
-            });
-
             $('#form_insert_site').submit(function(e) {
                 e.preventDefault();
                 var data = $("#form_insert_site").serialize();
@@ -500,41 +480,8 @@
                 });
             });
             //end
-
-            $('#cart_table').keyup(function(e) {
-                calculate_total();
-            });
         });
 
-        function delete_bill(id) {
-            $.ajax({
-                    type:"POST",
-                    url:'<?php echo base_url("main/delet_single_bill"); ?>',
-                    data: {_id:id},
-                    success: function(data) {
-                        $("#user_message").html(data);
-                        display_bill_table.ajax.reload();
-                    },
-                });
-        }
-
-        function calculate_total() {
-            var grand_total = 0;
-            $('#cart_table> tbody> tr').each(function(index, tr) { 
-                var sum = 0;
-                var amount = count = 0;
-                $(this).find('.combat').each(function(inner_index) {
-                    if(inner_index == 0) count = $(this).val();               
-                    if(inner_index == 1) amount = $(this).val();     
-                    if(amount != 0 && count != 0) {
-                        sum = parseFloat(count) * parseFloat(amount);;
-                    }
-                });
-                $('.forTotal',this).val(sum); 
-                grand_total += sum; 
-            });
-            $("#txtGrandTotal").val(grand_total);
-        }
     </script>
   </body>
 
