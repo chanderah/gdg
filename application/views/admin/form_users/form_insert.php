@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>CRUD Database | Data Masuk</title>
+  <title>CRUD Database | Paket Barang</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -17,7 +17,6 @@
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="<?php echo base_url()?>assets/web_admin/dist/css/skins/_all-skins.min.css">
-  <link rel="stylesheet" href="<?php echo base_url()?>assets/datetimepicker/css/bootstrap-datetimepicker.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -56,15 +55,15 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <?php foreach($avatar as $a){ ?>
-                 <img src="<?php echo base_url('assets/upload/user/img/'.$a->nama_file)?>" class="user-image" alt="User Image">
-              <?php } ?>              
+              <img src="<?php echo base_url('assets/upload/user/img/'.$a->nama_file)?>" class="user-image" alt="User Image">
+              <?php } ?>
               <span class="hidden-xs"><?=$this->session->userdata('name')?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
                 <?php foreach($avatar as $a){ ?>
-                  <img src="<?php echo base_url('assets/upload/user/img/'.$a->nama_file)?>" class="img-circle" alt="User Image">
+                <img src="<?php echo base_url('assets/upload/user/img/'.$a->nama_file)?>" class="img-circle" alt="User Image">
                 <?php } ?>
                 <p>
                   <?=$this->session->userdata('name')?> - Web Developer
@@ -76,7 +75,7 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat"><i class="fa fa-cogs" aria-hidden="true"></i> Profile</a>
+                  <a href="<?= base_url('admin/profile')?>" class="btn btn-default btn-flat"><i class="fa fa-cogs" aria-hidden="true"></i> Profile</a>
                 </div>
                 <div class="pull-right">
                   <a href="<?= base_url('admin/sigout')?>" class="btn btn-default btn-flat"><i class="fa fa-sign-out" aria-hidden="true"></i> Sign out</a>
@@ -98,7 +97,7 @@
       <div class="user-panel">
         <div class="pull-left image">
           <?php foreach($avatar as $a){ ?>
-            <img src="<?php echo base_url('assets/upload/user/img/'.$a->nama_file)?>" class="img-circle" alt="User Image">
+          <img src="<?php echo base_url('assets/upload/user/img/'.$a->nama_file)?>" class="img-circle" alt="User Image">
           <?php } ?>
         </div>
         <div class="pull-left info">
@@ -137,7 +136,7 @@
             <li><a href="<?= base_url('admin/form_satuan')?>"><i class="fa fa-circle-o"></i> Tambah Paket Barang</a></li>
           </ul>
         </li>
-        <li class="treeview active">
+        <li class="treeview ">
           <a href="#">
             <i class="fa fa-table"></i> <span>Tables</span>
             <span class="pull-right-container">
@@ -145,17 +144,19 @@
                 </span>
           </a>
           <ul class="treeview-menu">
-            <li class="active"><a href="<?= base_url('admin/tabel_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tabel Data Masuk</a></li>
+            <li><a href="<?= base_url('admin/tabel_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tabel Data Masuk</a></li>
             <li><a href="<?= base_url('admin/tabel_barangkeluar')?>"><i class="fa fa-circle-o"></i> Tabel Data Keluar</a></li>
             <li><a href="<?= base_url('admin/tabel_satuan')?>"><i class="fa fa-circle-o"></i> Tabel Satuan</a></li>
           </ul>
         </li>
+
+
         <li class="header">LABELS</li>
         <li>
           <a href="<?php echo base_url('admin/profile')?>">
          <i class="fa fa-cogs" aria-hidden="true"></i> <span>Profile</span></a>
         </li>
-        <li>
+        <li class="active">
           <a href="<?php echo base_url('admin/users')?>">
          <i class="fa fa-fw fa-users" aria-hidden="true"></i> <span>Users</span></a>
         </li>
@@ -169,12 +170,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Tambah Data Keluar
+        Tambah User
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="<?=base_url('admin/tabel_barangmasuk')?>">Tables</a></li>
-        <li class="active">Tambah Data Keluar</li>
+        <li><a href="#">Forms</a></li>
+        <li class="active">Paket Barang</li>
       </ol>
     </section>
 
@@ -185,14 +186,21 @@
         <div class="col-md-12">
           <div class="container">
             <!-- general form elements -->
-          <div class="box box-primary">
+          <div class="box box-primary" style="width:94%;">
             <div class="box-header with-border">
-              <h3 class="box-title"><i class="fa fa-archive" aria-hidden="true"></i> Tambah Data Keluar</h3>
+              <h3 class="box-title"><i class="fa fa-fw fa-user" aria-hidden="true"></i> Tambah Users Data</h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->
             <div class="container">
-            <form action="<?=base_url('admin/proses_data_keluar')?>" role="form" method="post" style="width:95%;margin-left:10px">
+            <form action="<?=base_url('admin/proses_tambah_user')?>" role="form" method="post">
+
+              <?php if($this->session->flashdata('msg_berhasil')){ ?>
+                <div class="alert alert-success alert-dismissible" style="width:91%">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>Success!</strong><br> <?php echo $this->session->flashdata('msg_berhasil');?>
+               </div>
+              <?php } ?>
 
               <?php if(validation_errors()){ ?>
               <div class="alert alert-warning alert-dismissible">
@@ -200,90 +208,44 @@
                   <strong>Warning!</strong><br> <?php echo validation_errors(); ?>
              </div>
             <?php } ?>
+
               <div class="box-body">
-                <?php foreach($list_data as $d){ ?>
-                  <div class="form-group">
-                    <label for="dummy_id" style="display:none;">ID</label>
-                    <input type="text" name="dummy_id" style="  display:none;" class="form-control" readonly="readonly" value="<?=$d->dummy_id?>">
-                  </div> 
-                  <div class="form-group form-group-lg col-md-12">
-                    <label for="site_id" style="display:inline;">SITE ID</label>
-                    <input type="text" name="site_id" style="  display:inline;" class="form-control" readonly="readonly" placeholder="Site ID" value="<?=$d->site_id?>">
-                  </div>
-                  <div class="form-group form-group-lg col-md-12" >
-                    <label for="site_id" style="display:inline;">Linked With</label>  
-                    <input type="text" name="linked_with" class="form-control" value="<?=$d->linked_with?>">
-                  </div>
-
-                  <div class="form-group form-group-lg col-md-12" >
-                    <label for="the_insured">Nama Tertanggung</label>
-                    <input type="text" name="the_insured" class="form-control" readonly="readonly" placeholder="Dari"value="<?=$d->the_insured?>">
-                  </div>
-                
-                  <div class="form-group form-group-lg col-md-12">
-                    <label for="address_">Alamat</label>
-                    <input type="text" name="address_" readonly="readonly" class="form-control" value="<?=$d->address_?>">
-
-                  </div>
-
-                  <div class="form-group form-group-lg col-md-12">
-                    <label for="conveyance">Pengiriman Melalui</label>
-                    <input type="text" name="conveyance" readonly="readonly" class="form-control" value="<?=$d->conveyance?>">
-                  </div>
-                  
-                  <div class="form-group form-group-lg col-md-6">
-                    <label for="destination_from">Tempat Keberangkatan</label>
-                    <input type="text" name="destination_from" readonly="readonly" class="form-control" value="<?=$d->destination_from?>">
-                  </div>
-                  <div class="form-group form-group-lg col-md-6">
-                    <label for="destination_to">Tujuan Akhir</label>
-                    <input type="text" name="destination_to" readonly="readonly" class="form-control" value="<?=$d->destination_to?>">
-                  </div>
-
-                  <div class="form-group form-group-lg col-md-12">
-                    <label for="sailing_date">Tanggal Keberangkatan</label>
-                    <input type="date" name="sailing_date" readonly="readonly" class="form-control" value="<?=$d->sailing_date?>">
-                  </div>
-
-                  <div class="form-group form-group-lg col-md-12">
-                    <label for="amount_insured">Nilai Barang yang Diangkut</label>
-                    <input type="text" name="amount_insured" readonly="readonly" class="form-control" value="<?=$d->amount_insured?>">
-                  </div>
-
-                  <div class="form-group form-group-lg col-md-12">
-                    <label for="lampiran">Lampiran Data Pendukung</label>
-                  </div>
-                  <div class="form-group form-group-lg col-md-4">
-                    <label for="lampiran_BL">Bill of Lading (B/L)</label>
-                    <input type="text" name="lampiran_BL" readonly="readonly" class="form-control" value="<?=$d->lampiran_BL?>">
-                  </div>
-                  <div class="form-group form-group-lg col-md-4">
-                    <label for="lampiran_LC">Letter of Credit (L/C) *</label>
-                    <input type="text" name="lampiran_LC" readonly="readonly" class="form-control" value="<?=$d->lampiran_LC?>">
-                  </div>
-                  <div class="form-group form-group-lg col-md-4">
-                    <label for="lampiran_invoice">Invoice</label>
-                    <input type="text" name="lampiran_invoice" readonly="readonly" class="form-control" value="<?=$d->lampiran_invoice?>">
-                  </div>
-                  <div class="form-group form-group-lg col-md-6">
-                    <label for="lampiran_PL">Packing List</label>
-                    <input type="text" name="lampiran_PL" readonly="readonly" class="form-control" value="<?=$d->lampiran_PL?>">
-                  </div>
-                  <div class="form-group form-group-lg col-md-6">
-                    <label for="lampiran_DO">Delivery Order (DO)</label>
-                    <input type="text" name="lampiran_DO" readonly="readonly" class="form-control" value="<?=$d->lampiran_DO?>">
-                  </div>          
-                
-                <?php } ?>
-              </div>
-              <!-- /.box-body -->
-
-              <div class="box-footer col-md-12" style="width:100%; margin-left:30px; margin-bottom:10px; margin-top:5px">
-                  <a type="button" class="btn btn-default" style="width:10%;margin-right:26%" onclick="history.back(-1)" name="btn_kembali"><i class="fa fa-arrow-left" aria-hidden="true"></i> Kembali</a>
-                  <a type="button" class="btn btn-info" style="width:18%;margin-right:20%" href="<?=base_url('admin/tabel_barangmasuk')?>" name="btn_listbarang">
-                  <i class="fa fa-table" aria-hidden="true"></i> Lihat List Permintaan</a>
-                  <button type="submit" input type="submit" style="width:20%" id="btnSave" class="btn btn-md btn-success"><i class="fa fa-check" aria-hidden="true"></i>Submit</button>
+                <div class="form-group" style="display:block;">
+                  <label for="username" style="width:87%;margin-left: 0px;">Username</label>
+                  <input type="text" name="username" style="width: 30%;margin-right: 67px;margin-left: 0px;" class="form-control" id="username" placeholder="Username">
                 </div>
+                <div class="form-group" style="display:block;">
+                  <label for="email" style="width:73%;">Email</label>
+                  <input type="text" name="email" style="width:30%;margin-right: 67px;" class="form-control" id="email" placeholder="Email">
+              </div>
+                <div class="form-group" style="display:block;">
+                  <label for="password" style="width:73%;">Password</label>
+                  <input type="password" name="password" style="width:30%;margin-right: 67px;" class="form-control" id="password" placeholder="Password">
+              </div>
+                <div class="form-group" style="display:block;">
+                  <label for="confirm_password" style="width:73%;">Confirm Password</label>
+                  <input type="password" name="confirm_password" style="width:30%;margin-right: 67px;" class="form-control" id="confirm_password" placeholder="Confirm Password">
+              </div>
+              <div class="form-group" style="display:block;">
+                <label for="role" style="width:73%;">Role</label>
+                <select class="form-control" name="role" style="width:11%;margin-right: 18px;">
+                  <option value="0" selected=""></option>
+                  <option value="0">User Biasa</option>
+                  <option value="1">User Admin</option>
+                </select>
+            </div>
+              <!-- /.box-body -->
+              <?php if(isset($token_generate)){ ?>
+                <input type="hidden" name="token"  class="form-control" value="<?= $token_generate?>">
+              <?php }else {
+                redirect(base_url('admin/form_user'));
+              }?>
+
+              <div class="box-footer" style="width:93%;">
+                <a type="button" class="btn btn-default" style="width:10%;margin-right:26%" onclick="history.back(-1)" name="btn_kembali"><i class="fa fa-arrow-left" aria-hidden="true"></i> Kembali</a>
+                <a type="button" class="btn btn-info" style="width:13%;margin-right:29%" href="<?=base_url('admin/users')?>" name="btn_listusers"><i class="fa fa-table" aria-hidden="true"></i> Lihat Users</a>
+                <button type="submit" style="width:20%" class="btn btn-primary"><i class="fa fa-check" aria-hidden="true"></i> Submit</button>
+              </div>
             </form>
           </div>
           </div>
@@ -344,19 +306,7 @@
   <script src="<?php echo base_url()?>assets/web_admin/bower_components/fastclick/lib/fastclick.js"></script>
   <!-- AdminLTE App -->
   <script src="<?php echo base_url()?>assets/web_admin/dist/js/adminlte.min.js"></script>
-  <script src="<?php echo base_url()?>assets/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
   <!-- AdminLTE for demo purposes -->
   <script src="<?php echo base_url()?>assets/web_admin/dist/js/demo.js"></script>
-
-  <script type="text/javascript">
-      $(".form_datetime").datetimepicker({
-        format: 'dd/mm/yyyy',
-        autoclose: true,
-        todayBtn: true,
-        pickTime: false,
-        minView: 2,
-       maxView: 4,
-      });
-  </script>
   </body>
   </html>

@@ -204,16 +204,24 @@
               <?php } ?>
 
               <a href="<?=base_url('admin/tabel_barangmasuk')?>" style="margin-bottom:10px;" type="button" class="btn btn-primary" name="tambah_data"><i class="fa fa-plus-circle" aria-hidden="true"></i> Tambah Data Keluar</a>
-              <!-- <a href="<?=base_url('report/barangKeluarManual')?>" style="margin-bottom:10px;" type="button" class="btn btn-danger" name="laporan_data"><i class="fa fa-file-text" aria-hidden="true"></i> Invoice Manual</a>
-              -->
+              <a href="<?=base_url('report/barangKeluarManual')?>" style="margin-bottom:10px;" type="button" class="btn btn-danger" name="laporan_data"><i class="fa fa-file-text" aria-hidden="true"></i> Invoice Manual</a>
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
                   <th>No</th>
-                  <th>Sertifikat</th>
                   <th>SITE ID</th>
-                  <th>Linked</th>
-                  <th>Created At</th>
+                  <th>Region</th>
+                  <th>Provinsi</th>
+                  <th>Kota</th>
+                  <th>Kecamatan</th>
+                  <th>Desa</th>
+                  <th>Paket</th>
+                  <th>Batch</th>
+                  <th>TRM</th>
+                  <th>TSI</th>
+                  <th>Amount Insured</th>
+                  <th>Sertifikat</th>
+                  <th>Keterangan</th>
                   <th>Invoice</th>
                   <!-- <th></th> -->
                 </tr>
@@ -224,10 +232,21 @@
                   <?php $no = 1;?>
                   <?php foreach($list_data as $dd): ?>
                     <td><?=$no?></td>
-                    <td><?=$dd->no_sertif?></td>
                     <td><?=$dd->site_id?></td>
-                    <td><?=$dd->site_linked?></td>
-                    <td><?=$dd->created_at?></td>
+                    <td><?=$dd->region?></td>
+                    <td><?=$dd->provinsi?></td>
+                    <td><?=$dd->region?></td>
+                    <td><?=$dd->kecamatan?></td>
+                    <td><?=$dd->desa?></td>
+                    <td><?=$dd->paket?></td>
+                    <td><?=$dd->batch_?></td>
+                    <td><?=$dd->ctrm?></td>
+                    <td><?=$dd->ctsi?></td>
+                    <td><?=$dd->amount_insured?></td>
+                    <td><?=$dd->no_sertif?></td>
+                    <td><?=$dd->keterangan?></td>
+                    <td><?=$dd->terbit?></td>
+
                     <td><a type="button" class="btn btn-danger btn-report" href="<?=base_url('report/dataKeluar/'.$dd->dummy_id)?>" name="btn_report" style="margin:auto;"><i class="fa fa-file-text" aria-hidden="true"></i></a></td>
                 </tr>
               <?php $no++; ?>
@@ -238,11 +257,21 @@
                 </tbody>
                 <tfoot>
                 <tr>
-                  <th>No</th>
-                  <th>Sertifikat</th>
+                <th>No</th>
                   <th>SITE ID</th>
-                  <th>Linked</th>
-                  <th>Created At</th>
+                  <th>Region</th>
+                  <th>Provinsi</th>
+                  <th>Kota</th>
+                  <th>Kecamatan</th>
+                  <th>Desa</th>
+                  <th>Paket</th>
+                  <th>Batch</th>
+                  <th>TRM</th>
+                  <th>TSI</th>
+                  <th>Amount Insured</th>
+                  <th>Sertifikat</th>
+                  <th>Keterangan</th>
+                  <th>Invoice</th>
                 </tr>
                 </tfoot>
               </table>
