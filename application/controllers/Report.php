@@ -215,17 +215,17 @@ class Report extends CI_Controller
             if ($d->linked_with == true )
             {
                 $explodeLink = explode(', ', $d->linked_with);
-                $totalLink = count($explodelink);
+                $totalLink = count($explodeLink);
 
                 if ($totalLink < 10){
                     $html .= '<table border="" cellpadding="1">
                                 <tr>
-                                <td colspan="2"></td>
-                                <td colspan="1"></td>
-                                <td colspan="8"> 1. SITE ID : '.$d->site_id.'</td>
+                                    <td colspan="2"></td>
+                                    <td colspan="1"></td>
+                                    <td colspan="8"> 1. SITE ID : '.$d->site_id.'</td>
                                 </tr>
                              ';
-                    
+                
                                 $no = 2;
                                 foreach($explodeLink as $d2){
                                     $html .= '  <tr>
