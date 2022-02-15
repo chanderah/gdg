@@ -152,7 +152,7 @@ class Report extends CI_Controller
                 <tr>
                     <td colspan="2">Amount Insured</td>
                     <td colspan="1" align="right">:</td>
-                    <td colspan="8"align="justify">Rp. '.$d->amount_insured.'</td>
+                    <td colspan="8"align="justify">IDR. '.$d->amount_insured.'</td>
                 </tr>
                 <tr>
                     <td colspan="2">L/C</td>
@@ -172,7 +172,9 @@ class Report extends CI_Controller
                 <tr>
                     <td colspan="2">Scope of Cover</td>
                     <td colspan="1" align="right">:</td>
-                    <td colspan="8"align="justify">-</td>
+                    <td colspan="8"align="justify">As per M.O.P No. : <br>{aMOP}
+                         
+                    </td>
                 </tr>
                 <tr>
                     <td colspan="2">Date of Sailing</td>
@@ -353,14 +355,28 @@ class Report extends CI_Controller
         $no = 1;
         
         foreach($data as $ddd) {
-            $html .= '
-                        '.$ddd->cmop.'<br>'
-                        ;
-
-            
+                        $bmop[] = $ddd->cmop;
         }
     }
 
+    $zmop = implode(", ",array_unique($bmop));
+
+    
+    $exploded2 = explode(', ', $d->linked_with);
+
+    $bmop2 = [];
+
+    foreach($exploded2 as $dd2) {
+        $where = array('site_id' => $dd2);
+        $data22 = $this->M_admin->get_data('tb_site_in',$where);
+        
+        foreach($data as $ddd) {
+                        $bmop[] = $ddd->cmop;
+        }
+    }
+
+    $amop = implode("<br>",array_unique($bmop));
+    
     $mop_header = '0608032100001';
     $no_sertif = $d->no_sertif;
     $str_length = 5;
@@ -370,7 +386,8 @@ class Report extends CI_Controller
     $html = str_replace('{namaPerusahaan}',$namaPerusahaan, $html);
     $html = str_replace('{dateIssued}',$dateIssued, $html);
     
-    $html = str_replace('{MOP}',$mop, $html);
+    $html = str_replace('{MOP}',$zmop, $html);
+    $html = str_replace('{aMOP}',$amop, $html);
     //$html = str_replace('{linked_with}',$d->linked_with, $html);
     
     $html = str_replace('{MOP_Header}',$mop_header, $html);
