@@ -341,20 +341,25 @@ class Report extends CI_Controller
                         </table>    
                     </div>';
 
+    
+    $exploded = explode(', ', $d->linked_with);
+
+    $bmop = [];
+
+    foreach($exploded as $dd) {
+        $where = array('site_id' => $dd);
+        $data = $this->M_admin->get_data('tb_site_in',$where);
+
+        $no = 1;
         
-        //if ($d->keterangan == "300 Site") {    
-        $mop = '0608032100001';
-        //} elseif ($d->keterangan == "58 Site"){
-        //    $mop = '0608032100003';
-        //}elseif ($d->keterangan == "216 Site"){
-         //   $mop = '0608032100004';
-        //}elseif ($d->keterangan == "491 Site"){
-            //$mop = '0608032100005';
-        //}elseif ($d->keterangan == "180 Site"){
-          //  $mop = '0608032100006';
-        //}elseif ($d->keterangan == "236 Site"){
-        //    $mop = '0608032100007';
-        //}
+        foreach($data as $ddd) {
+            $html .= '
+                        '.$ddd->cmop.'<br>'
+                        ;
+
+            
+        }
+    }
 
     $mop_header = '0608032100001';
     $no_sertif = $d->no_sertif;

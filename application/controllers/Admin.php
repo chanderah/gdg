@@ -407,9 +407,25 @@ class Admin extends CI_Controller{
       $keterangan = $this->input->post('keterangan',TRUE);
       //$terbit = $this->input->post('terbit',TRUE);
 
+      if ($keterangan == "300 Site") {    
+            $cmop = '0608032100001';
+        } elseif ($keterangan == "58 Site"){
+            $cmop = '0608032100003';
+        }elseif ($keterangan == "216 Site"){
+            $cmop = '0608032100004';
+        }elseif ($keterangan == "491 Site"){
+            $cmop = '0608032100005';
+        }elseif ($keterangan == "180 Site"){
+            $cmop = '0608032100006';
+        }elseif ($keterangan == "236 Site"){
+            $cmop = '0608032100007';
+        }
+
       $data = array(
             'dummy_id' => $dummy_id,
             'site_id' => $site_id,
+            'keterangan' => $keterangan,
+            'cmop' => $cmop,
             'region' => $region,
             'provinsi' => $provinsi,
             'kabupaten' => $kabupaten,
@@ -420,7 +436,6 @@ class Admin extends CI_Controller{
             'ctrm' => $ctrm,
             'ctsi' => $ctsi,
             'amount_insured' => $amount_insured,
-            'keterangan' => $keterangan,
             //'terbit' => $terbit
       );
 
@@ -516,10 +531,27 @@ class Admin extends CI_Controller{
       $keterangan = $this->input->post('keterangan',TRUE);
       //$terbit = $this->input->post('terbit',TRUE);
 
+      if ($keterangan == "300 Site") {    
+          $cmop = '0608032100001';
+      } elseif ($keterangan == "58 Site"){
+          $cmop = '0608032100003';
+      }elseif ($keterangan == "216 Site"){
+          $cmop = '0608032100004';
+      }elseif ($keterangan == "491 Site"){
+          $cmop = '0608032100005';
+      }elseif ($keterangan == "180 Site"){
+          $cmop = '0608032100006';
+      }elseif ($keterangan == "236 Site"){
+          $cmop = '0608032100007';
+      }
+
       $where = array('dummy_id' => $dummy_id);
       $data = array(
             'dummy_id' => $dummy_id,
             'site_id' => $site_id,
+            'keterangan' => $keterangan,
+            'cmop' => $cmop,
+
             'region' => $region,
             'provinsi' => $provinsi,
             'kabupaten' => $kabupaten,
@@ -530,7 +562,6 @@ class Admin extends CI_Controller{
             'ctrm' => $ctrm,
             'ctsi' => $ctsi,
             'amount_insured' => $amount_insured,
-            'keterangan' => $keterangan,
             'linked_with' => $linked_with,
             //'terbit' => $terbit
       );
