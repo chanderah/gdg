@@ -261,6 +261,16 @@ class Admin extends CI_Controller{
     $this->load->view('admin/form_barangmasuk/form_insert',$data);
   }
 
+  public function move_data()
+  {
+    $uri = $this->uri->segment(3);
+    $where = array('dummy_id' => $uri);
+    $data['list_data'] = $this->M_admin->get_data('tb_site_in',$where);
+    $data['list_data_desc'] = $this->M_admin->get_data('tb_site_out_items',$where);
+    $data['avatar'] = $this->M_admin->get_data_gambar('tb_upload_gambar_user',$this->session->userdata('name'));
+    $this->load->view('admin/form_barangmasuk/form_move',$data);
+  }
+
   public function tabel_barangmasuk()
   {
     $data = array(
@@ -274,7 +284,7 @@ class Admin extends CI_Controller{
   {
     $where = array('dummy_id' => $dummy_id);
     $where2 = array('dummy_id' => $dummy_id);
-    $data['data_barang_desc'] = $this->M_admin->get_data('tb_site_desc',$where);
+    $data['data_barang_desc'] = $this->M_admin->get_data('tb_site_out_items',$where);
     $data['data_barang_update'] = $this->M_admin->get_data('tb_site_in',$where);
     $data['data_linked_with'] = $this->M_admin->getAllDataLinkedWith('tb_site_in');
     $data['list_satuan'] = $this->M_admin->select('tb_satuan');
@@ -286,7 +296,7 @@ class Admin extends CI_Controller{
   {
     $where = array('dummy_id' => $dummy_id);
     $data['data_barang_info'] = $this->M_admin->get_data('tb_site_in',$where);
-    $data['data_barang_desc'] = $this->M_admin->get_data('tb_site_desc',$where);
+    $data['data_barang_desc'] = $this->M_admin->get_data('tb_site_out_items',$where);
     $data['list_satuan'] = $this->M_admin->select('tb_satuan');
     $data['avatar'] = $this->M_admin->get_data_gambar('tb_upload_gambar_user',$this->session->userdata('name'));
     $this->load->view('admin/form_barangmasuk/form_info',$data);
@@ -296,8 +306,18 @@ class Admin extends CI_Controller{
   {
     $where = array('dummy_id' => $dummy_id);
     $this->M_admin->delete('tb_site_in',$where);
-    $this->M_admin->delete('tb_site_desc',$where);
+    $this->M_admin->delete('tb_site_out_items',$where);
     redirect(base_url('admin/tabel_barangmasuk'));
+  }
+
+  public function delete_datakeluar($dummy_id)
+  {
+    $where = array('dummy_id' => $dummy_id);
+    $this->M_admin->delete('tb_site_out',$where);
+    $this->M_admin->delete('tb_site_out_items',$where);
+
+    $this->session->set_flashdata('msg_berhasil','Data Berhasil Dihapus');
+    redirect(base_url('admin/tabel_barangkeluar'));
   }
 
   public function proses_datamasuk_insert()
@@ -347,7 +367,120 @@ class Admin extends CI_Controller{
       );
       
       $this->M_admin->insert('tb_site_in',$data);
-      $this->M_admin->insert('tb_site_desc',$data2);
+      $this->M_admin->insert('tb_site_out_items',$data2);
+
+      $this->session->set_flashdata('msg_berhasil','Data Barang Berhasil Ditambahkan');
+      redirect(base_url('admin/form_barangmasuk'));
+      
+    }else {
+      $data['list_satuan'] = $this->M_admin->select('tb_satuan');
+      $this->load->view('admin/form_barangmasuk/form_insert',$data);
+    }
+  }
+
+
+  public function proses_insert_datamasuk()
+  {
+    $this->form_validation->set_rules('site_id','site_id','required');
+    //$this->form_validation->set_rules('kecamatan','Kecamatan','required');
+    //$this->form_validation->set_rules('desa','Desa','required');
+    //$this->form_validation->set_rules('batch_','Batch','required');
+
+    if($this->form_validation->run() == TRUE)
+    {
+
+      $sha1 = random_string('alpha', 10);
+      $sha2 = random_string('sha1');
+      $dummy_id = $sha1.$sha2;
+
+      $site_id = $this->input->post('site_id',TRUE);
+      $region = $this->input->post('region',TRUE);
+      $provinsi = $this->input->post('provinsi',TRUE);
+      $kabupaten = $this->input->post('kabupaten',TRUE);
+      $kecamatan = $this->input->post('kecamatan',TRUE);
+      $desa = $this->input->post('desa',TRUE);
+      $paket = $this->input->post('paket',TRUE);
+      $batch_ = $this->input->post('batch_',TRUE);
+      $ctrm = $this->input->post('ctrm',TRUE);
+      $ctsi = $this->input->post('ctsi',TRUE);
+      $amount_insured = $this->input->post('amount_insured',TRUE);
+      $keterangan = $this->input->post('keterangan',TRUE);
+      //$terbit = $this->input->post('terbit',TRUE);
+
+      $data = array(
+            'dummy_id' => $dummy_id,
+            'site_id' => $site_id,
+            'region' => $region,
+            'provinsi' => $provinsi,
+            'kabupaten' => $kabupaten,
+            'kecamatan' => $kecamatan,
+            'desa' => $desa,
+            'paket' => $paket,
+            'batch_' => $batch_,
+            'ctrm' => $ctrm,
+            'ctsi' => $ctsi,
+            'amount_insured' => $amount_insured,
+            'keterangan' => $keterangan,
+            //'terbit' => $terbit
+      );
+
+      $this->M_admin->insert('tb_site_in',$data);
+      $this->session->set_flashdata('msg_berhasil','Data Berhasil Ditambahkan');
+      redirect(base_url('admin/tabel_barangmasuk'));
+    }else{
+      $this->load->view('admin/form_barangmasuk/form_insert');
+    }
+  }
+
+
+  public function proses_datamasuk_move()
+  {
+    $this->load->helper('string');
+    $this->form_validation->set_rules('dummy_id','Dummy ID','required');
+
+    if($this->form_validation->run() == TRUE)
+    {
+      $dummy_id = $this->input->post('dummy_id',TRUE);
+      $site_id = $this->input->post('site_id',TRUE);
+      $region = $this->input->post('region',TRUE);
+      $provinsi = $this->input->post('provinsi',TRUE);
+      $kabupaten = $this->input->post('kabupaten',TRUE);
+      $kecamatan = $this->input->post('kecamatan',TRUE);
+      $desa = $this->input->post('desa',TRUE);
+      $paket = $this->input->post('paket',TRUE);
+      $batch_ = $this->input->post('batch_',TRUE);
+      $ctrm = $this->input->post('ctrm',TRUE);
+      $ctsi = $this->input->post('ctsi',TRUE);
+      $amount_insured = $this->input->post('amount_insured',TRUE);
+      $no_sertif = $this->input->post('no_sertif',TRUE);
+      $keterangan = $this->input->post('keterangan',TRUE);
+      $qty = $this->input->post('qty',TRUE);
+
+      $data = array(
+        'dummy_id' => $dummy_id,
+        'site_id' => $site_id,
+        'region' => $region,
+        'provinsi' => $provinsi,
+        'kabupaten' => $kabupaten,
+        'kecamatan' => $kecamatan,
+        'desa' => $desa,
+        'paket' => $paket,
+        'batch_' => $batch_,
+        'ctrm' => $ctrm,
+        'ctsi' => $ctsi,
+        'amount_insured' => $amount_insured,
+        'no_sertif' => $no_sertif,
+        'keterangan' => $keterangan
+      );
+
+      $data2 = array(
+        'dummy_id' => $dummy_id,
+        'site_id2' => $site_id,
+        'qty' => $qty
+      );
+      
+      $this->M_admin->insert('tb_site_in',$data);
+      $this->M_admin->insert('tb_site_out_items',$data2);
 
       $this->session->set_flashdata('msg_berhasil','Data Barang Berhasil Ditambahkan');
       redirect(base_url('admin/form_barangmasuk'));
@@ -383,19 +516,6 @@ class Admin extends CI_Controller{
       $keterangan = $this->input->post('keterangan',TRUE);
       //$terbit = $this->input->post('terbit',TRUE);
 
-      $the_insured =$this->input->post("the_insured");
-      $address_ =$this->input->post("address_");
-      $conveyance =$this->input->post("conveyance");
-      $destination_from =$this->input->post("destination_from");
-      $destination_to =$this->input->post("destination_to");
-      $sailing_date =$this->input->post("sailing_date");
-      $amount_insured =$this->input->post("amount_insured");
-      $lampiran_BL =$this->input->post("lampiran_BL");
-      $lampiran_LC =$this->input->post("lampiran_LC");
-      $lampiran_invoice =$this->input->post("lampiran_invoice");
-      $lampiran_PL =$this->input->post("lampiran_PL");
-      $lampiran_DO =$this->input->post("lampiran_DO");
-
       $where = array('dummy_id' => $dummy_id);
       $data = array(
             'dummy_id' => $dummy_id,
@@ -413,19 +533,6 @@ class Admin extends CI_Controller{
             'keterangan' => $keterangan,
             'linked_with' => $linked_with,
             //'terbit' => $terbit
-
-            'the_insured' => $the_insured,
-            'address_' => $address_,
-            'conveyance' => $conveyance,
-            'destination_from' => $destination_from,
-            'destination_to' => $destination_to,
-            'sailing_date' => $sailing_date,
-            'amount_insured' => $amount_insured,
-            'lampiran_BL' => $lampiran_BL,
-            'lampiran_LC' => $lampiran_LC,
-            'lampiran_invoice' => $lampiran_invoice,
-            'lampiran_PL' => $lampiran_PL,
-            'lampiran_DO' => $lampiran_DO,  
       );
 
 
@@ -443,17 +550,6 @@ class Admin extends CI_Controller{
   ####################################
      // DATA MASUK KE DATA KELUAR
   ####################################
-
-  public function move_data()
-  {
-    $uri = $this->uri->segment(3);
-    $where = array('dummy_id' => $uri);
-    $data['list_data'] = $this->M_admin->get_data('tb_site_in',$where);
-    $data['list_data_desc'] = $this->M_admin->get_data('tb_site_desc',$where);
-    $data['list_satuan'] = $this->M_admin->select('tb_satuan');
-    $data['avatar'] = $this->M_admin->get_data_gambar('tb_upload_gambar_user',$this->session->userdata('name'));
-    $this->load->view('admin/perpindahan_data/form_movedata',$data);
-  }
 
   public function proses_data_keluar()
   {

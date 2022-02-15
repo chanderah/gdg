@@ -19,8 +19,8 @@ class Report extends CI_Controller
     $tgl3 = $this->uri->segment(6);
     $ls = array('dummy_id' => $id);
     //$ls   = array('site_id' => $id ,'provinsi' => $tgl1.'/'.$tgl2.'/'.$tgl3);
-    $data = $this->M_admin->get_data('tb_site_desc',$ls);
-    $data2 = $this->M_admin->get_data('tb_site_desc',$ls);
+    $data = $this->M_admin->get_data('tb_site_out_items',$ls);
+    $data2 = $this->M_admin->get_data('tb_site_out_items',$ls);
 
     //create
     $pdf = new Pdf(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);

@@ -133,8 +133,7 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="<?= base_url('admin/form_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tambah Data Masuk</a></li>
-            <li><a href="<?= base_url('admin/form_satuan')?>"><i class="fa fa-circle-o"></i> Tambah Paket Barang</a></li>
-          </ul>
+           </ul>
         </li>
         <li class="treeview active">
           <a href="#">
@@ -146,8 +145,7 @@
           <ul class="treeview-menu">
             <li class="active"><a href="<?= base_url('admin/tabel_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tabel Data Masuk</a></li>
             <li><a href="<?= base_url('admin/tabel_barangkeluar')?>"><i class="fa fa-circle-o"></i> Tabel Data Keluar</a></li>
-            <li><a href="<?= base_url('admin/tabel_satuan')?>"><i class="fa fa-circle-o"></i> Tabel Satuan</a></li>
-          </ul>
+           </ul>
         </li>
         <li>
         <li class="header">LABELS</li>
@@ -266,84 +264,7 @@
                     <label for="amount_insured" style="display:inline;">Amount Insured</label>
                     <input type="number" name="amount_insured" style="  display:inline;" class="form-control" placeholder="Amount Insured" value="<?=$d->amount_insured?>">
                   </div>
-                  
-                  <div class="form-group form-group-lg col-md-12" >
-                    <label for="the_insured">Nama Tertanggung</label>
-                    <input type="text" name="the_insured" class="form-control"   placeholder="Dari"value="<?=$d->the_insured?>">
-                  </div>
-                
-                  <div class="form-group form-group-lg col-md-12">
-                    <label for="address_">Alamat</label>
-                    <input type="text" name="address_"   class="form-control" value="<?=$d->address_?>">
-                  </div>
-                   
-                <div class="form-group form-group-lg col-md-6" style="margin-bottom:-1px">
-                  <label for="destination_from">Jenis Barang yang Dikirim</label>
-                  <!-- <input type="text" name="destination_from" readonly="readonly" class="form-control"> -->
-                </div>
-
-                <div class="form-group form-group-lg col-md-6"style="margin-bottom:-1px">
-                  <label for="destination_to">Quantity</label>
-                  <!-- <input type="text" name="destination_from" readonly="readonly" class="form-control"> -->
-                </div>
-
-                <?php foreach($data_barang_desc as $d2){ ?>
-                  <div class="form-group form-group-lg col-md-6">
-                    <input type="text" name="title" readonly="readonly" class="form-control" value="<?=$d2->title?>">
-                  </div>
-                  <div class="form-group form-group-lg col-md-6">
-                    <input type="text" name="description" readonly="readonly" class="form-control" value="<?=$d2->description?> Pcs">
-                  </div>
-                <?php } ?>
-
-                  <div class="form-group form-group-lg col-md-12">
-                    <label for="conveyance">Pengiriman Melalui</label>
-                    <input type="text" name="conveyance"   class="form-control" value="<?=$d->conveyance?>">
-                  </div>
-                  
-                  <div class="form-group form-group-lg col-md-6">
-                    <label for="destination_from">Tempat Keberangkatan</label>
-                    <input type="text" name="destination_from"   class="form-control" value="<?=$d->destination_from?>">
-                  </div>
-                  <div class="form-group form-group-lg col-md-6">
-                    <label for="destination_to">Tujuan Akhir</label>
-                    <input type="text" name="destination_to"   class="form-control" value="<?=$d->destination_to?>">
-                  </div>
-
-                  <div class="form-group form-group-lg col-md-12">
-                    <label for="sailing_date">Tanggal Keberangkatan</label>
-                    <input type="date" name="sailing_date"   class="form-control" value="<?=$d->sailing_date?>">
-                  </div>
-
-                  <div class="form-group form-group-lg col-md-12">
-                    <label for="amount_insured">Nilai Barang yang Diangkut</label>
-                    <input type="text" name="amount_insured"   class="form-control" value="Rp. <?=$d->amount_insured?>">
-                  </div>
-
-                  <div class="form-group form-group-lg col-md-12">
-                    <label for="lampiran">Lampiran Data Pendukung</label>
-                  </div>
-                  <div class="form-group form-group-lg col-md-4">
-                    <label for="lampiran_BL">Bill of Lading (B/L)</label>
-                    <input type="text" name="lampiran_BL"   class="form-control" value="<?=$d->lampiran_BL?>">
-                  </div>
-                  <div class="form-group form-group-lg col-md-4">
-                    <label for="lampiran_LC">Letter of Credit (L/C) *</label>
-                    <input type="text" name="lampiran_LC"   class="form-control" value="<?=$d->lampiran_LC?>">
-                  </div>
-                  <div class="form-group form-group-lg col-md-4">
-                    <label for="lampiran_invoice">Invoice</label>
-                    <input type="text" name="lampiran_invoice"   class="form-control" value="<?=$d->lampiran_invoice?>">
-                  </div>
-                  <div class="form-group form-group-lg col-md-6">
-                    <label for="lampiran_PL">Packing List</label>
-                    <input type="text" name="lampiran_PL"   class="form-control" value="<?=$d->lampiran_PL?>">
-                  </div>
-                  <div class="form-group form-group-lg col-md-6">
-                    <label for="lampiran_DO">Delivery Order (DO)</label>
-                    <input type="text" name="lampiran_DO"   class="form-control" value="<?=$d->lampiran_DO?>">
-                  </div>  
-                 
+              
                 <?php } ?>
               </div>
               <!-- /.box-body -->

@@ -138,8 +138,7 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="<?= base_url('admin/form_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tambah Data Masuk</a></li>
-            <li><a href="<?= base_url('admin/form_satuan')?>"><i class="fa fa-circle-o"></i> Tambah Paket Barang</a></li>
-          </ul>
+           </ul>
         </li>
         <li class="treeview active">
           <a href="#">
@@ -151,8 +150,7 @@
           <ul class="treeview-menu">
             <li><a href="<?= base_url('admin/tabel_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tabel Data Masuk</a></li>
             <li class="active"><a href="<?= base_url('admin/site_id')?>"><i class="fa fa-circle-o"></i> Tabel Data Keluar</a></li>
-            <li><a href="<?= base_url('admin/tabel_satuan')?>"><i class="fa fa-circle-o"></i> Tabel Satuan</a></li>
-          </ul>
+           </ul>
         </li>
 
         <li class="header">LABELS</li>

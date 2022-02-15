@@ -137,8 +137,7 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="<?= base_url('admin/form_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tambah Data Masuk</a></li>
-            <li><a href="<?= base_url('admin/form_satuan')?>"><i class="fa fa-circle-o"></i> Tambah Paket Barang</a></li>
-          </ul>
+           </ul>
         </li>
         <li class="treeview active">
           <a href="#">
@@ -150,8 +149,7 @@
           <ul class="treeview-menu">
             <li class="active"><a href="<?= base_url('admin/tabel_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tabel Data Masuk</a></li>
             <li><a href="<?= base_url('admin/tabel_barangkeluar')?>"><i class="fa fa-circle-o"></i> Tabel Data Keluar</a></li>
-            <li><a href="<?= base_url('admin/tabel_satuan')?>"><i class="fa fa-circle-o"></i> Tabel Satuan</a></li>
-          </ul>
+           </ul>
         </li>
         <li class="header">LABELS</li>
         <li>
@@ -225,14 +223,10 @@
                   <th>TSI</th>
                   <th>Amount Insured</th>
                   <th>Keterangan</th>
-                  <th>Sertifikat</th>
                   <!-- <th>Terbit</th> </-->
-                  <th>Linked</th>
-                  <th>Info</th>
                   <th>Update</th>
                   <th>Delete</th>
                   <th>Keluarkan</th>
-                  <th>Invoice</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -253,17 +247,10 @@
                     <td><?=$dd->ctsi?></td>
                     <td><?=$dd->amount_insured?></td>
                     <td><?=$dd->keterangan?></td>
-                    <td><br><?=$dd->no_sertif?></td>
-                    <td><?=$dd->linked_with?></td>
-                    <td><a type="button" class="btn btn-info" href="<?=base_url('admin/info_datamasuk/'.$dd->dummy_id)?>" name="btn_update" style="margin:auto;"><i class="fa fa-info" aria-hidden="true"></i></a></td>
                     <td><a type="button" class="btn btn-info" href="<?=base_url('admin/update_datamasuk/'.$dd->dummy_id)?>" name="btn_update" style="margin:auto;"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
                     <td><a type="button" class="btn btn-danger btn-delete" href="<?=base_url('admin/delete_data/'.$dd->dummy_id)?>" name="btn_delete" style="margin:auto;"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
                     <td><a type="button" class="btn btn-success btn-barangkeluar" href="<?=base_url('admin/move_data/'.$dd->dummy_id)?>" name="btn_barangkeluar" style="margin:auto;"><i class="fa fa-sign-out" aria-hidden="true"></i></a></td>
-                    <?php 
-                      if($dd->no_sertif == TRUE){ ?>
-                        <td><a type="button" class="btn btn-danger btn-report" href="<?=base_url('report/dataKeluar/'.$dd->dummy_id)?>" target="_blank" 
-                               name="btn_report" style="margin:auto;"><i class="fa fa-file-text" aria-hidden="true"></i></a></td>
-                    <?php } ?>
+
               
                 </tr>
               <?php $no++; ?>
@@ -287,7 +274,6 @@
                   <th>TSI</th>
                   <th>Amount Insured</th>
                   <th>Keterangan</th>
-                  <th>Linked</th>
                   </tr>
                 </tfoot>
               </table>

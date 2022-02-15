@@ -25,7 +25,6 @@ class Report extends CI_Controller
     
     $data = $this->M_admin->get_data('tb_site_out',$ls);
     $data2 = $this->M_admin->get_data('tb_site_out_items',$ls);  
-    
 
     //create
     $pdf = new Pdf(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
@@ -61,7 +60,8 @@ class Report extends CI_Controller
     //$pdf->SetFont('times', '', 15); 
 
     foreach($data as $d){
-        foreach($data2 as $desc){  
+        foreach($data2 as $desc){      
+    
 
     // add a page
     $pdf->AddPage();
@@ -300,12 +300,12 @@ class Report extends CI_Controller
                             $html .= '
                                         <table cellpadding="1" align="center">
                                         <tr>
-                                            <td style="width:33%"></td>
+                                            <td style="width:30%"></td>
                                             <td border="1" style="width:10%;margin-left:10px">No.</td>
                                             <td border="1" style="width:20%">Site ID</td>
                                         </tr> 
                                         <tr>
-                                            <td style="width:33%"></td> 
+                                            <td style="width:30%"></td> 
                                             <td border="1" style="width:10%">1</td>
                                             <td border="1">'.$d->site_id.'</td>
                                         </tr>
@@ -314,7 +314,7 @@ class Report extends CI_Controller
                                         $no = 2;
                                         foreach($explodeLink as $d2){
                                             $html .= '  <tr>
-                                                            <td style="width:33%"></td> 
+                                                            <td style="width:30%"></td> 
                                                             <td border="1" style="width:10%">'.$no.'</td>
                                                             <td border="1">'.$d2.'</td>
                                                         </tr>
@@ -325,7 +325,8 @@ class Report extends CI_Controller
                                         $html .= '</table></div>';         
 
                         }
-                    }         
+                    }
+                     
             
         $html .=    '<div style="page-break-inside:avoid;">
                         <table cellpadding="2">

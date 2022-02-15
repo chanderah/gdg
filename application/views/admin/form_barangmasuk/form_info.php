@@ -133,8 +133,7 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="<?= base_url('admin/form_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tambah Data Masuk</a></li>
-            <li><a href="<?= base_url('admin/form_satuan')?>"><i class="fa fa-circle-o"></i> Tambah Paket Barang</a></li>
-          </ul>
+           </ul>
         </li>
         <li class="treeview active">
           <a href="#">
@@ -146,8 +145,7 @@
           <ul class="treeview-menu">
             <li class="active"><a href="<?= base_url('admin/tabel_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tabel Data Masuk</a></li>
             <li><a href="<?= base_url('admin/tabel_barangkeluar')?>"><i class="fa fa-circle-o"></i> Tabel Data Keluar</a></li>
-            <li><a href="<?= base_url('admin/tabel_satuan')?>"><i class="fa fa-circle-o"></i> Tabel Satuan</a></li>
-          </ul>
+           </ul>
         </li>
         <li>
         <li class="header">LABELS</li>
@@ -252,7 +250,7 @@
 
                 <div class="form-group form-group-lg col-md-12">
                   <label for="amount_insured">7. Nilai Barang yang Diangkut</label>
-                  <input type="text" name="amount_insured" readonly="readonly" class="form-control" value="Rp. <?=$d->amount_insured?>">
+                  <input type="text" name="amount_insured" readonly="readonly" class="form-control" value="<?=$d->amount_insured?>">
                 </div>
 
                 <div class="form-group form-group-lg col-md-12">
