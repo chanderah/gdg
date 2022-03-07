@@ -359,23 +359,26 @@ class Report extends CI_Controller
         }
     }
 
+    //mop header
+    sort($bmop);
     $zmop = implode(", ",array_unique($bmop));
-
     
     $exploded2 = explode(', ', $d->linked_with);
 
     $bmop2 = [];
 
     foreach($exploded2 as $dd2) {
-        $where = array('site_id' => $dd2);
-        $data22 = $this->M_admin->get_data('tb_site_in',$where);
-        
-        foreach($data as $ddd) {
-                        $bmop[] = $ddd->cmop;
+        $where2 = array('site_id' => $dd2);
+        $data22 = $this->M_admin->get_data('tb_site_in',$where2);
+
+        foreach($data22 as $ddd2) {
+                        $bmop2[] = $ddd2->cmop;
         }
     }
 
-    $amop = implode("<br>",array_unique($bmop));
+    //as per mop
+    sort($bmop2);
+    $amop = implode("<br>",array_unique($bmop2));
     
     $mop_header = '0608032100001';
     $no_sertif = $d->no_sertif;
