@@ -374,8 +374,10 @@ class Report extends CI_Controller
             }
         }
         //as per mop
+
+        array_push($bmop,$firstMOP);
+
         sort($bmop);
-        
         $amop = implode(", ",array_unique($bmop));
 
         $scopeCover = implode("<br>",array_unique($bmop));
