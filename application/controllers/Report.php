@@ -361,39 +361,24 @@ class Report extends CI_Controller
 
     if ($d->linked_with == true )
     {
-        $exploded = explode(', ', $d->linked_with);
+        $linkedExploded = explode(', ', $d->linked_with);
+
         $bmop = [];
 
-        foreach($exploded as $dd) {
-            $where = array('site_id' => $dd);
-            $data = $this->M_admin->get_data('tb_site_in',$where);
-
-            $no = 1;
-            
-            foreach($data as $ddd) {
-                            $bmop[] = $ddd->cmop;
-            }
-        }
-
-        sort($bmop);
-
-        $exploded2 = explode(', ', $d->linked_with);
-
-        $bmop2 = [];
-
-        foreach($exploded2 as $dd2) {
-            $where2 = array('site_id' => $dd2);
-            $data22 = $this->M_admin->get_data('tb_site_in',$where2);
+        foreach($linkedExploded as $dd2) {
+            $where = array('site_id' => $dd2);
+            $data22 = $this->M_admin->get_data('tb_site_in',$where);
 
             foreach($data22 as $ddd2) {
-                            $bmop2[] = $ddd2->cmop;
+                            $bmop[] = $ddd2->cmop;
             }
         }
         //as per mop
-        sort($bmop2);
-        $amop = implode(", ",array_unique($bmop2));
+        sort($bmop);
+        
+        $amop = implode(", ",array_unique($bmop));
 
-        $scopeCover = implode("<br>",array_unique($bmop2));
+        $scopeCover = implode("<br>",array_unique($bmop));
 
         $html = str_replace('{MOP}',$amop, $html);                 
         $html = str_replace('{scopeCover}',$scopeCover, $html);                 
