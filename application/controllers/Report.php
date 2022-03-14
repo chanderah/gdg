@@ -1,4 +1,6 @@
 <?php
+    ob_start();
+
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Report extends CI_Controller
@@ -373,10 +375,7 @@ class Report extends CI_Controller
             }
         }
 
-        //mop header
         sort($bmop);
-        //$zmop =array_merge($,cmop2);
-        $zmop = implode(", ",array_unique($bmop));
 
         $exploded2 = explode(', ', $d->linked_with);
 
@@ -391,18 +390,13 @@ class Report extends CI_Controller
             }
         }
         //as per mop
-
         sort($bmop2);
         $amop = implode(", ",array_unique($bmop2));
-
-        //bmop2 is array
-        //amop is not
-        //firstmop is not
 
         $scopeCover = implode("<br>",array_unique($bmop2));
 
         $html = str_replace('{MOP}',$amop, $html);                 
-        $html = str_replace('{scopeCover}',$firstMOP.' '.$scopeCover, $html);  
+        $html = str_replace('{scopeCover}',$scopeCover, $html);                 
 
         //disini
     
@@ -412,9 +406,9 @@ class Report extends CI_Controller
     }
     else
     {   //linked_with empty
-        $html = str_replace('{MOP}',$firstMOP, $html);                 
+        $html = str_replace('{MOP}',$firstMOP, $html);  
+        $html = str_replace('{scopeCover}',$firstMOP, $html);
     }
-
     
     $no_sertif = $d->no_sertif;
     $mop_header = '0608032100001';
@@ -425,8 +419,6 @@ class Report extends CI_Controller
     $html = str_replace('{namaPerusahaan}',$namaPerusahaan, $html);
     $html = str_replace('{dateIssued}',$dateIssued, $html);
     
-    $html = str_replace('{MOP}',$zmop, $html);
-    $html = str_replace('{aMOP}',$amop, $html);
     //$html = str_replace('{linked_with}',$d->linked_with, $html);
     
     $html = str_replace('{MOP_Header}',$mop_header, $html);
