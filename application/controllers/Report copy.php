@@ -25,6 +25,7 @@ class Report extends CI_Controller
     
     $data = $this->M_admin->get_data('tb_site_out',$ls);
     $data2 = $this->M_admin->get_data('tb_site_out_items',$ls);  
+    
 
     //create
     $pdf = new Pdf(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
@@ -60,8 +61,7 @@ class Report extends CI_Controller
     //$pdf->SetFont('times', '', 15); 
 
     foreach($data as $d){
-        foreach($data2 as $desc){      
-    
+        foreach($data2 as $desc){  
 
     // add a page
     $pdf->AddPage();
@@ -152,7 +152,7 @@ class Report extends CI_Controller
                 <tr>
                     <td colspan="2">Amount Insured</td>
                     <td colspan="1" align="right">:</td>
-                    <td colspan="8"align="justify">Rp. '.$d->amount_insured.'</td>
+                    <td colspan="8"align="justify">IDR. '.$d->amount_insured.'</td>
                 </tr>
                 <tr>
                     <td colspan="2">L/C</td>
@@ -172,7 +172,9 @@ class Report extends CI_Controller
                 <tr>
                     <td colspan="2">Scope of Cover</td>
                     <td colspan="1" align="right">:</td>
-                    <td colspan="8"align="justify">-</td>
+                    <td colspan="8"align="justify">As per M.O.P No. : <br>{aMOP}
+                         
+                    </td>
                 </tr>
                 <tr>
                     <td colspan="2">Date of Sailing</td>
@@ -212,6 +214,8 @@ class Report extends CI_Controller
                     $this->fontpath .= '/';
             }
 
+
+            //ini
             if ($d->linked_with == true )
             {
                 $explodeLink = explode(', ', $d->linked_with);
@@ -248,6 +252,15 @@ class Report extends CI_Controller
                              ';
                 }
             }
+            else {
+                $html .= '<table border="" cellpadding="1">
+                <tr>
+                    <td colspan="2"></td>
+                    <td colspan="1"></td>
+                    <td colspan="8"> 1. SITE ID : '.$d->site_id.'</td>
+                </tr>
+             ';
+            }
             $html .= '</table>';          
         
         $html .=    '   
@@ -262,72 +275,6 @@ class Report extends CI_Controller
                         </tr>
                     </table>';
 
-                    if ($d->linked_with == true )
-                    {
-                        $explodeLink = explode(', ', $d->linked_with);
-                        $totalLink = count($explodeLink);
-        
-                        if ($totalLink > 9){
-
-                            $html .=   '<div style="page-break-inside:avoid;">
-
-                                        <font size="16">
-                                            <table cellpadding="5">
-                                                <tr>
-                                                    <td colspan="1" align="center">CERTIFICATE ATTACHMENT<br></td>
-                                                </tr>
-                                            </table>
-                                        </font>
-                                        
-                                        <font size="8">
-                                            <table border="" cellpadding="3">
-                                                <tr>
-                                                    <td colspan="2" style="width:15%">The Insured</td>
-                                                    <td colspan="1" align="right">:</td>
-                                                    <td colspan="8" align="justify">'.$d->the_insured.' and/or subsidiary and/or affiliated companies including those required or incorporated during the period of insurance for their respective rights and interest.<br></td>   
-                                                </tr> 
-                                                <tr>
-                                                    <td colspan="2" style="width:15%">Certificate No</td>
-                                                    <td colspan="1" align="right">:</td>
-                                                    <td colspan="8" align="justify">JIS22-{MOP_Header}-{no_sertif}<br><br></td>   
-                                                </tr>
-                                            </table>
-                                        </font>                                        
-                                        
-                                        
-                                        ';
-
-                            $html .= '
-                                        <table cellpadding="1" align="center">
-                                        <tr>
-                                            <td style="width:30%"></td>
-                                            <td border="1" style="width:10%;margin-left:10px">No.</td>
-                                            <td border="1" style="width:20%">Site ID</td>
-                                        </tr> 
-                                        <tr>
-                                            <td style="width:30%"></td> 
-                                            <td border="1" style="width:10%">1</td>
-                                            <td border="1">'.$d->site_id.'</td>
-                                        </tr>
-                                     ';
-
-                                        $no = 2;
-                                        foreach($explodeLink as $d2){
-                                            $html .= '  <tr>
-                                                            <td style="width:30%"></td> 
-                                                            <td border="1" style="width:10%">'.$no.'</td>
-                                                            <td border="1">'.$d2.'</td>
-                                                        </tr>
-                                                    ';
-                                            $no++;
-                                            $pdf->Ln();     
-                                        }
-                                        $html .= '</table></div>';         
-
-                        }
-                    }
-                     
-            
         $html .=    '<div style="page-break-inside:avoid;">
                         <table cellpadding="2">
                             <tr>
@@ -342,65 +289,112 @@ class Report extends CI_Controller
                         </table>    
                     </div>';
 
+    $whereMOP = array('site_id' => $d->site_id);
+    $dataMOP = $this->M_admin->get_data('tb_site_in',$whereMOP);
+
+    foreach($dataMOP as $dMOP) {
+                    //ini
+                    $firstMOP = $dMOP->cmop;  
+                    //array_merge(cmop,cmop2);
+    }
+
+    if ($d->linked_with == true )
+    {
+        $exploded = explode(', ', $d->linked_with);
+        $bmop = [];
+
+        foreach($exploded as $dd) {
+            $where = array('site_id' => $dd);
+            $data = $this->M_admin->get_data('tb_site_in',$where);
+
+            $no = 1;
+            
+            foreach($data as $ddd) {
+                            $bmop[] = $ddd->cmop;
+            }
+        }
+
+        //mop header
+        sort($bmop);
+        //$zmop =array_merge($,cmop2);
+        $zmop = implode(", ",array_unique($bmop));
+
         
-        //if ($d->keterangan == "300 Site") {    
-        $mop = '0608032100001';
-        //} elseif ($d->keterangan == "58 Site"){
-        //    $mop = '0608032100003';
-        //}elseif ($d->keterangan == "216 Site"){
-         //   $mop = '0608032100004';
-        //}elseif ($d->keterangan == "491 Site"){
-            //$mop = '0608032100005';
-        //}elseif ($d->keterangan == "180 Site"){
-          //  $mop = '0608032100006';
-        //}elseif ($d->keterangan == "236 Site"){
-        //    $mop = '0608032100007';
-        //}
+        $exploded2 = explode(', ', $d->linked_with);
 
-    $mop_header = '0608032100001';
-    $no_sertif = $d->no_sertif;
-    $str_length = 5;
-    $no_sertif_5 = substr("00000{$no_sertif}", -$str_length);
+        $bmop2 = [];
 
-    $html = str_replace('{no_sertif}',$no_sertif_5, $html);
-    $html = str_replace('{namaPerusahaan}',$namaPerusahaan, $html);
-    $html = str_replace('{dateIssued}',$dateIssued, $html);
+        foreach($exploded2 as $dd2) {
+            $where2 = array('site_id' => $dd2);
+            $data22 = $this->M_admin->get_data('tb_site_in',$where2);
+
+            foreach($data22 as $ddd2) {
+                            $bmop2[] = $ddd2->cmop;
+
+                            //ini
+                            //$html = str_replace('{site_id}',$ddd2->cmop, $html);
+                            //array_merge(cmop,cmop2);
+            }
+        }
+        //as per mop
+        $mergeMOP = array_merge(array($bmop2),array($firstMOP));
+        $amop = implode(", ",array_unique($mergeMOP));
+
+
+        $html = str_replace('{MOP}',$amop, $html);                 
+
+        //disini
     
-    $html = str_replace('{MOP}',$mop, $html);
-    //$html = str_replace('{linked_with}',$d->linked_with, $html);
-    
-    $html = str_replace('{MOP_Header}',$mop_header, $html);
-    $html = str_replace('{invoice_ref_id}',$invoice_ref_id, $html);
-    
-    //
-   // $html = str_replace('{the_insured}',$the_insured, $html);
-  //  $html = str_replace('{address}',$address_, $html);
-   // $html = str_replace('{interest_insured}',$interest_insured, $html);
- //   $html = str_replace('{mark_numbers}',$mark_numbers, $html);
-  //  $html = str_replace('{amount_insured}',$amount_insured, $html);
-  //  $html = str_replace('{lampiran_LC}',$lampiran_LC, $html);
-   // $html = str_replace('{lampiran_BL}',$lampiran_BL, $html);
-  //  $html = str_replace('{invoice_number}',$invoice_number, $html);
- //   $html = str_replace('{sailing_date}',$sailing_date, $html);
- //   $html = str_replace('{invoice_number}',$invoice_number, $html);
- //   $html = str_replace('{conveyance}',$conveyance, $html);
-  //  $html = str_replace('{destination_to}',$destination_to, $html);
+        // $a1=array("red","green");
+        // $a2=array("blue","yellow");
+        // print_r(array_merge($a1,$a2));
+    }
+    else
+    {   //linked_with empty
+        $html = str_replace('{MOP}',$firstMOP, $html);                 
+    }
+        $mop_header = '0608032100001';
+        $html = str_replace('{MOP_Header}',$mop_header, $html);
+        
+        $no_sertif = $d->no_sertif;
+        $str_length = 5;
+        $no_sertif_5 = substr("00000{$no_sertif}", -$str_length);
 
-    // output the HTML content
-    $pdf->writeHTML($html, true, false, true, false, '');
+        $html = str_replace('{no_sertif}',$no_sertif_5, $html);
+        $html = str_replace('{namaPerusahaan}',$namaPerusahaan, $html);
+        $html = str_replace('{dateIssued}',$dateIssued, $html);
 
-    // reset pointer to the last page
-    $pdf->lastPage();
+        $html = str_replace('{invoice_ref_id}',$invoice_ref_id, $html);
+        
+        //
+    // $html = str_replace('{the_insured}',$the_insured, $html);
+    //  $html = str_replace('{address}',$address_, $html);
+    // $html = str_replace('{interest_insured}',$interest_insured, $html);
+    //   $html = str_replace('{mark_numbers}',$mark_numbers, $html);
+    //  $html = str_replace('{amount_insured}',$amount_insured, $html);
+    //  $html = str_replace('{lampiran_LC}',$lampiran_LC, $html);
+    // $html = str_replace('{lampiran_BL}',$lampiran_BL, $html);
+    //  $html = str_replace('{invoice_number}',$invoice_number, $html);
+    //   $html = str_replace('{sailing_date}',$sailing_date, $html);
+    //   $html = str_replace('{invoice_number}',$invoice_number, $html);
+    //   $html = str_replace('{conveyance}',$conveyance, $html);
+    //  $html = str_replace('{destination_to}',$destination_to, $html);
 
-    // ---------------------------------------------------------
-    
-    //Close and output PDF document
-    $pdf_file_name = 'Certificate of Insurance.pdf';
-    $pdf->IncludeJS("print();");
-    ob_end_clean();
-    $pdf->Output($pdf_file_name, 'I');
+        // output the HTML content
+        $pdf->writeHTML($html, true, false, true, false, '');
+
+        // reset pointer to the last page
+        $pdf->lastPage();
+
+        // ---------------------------------------------------------
+        
+        //Close and output PDF document
+        $pdf_file_name = 'Certificate of Insurance.pdf';
+        $pdf->IncludeJS("print();");
+        ob_end_clean();
+        $pdf->Output($pdf_file_name, 'I');
+                }
             }
         }
     }
-}
 ?>

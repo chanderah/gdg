@@ -331,7 +331,7 @@ jQuery(document).ready(function($){
           var getLink = $(this).attr('href');
           swal({
                   title: 'Delete Data',
-                  text: 'Yakin Ingin Menghapus Data ?',
+                  text: 'Yakin ingin menghapus data?',
                   html: true,
                   confirmButtonColor: '#d9534f',
                   showCancelButton: true,

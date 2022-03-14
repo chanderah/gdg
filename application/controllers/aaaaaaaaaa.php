@@ -7,7 +7,6 @@ if ($d->linked_with == true )
                     $html .= '<table border="" cellpadding="1">
                                 <tr>
                              ';
-                                             
                 //view             
                 <?php foreach($data_barang_info as $d){ ?>
 
@@ -37,3 +36,4 @@ if ($d->linked_with == true )
                 }
             }
             $html .= '</table>';
+            

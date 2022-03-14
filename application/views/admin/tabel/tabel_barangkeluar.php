@@ -214,7 +214,7 @@
                   <th>Linked</th>
                   <th>Created At</th>
                   <th>Delete</th>
-                  <th>Info</th>
+                  <!--<th>Info</th>-->
                   <th>Invoice</th>
                   <!-- <th></th> -->
                 </tr>
@@ -230,8 +230,8 @@
                     <td><?=$dd->linked_with?></td>
                     <td><?=$dd->created_at?></td>
                     <td><a type="button" class="btn btn-danger btn-delete" href="<?=base_url('admin/delete_datakeluar/'.$dd->dummy_id)?>" name="btn_delete" style="margin:auto;"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
-                    <td><a type="button" class="btn btn-info" href="<?=base_url('admin/info_datamasuk/'.$dd->dummy_id)?>" name="btn_update" style="margin:auto;"><i class="fa fa-info" aria-hidden="true"></i></a></td>
-                    <td><a type="button" class="btn btn-danger btn-report" href="<?=base_url('report/dataKeluar/'.$dd->dummy_id)?>" name="btn_report" style="margin:auto;"><i class="fa fa-file-text" aria-hidden="true"></i></a></td>
+                    <!--<td><a type="button" class="btn btn-info" href="<?=base_url('admin/info_datamasuk/'.$dd->dummy_id)?>" name="btn_update" style="margin:auto;"><i class="fa fa-info" aria-hidden="true"></i></a></td> -->
+                    <td><a type="button" class="btn btn-danger btn-report" href="<?=base_url('report/dataKeluar/'.$dd->dummy_id)?>" target="blank" name="btn_report" style="margin:auto;"><i class="fa fa-file-text" aria-hidden="true"></i></a></td>
                 </tr>
               <?php $no++; ?>
               <?php endforeach;?>
@@ -246,6 +246,8 @@
                   <th>SITE ID</th>
                   <th>Linked</th>
                   <th>Created At</th>
+                  <th>Info</th>
+                  <th>Invoice</th>
                 </tr>
                 </tfoot>
               </table>
@@ -300,7 +302,7 @@ jQuery(document).ready(function($){
           var getLink = $(this).attr('href');
           swal({
                   title: 'Delete Data',
-                  text: 'Yakin Ingin Menghapus Data ?',
+                  text: 'Yakin ingin menghapus data?',
                   html: true,
                   confirmButtonColor: '#d9534f',
                   showCancelButton: true,

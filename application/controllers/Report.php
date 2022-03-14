@@ -172,7 +172,7 @@ class Report extends CI_Controller
                 <tr>
                     <td colspan="2">Scope of Cover</td>
                     <td colspan="1" align="right">:</td>
-                    <td colspan="8"align="justify">As per M.O.P No. : <br>{aMOP}
+                    <td colspan="8"align="justify">As per M.O.P No. : <br>{scopeCover}
                          
                     </td>
                 </tr>
@@ -264,6 +264,7 @@ class Report extends CI_Controller
                         </tr>
                     </table>';
 
+                    //Certificate Attachment
                     if ($d->linked_with == true )
                     {
                         $explodeLink = explode(', ', $d->linked_with);
@@ -329,59 +330,94 @@ class Report extends CI_Controller
                         }
                     }         
             
-        $html .=    '<div style="page-break-inside:avoid;">
-                        <table cellpadding="2">
-                            <tr>
-                                <td align="right">Issued {dateIssued}</td>
-                            </tr>
-                            <tr>
-                                <td align="right">Signed On Behalf</td>
-                            </tr>
-                            <tr><br><br><br><br><br>
-                                <td align="right">{namaPerusahaan}</td>
-                            </tr>
-                        </table>    
-                    </div>';
+
+                            $html .=    '<div style="page-break-inside:avoid;">
+                                            <table cellpadding="2">
+                                                <tr>
+                                                    <td align="right">Issued {dateIssued}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="right">Signed On Behalf</td>
+                                                </tr>
+                                                <tr><br><br><br><br><br>
+                                                    <td align="right">{namaPerusahaan}</td>
+                                                </tr>
+                                            </table>    
+                                        </div>';
 
     
-    $exploded = explode(', ', $d->linked_with);
+    //MOP Logic
 
-    $bmop = [];
+    $whereMOP = array('site_id' => $d->site_id);
+    $dataMOP = $this->M_admin->get_data('tb_site_in',$whereMOP);
 
-    foreach($exploded as $dd) {
-        $where = array('site_id' => $dd);
-        $data = $this->M_admin->get_data('tb_site_in',$where);
-
-        $no = 1;
-        
-        foreach($data as $ddd) {
-                        $bmop[] = $ddd->cmop;
-        }
+    foreach($dataMOP as $dMOP) {
+                    //ini
+                    $firstMOP = $dMOP->cmop;  
+                    //array_merge(cmop,cmop2);
     }
 
-    //mop header
-    sort($bmop);
-    $zmop = implode(", ",array_unique($bmop));
-    
-    $exploded2 = explode(', ', $d->linked_with);
+    if ($d->linked_with == true )
+    {
+        $exploded = explode(', ', $d->linked_with);
+        $bmop = [];
 
-    $bmop2 = [];
+        foreach($exploded as $dd) {
+            $where = array('site_id' => $dd);
+            $data = $this->M_admin->get_data('tb_site_in',$where);
 
-    foreach($exploded2 as $dd2) {
-        $where2 = array('site_id' => $dd2);
-        $data22 = $this->M_admin->get_data('tb_site_in',$where2);
-
-        foreach($data22 as $ddd2) {
-                        $bmop2[] = $ddd2->cmop;
+            $no = 1;
+            
+            foreach($data as $ddd) {
+                            $bmop[] = $ddd->cmop;
+            }
         }
+
+        //mop header
+        sort($bmop);
+        //$zmop =array_merge($,cmop2);
+        $zmop = implode(", ",array_unique($bmop));
+
+        $exploded2 = explode(', ', $d->linked_with);
+
+        $bmop2 = [];
+
+        foreach($exploded2 as $dd2) {
+            $where2 = array('site_id' => $dd2);
+            $data22 = $this->M_admin->get_data('tb_site_in',$where2);
+
+            foreach($data22 as $ddd2) {
+                            $bmop2[] = $ddd2->cmop;
+            }
+        }
+        //as per mop
+
+        sort($bmop2);
+        $amop = implode(", ",array_unique($bmop2));
+
+        //bmop2 is array
+        //amop is not
+        //firstmop is not
+
+        $scopeCover = implode("<br>",array_unique($bmop2));
+
+        $html = str_replace('{MOP}',$amop, $html);                 
+        $html = str_replace('{scopeCover}',$firstMOP.' '.$scopeCover, $html);  
+
+        //disini
+    
+        // $a1=array("red","green");
+        // $a2=array("blue","yellow");
+        // print_r(array_merge($a1,$a2));
+    }
+    else
+    {   //linked_with empty
+        $html = str_replace('{MOP}',$firstMOP, $html);                 
     }
 
-    //as per mop
-    sort($bmop2);
-    $amop = implode("<br>",array_unique($bmop2));
     
-    $mop_header = '0608032100001';
     $no_sertif = $d->no_sertif;
+    $mop_header = '0608032100001';
     $str_length = 5;
     $no_sertif_5 = substr("00000{$no_sertif}", -$str_length);
 

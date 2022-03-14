@@ -106,6 +106,19 @@ class Main extends CI_Controller {
         $lampiran_PL =$this->input->post("lampiran_PL");
         $lampiran_DO =$this->input->post("lampiran_DO");
 
+        
+        $conveyance =$this->input->post("conveyance");
+        $conveyance_type =$this->input->post("conveyance_type");
+        $conveyance_total =$this->input->post("conveyance_total");
+        $conveyance_policeno =$this->input->post("conveyance_policeno");
+        $conveyance_age =$this->input->post("conveyance_age");
+        $conveyance_driver =$this->input->post("conveyance_driver");
+        $conveyance_ship_name =$this->input->post("conveyance_ship_name");
+        $conveyance_ship_type =$this->input->post("conveyance_ship_type");
+        $conveyance_ship_age =$this->input->post("conveyance_ship_age");
+        $conveyance_ship_GRT =$this->input->post("conveyance_ship_GRT");
+        $conveyance_plane_type =$this->input->post("conveyance_plane_type");
+        $conveyance_plane_AWB =$this->input->post("conveyance_plane_AWB");
 
         $sha1 = random_string('alpha', 10);
         $sha2 = random_string('sha1');
@@ -130,14 +143,14 @@ class Main extends CI_Controller {
         
         $explodeLink = explode(', ', $d->linked_with);
         $linked_with =$this->input->post("linked_with");
-
-        $data = [
-            //tb_site_in
+        
+        $data =       
+        [
             'dummy_id' => $dummy_id,
             'no_sertif' => $no_sertif,
             'site_id' => $site_id,
             'linked_with' => $linked_with,
-            
+        
             'the_insured' => $the_insured,
             'address_' => $address_,
             'conveyance' => $conveyance,
@@ -152,6 +165,21 @@ class Main extends CI_Controller {
             'lampiran_DO' => $lampiran_DO,
             //'site_id' => $site_id,
             'id' => $id,
+            
+            //--------------DARAT---------------
+            'conveyance_type' => $conveyance_type,
+            //'conveyance_total' => $conveyance_total,
+            'conveyance_policeno' => $conveyance_policeno,
+            'conveyance_age' => $conveyance_age,
+            'conveyance_driver' => $conveyance_driver,
+            //--------------LAUT---------------
+            'conveyance_ship_name' => $conveyance_ship_name,
+            'conveyance_ship_type' => $conveyance_ship_type,
+            'conveyance_ship_age' => $conveyance_ship_age,
+            'conveyance_ship_GRT' => $conveyance_ship_GRT,
+            //--------------UDARA---------------
+            'conveyance_plane_type' => $conveyance_plane_type,
+            'conveyance_plane_AWB' => $conveyance_plane_AWB,
         ];
 
         if( $this->m_admin->insert_into_table("tb_site_out", $data) and 
@@ -160,7 +188,7 @@ class Main extends CI_Controller {
                 echo '<div class="alert alert-success alert-dismissible">
                 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                 <strong>Success!</strong> Data Berhasil Keluar.
-            </div>';
+                    </div>';
 
         } else {
             echo '<div class="alert alert-danger alert-dismissible">

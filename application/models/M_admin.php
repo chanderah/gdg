@@ -58,7 +58,6 @@ class M_admin extends CI_Model
     return $query->result();
 	}
 
-
   public function update($tabel,$data,$where)
   {
     $this->db->where($where);
@@ -137,6 +136,11 @@ public function insert_into_table($table_name, $data) {
     return $this->db->insert($table_name, $data);
 }
 
+public function update_into_table($tabel,$data2,$where)
+{
+  $this->db->where($where);
+  $this->db->update($tabel,$data2);
+}
 
 public function insert_batch_into_table($table_name, $data) {
     return $this->db->insert_batch($table_name, $data);

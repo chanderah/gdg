@@ -255,16 +255,76 @@
                     </tbody>
                 </table>
 
-                <div class="form-group form-group-lg col-md-12">
+                <div class="form-group form-group-lg col-md-12"style="margin-top:-25px">
                   <label for="conveyance">4. Pengiriman Melalui</label>
-                    <select class="form-control" name="conveyance">
-                      <option selected>Choose...</option>
+                    <select class="form-control" id="conveyance" name="conveyance">
+                      <option value="none">Choose...</option>
                       <option value="Darat">Darat</option>
                       <option value="Laut">Laut</option>
                       <option value="Udara">Udara</option>
                     </select>
                 </div>
-                
+
+                <div class="conveyance_select" id="Darat">
+                  <div class="form-group form-group-lg col-md-3">
+                    <label for="conveyance_type">Jenis Alat Angkut</label>
+                      <select class="form-control" id="conveyance_type" name="conveyance_type">
+                        <option value="Car">Car</option>
+                        <option value="Truck">Truck</option>
+                        <option value="Pick Up">Pick Up</option>
+                        <option value="Container">Container</option>
+                        <option value="Lainnya">Lainnya</option>
+                    </select>
+                  </div>
+                  <div class="form-group form-group-lg col-md-3">
+                    <label for="conveyance_policeno">Plat Nomor</label>
+                    <input type="text" class="form-control" name="conveyance_policeno" placeholder="Plat Nomor">
+                  </div>
+                  <div class="form-group form-group-lg col-md-3">
+                    <label for="conveyance_age">Usia Kendaraan</label>
+                    <input type="text" class="form-control" name="conveyance_age" placeholder="Usia Kendaraan">
+                  </div>
+                  <div class="form-group form-group-lg col-md-3">
+                    <label for="conveyance_driver">No. SIM / Registrasi Pengemudi</label>
+                    <input type="text" class="form-control" name="conveyance_driver" placeholder="No. SIM / Registrasi Pengemudi">
+                  </div>
+                </div>
+
+                <div class="conveyance_select" id="Laut">
+                  <div class="form-group form-group-lg col-md-3">
+                    <label for="conveyance_ship_name">Nama Kapal</label>
+                    <input type="text" class="form-control" name="conveyance_ship_name" placeholder="Nama Kapal">
+                  </div>
+                  <div class="form-group form-group-lg col-md-3">
+                    <label for="conveyance_ship_type">Jenis Kapal</label>
+                    <input type="text" class="form-control" name="conveyance_ship_type" placeholder="Jenis Kapal">
+                  </div>
+                  <div class="form-group form-group-lg col-md-3">
+                    <label for="conveyance_ship_age">Usia Kapal</label>
+                    <input type="text" class="form-control" name="conveyance_ship_age" placeholder="Usia Kapal">
+                  </div>
+                  <div class="form-group form-group-lg col-md-3">
+                    <label for="conveyance_ship_GRT">GRT Kapal</label>
+                    <input type="text" class="form-control" name="conveyance_ship_GRT" placeholder="GRT Kapal">
+                  </div>
+                </div>
+
+                <div class="conveyance_select" id="Udara">
+                  <div class="form-group form-group-lg col-md-6">
+                    <label for="conveyance_plane_type">Jenis Pesawat</label>
+                      <select class="form-control" id="conveyance_plane_type" name="conveyance_plane_type">
+                      <option value="Car">Cargo</option>
+                      <option value="Truck">Penumpang</option>
+                      <option value="Pick Up">Helicopter</option>
+                      <option value="Container">Charter</option>
+                    </select>
+                  </div>
+                  <div class="form-group form-group-lg col-md-6">
+                    <label for="conveyance_plane_AWB">No. AWB</label>
+                    <input type="text" class="form-control" name="conveyance_plane_AWB" placeholder="No. AWB">
+                  </div>
+                </div>
+
                 <div class="form-group form-group-lg col-md-6">
                   <label for="destination_from">5. Tempat Keberangkatan</label>
                   <input type="text" name="destination_from" class="form-control" placeholder="Dari">
@@ -478,6 +538,16 @@
             //end
         });
 
+    </script>
+    
+    <script>
+      $(document).ready(function(){
+      $('.conveyance_select').hide();
+      $('#conveyance').change(function(){
+      $('.conveyance_select').hide();
+      $('#' + $(this).val()).show();
+    });
+  });
     </script>
   </body>
 
