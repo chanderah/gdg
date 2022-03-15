@@ -282,7 +282,7 @@
                   </div>
                   <div class="form-group form-group-lg col-md-3">
                     <label for="conveyance_age">Usia Kendaraan</label>
-                    <input type="text" class="form-control" name="conveyance_age" placeholder="Usia Kendaraan">
+                    <input type="number" class="form-control" name="conveyance_age" placeholder="Usia Kendaraan">
                   </div>
                   <div class="form-group form-group-lg col-md-3">
                     <label for="conveyance_driver">No. SIM / Registrasi Pengemudi</label>
@@ -301,7 +301,7 @@
                   </div>
                   <div class="form-group form-group-lg col-md-3">
                     <label for="conveyance_ship_age">Usia Kapal</label>
-                    <input type="text" class="form-control" name="conveyance_ship_age" placeholder="Usia Kapal">
+                    <input type="number" class="form-control" name="conveyance_ship_age" placeholder="Usia Kapal">
                   </div>
                   <div class="form-group form-group-lg col-md-3">
                     <label for="conveyance_ship_GRT">GRT Kapal</label>

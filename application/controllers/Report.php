@@ -186,7 +186,7 @@ class Report extends CI_Controller
                 <tr>
                     <td colspan="2">Conveyance</td>
                     <td colspan="1" align="right">:</td>
-                    <td colspan="8"align="justify">'.$d->conveyance.'</td>
+                    <td colspan="8"align="justify">{conveyance}</td>
                 </tr>
                 <tr>
                     <td colspan="2">Destination</td>
@@ -354,9 +354,7 @@ class Report extends CI_Controller
     $dataMOP = $this->M_admin->get_data('tb_site_in',$whereMOP);
 
     foreach($dataMOP as $dMOP) {
-                    //ini
                     $firstMOP = $dMOP->cmop;  
-                    //array_merge(cmop,cmop2);
     }
 
     if ($d->linked_with == true )
@@ -384,17 +382,29 @@ class Report extends CI_Controller
 
         $html = str_replace('{MOP}',$amop, $html);                 
         $html = str_replace('{scopeCover}',$scopeCover, $html);                 
-
-        //disini
-    
-        // $a1=array("red","green");
-        // $a2=array("blue","yellow");
-        // print_r(array_merge($a1,$a2));
     }
     else
     {   //linked_with empty
         $html = str_replace('{MOP}',$firstMOP, $html);  
         $html = str_replace('{scopeCover}',$firstMOP, $html);
+    }
+
+    
+    if ($d->conveyance == Darat )
+    {
+        $darat = 'By ' . $d->conveyance_type . ' - ' . $d->conveyance_policeno . '<br>Age  : ' . $d->conveyance_age . '<br>Driver  : ' . $d->conveyance_driver;
+        $html = str_replace('{conveyance}',$darat, $html);                 
+    }
+    elseif ($d->conveyance == Laut)
+    {   
+        // $laut = 'By Vessel - ' . $d->conveyance_ship_name . '<br>Type  : ' . $d->conveyance_ship_type . '<br>GRT  : ' . $d->conveyance_ship_GRT . '<br>Year of Built  : ' . $d->conveyance_ship_age;
+        $laut = 'By Vessel - ' . $d->conveyance_ship_name . '<br>Type  : ' . $d->conveyance_ship_type . '<br>GRT  : ' . $d->conveyance_ship_GRT . '<br>Year of Built  : ' . $d->conveyance_ship_age;
+        $html = str_replace('{conveyance}',$laut, $html);      
+    }    
+    elseif ($d->conveyance == Udara)
+    {   
+        $udara = 'By ' . $d->conveyance_plane_type . '<>No. AWB : ' . $d->conveyance_plane_AWB;
+        $html = str_replace('{conveyance}',$udara, $html);      
     }
     
     $no_sertif = $d->no_sertif;
