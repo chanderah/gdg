@@ -147,7 +147,8 @@
                 </span>
           </a>
           <ul class="treeview-menu">
-            <li class="active"><a href="<?= base_url('admin/tabel_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tabel Data Masuk</a></li>
+            <li class="active"><a href="<?= base_url('admin/tabel_permintaanmasuk')?>"><i class="fa fa-circle-o"></i> Tabel Permintaan Masuk</a></li>
+            <li><a href="<?= base_url('admin/tabel_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tabel Data Masuk</a></li>
             <li><a href="<?= base_url('admin/tabel_barangkeluar')?>"><i class="fa fa-circle-o"></i> Tabel Data Keluar</a></li>
            </ul>
         </li>
@@ -175,7 +176,7 @@
       <ol class="breadcrumb">
         <li><a href="<?=base_url('admin')?>"><i class="fa fa-dashboard"></i> Home</a></li>
         <li>Tables</li>
-        <li class="active"><a href="<?=base_url('admin/tabel_barangmasuk')?>">Tabel Data Masuk</li>
+        <li class="active"><a href="<?=base_url('admin/tabel_permintaanmasuk')?>">Tabel Data Masuk</li>
       </ol>
     </section>
 
@@ -205,25 +206,16 @@
                     <strong>Success!</strong><br> <?php echo $this->session->flashdata('msg_berhasil_keluar');?>
                </div>
               <?php } ?>
-
-              <a href="<?=base_url('admin/form_barangmasuk')?>" style="margin-bottom:10px;" type="button" class="btn btn-primary" name="tambah_data"><i class="fa fa-plus-circle" aria-hidden="true"></i> Tambah Data Masuk</a>
+              <a> </a>
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
                   <th>No</th>
-                  <th>SITE ID</th>
-                  <th>Region</th>
-                  <th>Provinsi</th>
-                  <th>Kota</th>
-                  <th>Kecamatan</th>
-                  <th>Desa</th>
-                  <th>Paket</th>
-                  <th>Batch</th>
-                  <th>TRM</th>
-                  <th>TSI</th>
+                  <th>The Insured</th>
                   <th>Amount Insured</th>
-                  <th>Keterangan</th>
-                  <!-- <th>Terbit</th> </-->
+                  <th>Dest. From</th>
+                  <th>Dest. To</th>
+                  <th>Submitted Time</th>
                   <th>Update</th>
                   <th>Delete</th>
                   <th>Keluarkan</th>
@@ -235,18 +227,11 @@
                   <?php $no = 1;?>
                   <?php foreach($list_data as $dd): ?>
                     <td><?=$no?></td>
-                    <td><?=$dd->site_id?></td>
-                    <td><?=$dd->region?></td>
-                    <td><?=$dd->provinsi?></td>
-                    <td><?=$dd->kabupaten?></td>
-                    <td><?=$dd->kecamatan?></td>
-                    <td><?=$dd->desa?></td>
-                    <td><?=$dd->paket?></td>
-                    <td><?=$dd->batch_?></td>
-                    <td><?=$dd->ctrm?></td>
-                    <td><?=$dd->ctsi?></td>
-                    <td><?=$dd->amount_insured?></td>
-                    <td><?=$dd->keterangan?></td>
+                    <td><?=$dd->the_insured?></td>
+                    <td>IDR<?=number_format($dd->amount_insured, 2)?></td>
+                    <td><?=$dd->destination_from?></td>
+                    <td><?=$dd->destination_to?></td>
+                    <td><?=$dd->submitted_at?></td>
                     <td><a type="button" class="btn btn-info" href="<?=base_url('admin/update_datamasuk/'.$dd->dummy_id)?>" name="btn_update" style="margin:auto;"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
                     <td><a type="button" class="btn btn-danger btn-delete" href="<?=base_url('admin/delete_data/'.$dd->dummy_id)?>" name="btn_delete" style="margin:auto;"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
                     <td><a type="button" class="btn btn-success btn-barangkeluar" href="<?=base_url('admin/move_data/'.$dd->dummy_id)?>" name="btn_barangkeluar" style="margin:auto;"><i class="fa fa-sign-out" aria-hidden="true"></i></a></td>
@@ -261,19 +246,12 @@
                 </tbody>
                 <tfoot>
                 <tr>
-                  <th>No</th>
-                  <th>SITE ID</th>
-                  <th>Region</th>
-                  <th>Provinsi</th>
-                  <th>Kota</th>
-                  <th>Kecamatan</th>
-                  <th>Desa</th>
-                  <th>Paket</th>
-                  <th>Batch</th>
-                  <th>TRM</th>
-                  <th>TSI</th>
+                <th>No</th>
+                  <th>The Insured</th>
                   <th>Amount Insured</th>
-                  <th>Keterangan</th>
+                  <th>Dest. From</th>
+                  <th>Dest. To</th>
+                  <th>Submitted Time</th>
                   </tr>
                 </tfoot>
               </table>

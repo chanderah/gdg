@@ -147,6 +147,7 @@
                 </span>
           </a>
           <ul class="treeview-menu">
+            <li class=""><a href="<?= base_url('admin/tabel_permintaanmasuk')?>"><i class="fa fa-circle-o"></i> Tabel Permintaan Masuk</a></li>
             <li class="active"><a href="<?= base_url('admin/tabel_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tabel Data Masuk</a></li>
             <li><a href="<?= base_url('admin/tabel_barangkeluar')?>"><i class="fa fa-circle-o"></i> Tabel Data Keluar</a></li>
            </ul>
@@ -245,7 +246,7 @@
                     <td><?=$dd->batch_?></td>
                     <td><?=$dd->ctrm?></td>
                     <td><?=$dd->ctsi?></td>
-                    <td><?=$dd->amount_insured?></td>
+                    <td>IDR<?=number_format($dd->amount_insured, 2)?></td>
                     <td><?=$dd->keterangan?></td>
                     <td><a type="button" class="btn btn-info" href="<?=base_url('admin/update_datamasuk/'.$dd->dummy_id)?>" name="btn_update" style="margin:auto;"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
                     <td><a type="button" class="btn btn-danger btn-delete" href="<?=base_url('admin/delete_data/'.$dd->dummy_id)?>" name="btn_delete" style="margin:auto;"><i class="fa fa-trash" aria-hidden="true"></i></a></td>

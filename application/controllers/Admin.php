@@ -221,7 +221,6 @@ class Admin extends CI_Controller{
     $this->form_validation->set_rules('username','Username','required');
     $this->form_validation->set_rules('email','Email','required|valid_email');
 
-    
     if($this->form_validation->run() == TRUE)
     {
       if($this->session->userdata('token_generate') === $this->input->post('token'))
@@ -278,6 +277,15 @@ class Admin extends CI_Controller{
               'avatar'    => $this->M_admin->get_data_gambar('tb_upload_gambar_user',$this->session->userdata('name'))
             );
     $this->load->view('admin/tabel/tabel_barangmasuk',$data);
+  }
+
+  public function tabel_permintaanmasuk()
+  {
+    $data = array(
+              'list_data' => $this->M_admin->select('tb_request_in'),
+              'avatar'    => $this->M_admin->get_data_gambar('tb_upload_gambar_user',$this->session->userdata('name'))
+            );
+    $this->load->view('admin/tabel/tabel_permintaanmasuk',$data);
   }
 
   public function update_datamasuk($dummy_id)
@@ -378,7 +386,6 @@ class Admin extends CI_Controller{
     }
   }
 
-
   public function proses_insert_datamasuk()
   {
     $this->form_validation->set_rules('site_id','site_id','required');
@@ -446,7 +453,6 @@ class Admin extends CI_Controller{
       $this->load->view('admin/form_barangmasuk/form_insert');
     }
   }
-
 
   public function proses_datamasuk_move()
   {
