@@ -154,7 +154,7 @@ class Report extends CI_Controller
                 <tr>
                     <td colspan="2">Amount Insured</td>
                     <td colspan="1" align="right">:</td>
-                    <td colspan="8"align="justify">IDR. '.$d->amount_insured.'</td>
+                    <td colspan="8"align="justify">IDR{amountInsured}</td>
                 </tr>
                 <tr>
                     <td colspan="2">L/C</td>
@@ -373,8 +373,8 @@ class Report extends CI_Controller
                             $bmop[] = $ddd2->cmop;
             }
         }
-        //as per mop
 
+        //push first site id MOP
         array_push($bmop,$firstMOP);
 
         sort($bmop);
@@ -410,20 +410,22 @@ class Report extends CI_Controller
     
     $html = str_replace('{MOP_Header}',$mop_header, $html);
     $html = str_replace('{invoice_ref_id}',$invoice_ref_id, $html);
+
+    $html = str_replace('{amountInsured}',number_format($d->amount_insured, 2), $html);
     
-    //
-   // $html = str_replace('{the_insured}',$the_insured, $html);
-  //  $html = str_replace('{address}',$address_, $html);
-   // $html = str_replace('{interest_insured}',$interest_insured, $html);
- //   $html = str_replace('{mark_numbers}',$mark_numbers, $html);
-  //  $html = str_replace('{amount_insured}',$amount_insured, $html);
-  //  $html = str_replace('{lampiran_LC}',$lampiran_LC, $html);
-   // $html = str_replace('{lampiran_BL}',$lampiran_BL, $html);
-  //  $html = str_replace('{invoice_number}',$invoice_number, $html);
- //   $html = str_replace('{sailing_date}',$sailing_date, $html);
- //   $html = str_replace('{invoice_number}',$invoice_number, $html);
- //   $html = str_replace('{conveyance}',$conveyance, $html);
-  //  $html = str_replace('{destination_to}',$destination_to, $html);
+    
+    // $html = str_replace('{the_insured}',$the_insured, $html);
+    // $html = str_replace('{address}',$address_, $html);
+    // $html = str_replace('{interest_insured}',$interest_insured, $html);
+    // $html = str_replace('{mark_numbers}',$mark_numbers, $html);
+    // $html = str_replace('{amount_insured}',$amount_insured, $html);
+    // $html = str_replace('{lampiran_LC}',$lampiran_LC, $html);
+    // $html = str_replace('{lampiran_BL}',$lampiran_BL, $html);
+    // $html = str_replace('{invoice_number}',$invoice_number, $html);
+    // $html = str_replace('{sailing_date}',$sailing_date, $html);
+    // $html = str_replace('{invoice_number}',$invoice_number, $html);
+    // $html = str_replace('{conveyance}',$conveyance, $html);
+    // $html = str_replace('{destination_to}',$destination_to, $html);
 
     // output the HTML content
     $pdf->writeHTML($html, true, false, true, false, '');
