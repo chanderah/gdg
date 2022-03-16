@@ -222,17 +222,15 @@ class Report extends CI_Controller
                 $totalLink = count($explodeLink);
 
                 if ($totalLink < 10){
-                    $html .= '<table border="" cellpadding="1">
-                                <tr>
-                                    <td colspan="2"></td>
-                                    <td colspan="1"></td>
-                                    <td colspan="8"> 1. SITE ID : '.$d->site_id.'</td>
-                                </tr>
-                             ';
-                
-                                $no = 2;
-                                foreach($explodeLink as $d2){
-                                    $html .= '  <tr>
+                                //disini
+                                $no = 1;
+
+                                array_push($explodeLink,$d->site_id);
+                                sort($explodeLink);
+                                $explodeLinkUnique = array_unique($explodeLink);
+
+                                foreach($explodeLinkUnique as $d2){
+                                    $html .= '  <tr><table border="" cellpadding="1">   
                                                     <td colspan="2"></td>
                                                     <td colspan="1"></td>
                                                     <td colspan="8"> '.$no.'. SITE ID : '.$d2.'</td>
