@@ -303,7 +303,7 @@ class Admin extends CI_Controller{
   public function info_datamasuk($dummy_id)
   {
     $where = array('dummy_id' => $dummy_id);
-    $data['data_barang_info'] = $this->M_admin->get_data('tb_site_in',$where);
+    $data['data_barang_info'] = $this->M_admin->get_data('tb_request_in',$where);
     $data['data_barang_desc'] = $this->M_admin->get_data('tb_site_out_items',$where);
     $data['list_satuan'] = $this->M_admin->select('tb_satuan');
     $data['avatar'] = $this->M_admin->get_data_gambar('tb_upload_gambar_user',$this->session->userdata('name'));
