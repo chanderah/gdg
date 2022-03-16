@@ -88,11 +88,11 @@ class User extends CI_Controller
         // DATA Data Masuk
   ####################################
 
-  public function tabel_barangmasuk()
+  public function form_suratpermohonan()
   {
     $this->load->view('user/templates/header.php');
-    $data['list_data'] = $this->M_user->select('tb_site_in');
-    $this->load->view('user/tabel/tabel_barangmasuk',$data);
+    $data['list_data'] = $this->M_user->select('tb_request_in');
+    $this->load->view('user/form/surat_permohonan',$data);
     $this->load->view('user/templates/footer.php');
   }
 
