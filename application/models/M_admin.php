@@ -70,6 +70,12 @@ class M_admin extends CI_Model
     $this->db->delete($tabel);
   }
 
+  public function delete_data($tabel,$where)
+  {
+    $this->db->where($where);
+    $this->db->delete($tabel);
+  }
+
   public function mengurangi($tabel,$site_id,$batch_)
   {
     $this->db->set("batch_","batch_ - $batch_");

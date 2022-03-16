@@ -216,7 +216,7 @@
                   <th>Dest. From</th>
                   <th>Dest. To</th>
                   <th>Submitted Time</th>
-                  <th>Update</th>
+                  <th>Info</th>
                   <th>Delete</th>
                   <th>Keluarkan</th>
                 </tr>
@@ -232,9 +232,9 @@
                     <td><?=$dd->destination_from?></td>
                     <td><?=$dd->destination_to?></td>
                     <td><?=$dd->submitted_at?></td>
-                    <td><a type="button" class="btn btn-info" href="<?=base_url('admin/update_datamasuk/'.$dd->dummy_id)?>" name="btn_update" style="margin:auto;"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
-                    <td><a type="button" class="btn btn-danger btn-delete" href="<?=base_url('admin/delete_data/'.$dd->dummy_id)?>" name="btn_delete" style="margin:auto;"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
-                    <td><a type="button" class="btn btn-success btn-barangkeluar" href="<?=base_url('admin/move_data/'.$dd->dummy_id)?>" name="btn_barangkeluar" style="margin:auto;"><i class="fa fa-sign-out" aria-hidden="true"></i></a></td>
+                    <td><a type="button" class="btn btn-info" href="<?=base_url('admin/info_datamasuk/'.$dd->dummy_id)?>" name="btn_info" style="margin:auto;"><i class="fa fa-info" aria-hidden="true"></i></a></td>
+                    <td><a type="button" class="btn btn-danger btn-delete" href="<?=base_url('admin/delete_data_permintaan/'.$dd->dummy_id)?>" name="btn_delete" style="margin:auto;"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+                    <td><a type="button" class="btn btn-success btn-barangkeluar" href="<?=base_url('admin/move_data_permintaan/'.$dd->dummy_id)?>" name="btn_barangkeluar" style="margin:auto;"><i class="fa fa-sign-out" aria-hidden="true"></i></a></td>
 
               
                 </tr>

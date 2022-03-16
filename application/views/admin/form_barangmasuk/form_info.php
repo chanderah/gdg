@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>CRUD Database | Data Masuk</title>
+  <title>Data Masuk | CRUD Database</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -211,12 +211,12 @@
                 </div>
                  
                 <div class="form-group form-group-lg col-md-6" style="margin-bottom:-1px">
-                  <label for="destination_from">3. Jenis Barang yang Dikirim</label>
+                  <label for="">3. Jenis Barang yang Dikirim</label>
                   <!-- <input type="text" name="destination_from" readonly="readonly" class="form-control"> -->
                 </div>
 
                 <div class="form-group form-group-lg col-md-6"style="margin-bottom:-1px">
-                  <label for="destination_to">Quantity</label>
+                  <label for="">Quantity</label>
                   <!-- <input type="text" name="destination_from" readonly="readonly" class="form-control"> -->
                 </div>
 

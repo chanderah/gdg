@@ -328,7 +328,7 @@
                 var data = $("#form_insert_site").serialize();
                 $.ajax({
                     type:"POST",
-                    url:'<?php echo base_url("main/input_suratpermohonaan"); ?>',
+                    url:'<?php echo base_url("main/input_suratpermohonan"); ?>',
                     data: data,
                     success: function(data) {
                         $("#user_message").html(data);

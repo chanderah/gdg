@@ -26,7 +26,7 @@ class Report extends CI_Controller
     //$ls   = array('site_id' => $id ,'provinsi' => $tgl1.'/'.$tgl2.'/'.$tgl3);
     
     $data = $this->M_admin->get_data('tb_site_out',$ls);
-    $data2 = $this->M_admin->get_data('tb_site_out_items',$ls);  
+    $data2 = $this->M_admin->get_data('tb_site_items',$ls);  
     
 
     //create

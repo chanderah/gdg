@@ -143,8 +143,8 @@
                 </span>
           </a>
           <ul class="treeview-menu">
-            <li class=""><a href="<?= base_url('admin/tabel_permintaanmasuk')?>"><i class="fa fa-circle-o"></i> Tabel Permintaan Masuk</a></li>
-            <li class="active"><a href="<?= base_url('admin/tabel_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tabel Data Masuk</a></li>
+            <li class="active"><a href="<?= base_url('admin/tabel_permintaanmasuk')?>"><i class="fa fa-circle-o"></i> Tabel Permintaan Masuk</a></li>
+            <li><a href="<?= base_url('admin/tabel_barangmasuk')?>"><i class="fa fa-circle-o"></i> Tabel Data Masuk</a></li>
             <li><a href="<?= base_url('admin/tabel_barangkeluar')?>"><i class="fa fa-circle-o"></i> Tabel Data Keluar</a></li>
            </ul>
         </li>
@@ -196,153 +196,74 @@
                   <button type="reset" class="btn btn-basic" name="btn_reset" style="width:95px;margin-left:-70px;"><i class="fa fa-eraser" aria-hidden="true"></i> Reset</button>
                 </div>
               
+                <!-- START -->
               <?php foreach($list_data as $d){ ?>
+                <div class="form-group form-group-lg col-md-12" style="display:none;">
+                  <label for="dummy_id">Dummy ID</label>
+                  <input type="text" name="dummy_id" required="true" class="form-control" placeholder="Dummy ID" value="<?=$d->dummy_id?>">
+                </div>
+
                 <div class="form-group form-group-lg col-md-12">
                   <label for="site_id" style="display:inline;">SITE ID</label>
-                  <input type="text" name="site_id" style="  display:inline;" readonly="readonly" class="form-control" placeholder="Site ID" value="<?=$d->site_id?>">
+                  <input type="text" name="site_id" style="  display:inline;" required="true" class="form-control" placeholder="Site ID" value="<?=$d->site_id?>">
                 </div>
+
                 <div class="form-group form-group-lg col-md-12" >
-                  <label for="site_id" style="display:inline;">Linked With</label>  
+                  <label for="linked_with" style="display:inline;">Linked With</label>  
                   <input type="text" name="linked_with" class="form-control">
-                </div>'
-              <?php } ?>
+                </div>
 
                 <div class="form-group form-group-lg col-md-12">
                   <label for="the_insured">1. Nama Tertanggung</label>
-                    <select name="the_insured" class="form-control">
-                      <option selected>Choose...</option>
-                      <option value="PT. FiberHome Technologies Indonesia and/or BAKTI (Badan Aksesibilitas Telekomunikasi dan Informasi)">PT. FiberHome Technologies Indonesia and/or BAKTI (Badan Aksesibilitas Telekomunikasi dan Informasi)</option>
-                      <option value="Lainnya">Lainnya</option>
-                    </select>
+                  <input type="text" name="the_insured" class="form-control" readonly="readonly" placeholder="Dari"value="<?=$d->the_insured?>">
                 </div>
                
                 <div class="form-group form-group-lg col-md-12">
                   <label for="address_">2. Alamat</label>
-                    <select class="form-control" name="address_">
-                      <option selected>Choose...</option>
-                      <option value="APL Tower, 30 Floor, Grogol, West Jakarta">APL Tower, 30 Floor, Grogol, West Jakarta</option>
-                      <option value="Lainnya">Lainnya</option>
-                    </select>
+                  <input type="text" name="address_" readonly="readonly" class="form-control" value="<?=$d->address_?>">
+                </div>
+                 
+                <div class="form-group form-group-lg col-md-6" style="margin-bottom:-1px">
+                  <label for="">3. Jenis Barang yang Dikirim</label>
+                  <!-- <input type="text" name="destination_from" readonly="readonly" class="form-control"> -->
                 </div>
 
-                <table id="cart_table" class="table table-sm table-stripped table-hover" style="margin-left:7px;width:99%">
-                    <thead>
-                        <tr>
-                            <th width="80%">3. Jenis Barang yang Dikirim</th>
-                            <th width="20%">Quantity</th>
-                            <th width="5%"></th>
-                        </tr>
-                        <tr>
-                        </tr> 
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                                <div class="form-group form-group-lg">
-                                    <input type="text" name="txtTitle[]" placeholder="Jenis Barang" required="required" class="form-control"/>
-                                </div>
-                            </td> 
-                            <td>
-                                <div class="form-group form-group-lg">
-                                    <input type="number" name="txtDescription[]" class="form-control" placeholder="@ pcs" required="required"/>
-                                </div>
-                            </td>
-                            
-                            <td>
-                                <button id="addItem" name="addItem" type="button" class="btn btn-success btn-block btn-sm add_button"><i style="color:#fff" class="fa fa-plus-circle"></i></button>
-                                <button id="removeItem" name="removeItem" type="button" class="btn btn-danger btn-block btn-sm remove_button"><i style="color:#fff;" class="fa fa-trash-o"></i></button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="form-group form-group-lg col-md-6"style="margin-bottom:-1px">
+                  <label for="">Quantity</label>
+                  <!-- <input type="text" name="destination_from" readonly="readonly" class="form-control"> -->
+                </div>
 
-                <div class="form-group form-group-lg col-md-12"style="margin-top:-25px">
+                <?php foreach($list_data_desc as $d2){ ?>
+                  <div class="form-group form-group-lg col-md-6">
+                    <input type="text" name="title" readonly="readonly" class="form-control" value="<?=$d2->title?>">
+                  </div>
+                  <div class="form-group form-group-lg col-md-6">
+                    <input type="text" name="description" readonly="readonly" class="form-control" value="<?=$d2->description?> Pcs">
+                  </div>
+                <?php } ?>
+
+                <div class="form-group form-group-lg col-md-12">
                   <label for="conveyance">4. Pengiriman Melalui</label>
-                    <select class="form-control" id="conveyance" name="conveyance">
-                      <option value="none">Choose...</option>
-                      <option value="Darat">Darat</option>
-                      <option value="Laut">Laut</option>
-                      <option value="Udara">Udara</option>
-                    </select>
+                  <input type="text" name="conveyance" readonly="readonly" class="form-control" value="<?=$d->conveyance?>">
                 </div>
-
-                <div class="conveyance_select" id="Darat">
-                  <div class="form-group form-group-lg col-md-3">
-                    <label for="conveyance_type">Jenis Alat Angkut</label>
-                      <select class="form-control" id="conveyance_type" name="conveyance_type">
-                        <option value="Car">Car</option>
-                        <option value="Truck">Truck</option>
-                        <option value="Pick Up">Pick Up</option>
-                        <option value="Container">Container</option>
-                        <option value="Lainnya">Lainnya</option>
-                    </select>
-                  </div>
-                  <div class="form-group form-group-lg col-md-3">
-                    <label for="conveyance_policeno">Plat Nomor</label>
-                    <input type="text" class="form-control" name="conveyance_policeno" placeholder="Plat Nomor">
-                  </div>
-                  <div class="form-group form-group-lg col-md-3">
-                    <label for="conveyance_age">Usia Kendaraan</label>
-                    <input type="number" class="form-control" name="conveyance_age" placeholder="Usia Kendaraan">
-                  </div>
-                  <div class="form-group form-group-lg col-md-3">
-                    <label for="conveyance_driver">No. SIM / Registrasi Pengemudi</label>
-                    <input type="text" class="form-control" name="conveyance_driver" placeholder="No. SIM / Registrasi Pengemudi">
-                  </div>
-                </div>
-
-                <div class="conveyance_select" id="Laut">
-                  <div class="form-group form-group-lg col-md-3">
-                    <label for="conveyance_ship_name">Nama Kapal</label>
-                    <input type="text" class="form-control" name="conveyance_ship_name" placeholder="Nama Kapal">
-                  </div>
-                  <div class="form-group form-group-lg col-md-3">
-                    <label for="conveyance_ship_type">Jenis Kapal</label>
-                    <input type="text" class="form-control" name="conveyance_ship_type" placeholder="Jenis Kapal">
-                  </div>
-                  <div class="form-group form-group-lg col-md-3">
-                    <label for="conveyance_ship_age">Usia Kapal</label>
-                    <input type="number" class="form-control" name="conveyance_ship_age" placeholder="Usia Kapal">
-                  </div>
-                  <div class="form-group form-group-lg col-md-3">
-                    <label for="conveyance_ship_GRT">GRT Kapal</label>
-                    <input type="text" class="form-control" name="conveyance_ship_GRT" placeholder="GRT Kapal">
-                  </div>
-                </div>
-
-                <div class="conveyance_select" id="Udara">
-                  <div class="form-group form-group-lg col-md-6">
-                    <label for="conveyance_plane_type">Jenis Pesawat</label>
-                      <select class="form-control" id="conveyance_plane_type" name="conveyance_plane_type">
-                      <option value="Car">Cargo</option>
-                      <option value="Truck">Penumpang</option>
-                      <option value="Pick Up">Helicopter</option>
-                      <option value="Container">Charter</option>
-                    </select>
-                  </div>
-                  <div class="form-group form-group-lg col-md-6">
-                    <label for="conveyance_plane_AWB">No. AWB</label>
-                    <input type="text" class="form-control" name="conveyance_plane_AWB" placeholder="No. AWB">
-                  </div>
-                </div>
-
+                
                 <div class="form-group form-group-lg col-md-6">
                   <label for="destination_from">5. Tempat Keberangkatan</label>
-                  <input type="text" name="destination_from" class="form-control" placeholder="Dari">
+                  <input type="text" name="destination_from" readonly="readonly" class="form-control" value="<?=$d->destination_from?>">
                 </div>
                 <div class="form-group form-group-lg col-md-6">
                   <label for="destination_to">Tujuan Akhir</label>
-                  <input type="text" class="form-control" name="destination_to" placeholder="Ke">
+                  <input type="text" name="destination_to" readonly="readonly" class="form-control" value="<?=$d->destination_to?>">
                 </div>
 
                 <div class="form-group form-group-lg col-md-12">
                   <label for="sailing_date">6. Tanggal Keberangkatan</label>
-                  <input type="date" placeholder="Tanggal Keberangkatan" name="sailing_date" required="required" class="form-control"/>
+                  <input type="text" name="sailing_date" readonly="readonly" class="form-control" value="<?=$d->sailing_date?>">
                 </div>
 
                 <div class="form-group form-group-lg col-md-12">
                   <label for="amount_insured">7. Nilai Barang yang Diangkut</label>
-                  <input type="number" name="amount_insured" placeholder="Nilai Barang" required="required" class="form-control"/>
+                  <input type="text" name="amount_insured" readonly="readonly" class="form-control" value="<?=$d->amount_insured?>">
                 </div>
 
                 <div class="form-group form-group-lg col-md-12">
@@ -350,32 +271,36 @@
                 </div>
                 <div class="form-group form-group-lg col-md-4">
                   <label for="lampiran_BL">Bill of Lading (B/L)</label>
-                  <input type="text" class="form-control" name="lampiran_BL" placeholder="B/L">
+                  <input type="text" name="lampiran_BL" readonly="readonly" class="form-control" value="<?=$d->lampiran_BL?>">
                 </div>
                 <div class="form-group form-group-lg col-md-4">
                   <label for="lampiran_LC">Letter of Credit (L/C) *</label>
-                  <input type="text" class="form-control" name="lampiran_LC" placeholder="L/C">
+                  <input type="text" name="lampiran_LC" readonly="readonly" class="form-control" value="<?=$d->lampiran_LC?>">
                 </div>
                 <div class="form-group form-group-lg col-md-4">
                   <label for="lampiran_invoice">Invoice</label>
-                  <input type="text" class="form-control" name="lampiran_invoice" placeholder="Invoice">
+                  <input type="text" name="lampiran_invoice" readonly="readonly" class="form-control" value="<?=$d->lampiran_invoice?>">
                 </div>
                 <div class="form-group form-group-lg col-md-6">
                   <label for="lampiran_PL">Packing List</label>
-                  <input type="text" class="form-control" name="lampiran_PL" placeholder="Packing List">
+                  <input type="text" name="lampiran_PL" readonly="readonly" class="form-control" value="<?=$d->lampiran_PL?>">
                 </div>
                 <div class="form-group form-group-lg col-md-6">
                   <label for="lampiran_DO">Delivery Order (DO)</label>
-                  <input type="text" class="form-control" name="lampiran_DO" placeholder="DO">
+                  <input type="text" name="lampiran_DO" readonly="readonly" class="form-control" value="<?=$d->lampiran_DO?>">
                 </div>          
-                
+                <?php } ?>
+                <!-- END -->
+
                 <div class="box-footer col-md-12" style="width:100%; margin-left:30px; margin-bottom:10px; margin-top:5px">
                   <a type="button" class="btn btn-default" style="width:10%;margin-right:26%" onclick="history.back(-1)" name="btn_kembali"><i class="fa fa-arrow-left" aria-hidden="true"></i> Kembali</a>
                   <a type="button" class="btn btn-info" style="width:18%;margin-right:20%" href="<?=base_url('admin/tabel_barangmasuk')?>" name="btn_listbarang">
-                  <i class="fa fa-table" aria-hidden="true"></i> Lihat List Permintaan</a>
-                  <button type="submit" input type="submit" style="width:20%" id="btnSave" class="btn btn-md btn-success"><i class="fa fa-check" aria-hidden="true"></i>Create</button>
+                  <i class="fa fa-table" aria-hidden="true"></i> Lihat List Data Masuk</a>
+                  <button type="submit" input type="submit" style="width:20%" id="btnSave" class="btn btn-md btn-success"><i class="fa fa-check" aria-hidden="true"></i>Export</button>
                 </div>
               </form>
+
+              
             </div>
           </div>
           
@@ -411,6 +336,7 @@
     </section>
     <!-- /.content -->
   </div>
+
   <!-- /.content-wrapper -->
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
@@ -521,11 +447,11 @@
         $(document).ready(function() {
 
             $('#form_insert_site').submit(function(e) {
-                e.preventDefault();
+                e.preventDefault(); 
                 var data = $("#form_insert_site").serialize();
                 $.ajax({
                     type:"POST",
-                    url:'<?php echo base_url("main/move_datamasuk"); ?>',
+                    url:'<?php echo base_url("main/move_datamasuk_permintaan"); ?>',
                     data: data,
                     success: function(data) {
                         $("#user_message").html(data);

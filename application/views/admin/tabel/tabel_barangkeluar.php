@@ -210,9 +210,9 @@
                 <thead>
                 <tr>
                   <th>No</th>
-                  <th>Sertifikat</th>
                   <th>SITE ID</th>
                   <th>Linked</th>
+                  <th>Sertifikat</th>
                   <th>Created At</th>
                   <th>Delete</th>
                   <!--<th>Info</th>-->
@@ -226,9 +226,9 @@
                   <?php $no = 1;?>
                   <?php foreach($list_data as $dd): ?>
                     <td><?=$no?></td>
-                    <td><?=$dd->no_sertif?></td>
                     <td><?=$dd->site_id?></td>
                     <td><?=$dd->linked_with?></td>
+                    <td><?=$dd->no_sertif?></td>
                     <td><?=$dd->created_at?></td>
                     <td><a type="button" class="btn btn-danger btn-delete" href="<?=base_url('admin/delete_datakeluar/'.$dd->dummy_id)?>" name="btn_delete" style="margin:auto;"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
                     <!--<td><a type="button" class="btn btn-info" href="<?=base_url('admin/info_datamasuk/'.$dd->dummy_id)?>" name="btn_update" style="margin:auto;"><i class="fa fa-info" aria-hidden="true"></i></a></td> -->
@@ -243,9 +243,9 @@
                 <tfoot>
                 <tr>
                   <th>No</th>
-                  <th>Sertifikat</th>
                   <th>SITE ID</th>
                   <th>Linked</th>
+                  <th>Sertifikat</th>
                   <th>Created At</th>
                   <th>Info</th>
                   <th>Invoice</th>
